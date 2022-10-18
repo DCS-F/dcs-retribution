@@ -114,6 +114,10 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.registerField("f15d_baz", self.f15d_baz)
         self.f_15_idf = QtWidgets.QCheckBox()
         self.registerField("f_15_idf", self.f_15_idf)
+        self.f16a_mlu_f16c_bl52d = QtWidgets.QCheckBox()
+        self.registerField("f16a_mlu_f16c_bl52d", self.f16a_mlu_f16c_bl52d)
+        self.f16cm_bl50 = QtWidgets.QCheckBox()
+        self.registerField("f16cm_bl50", self.f16cm_bl50)
         self.f_16_idf = QtWidgets.QCheckBox()
         self.registerField("f_16_idf", self.f_16_idf)
         self.fa_18efg = QtWidgets.QCheckBox()
@@ -230,6 +234,11 @@ class GeneratorOptions(QtWidgets.QWizardPage):
             ("F-4B/C Phantom II (2.8.7.204)", self.f4bc_phantom),
             ("F-84G Thunderjet (v2.5.7.01)", self.f84g_thunderjet),
             ("F9F Panther (v2.8.7.101)", self.f9f_panther),
+            (
+                "F-16A, F-16A MLU, F-16C Block 50 & F-16C Block 52D (version 2.5.6.10)",
+                self.f16a_mlu_f16c_bl52d,
+            ),
+            ("F-16CM Block 50 (version 2.5.6.10)", self.f16cm_bl50),
             ("F/A-18E/F/G Super Hornet (version 2.4.4)", self.fa_18efg),
             ("F/A-18E/F Super Hornet AI Tanker (version 2.4.4)", self.fa18ef_tanker),
             ("Frenchpack (v4.9.1)", self.frenchpack),

@@ -81,6 +81,8 @@ class ModSettings:
     f15d_baz: bool = False
     f_15_idf: bool = False
     f_16_idf: bool = False
+    f16a_mlu_f16c_bl52d: bool = False
+    f16cm_bl50: bool = False
     fa_18d: bool = False
     fa_18efg: bool = False
     fa18ef_tanker: bool = False

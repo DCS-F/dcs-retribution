@@ -444,6 +444,14 @@ class Faction:
             inject_F15I()
             if AircraftType.named("F-15E Strike Eagle (Suite 4+)") in self.aircraft:
                 self.aircraft.add(AircraftType.named("F-15I Ra'am"))
+        if not mod_settings.f16a_mlu_f16c_bl52d:
+            self.remove_aircraft("VSN_F16A")
+            self.remove_aircraft("VSN_F16AMLU")
+            self.remove_aircraft("VSN_F16CBL50")
+            self.remove_aircraft("VSN_F16CBL52D")
+        if not mod_settings.f16cm_bl50:
+            self.remove_aircraft("VSN_F16CMBL50")
+            self.remove_aircraft("VSN_F16CMBL50_AG")
         if not mod_settings.f_16_idf:
             self.remove_aircraft("F-16I")
             self.remove_aircraft("F-16D_52")
