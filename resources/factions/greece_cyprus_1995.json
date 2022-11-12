@@ -1,0 +1,371 @@
+{
+  "country": "Greece",
+  "name": "Greece-Cyprus 1995",
+  "authors": "Ghosti",
+  "description": "<p>A joint force of the Hellenic armed forces and the Cypriot National Guard in the mid/late 1990s.</p>",
+  "locales": [
+    "el_GR"
+  ],
+  "aircrafts": [
+	"F-104G Starfighter",
+	"F-5E Tiger II",
+	"Mirage-F1CG",
+	"AH-64A Apache",
+    "AH-64D Apache Longbow",
+    "AH-64D Apache Longbow (AI)",
+    "Mi-24P Hind-F",
+    "SA 342L Gazelle",
+    "SA 342M Gazelle",
+    "SA 342M Gazelle Mistral",
+    "C-130",
+    "C-130J-30 Super Hercules",
+    "F-16A Fighting Falcon (A/G)",
+	"F-16C Fighting Falcon (Block 50, A/A)",
+    "F-16C Fighting Falcon (Block 50, AI)",
+    "F-16CJ Fighting Falcon (Block 52D, AI)",
+	"F-16CJ Fighting Falcon (Block 52D)",
+	"F-16CM Fighting Falcon (Block 50, A/A)",
+	"F-16CM Fighting Falcon (Block 50, A/G)",
+	"F-16D Fighting Falcon (Block 52)",
+	"F-16D Fighting Falcon (Block 52+)",
+    "F-4E Phantom II",
+    "Mirage 2000-5",
+    "Mirage 2000C",
+    "OH-58D Kiowa Warrior",
+    "CH-47D",
+    "UH-1H Iroquois"
+  ],
+  "awacs": [
+    "E-3A"
+  ],
+  "tankers": [
+    "KC-130"
+  ],
+  "frontline_units": [
+    "BMP-1",
+    "BMP-3",
+    "Leopard 1A3",
+    "Leopard 2A4",
+    "AMX-30B2",
+    "M1043 HMMWV (M2 HMG)",
+    "M1045 HMMWV (BGM-71 TOW)",
+    "M113",
+    "VAB",
+	"VAB .50",
+    "VAB Mephisto",
+	"VAB MORTIER",
+    "VAB T20/13",
+    "VBL .50",
+    "VBL AANF1",
+    "M60A3 \"Patton\"",
+	"Truck M818 6x6",
+	"Truck KrAZ-6322"
+  ],
+  "artillery_units": [
+    "M109A6 Paladin",
+    "M270 Multiple Launch Rocket System"
+  ],
+  "logistics_units": [
+    "Truck M818 6x6"
+  ],
+  "infantry_units": [
+    "Infantry M249",
+    "Infantry M4",
+    "MANPADS Stinger"
+  ],
+  "missiles": [],
+  "preset_groups": [
+    "Hawk",
+    "Patriot",
+    "SA-10/S-300PS",
+    "SA-20/S-300PMU-1"
+  ],
+  "naval_units": [
+    "FAC La Combattante IIa"
+  ],
+  "air_defense_units": [
+    "SAM P19 \"Flat Face\" SR (SA-2/3)",
+    "SAM SA-8 Osa \"Gecko\" TEL",
+    "SA-15 Tor",
+    "AAA ZU-23 Closed Emplacement",
+	"Bofors 40 mm Gun",
+	"M1097 Heavy HMMWV Avenger"
+  ],
+  "has_jtac": true,
+  "jtac_unit": "SA 342M Gazelle",
+  "requirements": {
+    "frenchpack V3.5": "https://forums.eagle.ru/showthread.php?t=279974",
+	"F-16I & F-16D by IDF Mods Project": "https://discord.com/invite/YDUecPFNAU"
+  },
+  "liveries_overrides": {
+	"F-104G Starfighter": [
+      "HAF SEA"
+    ],
+	"F-5E Tiger II": [
+      "GR HAF F-5E Grey"
+    ],
+	"Mirage-F1CG": [
+      "114th Combat Wing Tanagra AB"
+    ],
+	
+	"AH-64A Apache": [
+      "greek army"
+    ],
+    "AH-64D Apache Longbow": [
+      "1st Attack Helicopter Battalion Greece",
+	  "Greece - ES1006",
+      "Greece 200 years celebrations"
+    ],
+    "AH-64D Apache Longbow (AI)": [
+      "greek army"
+    ],
+    "Mi-24P Hind-F": [
+      "Hellenic Army SEA Camo - Fictional"
+    ],
+    "SA 342L Gazelle": [
+      "Greece Cyprus Fictional Desert",
+      "Cyprus air force"
+    ],
+    "SA 342M Gazelle": [
+      "Greece Cyprus Fictional Desert",
+      "Cyprus air force"
+    ],
+    "SA 342M Gazelle Mistral": [
+      "Greece Cyprus Fictional Desert",
+      "Cyprus air force"
+    ],
+    "E-3A": [
+      "HAF Standard"
+    ],
+    "KC-130": [
+      "HAF gray"
+    ],
+    "C-130": [
+      "HAF gray"
+    ],
+    "F-16A Fighting Falcon (A/G)": [
+      "HAF_337_Ghost"
+    ],
+	"F-16C Fighting Falcon (Block 50, A/A)": [
+      "HAF_337_Ghost"
+    ],
+    "F-16C Fighting Falcon (Block 50, AI)": [
+      "HAF - 330sqn",
+	  "HAF - 341sqn",
+	  "HAF - 347sqn",
+	  "HAF - Aegean Ghost"
+    ],
+    "F-16CJ Fighting Falcon (Block 52D, AI)": [
+      "HAF - 340sqn",
+	  "HAF - 343sqn",
+	  "HAF - Aegean Ghost"
+    ],
+	"F-16CJ Fighting Falcon (Block 52D)": [
+      "HAF_337_Ghost"
+    ],
+	"F-16CM Fighting Falcon (Block 50, A/A)": [
+      "HAF_ 330_Thunder",
+      "HAF_335_Tiger",
+      "HAF_336_Olympus",
+      "HAF_337_Ghost",
+      "HAF_340_Fox",
+      "HAF_341_Arrow",
+      "HAF_343_Star",
+      "HAF_346_Jason",
+      "HAF_347_Perseus"
+    ],
+	"F-16CM Fighting Falcon (Block 50, A/G)": [
+      "HAF_ 330_Thunder",
+      "HAF_335_Tiger",
+      "HAF_336_Olympus",
+      "HAF_337_Ghost",
+      "HAF_340_Fox",
+      "HAF_341_Arrow",
+      "HAF_343_Star",
+      "HAF_346_Jason",
+      "HAF_347_Perseus"
+    ],
+	"F-16D Fighting Falcon (Block 52)": [
+      "",
+      ""
+    ],
+	"F-16D Fighting Falcon (Block 52+)": [
+      "",
+      ""
+    ],
+    "F-16CM Fighting Falcon (Block 50)": [
+      "HAF_ 330_Thunder",
+      "HAF_335_Tiger",
+      "HAF_336_Olympus",
+      "HAF_337_Ghost",
+      "HAF_340_Fox",
+      "HAF_341_Arrow",
+      "HAF_343_Star",
+      "HAF_346_Jason",
+      "HAF_347_Perseus"
+    ],
+    "F-4E Phantom II": [
+      "HAF Aegean Ghost"
+    ],
+    "Mirage 2000-5": [
+      "Hellenic Airforce"
+    ],
+    "Mirage 2000C": [
+      "Greek Air Force"
+    ],
+    "UH-1H Iroquois": [
+      "Greek Army Aviation",
+      "Greek Army Aviation Medic",
+      "Hellenic Airforce SAR"
+    ]
+  },
+  "liveries_overrides_ground_forces": {
+	"BMP-1": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+    "BMP-3": [
+      "summer"
+    ],
+	"Leopard1a3": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"leopard-2A4": [
+      "HEL_autumn",
+      "HEL_spring",
+      "HEL_summer"
+    ],
+	"Hummer": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"M1043 HMMWV Armament": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"M1045 HMMWV TOW": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"M-109": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"M-113": [
+      "GRC_autumn",
+	  "GRC_autumn_MED",
+      "GRC_spring",
+      "GRC_spring_MED",
+      "GRC_summer",
+      "GRC_summer_MED"
+    ],
+	"VAB_Mephisto": [
+      "woodland_Spring",
+      "woodland_Autumn"
+    ],
+	"Patriot AMG": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"Patriot cp": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"Patriot ECS": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"Patriot EPP": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"Patriot ln": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"Patriot str": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"S-300PS 5P85C ln": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"S-300PS 5P85D ln": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"S-300PS 40B6M tr": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"S-300PS 40B6MD sr": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"S-300PS 54K6 cp": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"S-300PS 64H6E sr": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"Tor 9A331": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"MLRS": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"Osa 9A33 ln": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"Tor 9a331": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"Soldier m4": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"Soldier m249": [
+      "GRC_autumn",
+      "GRC_spring",
+      "GRC_summer"
+    ],
+	"Soldier stinger": [
+      "GRC"
+    ],
+	"La_Combattante_II": [
+      "Greece"
+    ]
+  },
+  "unrestricted_satnav": true
+}
