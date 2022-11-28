@@ -75,7 +75,6 @@
   "air_defense_units": [
     "SAM P19 \"Flat Face\" SR (SA-2/3)",
     "SAM SA-8 Osa \"Gecko\" TEL",
-    "SA-15 Tor",
     "AAA ZU-23 Closed Emplacement",
 	"Bofors 40 mm Gun",
 	"M1097 Heavy HMMWV Avenger"
@@ -267,11 +266,6 @@
       "GRC_spring",
       "GRC_summer"
     ],
-	"Tor 9a331": [
-      "GRC_autumn",
-      "GRC_spring",
-      "GRC_summer"
-    ],
 	"Soldier m4": [
       "GRC_autumn",
       "GRC_spring",
@@ -286,7 +280,13 @@
       "GRC"
     ],
 	"La_Combattante_II": [
-      "Greece"
+      "Greece",
+	  "GRC_P72_Ypoploiarchos Votsis",
+	  "GRC_P73_Antiploiarchos Pezopoulos",
+	  "GRC_P74_Plotarchis Vlachavas",
+	  "GRC_P75_Plotarchis Maridakis",
+	  "GRC_P76_Ypoploiarchos Tournas",
+	  "GRC_P77_Plotarchis Sakipis"
     ]
   },
   "unrestricted_satnav": true

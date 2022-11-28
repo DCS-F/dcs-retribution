@@ -364,7 +364,13 @@
       "GRC"
     ],
 	"La_Combattante_II": [
-      "Greece"
+      "Greece",
+	  "GRC_P72_Ypoploiarchos Votsis",
+	  "GRC_P73_Antiploiarchos Pezopoulos",
+	  "GRC_P74_Plotarchis Vlachavas",
+	  "GRC_P75_Plotarchis Maridakis",
+	  "GRC_P76_Ypoploiarchos Tournas",
+	  "GRC_P77_Plotarchis Sakipis"
     ]
   },
   "unrestricted_satnav": true
