@@ -1,0 +1,159 @@
+{
+  "country": "Turkey",
+  "name": "Turkey 1985",
+  "authors": "Ghosti",
+  "description": "<p>Turkish armed forces in the mid/late 1985s.</p>",
+  "locales": [
+    "tr_TR"
+  ],
+  "aircrafts": [
+    "AH-1W SuperCobra",
+    "C-130",
+    "CH-47D",
+    "F-100 Super Sabre",
+    "F-104S Starfighter",
+    "F-104S Starfighter A/G",
+	"F-5E Tiger II",
+    "F-16C Fighting Falcon (IDF mod)",
+	"F-16D Fighting Falcon (Block 50)",
+	"F-16D Fighting Falcon (Block 50+)",
+    "F-4E Phantom II",
+    "OH-58D Kiowa Warrior",
+    "UH-1H Iroquois",
+    "UH-60A",
+    "UH-60L"
+  ],
+  "awacs": [
+    "E-3A"
+  ],
+  "tankers": [
+    "KC-135 Stratotanker"
+  ],
+  "frontline_units": [
+    "BTR-80",
+    "Cobra",
+    "Leopard 1A3",
+    "Leopard 2A4 Trs",
+    "M113",
+    "LUV Land Rover 109",
+    "Truck M818 6x6",
+    "M60A3 \"Patton\""
+  ],
+  "artillery_units": [
+    "Firtina",
+    "M270 Multiple Launch Rocket System"
+  ],
+  "logistics_units": [
+    "Truck M818 6x6",
+    "LUV Land Rover 109"
+  ],
+  "infantry_units": [
+    "Infantry M249",
+    "Infantry M4",
+    "MANPADS SA-18 Igla-S \"Grouse\"",
+    "Paratrooper AKS"
+  ],
+  "missiles": [],
+  "preset_groups": [
+    "Hawk",
+    "SA-3/S-125",
+    "Rapier"
+  ],
+  "naval_units": [
+    "FAC La Combattante IIa"
+  ],
+  "air_defense_units": [
+    "SAM Hawk SR (AN/MPQ-50)",
+	"Bofors 40 mm Gun",
+	"M45 Quadmount",
+    "ZSU-23-4 Shilka"
+  ],
+  "has_jtac": true,
+  "jtac_unit": "MQ-9 Reaper",
+  "requirements": {
+    "WW2 Asset Pack": "https://www.digitalcombatsimulator.com/en/products/other/wwii_assets_pack/",
+	"F-16I & F-16D by IDF Mods Project": "https://discord.com/invite/YDUecPFNAU"
+  },
+  "liveries_overrides": {
+    "AH-1W SuperCobra": [
+      "Turkey 1",
+      "Turkey 2"
+    ],
+    "C-130": [
+      "Turkish Air Force"
+    ],
+    "F-100 Super Sabre": [
+      "THK_Camo",
+      "THK_Silver"
+    ],
+    "F-104S Starfighter": [
+      "Turkey 12613"
+    ],
+    "F-104S Starfighter A/G": [
+      "Turkey 12613"
+    ],
+	"F-5E Tiger II": [
+      "3rd Main Jet Base Group Command, Turkey",
+      "5th fs Merzifon air base, Turkey"
+    ],
+    "F-16C Fighting Falcon (IDF mod)": [
+      "THK_191_Filo"
+    ],
+	"F-16D Fighting Falcon (Block 50)": [
+      "TuAF F-16D 2.0",
+      "TUAF F-16D 161 FILO 2.0",
+      "TuAF F-16D 181 FILO 2.0"
+    ],
+	"F-16D Fighting Falcon (Block 50+)": [
+      "TuAF F-16D 2.0",
+      "TUAF F-16D 161 FILO 2.0",
+      "TuAF F-16D 181 FILO 2.0"
+    ],
+    "F-4E Phantom II": [
+      "Turkish Air force 111 Filo",
+      "Turkish Air Force 132 Filo",
+      "Turkish Air Force 171 Filo"
+    ],
+    "UH-1H Iroquois": [
+      "Turkish Air Force"
+    ],
+    "UH-60A": [
+      "CLP TUR Turkey Army 14309",
+      "CLP TUR Turkey Jandarma 1925"
+    ],
+    "UH-60L": [
+      "US Army Desert"
+    ],
+    "E-3A": [
+      "TurAF Standard"
+    ],
+    "KC-135 Stratotanker": [
+      "TurAF Standard"
+    ]
+  },
+  "liveries_overrides_ground_forces": {
+	"Leopard1A3": [
+      "desert"
+    ],
+	"BTR-80": [
+      "Desert"
+    ],
+	"M-113": [
+      "desert",
+	  "desert_MED"
+    ],
+	"MLRS": [
+      "desert"
+    ],
+	"M-60": [
+      "desert"
+    ],
+	"Cobra": [
+      "desert"
+    ],
+	"La_Combattante_II": [
+      "Turkey"
+    ]
+  },
+  "unrestricted_satnav": true
+}
