@@ -229,6 +229,9 @@ class AircraftGenerator:
                     )
                     group.uncontrolled = False
                     group.units[0].skill = Skill.Client
+                    group.password = (
+                        "kKu45HzlrJR:UPLebpAjE8Q7WknMHMFNO-XHAHhOSFabAKkwXv4l1Mk"
+                    )
                 AircraftPainter(flight, group).apply_livery()
                 self.unit_map.add_aircraft(group, flight)
 
