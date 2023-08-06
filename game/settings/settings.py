@@ -11,6 +11,7 @@ from .boundedfloatoption import bounded_float_option
 from .boundedintoption import bounded_int_option
 from .choicesoption import choices_option
 from .minutesoption import minutes_option
+from .stringoption import string_option
 from .optiondescription import OptionDescription, SETTING_DESCRIPTION_KEY
 from .skilloption import skill_option
 from ..ato.starttype import StartType
@@ -46,7 +47,8 @@ PILOTS_AND_SQUADRONS_SECTION = "Pilots and Squadrons"
 HQ_AUTOMATION_SECTION = "HQ Automation"
 FLIGHT_PLANNER_AUTOMATION = "Flight Planner Automation"
 
-CAMPAIGN_DOCTRINE_PAGE = "Campaign Doctrine"
+CAMPAIGN_DOCTRINE_PAGE = "Campaign Doctrine (All)"
+CAMPAIGN_DOCTRINE_OPFOR_PAGE = "Campaign Doctrine (OPFOR)"
 DOCTRINE_DISTANCES_SECTION = "Doctrine distances"
 
 MISSION_GENERATOR_PAGE = "Mission Generator"
@@ -242,19 +244,6 @@ class Settings:
             "the autoplanner to plan an OCA strike against it."
         ),
     )
-    opfor_autoplanner_aggressiveness: int = bounded_int_option(
-        "OPFOR autoplanner aggressiveness (%)",
-        page=CAMPAIGN_DOCTRINE_PAGE,
-        section=GENERAL_SECTION,
-        default=20,
-        min=0,
-        max=100,
-        detail=(
-            "Chance (larger number -> higher chance) that the OPFOR AI "
-            "autoplanner will take risks and plan flights against targets "
-            "within threatened airspace."
-        ),
-    )
     airbase_threat_range: int = bounded_int_option(
         "Airbase threat range (nmi)",
         page=CAMPAIGN_DOCTRINE_PAGE,
@@ -326,6 +315,35 @@ class Settings:
             "How far, at minimum, will theater tanker racetracks be "
             "planned to known threat zones."
         ),
+    )
+    opfor_autoplanner_aggressiveness: int = bounded_int_option(
+        "OPFOR autoplanner aggressiveness (%)",
+        page=CAMPAIGN_DOCTRINE_OPFOR_PAGE,
+        section=GENERAL_SECTION,
+        default=20,
+        min=0,
+        max=100,
+        detail=(
+            "Chance (larger number -> higher chance) that the OPFOR AI "
+            "autoplanner will take risks and plan flights against targets "
+            "within threatened airspace."
+        ),
+    )
+    untasked_opfor_client_slots: bool = boolean_option(
+        "Convert untasked OPFOR aircraft into client slots",
+        page=CAMPAIGN_DOCTRINE_OPFOR_PAGE,
+        section=GENERAL_SECTION,
+        default=False,
+        detail=(
+            "Warning: Enabling this will significantly reduce the number of "
+            "targets available for OCA/Aircraft missions."
+        ),
+    )
+    opfor_client_slot_password: str = string_option(
+        "OPFOR client slot password",
+        page=CAMPAIGN_DOCTRINE_OPFOR_PAGE,
+        section=GENERAL_SECTION,
+        default="",
     )
     # Pilots and Squadrons
     ai_pilot_levelling: bool = boolean_option(
@@ -587,16 +605,6 @@ class Settings:
             "more than 10 minutes after the start of the mission. <strong>This does "
             "not alter the timing of your mission. Your TOT will not change. This "
             "option only allows the player to wait on the ground.</strong>"
-        ),
-    )
-    untasked_opfor_client_slots: bool = boolean_option(
-        "Convert untasked OPFOR aircraft into client slots",
-        page=MISSION_GENERATOR_PAGE,
-        section=GAMEPLAY_SECTION,
-        default=False,
-        detail=(
-            "Warning: Enabling this will significantly reduce the number of "
-            "targets available for OCA/Aircraft missions."
         ),
     )
     atflir_autoswap: bool = boolean_option(

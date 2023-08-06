@@ -23,6 +23,7 @@ from PySide2.QtWidgets import (
     QVBoxLayout,
     QWidget,
     QFileDialog,
+    QLineEdit,
 )
 
 import qt_ui.uiconstants as CONST
@@ -136,6 +137,8 @@ class AutoSettingsLayout(QGridLayout):
                 self.add_spinner_for(row, name, description)
             elif isinstance(description, MinutesOption):
                 self.add_duration_controls_for(row, name, description)
+            elif isinstance(description, OptionDescription):
+                self.add_lineedit_for(row, name, description)
             else:
                 raise TypeError(f"Unhandled option type: {description}")
 
@@ -215,6 +218,21 @@ class AutoSettingsLayout(QGridLayout):
         spinner.valueChanged.connect(on_changed)
         self.addWidget(spinner, row, 1, Qt.AlignRight)
         self.settings_map[name] = spinner
+
+    def add_lineedit_for(
+        self, row: int, name: str, description: OptionDescription
+    ) -> None:
+        def on_changed(text: str) -> None:
+            self.sc.settings.__dict__[name] = text
+            if description.causes_expensive_game_update:
+                self.write_full_settings()
+
+        lineedit = QLineEdit()
+        lineedit.setText(self.sc.settings.__dict__[name])
+
+        lineedit.textChanged.connect(on_changed)
+        self.addWidget(lineedit, row, 1, Qt.AlignRight)
+        self.settings_map[name] = lineedit
 
     def add_duration_controls_for(
         self, row: int, name: str, description: MinutesOption

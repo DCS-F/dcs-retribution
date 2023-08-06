@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+import hashlib
 import logging
+import string
+import os
 from datetime import datetime
 from functools import cached_property
 from typing import Any, Dict, List, TYPE_CHECKING, Tuple
@@ -38,10 +41,13 @@ from .flightdata import FlightData
 from .flightgroupconfigurator import FlightGroupConfigurator
 from .flightgroupspawner import FlightGroupSpawner
 from ...data.weapons import WeaponType
+from base64 import urlsafe_b64encode
 
 if TYPE_CHECKING:
     from game import Game
     from game.squadrons import Squadron
+
+DCS_PASSWORD_SALT_LEN = 11
 
 
 class AircraftGenerator:
@@ -218,10 +224,6 @@ class AircraftGenerator:
                 if (
                     not squadron.coalition.player
                     and squadron.aircraft.flyable
-                    and (
-                        self.game.settings.enable_squadron_pilot_limits
-                        or squadron.number_of_available_pilots > 0
-                    )
                     and self.game.settings.untasked_opfor_client_slots
                 ):
                     flight.state = WaitingForStart(
@@ -229,9 +231,15 @@ class AircraftGenerator:
                     )
                     group.uncontrolled = False
                     group.units[0].skill = Skill.Client
-                    group.password = (
-                        "kKu45HzlrJR:UPLebpAjE8Q7WknMHMFNO-XHAHhOSFabAKkwXv4l1Mk"
+                    password = self.game.settings.opfor_client_slot_password
+                    print(f"Password is {password}")
+                    salt = os.urandom(DCS_PASSWORD_SALT_LEN)
+                    hash_bytes = hashlib.blake2b(
+                        key=password.encode(), digest_size=32, salt=salt
                     )
+                    hash_str = urlsafe_b64encode(hash_bytes.digest()).rstrip(b"=")
+                    group.password = f"{salt}:{hash_str}"
+                    print(f"group.password is {group.password}")
                 AircraftPainter(flight, group).apply_livery()
                 self.unit_map.add_aircraft(group, flight)
 
