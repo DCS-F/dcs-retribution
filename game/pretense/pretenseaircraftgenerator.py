@@ -754,15 +754,47 @@ class PretenseAircraftGenerator:
         """Creates and configures the flight group in the mission."""
         if not country.unused_onboard_numbers:
             country.reset_onboard_numbers()
-        group = PretenseFlightGroupSpawner(
-            flight,
-            country,
-            self.mission,
-            self.helipads,
-            self.ground_spawns_roadbase,
-            self.ground_spawns,
-            self.mission_data,
-        ).create_flight_group()
+            group = PretenseFlightGroupSpawner(
+                flight,
+                country,
+                self.mission,
+                self.helipads,
+                self.ground_spawns_roadbase,
+                self.ground_spawns,
+                self.mission_data,
+            ).create_flight_group()
+        else:
+            if flight.client_count > 0:
+                if flight.flight_type == FlightType.CAS:
+                    for conflict in self.game.theater.conflicts():
+                        flight.package.target = conflict
+                        break
+                elif (
+                    flight.flight_type == FlightType.STRIKE
+                    or flight.flight_type == FlightType.BAI
+                ):
+                    for cp in self.game.theater.closest_opposing_control_points():
+                        if cp.coalition == flight.coalition:
+                            continue
+                        for mission_target in cp.ground_objects:
+                            flight.package.target = mission_target
+                elif (
+                    flight.flight_type == FlightType.OCA_RUNWAY
+                    or flight.flight_type == FlightType.OCA_AIRCRAFT
+                ):
+                    for cp in self.game.theater.controlpoints:
+                        if cp.coalition == flight.coalition or not isinstance(
+                            cp, Airfield
+                        ):
+                            continue
+                        flight.package.target = cp
+                elif flight.flight_type == FlightType.DEAD:
+                    for cp in self.game.theater.controlpoints:
+                        if cp.coalition == flight.coalition:
+                            continue
+                        for ground_object in cp.ground_objects:
+                            is_ewr = isinstance(ground_object, EwrGroundObject)
+                            is_sam = isinstance(ground_object, SamGroundObject)
 
         control_points_to_scan = (
             list(self.game.theater.closest_opposing_control_points())
