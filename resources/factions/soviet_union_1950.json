@@ -8,12 +8,14 @@
   ],
   "aircrafts": [
     "MiG-15bis Fagot",
-	"L-39ZA Albatros",
+    "L-39ZA Albatros",
     "Tu-95MS Bear-H",
-	"Tu-16 Badger",
+    "Tu-16 Badger",
     "Mi-8MTV2 Hip",
     "I-16 Ishak",
-    "Spitfire LF Mk IX"
+    "Spitfire LF Mk IX",
+    "An-26B",
+    "An-30M"
   ],
   "frontline_units": [
     "A17 Light Tank Mk VII Tetrarch",
@@ -85,6 +87,12 @@
       "Russia_VVS_MA",
       "Russia_VVS_Standard",
       "Russia_VVS_Standard_2"
+    ],
+    "An-26B": [
+      "RF Air Force"
+    ],
+	"An-30M": [
+      "RF Air Force"
     ]
   },
   "liveries_overrides_ground_forces": {
