@@ -24,9 +24,7 @@ class SquadronLiverySelector(QComboBox):
         if len(aircraft_liveries) == 0:
             logging.info(f"Liveries for {self.aircraft_type} is empty!")
         for livery in aircraft_liveries:
-            valid_livery = livery.countries is None or cc in livery.countries
-            if valid_livery or cc in ["BLUE", "RED"]:
-                liveries.add(livery)
+            liveries.add(livery)
         faction = squadron.coalition.faction
         overrides = [
             x
