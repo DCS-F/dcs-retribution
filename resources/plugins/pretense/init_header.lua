@@ -13,14 +13,14 @@ do
 	TemplateDB.templates["infantry-red"] = {
 		units = {
 			"BTR_D",
-			"T-90",
-			"T-90",
+			"T-55",
+			"TYPE-59",
 			"Infantry AK ver2",
 			"Infantry AK",
 			"Infantry AK",
 			"Paratrooper RPG-16",
 			"Infantry AK ver3",
-			"SA-18 Igla manpad"
+			"Paratrooper RPG-16"
 		},
 		skill = "Excellent",
 		dataCategory= TemplateDB.type.group
@@ -28,14 +28,14 @@ do
 
 	TemplateDB.templates["infantry-blue"] = {
 		units = { 
-			"M1045 HMMWV TOW",
-			"Soldier stinger",
+			"BMP-1",
+			"Soldier RPG",
+			"Soldier M4",
+			"Soldier M249",
+			"Soldier M4",
 			"Soldier M4 GRG",
 			"Soldier M4 GRG",
-			"Soldier M4 GRG",
-			"Soldier M4 GRG",
-			"Soldier M4 GRG",
-			"M1043 HMMWV Armament"
+			"MTLB"
 		},
 		skill = "Excellent",
 		dataCategory= TemplateDB.type.group
@@ -47,7 +47,7 @@ do
 			"Infantry AK",
 			"Infantry AK ver3",
 			"Paratrooper RPG-16",
-			"SA-18 Igla manpad"
+			"Paratrooper RPG-16"
 		},
 		skill = "Excellent",
 		dataCategory= TemplateDB.type.group
@@ -55,11 +55,11 @@ do
 
 	TemplateDB.templates["defense-blue"] = {
 		units = { 
-			"Soldier M4 GRG",
-			"Soldier M4 GRG",
-			"Soldier M4 GRG",
+			"Soldier M4",
+			"Soldier M249",
+			"Soldier M4",
 			"Soldier RPG",
-			"Soldier stinger",
+			"Soldier RPG",
 		},
 		skill = "Excellent",
 		dataCategory= TemplateDB.type.group
@@ -67,10 +67,10 @@ do
 
 	TemplateDB.templates["shorad-red"] = {
 		units = {
-			"Strela-10M3",
-			"Strela-10M3",
+			"Ural-375 ZU-23",
+			"ZSU-23-4 Shilka",
 			"Ural-4320T",
-			"2S6 Tunguska"
+			"ZSU_57_2"
 		},
 		maxDist = 300,
 		skill = "Excellent",
@@ -79,9 +79,9 @@ do
 
 	TemplateDB.templates["shorad-blue"] = {
 		units = {
-			"Roland ADS",
-			"M48 Chaparral",
-			"M 818",
+			"Ural-375 ZU-23",
+			"ZSU_57_2",
+			"KAMAZ Truck",
 			"Gepard",
 			"Gepard"
 		},
