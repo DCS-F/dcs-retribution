@@ -1,0 +1,387 @@
+---
+name: Caucasus - Salpalinja
+theater: Caucasus
+authors: Ghosti
+description: <p>This campaign depicts a west-east direction ground war across the more forested regions of the Caucasus map, with several roadbases in between the bigger airports and airbases, intended to depict dispersed deployment of aircraft in the event of a Cold War era ground war.</p>
+recommended_player_faction: Finland 1970
+recommended_enemy_faction: Soviet Union 1975
+recommended_start_date: 1975-03-01
+miz: Caucasus_Salpalinja.miz
+performance: 3
+version: "10.2"
+squadrons:
+#  Sennoy Roadbase:
+#  Starotitarovskaya Roadbase:
+#  Belyy Helicopter Base:
+#  Arhipo-Osipovka Roadbase:
+#  Mihaylovskiy Pereval Helicopter Base:
+#  Adagum Roadbase:
+#  Mingrelskaya Roadbase:
+#  Yablonovskiy Roadbase:
+#  Kazazov Roadbase:
+#  Saratovskaya Roadbase:
+  Guriyskaya FARP:
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Kurinskaya FARP:
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip  
+  Apsheronsk FARP:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+  Kubanskaya FARP:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Ka-50 Hokum
+  Pshehskaya FARP:
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - Mi-28N Havoc
+  Kurdzhipskaya FARP:
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+#  Oktyabrskiy Helicopter Base:
+#  Ostrovskaya Shel Helicopter Base:
+#  Georgievskoe Helicopter Base:
+#  Tuapse Helicopter Base:
+#  Hadzhiko Combat Base:
+
+  Dagestanskaya FARP:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+  Abadzehskaya Roadbase:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+  Dahovskaya Roadbase:
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - Mi-28N Havoc
+#  Hamyshki Pass Roadbase:
+#  FOB Guzeripl:
+#  Neftegorsk Outpost:
+#  Chernigovskoe Helicopter Base:
+  Gubskaya FARP:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+#  Gubskaya Roadbase:
+#  Kaladzhinskaya Roadbase:
+#  Psebay Roadbase:
+#  Pregradnaya Roadbase:
+  Besstrashnaya Roadbase:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+#  Storozhevaya Roadbase:
+  Udobnaya Roadbase:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Cherkessk FARP:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Prigorodnoe Roadbase:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Ka-50 Hokum
+#  Suvorovskaya Roadbase:
+#  Bekeshevskaya Roadbase:
+#  Borgustanskaya Roadbase:
+#  Uchkeken Roadbase:
+#  Georgievsk Roadbase:
+  Zarechnoe FARP:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Blue CV59:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-4B Phantom II
+    - primary: Refueling
+      aircraft:
+        - S-3B Tanker
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - S-3B Viking
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - A-6A Intruder
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - A-4E Skyhawk
+    - primary: AEW&C
+      aircraft:
+        - E-2C Hawkeye
+  Blue CVN65:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-4B Phantom II
+    - primary: Refueling
+      aircraft:
+        - S-3B Tanker
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - S-3B Viking
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - A-6A Intruder
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - A-4E Skyhawk
+    - primary: AEW&C
+      aircraft:
+        - E-2C Hawkeye
+  Blue LHA:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AH-1G Cobra
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Ka-50 Hokum
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+  Red LHA-1:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  Red LHA-2:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Anapa-Vityazevo
+  12:
+    - primary: AEW&C
+      aircraft:
+        - E-3A
+    - primary: Refueling
+      aircraft:
+        - KC-135 Stratotanker MPRS
+        - IL-78M
+    - primary: Refueling
+      aircraft:
+        - KC-130
+  # Krasnodar-Center
+  13:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - AJS-37 Viggen
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342M Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AH-64D Apache Longbow
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Ka-50 Hokum
+  # Novorossiysk
+  14:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (Lot 20)
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (AI)
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - F/A-18D Hornet
+  # Krymsk
+  15:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage-F1CE
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage-F1EE
+  # Maykop-Khanskaya
+  16:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Su-25 Frogfoot
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+  # Gelendzhik
+  17:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+        - MiG-15bis Fagot
+    - primary: Transport
+      secondary: any
+      aircraft:
+        - UH-60L
+        - UH-1H Iroquois
+  # Krasnodar-Pashkovsky
+  19:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - A-4E Skyhawk
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Hawk T1A
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Hawk Mk.60
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
+  # Mineralnye Vody
+  26:
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-23MLD Flogger-K
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-25PD Foxbat-E
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
+  # Nalchik
+  27:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Su-25 Frogfoot
+    - primary: Refueling
+      aircraft:
+        - IL-78M
+  # Mozdok
+  28:
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+    - primary: Anti-ship
+      secondary: any
+      aircraft:
+        - Tu-142 Bear-F
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-95MS Bear-H
+    - primary: Transport
+      aircraft:
+        - IL-76MD
+  # Beslan
+  32:
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - Su-17M4 Fitter-K
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Su-24M Fencer-D
+        
+  
+carriers:
+  Blue CV59:
+    preferred_name: CV-59 Forrestal
+    preferred_type: Forrestal
+  Blue CVN65:
+    preferred_name: CVN-65 Enterprise
+    preferred_type: Stennis

@@ -1,0 +1,137 @@
+{
+  "country": "USSR",
+  "name": "Soviet Union 1950",
+  "authors": "Ghosti",
+  "description": "<p>Soviet Union in 1950s. Featuring the I16, and using some allies units to represent either lend leased vehicles or soviet equivalent vehicles. BM-21 is used to represent BM-13</p>",
+  "locales": [
+    "ru_RU"
+  ],
+  "aircrafts": [
+    "MiG-15bis Fagot",
+	"L-39ZA Albatros",
+    "Tu-95MS Bear-H",
+	"Tu-16 Badger",
+    "Mi-8MTV2 Hip",
+    "I-16 Ishak",
+    "Spitfire LF Mk IX"
+  ],
+  "frontline_units": [
+    "A17 Light Tank Mk VII Tetrarch",
+    "AAA KS-19 100mm",
+    "Bofors 40 mm Gun",
+    "Daimler Armoured Car Mk I",
+    "M2A1 Half-Track",
+    "M4A2(75) Sherman"
+  ],
+  "artillery_units": [
+    "BM-21 Grad"
+  ],
+  "logistics_units": [
+    "Truck Bedford",
+    "Truck GMC \"Jimmy\" 6x6 Truck"
+  ],
+  "infantry_units": [
+    "Infantry SMLE No.4 Mk-1"
+  ],
+  "missiles": [],
+  "air_defense_units": [
+    "AAA KS-19 100mm",
+    "Bofors 40 mm Gun"
+  ],
+  "preset_groups": [
+    "KS-19/SON-9"
+  ],
+  "naval_units": [],
+  "requirements": {
+    "WW2 Asset Pack": "https://www.digitalcombatsimulator.com/en/products/other/wwii_assets_pack/"
+  },
+  "carrier_names": [],
+  "helicopter_carrier_names": [],
+  "has_jtac": false,
+  "doctrine": "ww2",
+  "building_set": "ww2ally",
+  "liveries_overrides": {
+    "MiG-15bis Fagot": [
+      "USSR_Air Forces",
+	  "USSR_Air Forces Old",
+      "USSR_Pepelyaev",
+      "USSR_Red"
+    ],
+	"Tu-16 Badger": [
+      "Badger-C"
+    ],
+    "I-16 Ishak": [
+      "Red Army Camo",
+	  "Red Army Standard",
+	  "Red Army Winter"
+    ],
+    "Spitfire LF Mk IX": [
+      "USSR 26th GvIAP, PVO",
+      "USSR pilot Lt. Col. V. A. Matsiyevitch, 26th GvIAP",
+      "USSR Spitfire 57th GvIAP",
+      "USSR_3rd_AE_57th_GvIAP"
+    ],
+	"L-39ZA Albatros": [
+      "Russian Air Force"
+    ],
+    "Mi-8MTV2 Hip": [
+      "Standard",
+      "Russia_MVD_Mozdok",
+      "Russia_MVD_Standard",
+      "Russia_FSB",
+      "Russia_PF_Ambulance",
+      "Russia_VVS_Grey",
+      "Russia_VVS_Grey_2",
+      "Russia_VVS_MA",
+      "Russia_VVS_Standard",
+      "Russia_VVS_Standard_2"
+    ]
+  },
+  "liveries_overrides_ground_forces": {
+    "SAU Gvozdika": [
+      "summer"
+    ],
+	"SAU Akatsia": [
+      "summer"
+    ],
+    "BRDM-2": [
+      "summer"
+    ],
+    "BTR-80": [
+      "Green summer"
+    ],
+    "ZSU-23-4 Shilka": [
+      "summer"
+    ],
+    "ZSU_57_2": [
+      "summer"
+    ],
+	"Ural-375 ZU-23": [
+      "summer"
+    ],
+    "M4_Sherman": [
+      "3rd Guard Mech Corps - Za Stalina"
+    ],
+	"M2A1_halftrack": [
+      "redstar"
+    ],
+	"S-60_Type59_Artillery": [
+      "summer"
+    ],
+    "Ural-375": [
+      "summer"
+    ],
+	"Ural-4320-31": [
+      "summer"
+    ],
+	"Ural-4320T": [
+      "summer"
+    ],
+	"GAZ-66": [
+      "summer"
+    ],
+	"KAMAZ Truck": [
+      "summer"
+    ]
+  }
+}

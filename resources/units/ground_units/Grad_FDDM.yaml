@@ -1,4 +1,8 @@
-class: Artillery
+class: APC
+introduced: 1970
+manufacturer: Kharkiv
+origin: USSR/Russia
 price: 4
 variants:
-  Grad MRL FDDM (FC): null
+  Grad MRL FDDM (FC): {}
+  MT-LBu: {}
