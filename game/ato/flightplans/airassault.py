@@ -143,7 +143,7 @@ class Builder(FormationAttackBuilder[AirAssaultFlightPlan, AirAssaultLayout]):
             "Dropoff zone",
             self.package.target.position.point_from_heading(heading, 1200),
         )
-        dz = builder.dropoff_zone(drop_off_zone) if self.flight.is_helo else None
+        dz = builder.dropoff_zone(drop_off_zone)
 
         return AirAssaultLayout(
             departure=builder.takeoff(self.flight.departure),
