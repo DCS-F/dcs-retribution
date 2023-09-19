@@ -32,7 +32,7 @@ splash_damage_options = {
   ["wave_explosions"] = true, --secondary explosions on top of game objects, radiating outward from the impact point and scaled based on size of object and distance from weapon impact point
   ["larger_explosions"] = true, --secondary explosions on top of weapon impact points, dictated by the values in the explTable
   ["damage_model"] = true, --allow blast wave to affect ground unit movement and weapons
-  ["blast_search_radius"] = 200, --this is the max size of any blast wave radius, since we will only find objects within this zone
+  ["blast_search_radius"] = 150, --this is the max size of any blast wave radius, since we will only find objects within this zone
   ["cascade_damage_threshold"] = 0.1, --if the calculated blast damage doesn't exeed this value, there will be no secondary explosion damage on the unit.  If this value is too small, the appearance of explosions far outside of an expected radius looks incorrect.
   ["firebomb_splash_factor"] = 8, --apply a multiplier to thermobaric and napalm bombs so it matches the visual effect
   ["shell_max_flight_time"] = 20, --maximum flight time of cannon shells, used with gun fragmentation effects
@@ -284,23 +284,31 @@ antiRadiationMissile = {
 ignoredWeaps = {
   ["AK_74"] = 1,                                  --5.45mm
   ["M4"] = 1,                                     --5.56mm
+  ["M249"] = 1,                                   --5.56mm
   ["7_62_MG"] = 1,                                --7.62mm
   ["7_62_PKT"] = 1,                               --7.62mm
   ["7_62_L94A1"] = 1,                             --7.62mm
   ["M_134"] = 1,                                  --7.62mm
   ["M240"] = 1,                                   --7.62mm
-  ["PK-3"] = 1,                                   --PK-3 - 7.62mm GPMG
+  ["PK-3"] = 1,                                   --7.62mm, PK-3 GPMG
+  ["SHKAS_GUN"] = 1,                              --7.62mm, ShKAS machine gun
+  ["M1 Garand .30 cal"] = 1,                      --7.62mm, .30-06
+  ["Browning .30 cal"] = 1,                       --7.62mm, .30-06
+  ["Browning303MkII"] = 1,                        --7.7 mm, .303
+  ["Lee-Enfield SMLE No.4 Mk.1"] = 1,             --7.7 mm, .303
   ["MG34"] = 1,                                   --7.92mm
   ["Besa"] = 1,                                   --7.92mm
-  ["Lee-Enfield SMLE No.4 Mk.1"] = 1,
-  ["M1 Garand .30 cal"] = 1,
-  ["Browning .30 cal"] = 1,
   ["12_7_MG"] = 1,                                --12.7mm
+  ["A20_TopTurret_M2_L"] = 1,                     --12.7mm
+  ["A20_TopTurret_M2_R"] = 1,                     --12.7mm
   ["M2_Browning"] = 1,                            --12.7mm
   ["BrowningM2"] = 1,                             --12.7mm
+  ["m3_browning"] = 1,                            --12.7mm
+  ["m3_f84g"] = 1,                                --12.7mm
   ["KORD_12_7"] = 1,                              --12.7mm
   ["KPVT"] = 1,                                   --14.5mm
   ["coltMK12"] = 1,                               --20mm
+  ["HispanoMkII"] = 1,                            --20mm
   ["2A14_2"] = 1,                                 --23mm, ZU-23
   ["2A14_4"] = 1,                                 --23mm, ZSU-23
   ["NR-23"] = 1,                                  --23mm, NR-23
@@ -317,6 +325,7 @@ ignoredWeaps = {
   ["N-37"] = 1,                                   --37mm
   ["Flak M1 37mm"] = 1,                           --37mm
   ["Bofors 40mm gun"] = 1,                        --40mm
+  ["Mk.19"] = 1,                                  --40mm
   ["S_68"] = 1,                                   --57mm
   ["AAA 01"] = 1,
 }
@@ -428,10 +437,16 @@ function track_wpns()
             trigger.action.explosion(impactPoint, getWeaponExplosive(wpnData.name))
             --trigger.action.smoke(impactPoint, 0)
           end
+          local obj_land_height = land.getHeight({x = impactPoint.x , y = impactPoint.z})
+          local impact_ground_pos = {
+                  x = impactPoint.x,
+                  y = obj_land_height,
+                  z = impactPoint.z
+                }
           if wpnData.name == "MK77mod1-WPN" or wpnData.name == "BIN_200" then
-              trigger.action.effectSmokeBig(impactPoint, 2, 0.5, wpnData.name)
+              trigger.action.effectSmokeBig(impact_ground_pos, 2, 0.5, wpnData.name)
           elseif wpnData.name == "MK77mod0-WPN" then
-              trigger.action.effectSmokeBig(impactPoint, 3, 0.5, wpnData.name)
+              trigger.action.effectSmokeBig(impact_ground_pos, 3, 0.5, wpnData.name)
           end
         --end
       end
@@ -448,16 +463,7 @@ function onWpnEvent(event)
       local weapon_desc = ordnance:getDesc()
       if explTable[ordnance:getTypeName()] then
         --trigger.action.outText(ordnance:getTypeName().." found.", 10)
-
-        if (weapon_desc.category ~= 0) and event.initiator then
-          if (weapon_desc.category == 1) then
-            if (weapon_desc.MissileCategory ~= 1 and weapon_desc.MissileCategory ~= 2) then
-              tracked_weapons[event.weapon.id_] = { wpn = ordnance, init = event.initiator:getName(), pos = ordnance:getPoint(), dir = ordnance:getPosition().x, name = ordnance:getTypeName(), speed = ordnance:getVelocity(), cat = ordnance:getCategory(), player=event.initiator:getPlayerName() }
-            end
-          else
-            tracked_weapons[event.weapon.id_] = { wpn = ordnance, init = event.initiator:getName(), pos = ordnance:getPoint(), dir = ordnance:getPosition().x, name = ordnance:getTypeName(), speed = ordnance:getVelocity(), cat = ordnance:getCategory(), player=event.initiator:getPlayerName() }
-          end
-        end
+        tracked_weapons[event.weapon.id_] = { wpn = ordnance, init = event.initiator:getName(), pos = ordnance:getPoint(), dir = ordnance:getPosition().x, name = ordnance:getTypeName(), speed = ordnance:getVelocity(), cat = ordnance:getCategory(), player=event.initiator:getPlayerName() }
       else
         env.info(ordnance:getTypeName().." missing from Splash Damage script")
         if splash_damage_options.weapon_missing_message == false then
@@ -744,7 +750,14 @@ function blastWave(_point, _radius, weapon, power, player)
             explosion_size = intensity * splash_damage_options.static_damage_boost --apply an extra damage boost for static objects. should we factor in surface_area?
             --debugMsg("static obj :"..obj:getTypeName())
           end
-          if (obj:getDesc().category == Unit.Category.AIRPLANE or obj:getDesc().category == Unit.Category.HELICOPTER) and obj:inAir() == false then
+          -- Object's altitude from ground
+          local obj_vec3 = obj:getPoint()
+          local obj_land_height = land.getHeight({x = obj_vec3.x , y = obj_vec3.z})
+          -- Altitude from ground in meters
+          local obj_altitude_MSL = obj:getPoint().y -- Altitude MSL, in meters
+          local obj_altitude_ground = obj_altitude_MSL - obj_land_height
+          -- Deal extra damage to parked airplanes and helicopters to make OCA/Aircraft missions more viable
+          if (obj:getDesc().category == Unit.Category.AIRPLANE or obj:getDesc().category == Unit.Category.HELICOPTER) and (obj:inAir() == false or obj_altitude_ground < 50) then
             explosion_size = intensity * splash_damage_options.oca_aircraft_damage_boost --apply an extra damage boost for aircraft to increase kill probability on OCA/Aircraft missions.
             --debugMsg("static obj :"..obj:getTypeName())
           end
