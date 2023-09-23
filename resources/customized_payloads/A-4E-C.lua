@@ -2,37 +2,27 @@ local unitPayloads = {
 	["name"] = "A-4E-C",
 	["payloads"] = {
 		[1] = {
-			["name"] = "STRIKE",
+			["name"] = "CAP",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "<CLEAN>",
-					["num"] = 5,
-				},
-				[2] = {
-					["CLSID"] = "<CLEAN>",
+					["CLSID"] = "{AIM-9P5-ON-ADAPTER}",
 					["num"] = 1,
 				},
-				[3] = {
-					["CLSID"] = "{AB8B8299-F1CC-4359-89B5-2172E0CF4A5A}",
+				[2] = {
+					["CLSID"] = "{AIM-9P5-ON-ADAPTER}",
 					["num"] = 2,
-					["settings"] = {
-						["GUI_fuze_type"] = 1,
-						["arm_delay_ctrl_FMU139CB_LD"] = 1,
-						["function_delay_ctrl_FMU139CB_LD"] = 0,
-					},
+				},
+				[3] = {
+					["CLSID"] = "{DFT-400gal}",
+					["num"] = 3,
 				},
 				[4] = {
-					["CLSID"] = "{AB8B8299-F1CC-4359-89B5-2172E0CF4A5A}",
+					["CLSID"] = "{AIM-9P5-ON-ADAPTER}",
 					["num"] = 4,
-					["settings"] = {
-						["GUI_fuze_type"] = 1,
-						["arm_delay_ctrl_FMU139CB_LD"] = 1,
-						["function_delay_ctrl_FMU139CB_LD"] = 0,
-					},
 				},
 				[5] = {
-					["CLSID"] = "{DFT-150gal}",
-					["num"] = 3,
+					["CLSID"] = "{AIM-9P5-ON-ADAPTER}",
+					["num"] = 5,
 				},
 			},
 			["tasks"] = {
@@ -40,26 +30,26 @@ local unitPayloads = {
 			},
 		},
 		[2] = {
-			["name"] = "CAP",
+			["name"] = "CAS",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "{AIM-9P5-ON-ADAPTER}",
-					["num"] = 4,
+					["CLSID"] = "{F3EFE0AB-E91A-42D8-9CA2-B63C91ED570A}",
+					["num"] = 1,
 				},
 				[2] = {
-					["CLSID"] = "{AIM-9P5-ON-ADAPTER}",
+					["CLSID"] = "{LAU-3 FFAR Mk5 HEAT_TER_2_L}",
 					["num"] = 2,
 				},
 				[3] = {
-					["CLSID"] = "{DFT-150gal}",
+					["CLSID"] = "{DFT-300gal}",
 					["num"] = 3,
 				},
 				[4] = {
-					["CLSID"] = "{AIM-9P5-ON-ADAPTER}",
-					["num"] = 1,
+					["CLSID"] = "{LAU-3 FFAR Mk5 HEAT_TER_2_R}",
+					["num"] = 4,
 				},
 				[5] = {
-					["CLSID"] = "{AIM-9P5-ON-ADAPTER}",
+					["CLSID"] = "{F3EFE0AB-E91A-42D8-9CA2-B63C91ED570A}",
 					["num"] = 5,
 				},
 			},
@@ -68,32 +58,27 @@ local unitPayloads = {
 			},
 		},
 		[3] = {
-			["name"] = "CAS",
+			["name"] = "STRIKE",
 			["pylons"] = {
 				[1] = {
 					["CLSID"] = "{F3EFE0AB-E91A-42D8-9CA2-B63C91ED570A}",
-					["num"] = 5,
-				},
-				[2] = {
-					["CLSID"] = "{F3EFE0AB-E91A-42D8-9CA2-B63C91ED570A}",
 					["num"] = 1,
 				},
-				[3] = {
-					["CLSID"] = "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}",
+				[2] = {
+					["CLSID"] = "{AB8B8299-F1CC-4359-89B5-2172E0CF4A5A}",
 					["num"] = 2,
 				},
+				[3] = {
+					["CLSID"] = "{DFT-400gal}",
+					["num"] = 3,
+				},
 				[4] = {
-					["CLSID"] = "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}",
+					["CLSID"] = "{AB8B8299-F1CC-4359-89B5-2172E0CF4A5A}",
 					["num"] = 4,
-					["settings"] = {
-						["GUI_fuze_type"] = 1,
-						["arm_delay_ctrl_FMU139CB_LD"] = 1,
-						["function_delay_ctrl_FMU139CB_LD"] = 0,
-					},
 				},
 				[5] = {
-					["CLSID"] = "{DFT-150gal}",
-					["num"] = 3,
+					["CLSID"] = "{F3EFE0AB-E91A-42D8-9CA2-B63C91ED570A}",
+					["num"] = 5,
 				},
 			},
 			["tasks"] = {
@@ -120,7 +105,7 @@ local unitPayloads = {
 					["num"] = 1,
 				},
 				[5] = {
-					["CLSID"] = "{DFT-150gal}",
+					["CLSID"] = "{DFT-300gal}",
 					["num"] = 3,
 				},
 			},
@@ -148,7 +133,7 @@ local unitPayloads = {
 					["num"] = 1,
 				},
 				[5] = {
-					["CLSID"] = "{DFT-150gal}",
+					["CLSID"] = "{DFT-300gal}",
 					["num"] = 3,
 				},
 			},
@@ -157,42 +142,32 @@ local unitPayloads = {
 			},
 		},
 		[6] = {
-			["displayName"] = "Retribution OCA/Runway",
-			["name"] = "Retribution OCA/Runway",
+			["displayName"] = "Retribution SEAD Sweep",
+			["name"] = "Retribution SEAD Sweep",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "<CLEAN>",
-					["num"] = 5,
-				},
-				[2] = {
-					["CLSID"] = "<CLEAN>",
+					["CLSID"] = "{AGM_45A}",
 					["num"] = 1,
 				},
-				[3] = {
-					["CLSID"] = "{AB8B8299-F1CC-4359-89B5-2172E0CF4A5A}",
+				[2] = {
+					["CLSID"] = "{LAU-3 FFAR Mk1 HE_TER_2_L}",
 					["num"] = 2,
-					["settings"] = {
-						["GUI_fuze_type"] = 1,
-						["arm_delay_ctrl_FMU139CB_LD"] = 1,
-						["function_delay_ctrl_FMU139CB_LD"] = 0,
-					},
+				},
+				[3] = {
+					["CLSID"] = "{DFT-300gal}",
+					["num"] = 3,
 				},
 				[4] = {
-					["CLSID"] = "{AB8B8299-F1CC-4359-89B5-2172E0CF4A5A}",
+					["CLSID"] = "{LAU-3 FFAR Mk1 HE_TER_2_R}",
 					["num"] = 4,
-					["settings"] = {
-						["GUI_fuze_type"] = 1,
-						["arm_delay_ctrl_FMU139CB_LD"] = 1,
-						["function_delay_ctrl_FMU139CB_LD"] = 0,
-					},
 				},
 				[5] = {
-					["CLSID"] = "{DFT-150gal}",
-					["num"] = 3,
+					["CLSID"] = "{AGM_45A}",
+					["num"] = 5,
 				},
 			},
 			["tasks"] = {
-				[1] = 31,
+				[1] = 29,
 			},
 		},
 	},
