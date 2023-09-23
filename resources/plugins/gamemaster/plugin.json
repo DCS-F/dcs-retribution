@@ -1,0 +1,16 @@
+{
+    "nameInUI": "Enhanced Gamemaster",
+    "defaultValue": false,
+    "specificOptions": [],
+    "scriptsWorkOrders": [
+        {
+            "file": "Gamemaster_Functions.lua",
+            "mnemonic": "Gamemaster_Functions"
+        },
+        {
+            "file": "Gamemaster_Templates.lua",
+            "mnemonic": "Gamemaster_Templates"
+        }
+    ],
+    "configurationWorkOrders": []
+}
