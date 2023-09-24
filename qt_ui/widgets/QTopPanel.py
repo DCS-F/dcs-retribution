@@ -75,20 +75,26 @@ class QTopPanel(QFrame):
         self.transfers.setProperty("style", "btn-primary")
         self.transfers.clicked.connect(self.open_transfers)
 
+        self.reroll_weather_btn = QPushButton("Re-roll Weather")
+        self.reroll_weather_btn.setDisabled(False)
+        self.reroll_weather_btn.setProperty("style", "btn-primary")
+        self.reroll_weather_btn.clicked.connect(self.reroll_weather)
+
         self.intel_box = QIntelBox(self.game)
 
         self.buttonBox = QGroupBox("Misc")
         self.buttonBoxLayout = QHBoxLayout()
         self.buttonBoxLayout.addWidget(self.air_wing)
         self.buttonBoxLayout.addWidget(self.transfers)
+        self.buttonBoxLayout.addWidget(self.reroll_weather_btn)
         self.buttonBox.setLayout(self.buttonBoxLayout)
 
         self.simSpeedControls = SimSpeedControls(sim_controller)
 
         self.proceedBox = QGroupBox("Proceed")
         self.proceedBoxLayout = QHBoxLayout()
-        if ui_flags.show_sim_speed_controls:
-            self.proceedBoxLayout.addLayout(self.simSpeedControls)
+        # if ui_flags.show_sim_speed_controls:
+        self.proceedBoxLayout.addLayout(self.simSpeedControls)
         self.proceedBoxLayout.addLayout(MaxPlayerCount(self.game_model.ato_model))
         self.proceedBoxLayout.addWidget(self.passTurnButton)
         self.proceedBoxLayout.addWidget(self.proceedButton)
@@ -318,3 +324,15 @@ class QTopPanel(QFrame):
     def setControls(self, enabled: bool):
         for controller in self.controls:
             controller.setEnabled(enabled)
+
+    def reroll_weather(self):
+        """Finishes planning and waits for mission completion."""
+        if self.game is None:
+            return
+
+        self.game.conditions.weather = self.game.conditions.generate_weather(
+            self.game.theater.seasonal_conditions,
+            self.game.date,
+            self.game.current_turn_time_of_day,
+        )
+        self.conditionsWidget.weather_widget.update_forecast()
