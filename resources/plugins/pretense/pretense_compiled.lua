@@ -3983,6 +3983,8 @@ do
 		self.side = side
 		self:refreshSpawnBlocking()
 
+        env.info('ZoneCommand: setSide ['..side..']')
+
 		if side == 0 then
 			self.revealTime = 0
 		end
@@ -4020,6 +4022,36 @@ do
 				end
 			end
 		end
+
+        local z = ZoneCommand.getZoneByName(self.name)
+        local u = mist.getUnitsInZones(mist.makeUnitTable({'[all]'}), {self.name})
+        local countries = {}
+        for i = 1, #u do
+            env.info('ZoneCommand: looping unit:  ['..i..']')
+
+            unit_name = u[i]:getName()
+            if unit_name ~= nil then
+                env.info('ZoneCommand: setSide unit:  ['..unit_name..']')
+
+                if string.find(unit_name, self.name) ~= nil and string.find(unit_name, '_fuel') ~= nil then
+                    env.info('ZoneCommand: setting coalition of  ['..unit_name..']')
+                    n, _ = string.find(unit_name, '_fuel')
+                    if string.sub(unit_name,1,n) ~= nil then
+                        env.info('ZoneCommand: spawning group ['..string.sub(unit_name,1,n-1)..']')
+                        local gp = mist.getCurrentGroupData(string.sub(unit_name,1,n-1))
+                        if gp ~= nil then
+--                             if self.side==1 then
+--                                 gp.country = "Combined Joint Task Forces Red"
+--                             elseif self.side==2 then
+--                                 gp.country = "Combined Joint Task Forces Blue"
+--                             end
+                            env.info('ZoneCommand: spawning group ['..string.sub(unit_name,1,n)..'] on side ['..gp.country..']')
+                            mist.dynAdd(gp)
+                        end
+                    end
+                end
+            end
+        end
 	end
 	
 	function ZoneCommand:addResource(amount)
