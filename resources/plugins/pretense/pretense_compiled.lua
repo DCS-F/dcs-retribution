@@ -3983,7 +3983,7 @@ do
 		self.side = side
 		self:refreshSpawnBlocking()
 
-        env.info('ZoneCommand: setSide ['..side..']')
+        -- env.info('ZoneCommand: setSide ['..side..']')
 
 		if side == 0 then
 			self.revealTime = 0
@@ -4027,26 +4027,34 @@ do
         local u = mist.getUnitsInZones(mist.makeUnitTable({'[all]'}), {self.name})
         local countries = {}
         for i = 1, #u do
-            env.info('ZoneCommand: looping unit:  ['..i..']')
+            -- env.info('ZoneCommand: looping unit:  ['..i..'] at ['..self.name..']')
 
             unit_name = u[i]:getName()
             if unit_name ~= nil then
-                env.info('ZoneCommand: setSide unit:  ['..unit_name..']')
+                -- env.info('ZoneCommand: setSide unit:  ['..unit_name..'], side: ['..self.side..']')
 
                 if string.find(unit_name, self.name) ~= nil and string.find(unit_name, '_fuel') ~= nil then
-                    env.info('ZoneCommand: setting coalition of  ['..unit_name..']')
+                    -- env.info('ZoneCommand: setting coalition of  ['..unit_name..']')
                     n, _ = string.find(unit_name, '_fuel')
                     if string.sub(unit_name,1,n) ~= nil then
-                        env.info('ZoneCommand: spawning group ['..string.sub(unit_name,1,n-1)..']')
+                        -- env.info('ZoneCommand: spawning group ['..string.sub(unit_name,1,n-1)..']')
                         local gp = mist.getCurrentGroupData(string.sub(unit_name,1,n-1))
                         if gp ~= nil then
---                             if self.side==1 then
---                                 gp.country = "Combined Joint Task Forces Red"
---                             elseif self.side==2 then
---                                 gp.country = "Combined Joint Task Forces Blue"
+                            if self.side==1 then
+                                gp.country = "Combined Joint Task Forces Red"
+                            elseif self.side==2 then
+                                gp.country = "Combined Joint Task Forces Blue"
+                            end
+--                             if self.side==1 or self.side==2 then
+--                                 gp.name = string.sub(unit_name,1,n-1)
+--                                 env.info('ZoneCommand: despawning group ['..gp.name..']')
+--                                 Group.getByName(gp.name):destroy()
+--                                 gp.type = 'M978 HEMTT Tanker'
+--                                 gp.category = 2  -- Group.Category.GROUND = 2
+--                                 env.info('ZoneCommand: spawning group ['..string.sub(unit_name,1,n-1)..'] on side ['..gp.country..']')
+--                                 mist.dynAdd(gp)
+--                                 env.info('ZoneCommand: spawned group ['..gp.name..']')
 --                             end
-                            env.info('ZoneCommand: spawning group ['..string.sub(unit_name,1,n)..'] on side ['..gp.country..']')
-                            mist.dynAdd(gp)
                         end
                     end
                 end
