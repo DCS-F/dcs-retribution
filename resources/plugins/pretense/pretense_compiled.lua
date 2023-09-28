@@ -503,6 +503,8 @@ end
 GroupMonitor = {}
 do
 	GroupMonitor.blockedDespawnTime = 10*60 --used to despawn aircraft that are stuck taxiing for some reason
+	GroupMonitor.blockedDespawnTimeGround = 30*60 --used to despawn ground units that are stuck en route for some reason
+	GroupMonitor.blockedDespawnTimeGroundAssault = 90*60 --used to despawn assault units that are stuck en route for some reason
 	GroupMonitor.landedDespawnTime = 10
 	GroupMonitor.atDestinationDespawnTime = 2*60
 	GroupMonitor.recoveryReduction = 0.8 -- reduce recovered resource from landed missions by this amount to account for maintenance
@@ -638,7 +640,13 @@ do
 					group.state = 'enroute'
 					group.lastStateTime = timer.getAbsTime()
 					MissionTargetRegistry.addBaiTarget(group)
-				elseif timer.getAbsTime() - group.lastStateTime > GroupMonitor.blockedDespawnTime then
+				elseif group.product.missionType == 'assault' and timer.getAbsTime() - group.lastStateTime > GroupMonitor.blockedDespawnTimeGroundAssault then
+					env.info('GroupMonitor: processSurface ['..group.name..'] despawned due to blockage')
+					gr:destroy()
+					local todeliver = math.floor(group.product.cost)
+					z:addResource(todeliver)
+					return true
+				elseif timer.getAbsTime() - group.lastStateTime > GroupMonitor.blockedDespawnTimeGround then
 					env.info('GroupMonitor: processSurface ['..group.name..'] despawned due to blockage')
 					gr:destroy()
 					local todeliver = math.floor(group.product.cost)
@@ -734,7 +742,7 @@ do
 									y = group.target.zone.point.z
 								}
 
-								TaskExtensions.moveOnRoadToPointAndAssault(gr, tp, group.target.built)
+								TaskExtensions.moveOffRoadToPointAndAssault(gr, tp, group.target.built)
 								group.isstopped = false
 							end
 						end
@@ -2135,7 +2143,68 @@ do
 		}
 		group:getController():setTask(mis)
 	end
-	
+
+	function TaskExtensions.moveOffRoadToPointAndAssault(group, point, targets)
+		if not group or not point then return end
+		if not group:isExist() or group:getSize()==0 then return end
+		local startPos = group:getUnit(1):getPoint()
+
+		local srx, sry = land.getClosestPointOnRoads('roads', startPos.x, startPos.z)
+		local erx, ery = land.getClosestPointOnRoads('roads', point.x, point.y)
+
+		local mis = {
+			id='Mission',
+			params = {
+				route = {
+					points = {
+						[1] = {
+							type= AI.Task.WaypointType.TURNING_POINT,
+							x = srx,
+							y = sry,
+							speed = 1000,
+							action = AI.Task.VehicleFormation.DIAMOND
+						},
+						[2] = {
+							type= AI.Task.WaypointType.TURNING_POINT,
+							x = erx,
+							y = ery,
+							speed = 1000,
+							action = AI.Task.VehicleFormation.DIAMOND
+						},
+						[3] = {
+							type= AI.Task.WaypointType.TURNING_POINT,
+							x = point.x,
+							y = point.y,
+							speed = 1000,
+							action = AI.Task.VehicleFormation.DIAMOND
+						}
+					}
+				}
+			}
+		}
+
+		for i,v in pairs(targets) do
+			if v.type == 'defense' then
+				local group = Group.getByName(v.name)
+				if group then
+					for i,v in ipairs(group:getUnits()) do
+						local unpos = v:getPoint()
+						local pnt = {x=unpos.x, y = unpos.z}
+
+						table.insert(mis.params.route.points, {
+							type= AI.Task.WaypointType.TURNING_POINT,
+							x = pnt.x,
+							y = pnt.y,
+							speed = 10,
+							action = AI.Task.VehicleFormation.DIAMOND
+						})
+					end
+				end
+			end
+		end
+		group:getController():setTask(mis)
+	end
+
 	function TaskExtensions.landAtPointFromAir(group, point, alt)
 		if not group or not point then return end
 		if not group:isExist() or group:getSize()==0 then return end
@@ -4851,7 +4920,7 @@ do
 				product.lastMission = {zoneName = zone.name}
 				timer.scheduleFunction(function(param)
 					local gr = Group.getByName(param.name)
-					TaskExtensions.moveOnRoadToPointAndAssault(gr, param.point, param.targets)
+					TaskExtensions.moveOffRoadToPointAndAssault(gr, param.point, param.targets)
 				end, {name=product.name, point={ x=tgtPoint.point.x, y = tgtPoint.point.z}, targets=zone.built}, timer.getTime()+1)
 			end
 		end
@@ -5382,7 +5451,7 @@ do
 					product.lastMission = {zoneName = v.name}
 					timer.scheduleFunction(function(param)
 						local gr = Group.getByName(param.name)
-						TaskExtensions.moveOnRoadToPointAndAssault(gr, param.point, param.targets)
+						TaskExtensions.moveOffRoadToPointAndAssault(gr, param.point, param.targets)
 					end, {name=product.name, point={ x=tgtPoint.point.x, y = tgtPoint.point.z}, targets=v.built}, timer.getTime()+1)
 
 					env.info("ZoneCommand - "..product.name.." targeting "..v.name)
