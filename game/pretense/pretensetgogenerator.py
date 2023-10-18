@@ -430,7 +430,6 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
                             PRETENSE_GROUND_UNIT_GROUP_SIZE,
                         )
                 elif unit.is_ship and unit.alive:
-                    print(f"Generating amphibious group at {unit.unit_name}")
                     # Attach this group to the closest naval group, if available
                     control_point = self.ground_object.control_point
                     for (
@@ -746,6 +745,7 @@ class PretenseTgoGenerator(TgoGenerator):
                         is_fob_structure=ground_object.is_fob_structure,
                         task=ground_object.task,
                     )
+                    new_ground_object.groups = ground_object.groups
                     generator = PretenseGroundObjectGenerator(
                         new_ground_object, country, self.game, self.m, self.unit_map
                     )
@@ -760,6 +760,7 @@ class PretenseTgoGenerator(TgoGenerator):
                         control_point=ground_object.control_point,
                         task=ground_object.task,
                     )
+                    new_ground_object.groups = ground_object.groups
                     generator = PretenseGroundObjectGenerator(
                         new_ground_object, country, self.game, self.m, self.unit_map
                     )
