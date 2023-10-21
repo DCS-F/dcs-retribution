@@ -347,6 +347,9 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
         cp_name_trimmed = "".join(
             [i for i in self.ground_object.control_point.name.lower() if i.isalnum()]
         )
+        country_name_trimmed = "".join(
+            [i for i in self.country.shortname.lower() if i.isalnum()]
+        )
 
         for group in self.ground_object.groups:
             vehicle_units: list[TheaterUnit] = []
@@ -355,7 +358,7 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
                 if unit.is_static:
                     # Add supply convoy
                     group_role = "supply"
-                    group_name = f"{cp_name_trimmed}-{group_role}-{group.id}"
+                    group_name = f"{cp_name_trimmed}-{country_name_trimmed}-{group_role}-{group.id}"
                     group.name = group_name
 
                     self.generate_ground_unit_of_class(
@@ -369,7 +372,7 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
                 elif unit.is_vehicle and unit.alive:
                     # Add armor group
                     group_role = "assault"
-                    group_name = f"{cp_name_trimmed}-{group_role}-{group.id}"
+                    group_name = f"{cp_name_trimmed}-{country_name_trimmed}-{group_role}-{group.id}"
                     group.name = group_name
 
                     self.generate_ground_unit_of_class(
@@ -466,7 +469,7 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
                     if number_of_supply_groups == 0:
                         # Add supply convoy
                         group_role = "supply"
-                        group_name = f"{cp_name_trimmed}-{group_role}-{group.id}"
+                        group_name = f"{cp_name_trimmed}-{country_name_trimmed}-{group_role}-{group.id}"
                         group.name = group_name
 
                         self.generate_amphibious_unit_of_class(
@@ -480,7 +483,7 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
                     else:
                         # Add armor group
                         group_role = "assault"
-                        group_name = f"{cp_name_trimmed}-{group_role}-{group.id}"
+                        group_name = f"{cp_name_trimmed}-{country_name_trimmed}-{group_role}-{group.id}"
                         group.name = group_name
 
                         self.generate_amphibious_unit_of_class(
@@ -539,6 +542,7 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
     ) -> VehicleGroup:
         vehicle_group: Optional[VehicleGroup] = None
 
+        print(f"Generating vehicle group {group_name}")
         control_point = self.ground_object.control_point
         for unit in self.ground_object.units:
             if unit.is_ship:
@@ -577,7 +581,7 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
                 self.set_alarm_state(vehicle_group)
                 GroundForcePainter(faction, vehicle_group.units[0]).apply_livery()
 
-                group_role = group_name.split("-")[1]
+                group_role = group_name.split("-")[2]
                 if group_role == "supply":
                     self.game.pretense_ground_supply[side][cp_name_trimmed].append(
                         f"{vehicle_group.name}"
