@@ -1,8 +1,8 @@
 {
   "country": "Finland",
-  "name": "Finland 1960",
+  "name": "Finland 1960 (TF-51D/P-51D)",
   "authors": "Ghosti",
-  "description": "<p>1960s Finland.</p>",
+  "description": "<p>1960s Finland. Uses trainers as stand-ins for the early jets in Finnish Air Force service and the MiG-19P for the MiG-21F-13 which we don't have in DCS yet. Fictionally includes the P-51D and TF-51D Mustangs.</p>",
   "locales": [
     "fi_FI"
   ],
@@ -13,6 +13,8 @@
     "L-39ZA Albatros",
     "A-4E Skyhawk",
 	"C-101CC Aviojet",
+    "P-51D-30-NA Mustang",
+    "TF-51D Mustang",
     "Mi-8MTV2 Hip",
     "Mi-24P Hind-F",
     "UH-1H Iroquois",
@@ -81,21 +83,6 @@
       "Finland_green_black",
       "Finland_green_brown"
     ],
-    "AJS-37 Viggen": [
-      "FiAF Early",
-      "FiAF Later"
-    ],
-    "Mirage 2000C": [
-      "Finnish Air Force Green",
-      "Finnish Air Force3"
-    ],
-    "Mirage-F1CE": [
-      "FiAF GNAT",
-      "FiAF HW"
-    ],
-    "Mirage-F1EE": [
-      "FiAF DK"
-    ],
     "L-39ZA Albatros": [
       "FiAF"
     ],
@@ -104,6 +91,12 @@
     ],
     "C-101CC Aviojet": [
       "Finnish"
+    ],
+    "P-51D-30-NA Mustang": [
+      "FiAF"
+    ],
+    "TF-51D Mustang": [
+      "FiAF"
     ],
     "Mi-8MTV2 Hip": [
       "ILMAVOIMAT2",
