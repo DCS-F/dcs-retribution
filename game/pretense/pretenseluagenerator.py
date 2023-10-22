@@ -833,12 +833,12 @@ class PretenseLuaGenerator(LuaGenerator):
 
         lua_string_config += (
             f"Config.maxDistFromFront = "
-            + str(self.game.settings.pretense_maxdistfromfront_distance)
+            + str(self.game.settings.pretense_maxdistfromfront_distance * 1000)
             + "\n"
         )
         lua_string_config += (
             f"Config.closeOverride = "
-            + str(self.game.settings.pretense_closeoverride_distance)
+            + str(self.game.settings.pretense_closeoverride_distance * 1000)
             + "\n"
         )
         if self.game.settings.pretense_do_not_generate_sead_missions:
