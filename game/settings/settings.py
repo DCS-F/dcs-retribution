@@ -49,6 +49,8 @@ FLIGHT_PLANNER_AUTOMATION = "Flight Planner Automation"
 CAMPAIGN_DOCTRINE_PAGE = "Campaign Doctrine"
 DOCTRINE_DISTANCES_SECTION = "Doctrine distances"
 
+PRETENSE_PAGE = "Pretense"
+
 MISSION_GENERATOR_PAGE = "Mission Generator"
 
 GAMEPLAY_SECTION = "Gameplay"
@@ -951,6 +953,28 @@ class Settings:
         section=PERFORMANCE_SECTION,
         default=True,
         causes_expensive_game_update=True,
+    )
+    pretense_maxdistfromfront_distance: int = bounded_int_option(
+        "Max distance from front (km)",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=130,
+        min=10,
+        max=10000,
+    )
+    pretense_closeoverride_distance: int = bounded_int_option(
+        "Close override distance (km)",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=28,
+        min=5,
+        max=10000,
+    )
+    pretense_do_not_generate_sead_missions: bool = boolean_option(
+        "Do not generate player SEAD missions",
+        page=PRETENSE_PAGE,
+        section=PERFORMANCE_SECTION,
+        default=False,
     )
 
     # Cheating. Not using auto settings because the same page also has buttons which do

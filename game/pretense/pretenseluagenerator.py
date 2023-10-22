@@ -15,6 +15,7 @@ from dcs.triggers import TriggerStart
 from dcs.vehicles import AirDefence
 
 from game.ato import FlightType
+from game.dcs.aircrafttype import AircraftType
 from game.missiongenerator.luagenerator import LuaGenerator
 from game.missiongenerator.missiondata import MissionData
 from game.plugins import LuaPluginManager
@@ -828,6 +829,23 @@ class PretenseLuaGenerator(LuaGenerator):
 
         trigger = TriggerStart(comment="Pretense init")
 
+        lua_string_config = ""
+
+        lua_string_config += (
+            f"Config.maxDistFromFront = "
+            + str(self.game.settings.pretense_maxdistfromfront_distance)
+            + "\n"
+        )
+        lua_string_config += (
+            f"Config.closeOverride = "
+            + str(self.game.settings.pretense_closeoverride_distance)
+            + "\n"
+        )
+        if self.game.settings.pretense_do_not_generate_sead_missions:
+            lua_string_config += "Config.disablePlayerSead = true\n"
+        else:
+            lua_string_config += "Config.disablePlayerSead = false\n"
+
         init_header_file = open("./resources/plugins/pretense/init_header.lua", "r")
         init_header = init_header_file.read()
 
@@ -979,7 +997,8 @@ class PretenseLuaGenerator(LuaGenerator):
         init_footer = init_footer_file.read()
 
         lua_string = (
-            init_header
+            lua_string_config
+            + init_header
             + lua_string_zones
             + lua_string_connman
             + init_body_1
