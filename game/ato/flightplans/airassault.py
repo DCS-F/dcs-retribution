@@ -4,6 +4,8 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Iterator, TYPE_CHECKING, Type
 
+from dcs.planes import TF_51D
+
 from game.theater.controlpoint import ControlPointType
 from game.theater.missiontarget import MissionTarget
 from game.utils import Distance, feet, meters
@@ -103,7 +105,11 @@ class AirAssaultFlightPlan(FormationAttackFlightPlan, UiZoneDisplay):
 
 class Builder(FormationAttackBuilder[AirAssaultFlightPlan, AirAssaultLayout]):
     def layout(self) -> AirAssaultLayout:
-        if not self.flight.is_helo and not self.flight.is_hercules:
+        if (
+            not self.flight.is_helo
+            and not self.flight.is_hercules
+            and self.flight.squadron.aircraft.dcs_unit_type not in [TF_51D]
+        ):
             raise PlanningError(
                 "Air assault is only usable by helicopters and Anubis' C-130 mod"
             )

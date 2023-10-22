@@ -26,6 +26,7 @@ from dcs.task import (
     MainTask,
     PinpointStrike,
     AFAC,
+    Reconnaissance,
 )
 from dcs.unitgroup import FlyingGroup
 
@@ -312,7 +313,7 @@ class AircraftBehavior:
         )
 
     def configure_transport(self, group: FlyingGroup[Any], flight: Flight) -> None:
-        self.configure_task(flight, group, Transport)
+        self.configure_task(flight, group, Transport, Reconnaissance)
         roe = OptROE.Values.WeaponHold
         if flight.is_hercules:
             group.task = GroundAttack.name

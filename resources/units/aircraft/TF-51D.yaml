@@ -1,0 +1,21 @@
+always_keeps_gun: true
+description:
+  The North American Aviation TF-51D Mustang is a two-seat trainer conversion of the
+  P-51, an American long-range, single-seat fighter and fighter-bomber used during
+  World War II and the Korean War, among other conflicts.
+introduced: 1944
+manufacturer: North American
+origin: USA
+price: 1
+role: Trainer
+variants:
+  TF-51D Mustang: {}
+radios:
+  intra_flight: SCR522
+  inter_flight: SCR522
+  channels:
+    type: SCR-522
+    namer: SCR-522
+kneeboard_units: "imperial"
+tasks:
+  Air Assault: 10
