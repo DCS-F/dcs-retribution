@@ -769,6 +769,8 @@ class HelipadGenerator:
     def create_helipad(
         self, i: int, helipad: PointWithHeading, helipad_type: str
     ) -> None:
+        if self.game.position_culled(helipad):
+            return
         # Note: Helipad are generated as neutral object in order not to interfere with
         # capture triggers
         pad: BaseFARP
@@ -897,6 +899,8 @@ class GroundSpawnRoadbaseGenerator:
     def create_ground_spawn_roadbase(
         self, i: int, ground_spawn: Tuple[PointWithHeading, Point]
     ) -> None:
+        if self.game.position_culled(ground_spawn[0]):
+            return
         # Note: FARPs are generated as neutral object in order not to interfere with
         # capture triggers
         neutral_country = self.m.country(self.game.neutral_country.name)
@@ -1011,6 +1015,8 @@ class GroundSpawnGenerator:
     def create_ground_spawn(
         self, i: int, vtol_pad: Tuple[PointWithHeading, Point]
     ) -> None:
+        if self.game.position_culled(vtol_pad[0]):
+            return
         # Note: FARPs are generated as neutral object in order not to interfere with
         # capture triggers
         neutral_country = self.m.country(self.game.neutral_country.name)
