@@ -32,6 +32,8 @@ Config.buildSpeed = Config.buildSpeed or 10 -- structure and defense build speed
 Config.supplyBuildSpeed = Config.supplyBuildSpeed or 85 -- supply helicopters and convoys build speed
 Config.missionBuildSpeedReduction = Config.missionBuildSpeedReduction or 0.12 -- reduction of build speed in case of ai missions
 Config.maxDistFromFront = Config.maxDistFromFront or 129640 -- max distance in meters from front after which zone is forced into low activity state (export mode)
+Config.closeOverride = Config.closeOverride or 27780 -- close override distance in meters from front within which zone is never forced into low activity state
+Config.disablePlayerSead = Config.disablePlayerSead or false
 
 Config.missions = Config.missions or {}
 
@@ -2366,6 +2368,7 @@ do
 	PlayerLogistics.allowedTypes['SA342M'] = { supplies = false, personCapacity = 2}
 	PlayerLogistics.allowedTypes['SA342Minigun'] = { supplies = false, personCapacity = 2}
 	PlayerLogistics.allowedTypes['AH-64D_BLK_II'] = { supplies = false }
+	PlayerLogistics.allowedTypes['TF-51D'] = { supplies = true, personCapacity = 2}
 
 	PlayerLogistics.infantryTypes = {
 		capture = 'capture',
@@ -6013,7 +6016,7 @@ end
 
 BattlefieldManager = {}
 do
-	BattlefieldManager.closeOverride = 27780 -- 15nm
+	BattlefieldManager.closeOverride = Config.closeOverride -- default 15nm
 	BattlefieldManager.farOverride = Config.maxDistFromFront -- default 100nm
 	BattlefieldManager.boostScale = {[0] = 1.0, [1]=1.0, [2]=1.0}
 	BattlefieldManager.noRedZones = false
@@ -10592,6 +10595,7 @@ do
                 end
             end
         end
+        return false
     end
 
     function SEAD:getMissionName()
@@ -12245,7 +12249,7 @@ do
             if toGen > 0 then
                 local validMissions = {}
                 for _,v in pairs(Mission.types) do
-                    if self:canCreateMission(v) then
+                    if timer.getAbsTime() - timer.getTime0() > 120 and self:canCreateMission(v) then
                         table.insert(validMissions,v)
                     end
                 end
@@ -12705,7 +12709,7 @@ do
             return CAS_Easy.canCreate()
         elseif misType == Mission.types.cas_medium then
             return CAS_Medium.canCreate()
-        elseif misType == Mission.types.sead then
+        elseif Config.disablePlayerSead == false and misType == Mission.types.sead then
             return SEAD.canCreate()
         elseif misType == Mission.types.dead then
             return DEAD.canCreate()
