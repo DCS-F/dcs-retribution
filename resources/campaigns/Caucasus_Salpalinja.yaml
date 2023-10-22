@@ -3,8 +3,8 @@ name: Caucasus - Salpalinja
 theater: Caucasus
 authors: Ghosti
 description: <p>This campaign depicts a west-east direction ground war across the more forested regions of the Caucasus map, with several roadbases in between the bigger airports and airbases, intended to depict dispersed deployment of aircraft in the event of a Cold War era ground war.</p>
-recommended_player_faction: Finland 1970
-recommended_enemy_faction: Soviet Union 1975
+recommended_player_faction: Finland 1960 (TF-51D/P-51D)
+recommended_enemy_faction: Soviet Union 1950
 recommended_start_date: 1975-03-01
 miz: Caucasus_Salpalinja.miz
 performance: 3
@@ -20,6 +20,7 @@ squadrons:
 #  Yablonovskiy Roadbase:
 #  Kazazov Roadbase:
 #  Saratovskaya Roadbase:
+#  Pervomayskiy Roadbase:
   Guriyskaya FARP:
     - primary: BAI
       secondary: any
@@ -61,7 +62,9 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - Mi-24V Hind-E
-  Abadzehskaya Roadbase:
+#  Abadzehskaya Roadbase North:
+#  Abadzehskaya Roadbase South:
+  Abadzehskaya FARP:
     - primary: CAS
       secondary: air-to-ground
       aircraft:
@@ -80,9 +83,12 @@ squadrons:
       secondary: any
       aircraft:
         - Mi-8MTV2 Hip
-#  Gubskaya Roadbase:
+#  Labinsk Roadbase:
+#  Volnyy Roadbase:
 #  Kaladzhinskaya Roadbase:
-#  Psebay Roadbase:
+#  Gofitskoe Roadbase:
+#  Psebay Roadbase North:
+#  Psebay Roadbase South:
 #  Pregradnaya Roadbase:
   Besstrashnaya Roadbase:
     - primary: CAS
