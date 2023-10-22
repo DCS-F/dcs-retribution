@@ -855,10 +855,10 @@ class PretenseLuaGenerator(LuaGenerator):
                 + str(cp_side)
                 + " }\n"
             )
-            lua_string_zones += f"zones.{cp_name_trimmed}.keepActive = true\n"
             max_resource = 20000
             is_helo_spawn = "false"
             is_plane_spawn = "false"
+            is_keep_active = "false"
             if cp.has_helipads:
                 is_helo_spawn = "true"
                 max_resource = 30000
@@ -869,9 +869,12 @@ class PretenseLuaGenerator(LuaGenerator):
                 is_helo_spawn = "true"
                 is_plane_spawn = "true"
                 max_resource = 40000
+            if cp.is_lha:
+                is_keep_active = "true"
             if isinstance(cp, Airfield) or cp.is_carrier:
                 is_helo_spawn = "true"
                 is_plane_spawn = "true"
+                is_keep_active = "true"
                 max_resource = 50000
             lua_string_zones += (
                 f"zones.{cp_name_trimmed}.maxResource = {max_resource}\n"
@@ -881,6 +884,9 @@ class PretenseLuaGenerator(LuaGenerator):
             )
             lua_string_zones += (
                 f"zones.{cp_name_trimmed}.isPlaneSpawn = " + is_plane_spawn + "\n"
+            )
+            lua_string_zones += (
+                f"zones.{cp_name_trimmed}.keepActive = " + is_keep_active + "\n"
             )
             if cp.is_fleet:
                 lua_string_zones += self.generate_pretense_zone_sea(cp.name)
