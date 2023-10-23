@@ -973,8 +973,80 @@ class Settings:
     pretense_do_not_generate_sead_missions: bool = boolean_option(
         "Do not generate player SEAD missions",
         page=PRETENSE_PAGE,
-        section=PERFORMANCE_SECTION,
+        section=GENERAL_SECTION,
         default=False,
+    )
+    pretense_num_of_cargo_planes: int = bounded_int_option(
+        "Number of cargo planes per side",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=2,
+        min=1,
+        max=100,
+    )
+    pretense_sead_flights_per_cp: int = bounded_int_option(
+        "Number of AI SEAD flights per control point / zone",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=2,
+        min=1,
+        max=10,
+    )
+    pretense_cas_flights_per_cp: int = bounded_int_option(
+        "Number of AI CAS flights per control point / zone",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=2,
+        min=1,
+        max=10,
+    )
+    pretense_bai_flights_per_cp: int = bounded_int_option(
+        "Number of AI BAI flights per control point / zone",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=2,
+        min=1,
+        max=10,
+    )
+    pretense_strike_flights_per_cp: int = bounded_int_option(
+        "Number of AI Strike flights per control point / zone",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=2,
+        min=1,
+        max=10,
+    )
+    pretense_barcap_flights_per_cp: int = bounded_int_option(
+        "Number of AI BARCAP flights per control point / zone",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=2,
+        min=1,
+        max=10,
+    )
+    pretense_ai_aircraft_per_flight: int = bounded_int_option(
+        "Number of AI aircraft per flight",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=2,
+        min=1,
+        max=4,
+    )
+    pretense_player_flights_per_type: int = bounded_int_option(
+        "Number of player flights per aircraft type at each base",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=2,
+        min=1,
+        max=10,
+    )
+    pretense_ai_cargo_planes_per_side: int = bounded_int_option(
+        "Number of AI cargo planes per side",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=2,
+        min=1,
+        max=20,
     )
 
     # Cheating. Not using auto settings because the same page also has buttons which do
