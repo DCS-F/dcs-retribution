@@ -947,12 +947,14 @@ class PretenseLuaGenerator(LuaGenerator):
             else:
                 # Finally, connect remaining non-connected points
                 closest_cps = self.game.theater.closest_friendly_control_points_to(cp)
-                lua_string_connman += self.generate_pretense_zone_connection(
-                    connected_points, cp.name, closest_cps[0].name
-                )
-                lua_string_connman += self.generate_pretense_zone_connection(
-                    connected_points, cp.name, closest_cps[1].name
-                )
+                if len(closest_cps) > 0:
+                    lua_string_connman += self.generate_pretense_zone_connection(
+                        connected_points, cp.name, closest_cps[0].name
+                    )
+                if len(closest_cps) > 1:
+                    lua_string_connman += self.generate_pretense_zone_connection(
+                        connected_points, cp.name, closest_cps[1].name
+                    )
 
         lua_string_supply = "local redSupply = {\n"
         # Generate supply
