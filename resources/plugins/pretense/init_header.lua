@@ -100,7 +100,7 @@ do
 			"S_75M_Volhov",
 			"S_75M_Volhov",
 			"S_75M_Volhov",
-			"Tor 9A331",
+			"Osa 9A33 ln",
 			"SNR_75V"
 		},
 		maxDist = 300,
@@ -170,9 +170,9 @@ do
 			"Kub 2P25 ln",
 			"Kub 2P25 ln",
 			"Kub 2P25 ln",
-			"2S6 Tunguska",
+			"Osa 9A33 ln",
 			"Ural-4320T",
-			"2S6 Tunguska",
+			"ZSU-23-4 Shilka",
 			"Kub 2P25 ln"
 		},
 		maxDist = 300,
