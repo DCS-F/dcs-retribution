@@ -259,7 +259,7 @@ class PretenseLuaGenerator(LuaGenerator):
 
     def generate_pretense_land_upgrade_supply(self, cp_name: str, cp_side: int) -> str:
         lua_string_zones = ""
-        cp_name_trimmed = "".join([i for i in cp_name.lower() if i.isalnum()])
+        cp_name_trimmed = "".join([i for i in cp_name.lower() if i.isalpha()])
         cp_side_str = "blue" if cp_side == PRETENSE_BLUE_SIDE else "red"
         cp = self.game.theater.controlpoints[0]
         for loop_cp in self.game.theater.controlpoints:
@@ -503,7 +503,7 @@ class PretenseLuaGenerator(LuaGenerator):
 
     def generate_pretense_sea_upgrade_supply(self, cp_name: str, cp_side: int) -> str:
         lua_string_zones = ""
-        cp_name_trimmed = "".join([i for i in cp_name.lower() if i.isalnum()])
+        cp_name_trimmed = "".join([i for i in cp_name.lower() if i.isalpha()])
         cp_side_str = "blue" if cp_side == PRETENSE_BLUE_SIDE else "red"
 
         if cp_side == PRETENSE_BLUE_SIDE:
@@ -697,7 +697,7 @@ class PretenseLuaGenerator(LuaGenerator):
 
     def generate_pretense_zone_land(self, cp_name: str) -> str:
         lua_string_zones = ""
-        cp_name_trimmed = "".join([i for i in cp_name.lower() if i.isalnum()])
+        cp_name_trimmed = "".join([i for i in cp_name.lower() if i.isalpha()])
 
         lua_string_zones += f"zones.{cp_name_trimmed}:defineUpgrades(" + "{\n"
         lua_string_zones += "    [1] = { --red side\n"
@@ -771,7 +771,7 @@ class PretenseLuaGenerator(LuaGenerator):
 
     def generate_pretense_zone_sea(self, cp_name: str) -> str:
         lua_string_zones = ""
-        cp_name_trimmed = "".join([i for i in cp_name.lower() if i.isalnum()])
+        cp_name_trimmed = "".join([i for i in cp_name.lower() if i.isalpha()])
 
         lua_string_zones += f"zones.{cp_name_trimmed}:defineUpgrades(" + "{\n"
         lua_string_zones += "    [1] = { --red side\n"
@@ -855,7 +855,7 @@ class PretenseLuaGenerator(LuaGenerator):
             if isinstance(cp, OffMapSpawn):
                 continue
 
-            cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalnum()])
+            cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalpha()])
             cp_side = 2 if cp.captured else 1
             for side in range(1, 3):
                 if cp_name_trimmed not in self.game.pretense_air[cp_side]:
@@ -965,7 +965,7 @@ class PretenseLuaGenerator(LuaGenerator):
                 cp_side_captured = cp_side == 2
                 if cp_side_captured != cp.captured:
                     continue
-                cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalnum()])
+                cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalpha()])
                 for mission_type in self.game.pretense_air[cp_side][cp_name_trimmed]:
                     if mission_type == FlightType.PRETENSE_CARGO:
                         for air_group in self.game.pretense_air[cp_side][
@@ -978,7 +978,7 @@ class PretenseLuaGenerator(LuaGenerator):
         lua_string_supply += "local offmapZones = {\n"
         for cp in self.game.theater.controlpoints:
             if isinstance(cp, Airfield):
-                cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalnum()])
+                cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalpha()])
                 lua_string_supply += f"   zones.{cp_name_trimmed},\n"
         lua_string_supply += "}\n"
 

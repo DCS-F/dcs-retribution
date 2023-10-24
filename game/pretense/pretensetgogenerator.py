@@ -345,10 +345,10 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
         if self.culled:
             return
         cp_name_trimmed = "".join(
-            [i for i in self.ground_object.control_point.name.lower() if i.isalnum()]
+            [i for i in self.ground_object.control_point.name.lower() if i.isalpha()]
         )
         country_name_trimmed = "".join(
-            [i for i in self.country.shortname.lower() if i.isalnum()]
+            [i for i in self.country.shortname.lower() if i.isalpha()]
         )
 
         for group in self.ground_object.groups:
@@ -445,7 +445,7 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
                             break
 
                     cp_name_trimmed = "".join(
-                        [i for i in control_point.name.lower() if i.isalnum()]
+                        [i for i in control_point.name.lower() if i.isalpha()]
                     )
                     is_player = True
                     side = (
@@ -555,7 +555,7 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
                         break
 
         cp_name_trimmed = "".join(
-            [i for i in control_point.name.lower() if i.isalnum()]
+            [i for i in control_point.name.lower() if i.isalpha()]
         )
         is_player = True
         side = (
@@ -648,7 +648,7 @@ class PretenseTgoGenerator(TgoGenerator):
 
     def generate(self) -> None:
         for cp in self.game.theater.controlpoints:
-            cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalnum()])
+            cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalpha()])
             for side in range(1, 3):
                 if cp_name_trimmed not in self.game.pretense_ground_supply[side]:
                     self.game.pretense_ground_supply[side][cp_name_trimmed] = list()

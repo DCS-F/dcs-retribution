@@ -30,7 +30,7 @@ class PretenseNameGenerator(NameGenerator):
     @classmethod
     def next_pretense_aircraft_name(cls, cp: ControlPoint, flight: Flight) -> str:
         cls.aircraft_number += 1
-        cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalnum()])
+        cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalpha()])
         return "{}-{}-{}".format(
             cp_name_trimmed, str(flight.flight_type).lower(), cls.aircraft_number
         )
@@ -77,7 +77,7 @@ class PretenseFlightGroupSpawner(FlightGroupSpawner):
             == self.flight.coalition.game.coalition_for(is_player)
             else 1
         )
-        cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalnum()])
+        cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalpha()])
 
         if self.flight.client_count == 0:
             self.flight.coalition.game.pretense_air[cp_side][cp_name_trimmed][
@@ -94,7 +94,7 @@ class PretenseFlightGroupSpawner(FlightGroupSpawner):
             == self.flight.coalition.game.coalition_for(is_player)
             else 1
         )
-        cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalnum()])
+        cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalpha()])
 
         try:
             if self.start_type is StartType.IN_FLIGHT:

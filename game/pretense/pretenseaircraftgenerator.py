@@ -615,7 +615,7 @@ class PretenseAircraftGenerator:
             cp: Control point to generate aircraft for.
             flight: The current flight being generated.
         """
-        cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalnum()])
+        cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalpha()])
 
         for side in range(1, 3):
             if cp_name_trimmed not in cp.coalition.game.pretense_air[side]:
@@ -635,7 +635,7 @@ class PretenseAircraftGenerator:
             flight: The current flight being generated.
         """
         flight_type = flight.flight_type
-        cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalnum()])
+        cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalpha()])
 
         for side in range(1, 3):
             if cp_name_trimmed not in flight.coalition.game.pretense_air[side]:

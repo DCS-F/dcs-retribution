@@ -236,7 +236,7 @@ class PretenseTriggerGenerator:
                     name=cp.name,
                     color=zone_color,
                 )
-            cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalnum()])
+            cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalpha()])
             tgo_num = 0
             for tgo in cp.ground_objects:
                 if cp.is_fleet or tgo.sea_object:
@@ -285,7 +285,7 @@ class PretenseTriggerGenerator:
             if cp_airport is None:
                 continue
             cp_name_trimmed = "".join(
-                [i for i in cp_airport.name.lower() if i.isalnum()]
+                [i for i in cp_airport.name.lower() if i.isalpha()]
             )
             zone_color = {1: 0.0, 2: 1.0, 3: 0.5, 4: 0.15}
             if cp_airport is None:
