@@ -3,9 +3,9 @@ name: Caucasus - Salpalinja
 theater: Caucasus
 authors: Ghosti
 description: <p>This campaign depicts a west-east direction ground war across the more forested regions of the Caucasus map, with several roadbases in between the bigger airports and airbases, intended to depict dispersed deployment of aircraft in the event of a Cold War era ground war.</p>
-recommended_player_faction: Finland 1960 (TF-51D/P-51D)
-recommended_enemy_faction: Soviet Union 1950
-recommended_start_date: 1975-03-01
+recommended_player_faction: Finland 1970
+recommended_enemy_faction: Soviet Union 1970
+recommended_start_date: 1970-03-01
 miz: Caucasus_Salpalinja.miz
 performance: 3
 version: "10.2"
