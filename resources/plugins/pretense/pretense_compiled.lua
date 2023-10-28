@@ -6105,7 +6105,7 @@ do
 			
 			for name, zone in pairs(zones) do
 				if zone.keepActive then
-					if zone.closestEnemyDist and zone.closestEnemyDist > BattlefieldManager.farOverride and zone.distToFront > 3 then
+					if (zone.closestEnemyDist and zone.closestEnemyDist > BattlefieldManager.farOverride) and ((not zone.distToFront) or (zone.distToFront and zone.distToFront > 3)) then
 						zone.mode = ZoneCommand.modes.export
 					else
 						if zone.mode ~= ZoneCommand.modes.normal then
@@ -6114,7 +6114,9 @@ do
 						zone.mode = ZoneCommand.modes.normal
 					end
 				else
-					if not zone.distToFront or zone.distToFront == 0 or (zone.closestEnemyDist and zone.closestEnemyDist < BattlefieldManager.closeOverride) then
+					if not zone.distToFront then
+						zone.mode = ZoneCommand.modes.export
+					elseif zone.distToFront == 0 or (zone.closestEnemyDist and zone.closestEnemyDist < BattlefieldManager.closeOverride) then
 						if zone.mode ~= ZoneCommand.modes.normal then
 							zone:fullBuild(1.0)
 						end
@@ -11590,7 +11592,7 @@ Anti_Runway = Mission:new()
 do
     function Anti_Runway.canCreate()
         for _,zone in pairs(ZoneCommand.getAllZones()) do
-            if zone.side == 1 and zone.distToFront <=2 and zone:hasRunway() then
+            if zone.side == 1 and zone.distToFront and zone.distToFront <=2 and zone:hasRunway() then
                     return true
             end
         end
