@@ -823,13 +823,8 @@ class PretenseLuaGenerator(LuaGenerator):
 
     def generate_pretense_plugin_data(self) -> None:
         self.inject_plugin_script("base", "mist_4_5_107.lua", "mist_4_5_107")
-        self.inject_plugin_script(
-            "pretense", "pretense_compiled.lua", "pretense_compiled"
-        )
 
-        trigger = TriggerStart(comment="Pretense init")
-
-        lua_string_config = ""
+        lua_string_config = "Config = Config or {}\n"
 
         lua_string_config += (
             f"Config.maxDistFromFront = "
@@ -845,6 +840,16 @@ class PretenseLuaGenerator(LuaGenerator):
             lua_string_config += "Config.disablePlayerSead = true\n"
         else:
             lua_string_config += "Config.disablePlayerSead = false\n"
+
+        trigger = TriggerStart(comment="Pretense config")
+        trigger.add_action(DoScript(String(lua_string_config)))
+        self.mission.triggerrules.triggers.append(trigger)
+
+        self.inject_plugin_script(
+            "pretense", "pretense_compiled.lua", "pretense_compiled"
+        )
+
+        trigger = TriggerStart(comment="Pretense init")
 
         init_header_file = open("./resources/plugins/pretense/init_header.lua", "r")
         init_header = init_header_file.read()
@@ -999,8 +1004,7 @@ class PretenseLuaGenerator(LuaGenerator):
         init_footer = init_footer_file.read()
 
         lua_string = (
-            lua_string_config
-            + init_header
+            init_header
             + lua_string_zones
             + lua_string_connman
             + init_body_1
