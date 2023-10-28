@@ -803,7 +803,8 @@ class PretenseAircraftGenerator:
                 if flight.package.target != flight.departure:
                     break
                 for mission_target in cp.ground_objects:
-                    flight.package.target = mission_target
+                    if mission_target.alive_unit_count > 0:
+                        flight.package.target = mission_target
                     break
         elif (
             flight.flight_type == FlightType.OCA_RUNWAY
@@ -845,7 +846,12 @@ class PretenseAircraftGenerator:
                 break
 
         now = self.game.conditions.start_time
-        flight.package.set_tot_asap(now)
+        try:
+            flight.package.set_tot_asap(now)
+        except:
+            raise RuntimeError(
+                f"Pretense flight group {group.name} {flight.squadron.aircraft} {flight.flight_type} for target {flight.package.target} configuration failed. Please check if your Retribution campaign is compatible with Pretense."
+            )
 
         logging.info(
             f"Configuring flight {group.name} {flight.squadron.aircraft} {flight.flight_type}, number of players: {flight.client_count}"
