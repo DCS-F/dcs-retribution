@@ -139,8 +139,7 @@ class PretenseFlightGroupSpawner(FlightGroupSpawner):
                     pad_group = self._generate_at_cp_ground_spawn(name, cp)
                     if pad_group is not None:
                         return pad_group
-                self.insert_into_pretense(name)
-                return self._generate_over_departure(name, cp)
+                raise NoParkingSlotError
             elif isinstance(cp, Airfield):
                 is_heli = self.flight.squadron.aircraft.helicopter
                 if cp.has_helipads and is_heli:
