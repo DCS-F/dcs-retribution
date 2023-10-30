@@ -142,24 +142,32 @@ local unitPayloads = {
 			["name"] = "SEAD",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "{BK90MJ1}",
+					["CLSID"] = "{KB}",
 					["num"] = 2,
 				},
 				[2] = {
 					["CLSID"] = "{BK90MJ1}",
-					["num"] = 6,
+					["num"] = 3,
 				},
 				[3] = {
 					["CLSID"] = "{VIGGEN_X-TANK}",
 					["num"] = 4,
 				},
 				[4] = {
-					["CLSID"] = "{Robot74}",
+					["CLSID"] = "{BK90MJ1}",
 					["num"] = 5,
 				},
 				[5] = {
-					["CLSID"] = "{Robot74}",
-					["num"] = 3,
+					["CLSID"] = "{U22}",
+					["num"] = 6,
+				},
+				[6] = {
+					["CLSID"] = "{Robot24J}",
+					["num"] = 7,
+				},
+				[7] = {
+					["CLSID"] = "{Robot24J}",
+					["num"] = 1,
 				},
 			},
 			["tasks"] = {
@@ -238,6 +246,42 @@ local unitPayloads = {
 			},
 			["tasks"] = {
 				[1] = 34,
+			},
+		},
+		[8] = {
+			["name"] = "DEAD",
+			["pylons"] = {
+				[1] = {
+					["CLSID"] = "{KB}",
+					["num"] = 2,
+				},
+				[2] = {
+					["CLSID"] = "{BK90MJ1}",
+					["num"] = 3,
+				},
+				[3] = {
+					["CLSID"] = "{VIGGEN_X-TANK}",
+					["num"] = 4,
+				},
+				[4] = {
+					["CLSID"] = "{BK90MJ1}",
+					["num"] = 5,
+				},
+				[5] = {
+					["CLSID"] = "{U22}",
+					["num"] = 6,
+				},
+				[6] = {
+					["CLSID"] = "{Robot24J}",
+					["num"] = 7,
+				},
+				[7] = {
+					["CLSID"] = "{Robot24J}",
+					["num"] = 1,
+				},
+			},
+			["tasks"] = {
+				[1] = 32,
 			},
 		},
 	},
