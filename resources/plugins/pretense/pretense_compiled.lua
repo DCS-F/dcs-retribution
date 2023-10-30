@@ -507,6 +507,7 @@ do
 	GroupMonitor.blockedDespawnTime = 10*60 --used to despawn aircraft that are stuck taxiing for some reason
 	GroupMonitor.blockedDespawnTimeGround = 30*60 --used to despawn ground units that are stuck en route for some reason
 	GroupMonitor.blockedDespawnTimeGroundAssault = 90*60 --used to despawn assault units that are stuck en route for some reason
+	GroupMonitor.blockedRemoveSceneryTimeGround = 10*60
 	GroupMonitor.landedDespawnTime = 10
 	GroupMonitor.atDestinationDespawnTime = 2*60
 	GroupMonitor.recoveryReduction = 0.8 -- reduce recovered resource from landed missions by this amount to account for maintenance
@@ -617,7 +618,23 @@ do
 	function GroupMonitor:getGroup(name)
 		return self.groups[name]
 	end
-	
+
+    function GroupMonitor:destroySceneryObjects(position, radius)
+        local volume = {
+            id = world.VolumeType.SPHERE,
+            params = {
+                point = position,
+                radius = radius
+            }
+        }
+        local function handler(object, data)
+            object:destroy()
+        end
+
+        world.searchObjects({Object.Category.STRUCTURE}, volume, handler, nil)
+        world.searchObjects({Object.Category.SCENERY}, volume, handler, nil)
+    end
+
 	function GroupMonitor:processSurface(group) -- states: [started, enroute, atdestination, siege]
 		local gr = Group.getByName(group.name)
 		if not gr then return true end
@@ -653,6 +670,11 @@ do
 					gr:destroy()
 					local todeliver = math.floor(group.product.cost)
 					z:addResource(todeliver)
+					return true
+				elseif timer.getAbsTime() - group.lastStateTime > GroupMonitor.blockedRemoveSceneryTimeGround then
+					env.info('GroupMonitor: processSurface ['..group.name..'] initiated remove scenery')
+					position = gr:getUnit(1):getPoint()
+					self:destroySceneryObjects(position, 500)
 					return true
 				end
 			end
@@ -744,7 +766,7 @@ do
 									y = group.target.zone.point.z
 								}
 
-								TaskExtensions.moveOffRoadToPointAndAssault(gr, tp, group.target.built)
+								TaskExtensions.moveOnRoadToPointAndAssault(gr, tp, group.target.built)
 								group.isstopped = false
 							end
 						end
@@ -4923,7 +4945,7 @@ do
 				product.lastMission = {zoneName = zone.name}
 				timer.scheduleFunction(function(param)
 					local gr = Group.getByName(param.name)
-					TaskExtensions.moveOffRoadToPointAndAssault(gr, param.point, param.targets)
+					TaskExtensions.moveOnRoadToPointAndAssault(gr, param.point, param.targets)
 				end, {name=product.name, point={ x=tgtPoint.point.x, y = tgtPoint.point.z}, targets=zone.built}, timer.getTime()+1)
 			end
 		end
@@ -5454,7 +5476,7 @@ do
 					product.lastMission = {zoneName = v.name}
 					timer.scheduleFunction(function(param)
 						local gr = Group.getByName(param.name)
-						TaskExtensions.moveOffRoadToPointAndAssault(gr, param.point, param.targets)
+						TaskExtensions.moveOnRoadToPointAndAssault(gr, param.point, param.targets)
 					end, {name=product.name, point={ x=tgtPoint.point.x, y = tgtPoint.point.z}, targets=v.built}, timer.getTime()+1)
 
 					env.info("ZoneCommand - "..product.name.." targeting "..v.name)
@@ -5638,6 +5660,7 @@ do
 		elseif product.side == 2 then
 			return self:hasSAMRadarOnSide(1)
 		end
+		return false
 	end
 
 	function ZoneCommand:hasSAMRadarOnSide(side)
@@ -5653,6 +5676,7 @@ do
 				end
 			end
 		end
+		return false
 	end
 
 	function ZoneCommand:hasRunway()
