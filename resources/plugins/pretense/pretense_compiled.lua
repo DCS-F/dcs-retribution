@@ -507,7 +507,6 @@ do
 	GroupMonitor.blockedDespawnTime = 10*60 --used to despawn aircraft that are stuck taxiing for some reason
 	GroupMonitor.blockedDespawnTimeGround = 30*60 --used to despawn ground units that are stuck en route for some reason
 	GroupMonitor.blockedDespawnTimeGroundAssault = 90*60 --used to despawn assault units that are stuck en route for some reason
-	GroupMonitor.blockedRemoveSceneryTimeGround = 10*60
 	GroupMonitor.landedDespawnTime = 10
 	GroupMonitor.atDestinationDespawnTime = 2*60
 	GroupMonitor.recoveryReduction = 0.8 -- reduce recovered resource from landed missions by this amount to account for maintenance
@@ -618,23 +617,7 @@ do
 	function GroupMonitor:getGroup(name)
 		return self.groups[name]
 	end
-
-    function GroupMonitor:destroySceneryObjects(position, radius)
-        local volume = {
-            id = world.VolumeType.SPHERE,
-            params = {
-                point = position,
-                radius = radius
-            }
-        }
-        local function handler(object, data)
-            object:destroy()
-        end
-
-        world.searchObjects({Object.Category.STRUCTURE}, volume, handler, nil)
-        world.searchObjects({Object.Category.SCENERY}, volume, handler, nil)
-    end
-
+	
 	function GroupMonitor:processSurface(group) -- states: [started, enroute, atdestination, siege]
 		local gr = Group.getByName(group.name)
 		if not gr then return true end
@@ -670,11 +653,6 @@ do
 					gr:destroy()
 					local todeliver = math.floor(group.product.cost)
 					z:addResource(todeliver)
-					return true
-				elseif timer.getAbsTime() - group.lastStateTime > GroupMonitor.blockedRemoveSceneryTimeGround then
-					env.info('GroupMonitor: processSurface ['..group.name..'] initiated remove scenery')
-					position = gr:getUnit(1):getPoint()
-					self:destroySceneryObjects(position, 500)
 					return true
 				end
 			end
@@ -766,7 +744,7 @@ do
 									y = group.target.zone.point.z
 								}
 
-								TaskExtensions.moveOnRoadToPointAndAssault(gr, tp, group.target.built)
+								TaskExtensions.moveOffRoadToPointAndAssault(gr, tp, group.target.built)
 								group.isstopped = false
 							end
 						end
@@ -789,8 +767,8 @@ do
 						group.lastStateTime = timer.getAbsTime()
 					end
 
-					env.info('GroupMonitor: processSurface ['..group.name..'] despawned after arriving at destination')
-					gr:destroy()
+-- 					env.info('GroupMonitor: processSurface ['..group.name..'] despawned after arriving at destination')
+-- 					gr:destroy()
 					return true
 				end
 			end
@@ -2185,21 +2163,21 @@ do
 							type= AI.Task.WaypointType.TURNING_POINT,
 							x = srx,
 							y = sry,
-							speed = 1000,
+							speed = 50,
 							action = AI.Task.VehicleFormation.DIAMOND
 						},
 						[2] = {
 							type= AI.Task.WaypointType.TURNING_POINT,
 							x = erx,
 							y = ery,
-							speed = 1000,
+							speed = 50,
 							action = AI.Task.VehicleFormation.DIAMOND
 						},
 						[3] = {
 							type= AI.Task.WaypointType.TURNING_POINT,
 							x = point.x,
 							y = point.y,
-							speed = 1000,
+							speed = 50,
 							action = AI.Task.VehicleFormation.DIAMOND
 						}
 					}
@@ -4945,7 +4923,7 @@ do
 				product.lastMission = {zoneName = zone.name}
 				timer.scheduleFunction(function(param)
 					local gr = Group.getByName(param.name)
-					TaskExtensions.moveOnRoadToPointAndAssault(gr, param.point, param.targets)
+					TaskExtensions.moveOffRoadToPointAndAssault(gr, param.point, param.targets)
 				end, {name=product.name, point={ x=tgtPoint.point.x, y = tgtPoint.point.z}, targets=zone.built}, timer.getTime()+1)
 			end
 		end
@@ -5476,7 +5454,7 @@ do
 					product.lastMission = {zoneName = v.name}
 					timer.scheduleFunction(function(param)
 						local gr = Group.getByName(param.name)
-						TaskExtensions.moveOnRoadToPointAndAssault(gr, param.point, param.targets)
+						TaskExtensions.moveOffRoadToPointAndAssault(gr, param.point, param.targets)
 					end, {name=product.name, point={ x=tgtPoint.point.x, y = tgtPoint.point.z}, targets=v.built}, timer.getTime()+1)
 
 					env.info("ZoneCommand - "..product.name.." targeting "..v.name)
