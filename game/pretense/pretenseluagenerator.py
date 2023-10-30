@@ -398,7 +398,7 @@ class PretenseLuaGenerator(LuaGenerator):
         )
         lua_string_zones += "            products = {\n"
         for mission_type in self.game.pretense_air[cp_side][cp_name_trimmed]:
-            if mission_type == FlightType.SEAD:
+            if mission_type in (FlightType.SEAD, FlightType.DEAD):
                 mission_name = "attack.sead"
                 for air_group in self.game.pretense_air[cp_side][cp_name_trimmed][
                     mission_type
@@ -836,6 +836,7 @@ class PretenseLuaGenerator(LuaGenerator):
             + str(self.game.settings.pretense_closeoverride_distance * 1000)
             + "\n"
         )
+        lua_string_config += "Config.missionBuildSpeedReduction = 0.36\n"
         if self.game.settings.pretense_do_not_generate_sead_missions:
             lua_string_config += "Config.disablePlayerSead = true\n"
         else:
