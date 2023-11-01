@@ -856,18 +856,20 @@ class PretenseAircraftGenerator:
         logging.info(
             f"Configuring flight {group.name} {flight.squadron.aircraft} {flight.flight_type}, number of players: {flight.client_count}"
         )
-        PretenseFlightGroupConfigurator(
-            flight,
-            group,
-            self.game,
-            self.mission,
-            self.time,
-            self.radio_registry,
-            self.tacan_registy,
-            self.mission_data,
-            dynamic_runways,
-            self.use_client,
-        ).configure()
+        self.mission_data.flights.append(
+            PretenseFlightGroupConfigurator(
+                flight,
+                group,
+                self.game,
+                self.mission,
+                self.time,
+                self.radio_registry,
+                self.tacan_registy,
+                self.mission_data,
+                dynamic_runways,
+                self.use_client,
+            ).configure()
+        )
 
         if self.ewrj:
             self._track_ewrj_flight(flight, group)

@@ -83,6 +83,11 @@ class PretenseFlightGroupSpawner(FlightGroupSpawner):
             self.flight.coalition.game.pretense_air[cp_side][cp_name_trimmed][
                 self.flight.flight_type
             ].append(name)
+            try:
+                self.flight.coalition.game.pretense_air_groups[name] = self.flight
+            except AttributeError:
+                self.flight.coalition.game.pretense_air_groups = {}
+                self.flight.coalition.game.pretense_air_groups[name] = self.flight
 
     def generate_flight_at_departure(self) -> FlyingGroup[Any]:
         cp = self.flight.departure
