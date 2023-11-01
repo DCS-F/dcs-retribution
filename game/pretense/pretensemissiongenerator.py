@@ -208,6 +208,8 @@ class PretenseMissionGenerator(MissionGenerator):
                     tgo_generator.runways,
                 )
 
+        self.mission_data.flights = aircraft_generator.flights
+
         for flight in aircraft_generator.flights:
             if not flight.client_units:
                 continue
