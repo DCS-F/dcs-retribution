@@ -414,6 +414,9 @@ class PretenseLuaGenerator(LuaGenerator):
                 for air_group in self.game.pretense_air[cp_side][cp_name_trimmed][
                     mission_type
                 ]:
+                    flight = self.game.pretense_air_groups[air_group]
+                    if flight.is_helo:
+                        mission_name = "attack.helo"
                     lua_string_zones += (
                         f"                presets.missions.{mission_name}:extend"
                         + "({name='"
@@ -608,6 +611,9 @@ class PretenseLuaGenerator(LuaGenerator):
                 for air_group in self.game.pretense_air[cp_side][cp_name_trimmed][
                     mission_type
                 ]:
+                    flight = self.game.pretense_air_groups[air_group]
+                    if flight.is_helo:
+                        mission_name = "attack.helo"
                     lua_string_zones += (
                         f"                presets.missions.{mission_name}:extend"
                         + "({name='"
