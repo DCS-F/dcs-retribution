@@ -843,6 +843,22 @@ class PretenseLuaGenerator(LuaGenerator):
             + "\n"
         )
         lua_string_config += "Config.missionBuildSpeedReduction = 0.36\n"
+        if self.game.settings.pretense_disable_ground_assaults:
+            lua_string_config += "Config.disableGroundAssaults = true\n"
+        else:
+            lua_string_config += "Config.disableGroundAssaults = false\n"
+        if self.game.settings.pretense_disable_supply_convoys:
+            lua_string_config += "Config.disableSupplyConvoys = true\n"
+        else:
+            lua_string_config += "Config.disableSupplyConvoys = false\n"
+        if self.game.settings.pretense_ground_assaults_prefer_roads:
+            lua_string_config += "Config.groundAssaultsPreferRoads = true\n"
+        else:
+            lua_string_config += "Config.groundAssaultsPreferRoads = false\n"
+        if self.game.settings.pretense_supply_convoys_prefer_roads:
+            lua_string_config += "Config.supplyConvoysPreferRoads = true\n"
+        else:
+            lua_string_config += "Config.supplyConvoysPreferRoads = false\n"
         if self.game.settings.pretense_do_not_generate_sead_missions:
             lua_string_config += "Config.disablePlayerSead = true\n"
         else:

@@ -961,6 +961,11 @@ class Settings:
         default=130,
         min=10,
         max=10000,
+        detail=(
+            "Zones farther away than this from the front line are switched "
+            "into low activity state, but will still be there as functional "
+            "parts of the economy. Use this to adjust performance."
+        ),
     )
     pretense_closeoverride_distance: int = bounded_int_option(
         "Close override distance (km)",
@@ -969,6 +974,46 @@ class Settings:
         default=28,
         min=5,
         max=10000,
+        detail=(
+            "Zones with keepActive = true and farther away than this from "
+            "the front line are switched into low activity state, but will "
+            "still be there as functional parts of the economy. Use this "
+            "to adjust performance."
+        ),
+    )
+    pretense_disable_ground_assaults: bool = boolean_option(
+        "Disable ground assaults",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=False,
+        detail=(
+            "Disables ground assaults from both sides. Use this if the AI "
+            "pathfinding is causing excessive CPU load. If disabled, zones "
+            "will need to be captured with helicopters."
+        ),
+    )
+    pretense_disable_supply_convoys: bool = boolean_option(
+        "Disable supply convoys",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=False,
+        detail=(
+            "Disables ground supply convoys from both sides. Use this if the "
+            "AI pathfinding is causing excessive CPU load. If disabled, zones "
+            "will need to be resupplied with helicopters."
+        ),
+    )
+    pretense_ground_assaults_prefer_roads: bool = boolean_option(
+        "Ground assaults prefer roads",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=True,
+    )
+    pretense_supply_convoys_prefer_roads: bool = boolean_option(
+        "Supply convoys prefer roads",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=True,
     )
     pretense_do_not_generate_sead_missions: bool = boolean_option(
         "Do not generate player SEAD missions",
