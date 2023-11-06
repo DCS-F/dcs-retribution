@@ -33,6 +33,10 @@ Config.supplyBuildSpeed = Config.supplyBuildSpeed or 85 -- supply helicopters an
 Config.missionBuildSpeedReduction = Config.missionBuildSpeedReduction or 0.12 -- reduction of build speed in case of ai missions
 Config.maxDistFromFront = Config.maxDistFromFront or 129640 -- max distance in meters from front after which zone is forced into low activity state (export mode)
 Config.closeOverride = Config.closeOverride or 27780 -- close override distance in meters from front within which zone is never forced into low activity state
+Config.disableGroundAssaults = Config.disableGroundAssaults or false
+Config.disableSupplyConvoys = Config.disableSupplyConvoys or false
+Config.groundAssaultsPreferRoads = Config.groundAssaultsPreferRoads and true
+Config.supplyConvoysPreferRoads = Config.supplyConvoysPreferRoads and true
 Config.disablePlayerSead = Config.disablePlayerSead or false
 
 Config.missions = Config.missions or {}
@@ -508,7 +512,8 @@ do
 	GroupMonitor.blockedDespawnTimeGround = 30*60 --used to despawn ground units that are stuck en route for some reason
 	GroupMonitor.blockedDespawnTimeGroundAssault = 90*60 --used to despawn assault units that are stuck en route for some reason
 	GroupMonitor.landedDespawnTime = 10
-	GroupMonitor.atDestinationDespawnTime = 2*60
+	GroupMonitor.atDestinationTime = 2*60
+	GroupMonitor.atDestinationDespawnTime = 40*60
 	GroupMonitor.recoveryReduction = 0.8 -- reduce recovered resource from landed missions by this amount to account for maintenance
 
 	GroupMonitor.siegeExplosiveTime = 5*60 -- how long until random upgrade is detonated in zone
@@ -744,7 +749,11 @@ do
 									y = group.target.zone.point.z
 								}
 
-								TaskExtensions.moveOffRoadToPointAndAssault(gr, tp, group.target.built)
+								if Config.groundAssaultsPreferRoads then
+									TaskExtensions.moveOnRoadToPointAndAssault(gr, tp, group.target.built)
+								else
+									TaskExtensions.moveOffRoadToPointAndAssault(gr, tp, group.target.built)
+								end
 								group.isstopped = false
 							end
 						end
@@ -752,7 +761,7 @@ do
 				end
 			end
 		elseif group.state == 'atdestination' then
-			if timer.getAbsTime() - group.lastStateTime > GroupMonitor.atDestinationDespawnTime then
+			if timer.getAbsTime() - group.lastStateTime > GroupMonitor.atDestinationTime then
 				
 				if gr then
 					local firstUnit = gr:getUnit(1):getName()
@@ -767,8 +776,11 @@ do
 						group.lastStateTime = timer.getAbsTime()
 					end
 
--- 					env.info('GroupMonitor: processSurface ['..group.name..'] despawned after arriving at destination')
--- 					gr:destroy()
+                    if timer.getAbsTime() - group.lastStateTime > GroupMonitor.atDestinationDespawnTime then
+     					env.info('GroupMonitor: processSurface ['..group.name..'] despawned after arriving at destination')
+     					gr:destroy()
+        			end
+
 					return true
 				end
 			end
@@ -782,19 +794,58 @@ do
 						local firstUnit = gr:getUnit(1):getName()
 						local z = ZoneCommand.getZoneOfUnit(firstUnit)
 						local success = false
-						
+                        local canDetonate = true
+
 						if z then
-							for i,v in pairs(z.built) do
-								if v.type == 'upgrade' and v.side ~= gr:getCoalition() then
-									local st = StaticObject.getByName(v.name)
-									if not st then st = Group.getByName(v.name) end
-									local pos = st:getPoint()
-									trigger.action.explosion(pos, GroupMonitor.siegeExplosiveStrength)
-									group.lastStateTime = timer.getAbsTime()
-									success = true
-									env.info('GroupMonitor: processSurface ['..group.name..'] detonating structure at '..z.name)
-									break
-								end
+                            local foundUnits = {}
+                            local radius = 3000
+                            local zone = trigger.misc.getZone(z.name)
+                            local volS = {
+                                id = world.VolumeType.SPHERE,
+                                params = {
+                                    point = zone.point,
+                                    radius = radius
+                                }
+                            }
+
+                            env.info('GroupMonitor: processSurface ['..group.name..'] looking to detonate structures at '..z.name)
+
+                            local objectFound = function(foundObject, val)
+                                foundUnits[#foundUnits + 1] = foundObject
+                                return true
+                            end
+
+                            world.searchObjects(Object.Category.UNIT, volS, objectFound)
+
+                            env.info('GroupMonitor: processSurface ['..group.name..'] found '..#foundUnits..' units at '..z.name)
+
+                            for i,v in ipairs(foundUnits) do
+                                group_coalition = gr:getCoalition()
+                                found_unit_coalition = v:getCoalition()
+                                if v:getDesc().category == Unit.Category.GROUND_UNIT then
+                                    if found_unit_coalition ~= group_coalition then
+                                        if v:hasAttribute('Infantry') or v:hasAttribute('Armored vehicles') then
+                                            env.info('GroupMonitor: processSurface ['..group.name..'] cannot detonate structure at '..z.name..' because blocked by '..v:getName())
+                                            canDetonate = false
+                                            break
+                                        end
+                                    end
+                                end
+                            end
+
+                            if canDetonate then
+                                for i,v in pairs(z.built) do
+                                    if v.type == 'upgrade' and v.side ~= gr:getCoalition() then
+                                        local st = StaticObject.getByName(v.name)
+                                        if not st then st = Group.getByName(v.name) end
+                                        local pos = st:getPoint()
+                                        trigger.action.explosion(pos, GroupMonitor.siegeExplosiveStrength)
+                                        group.lastStateTime = timer.getAbsTime()
+                                        success = true
+                                        env.info('GroupMonitor: processSurface ['..group.name..'] detonating structure at '..z.name)
+                                        break
+                                    end
+                                end
 							end
 						end
 
@@ -4668,12 +4719,12 @@ do
 			return false
 		end
 
-		if product.missionType == ZoneCommand.missionTypes.supply_convoy then
+		if not Config.disableSupplyConvoys and product.missionType == ZoneCommand.missionTypes.supply_convoy then
 			if self.distToFront == nil then return false end
 
 			for _,tgt in pairs(self.neighbours) do
-				if self:isSupplyMissionValid(product, tgt) then 
-					return true 
+				if self:isSupplyMissionValid(product, tgt) then
+					return true
 				end
 			end
 		elseif product.missionType == ZoneCommand.missionTypes.supply_transfer then
@@ -4700,11 +4751,11 @@ do
 					end
 				end
 			end
-		elseif product.missionType == ZoneCommand.missionTypes.assault then
+		elseif not Config.disableGroundAssaults and product.missionType == ZoneCommand.missionTypes.assault then
 			if self.mode ~= ZoneCommand.modes.normal then return false end
 			for _,tgt in pairs(self.neighbours) do
-				if self:isAssaultMissionValid(product, tgt) then 
-					return true 
+				if self:isAssaultMissionValid(product, tgt) then
+					return true
 				end
 			end
 		elseif product.missionType == ZoneCommand.missionTypes.cas then
@@ -4923,7 +4974,11 @@ do
 				product.lastMission = {zoneName = zone.name}
 				timer.scheduleFunction(function(param)
 					local gr = Group.getByName(param.name)
-					TaskExtensions.moveOffRoadToPointAndAssault(gr, param.point, param.targets)
+					if Config.groundAssaultsPreferRoads then
+						TaskExtensions.moveOnRoadToPointAndAssault(gr, param.point, param.targets)
+					else
+						TaskExtensions.moveOffRoadToPointAndAssault(gr, param.point, param.targets)
+					end
 				end, {name=product.name, point={ x=tgtPoint.point.x, y = tgtPoint.point.z}, targets=zone.built}, timer.getTime()+1)
 			end
 		end
@@ -5279,8 +5334,6 @@ do
 		end
 
 		if target.side == self.side then 
-			if self.distToFront <= 1 or target.distToFront <= 1 then return false end -- skip transfer missions if close to front
-
 			if not target.distToFront or not self.distToFront then
 				return false
 			end
@@ -5454,7 +5507,11 @@ do
 					product.lastMission = {zoneName = v.name}
 					timer.scheduleFunction(function(param)
 						local gr = Group.getByName(param.name)
-						TaskExtensions.moveOffRoadToPointAndAssault(gr, param.point, param.targets)
+						if Config.groundAssaultsPreferRoads then
+							TaskExtensions.moveOnRoadToPointAndAssault(gr, param.point, param.targets)
+						else
+							TaskExtensions.moveOffRoadToPointAndAssault(gr, param.point, param.targets)
+						end
 					end, {name=product.name, point={ x=tgtPoint.point.x, y = tgtPoint.point.z}, targets=v.built}, timer.getTime()+1)
 
 					env.info("ZoneCommand - "..product.name.." targeting "..v.name)
@@ -5823,7 +5880,7 @@ do
 	function ZoneCommand:isStrikeMissionValid(product, target)
 		if target.side == 0 then return false end
 		if target.side == product.side then return false end
-		if not target.distToFront or target.distToFront > 0 then return false end
+		if not target.distToFront or target.distToFront >= 2 then return false end
 
 		if target:hasEnemySAMRadar(product) then return false end
 
