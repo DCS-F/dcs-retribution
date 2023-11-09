@@ -7054,7 +7054,7 @@ do
 
                 if not tgt or not tgt:isExist() or tgt:getSize()==0 then
                     MissionTargetRegistry.removeBaiTarget(v)
-                elseif not v.state or v.state ~= 'enroute' then
+                elseif not v.state or (v.state ~= 'enroute' and v.state ~= 'atdestination') then
                     MissionTargetRegistry.removeBaiTarget(v)
                 else
                     table.insert(targets, v)
@@ -7073,7 +7073,7 @@ do
 
                 if not tgt or not tgt:isExist() or tgt:getSize()==0 then
                     MissionTargetRegistry.removeBaiTarget(v)
-                elseif not v.state or v.state ~= 'enroute' then
+                elseif not v.state or (v.state ~= 'enroute' and v.state ~= 'atdestination') then
                     MissionTargetRegistry.removeBaiTarget(v)
                 else
                     table.insert(targets, v)
