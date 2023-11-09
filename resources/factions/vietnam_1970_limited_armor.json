@@ -1,0 +1,154 @@
+{
+  "country": "Vietnam",
+  "name": "Vietnam 1970 Limited Armor",
+  "authors": "Ghosti",
+  "description": "<p>1970 North Vietnam, with limited armor units intended for a Vietnam campaign. Contains L-39s and Su-22s for variety and balance reasons, the types were not operated by the VPAF until the 1980s. However, otherwise the faction would not have any anti-radiation capability at all.</p>",
+  "locales": [
+    "zh_CN"
+  ],
+  "aircrafts": [
+	"MiG-15bis Fagot",
+    "Mi-8MTV2 Hip",
+    "MiG-19P Farmer-B",
+    "MiG-21bis Fishbed-N",
+	"Su-22M4 Fitter-K",
+	"L-39ZA Albatros"
+  ],
+  "frontline_units": [
+    "BRDM-2",
+    "BTR-D",
+    "BTR-80",
+    "PT-76",
+    "ZSU-23-4 Shilka",
+    "ZSU-57-2 'Sparka'",
+	"S-60 57mm",
+	"AAA KS-19 100mm",
+	"M2A1 Half-Track",
+    "LUV UAZ-469 Jeep",
+    "Truck Ural-375"
+  ],
+  "artillery_units": [
+    "2S1 Gvozdika",
+    "2S3 Akatsiya",
+    "2S9 Nona-S",
+    "BM-21 Grad"
+  ],
+  "logistics_units": [
+    "LUV UAZ-469 Jeep",
+    "Truck Ural-375"
+  ],
+  "infantry_units": [
+	"Infantry SMLE No.4 Mk-1",
+	"Infantry AK-74 Rus",
+    "Infantry RPG",
+    "Insurgent AK-74"
+  ],
+  "ewrs": [
+    "FlatFaceGenerator"
+  ],
+  "aircraft_carrier": [],
+  "helicopter_carrier": [
+    "Type_071"
+  ],
+  "helicopter_carrier_names": [
+    "HQ-501 Tran Khanh Du",
+    "HQ-521 Hung Vuong",
+    "HQ-522 Hung Vuong",
+    "HQ-561 Khanh Hoa 01",
+    "HQ-571 Truong Sa"
+  ],
+  "naval_units": [
+    "Corvette 1241.1 Molniya",
+    "FAC La Combattante IIa"
+  ],
+  "preset_groups": [
+    "SA-2/S-75",
+    "HQ-2",
+    "KS-19/SON-9",
+    "Silkworm"
+  ],
+  "missiles": [
+    "SSM SS-1C Scud-B"
+  ],
+  "missiles_group_count": 1,
+  "requirements": {
+    "WW2 Asset Pack": "https://www.digitalcombatsimulator.com/en/products/other/wwii_assets_pack/"
+  },
+  "carrier_names": [],
+  "has_jtac": true,
+  "jtac_unit": "Mi-8MTV2 Hip",
+  "doctrine": "coldwar",
+  "liveries_overrides": {
+    "MiG-15bis Fagot": [
+      "VPAF_502",
+	  "VPAF_Jungle_Camo"
+    ],
+	"MiG-19P Farmer-B": [
+      "CC_NV925th",
+      "CC_VPAF_4tonesCamo",
+      "VPAF Green (Fictional)"
+    ],
+	"MiG-21bis Fishbed-N": [
+      "VPAF - 921st Sao Do - 5040",
+      "VPAF - 927th Fighter Regiment Metal",
+      "VPAF - 927th Lam Son - 6122"
+    ],
+	"L-39ZA Albatros": [
+      "VPAF"
+    ],
+    "Mi-8MTV2 Hip": [
+      "Russia_MVD_Standard",
+	  "China PLAAA Camo"
+    ]
+  },
+  "liveries_overrides_ground_forces": {
+    "SAU Gvozdika": [
+      "summer"
+    ],
+	"SAU Akatsia": [
+      "summer"
+    ],
+    "BRDM-2": [
+      "summer"
+    ],
+    "BTR-80": [
+      "Green summer"
+    ],
+    "ZSU-23-4 Shilka": [
+      "summer"
+    ],
+    "ZSU_57_2": [
+      "summer"
+    ],
+	"Ural-375 ZU-23": [
+      "summer"
+    ],
+	"M2A1_halftrack": [
+      "redstar"
+    ],
+	"S-60_Type59_Artillery": [
+      "summer"
+    ],
+    "Ural-375": [
+      "summer"
+    ],
+	"Ural-4320-31": [
+      "summer"
+    ],
+	"Ural-4320T": [
+      "summer"
+    ],
+	"GAZ-66": [
+      "summer"
+    ],
+	"KAMAZ Truck": [
+      "summer"
+    ],
+	"Infantry AK Ins": [
+      "Insurgent 2"
+    ],
+	"La_Combattante_II": [
+      "Vietnam"
+    ]
+  }
+}

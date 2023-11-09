@@ -1,0 +1,282 @@
+{
+  "country": "USA",
+  "name": "USA 1970 Limited Armor",
+  "authors": "Ghosti",
+  "description": "<p>US army in the early 70s, with limited armor units intended for a Vietnam campaign. Contains the Mi-24 and Ka-50 standing in for a pilotable AH-1 Cobra gunship. Also contains P-47s and P-51s standing in for pilotable A-1 Skyraiders.</p>",
+  "locales": [
+    "en_US"
+  ],
+  "aircrafts": [
+    "A-4E Skyhawk",
+	"A-6A Intruder",
+    "B-52H Stratofortress",
+    "C-130",
+    "CH-47D",
+	"F-4B Phantom II",
+    "F-4D Phantom II",
+	"F-4E Phantom II",
+    "F-5E Tiger II",
+    "F-86F Sabre",
+	"F-100 Super Sabre",
+	"F-104C Starfighter",
+	"F-105D Thunderchief",
+	"F-105G Thunderchief",
+	"OV-10A Bronco",
+    "UH-1H Iroquois",
+	"AH-1G Cobra",
+	"Ka-50 Hokum",
+	"Mi-24P Hind-F",
+	"A-20G Havoc",
+	"P-47D-40 Thunderbolt",
+	"P-51D-30-NA Mustang",
+    "S-3B Viking"
+	],
+  "awacs": [
+    "E-2C Hawkeye"
+  ],
+  "tankers": [
+    "KC-130",
+    "KC-135 Stratotanker",
+	"S-3B Tanker"
+  ],
+  "frontline_units": [
+    "M113",
+    "M163 Vulcan Air Defense System",
+	"M48 Chaparral",
+    "AAVP-7A1 'Amtrac'",
+    "M8 Greyhound Light Armored Car",
+	"M10 3-inch Gun Motor Carriage",
+    "M1045 HMMWV (BGM-71 TOW)",
+    "M4A2(75) Sherman",
+	"M4A4 Sherman Firefly",
+    "M551 \"Sheridan\"",
+	"QF 3.7-inch AA Gun",
+	"M4 High-Speed Tractor",
+	"M30 Cargo Carrier"
+  ],
+  "artillery_units": [
+    "M109A6 Paladin",
+	"M12 Gun Motor Carriage"
+  ],
+  "logistics_units": [
+    "Truck M818 6x6"
+  ],
+  "infantry_units": [
+    "Infantry M249",
+    "Infantry M4",
+    "Infantry M4 Georgia",
+	"Infantry M1 Garand"
+  ],
+  "preset_groups": [
+    "Hawk",
+    "Ally Flak"
+  ],
+  "naval_units": [
+    "FFG Oliver Hazard Perry",
+    "FAC La Combattante IIa"
+  ],
+  "ewrs": [
+    "HawkEwrGenerator"
+  ],
+  "helicopter_carrier": [
+    "LHA_Tarawa"
+  ],
+  "destroyers": [
+    "PERRY",
+	"USS_Samuel_Chase"
+  ],
+  "cruisers": [
+    "TICONDEROG",
+	"LST_Mk2"
+  ],
+  "carriers": {
+    "Forrestal": [
+      "CV-59 Forrestal",
+      "CV-60 Saratoga",
+      "CV-61 Ranger",
+      "CV-62 Independence"
+    ],
+    "Stennis": [
+      "CVN-65 Enterprise"
+    ]
+  },
+  "carrier_names": [
+    "CV-59 Forrestal",
+    "CV-60 Saratoga",
+    "CV-61 Ranger",
+    "CV-62 Independence",
+    "CV-63 Kitty Hawk",
+    "CV-64 Constellation",
+    "CVN-65 Enterprise",
+    "CV-66 America",
+    "CV-67 John F. Kennedy"
+  ],
+  "helicopter_carrier_names": [
+    "LPH-2 Iwo Jima",
+    "LPH-3 Okinawa",
+    "LPH-7 Guadalcanal",
+    "LPH-9 Guam",
+    "LPH-10 Tripoli",
+    "LPH-11 New Orleans",
+    "LPH-12 Inchon"
+  ],
+  "naval_units": [
+    "FFG Oliver Hazard Perry",
+	"FAC La Combattante IIa",
+    "LS Samuel Chase",
+	"LST Mk.II"
+  ],
+  "has_jtac": true,
+  "jtac_unit": "UH-1H Iroquois",
+  "requirements": {
+    "WW2 Asset Pack": "https://www.digitalcombatsimulator.com/en/products/other/wwii_assets_pack/"
+  },
+  "doctrine": "coldwar",
+  "building_set": "ww2ally",
+  "liveries_overrides": {
+    "A-4E Skyhawk": [
+      "Trainer USN NFWS Gray",
+      "Trainer USN NFWS Green",
+      "USMC VMA-121 Green Knights",
+      "USMC VMA-124 Memphis Marines",
+      "USMC VMA-131 Diamondbacks",
+      "USMC VMA-142 Flying Gators",
+      "USMC VMA-211 Avengers",
+      "USMC VMA-311 Tomcats",
+      "USMC VMA-322 Fighting Gamecocks",
+      "USN VA-45 Blackbirds",
+      "USN VA-55 Warhorses",
+      "USN VA-64 Black Lancers",
+      "USN VA-144 Roadrunners",
+      "USN VA-153 Blue Tail Flies",
+      "USN VA-163 Saints",
+      "USN VA-164 Ghostriders",
+      "USN VA-195 Dambusters",
+      "USN VA-212 Rampant Raiders",
+      "USN VC-7 Tallyhoers",
+      "Trainer USMC PTMC",
+      "Trainer USMC VMAT-102",
+      "Trainer USN Bare Metal 1956"
+    ],
+    "F-4B Phantom II": [
+      "USAF_67463",
+      "VSN_F-4B_SEA_no_markings"
+    ],
+    "F-4E Phantom II": [
+      "af standard",
+      "af standard 2",
+      "af standard 3",
+      "af standard 4",
+      "af standard 5"
+    ],
+    "F-4D Phantom II": [
+      "DDS_AJS37_M90_Blue",
+	  "ThunderVigg"
+    ],
+	"F-5E Tiger II": [
+      "USAF 'Southeast Asia'"
+    ],
+	"F-100 Super Sabre": [
+      "AF 53 CT 318"
+    ],
+	"F-104C Starfighter": [
+      "USAF 70925 Smoke II"
+    ],
+	"F-105D Thunderchief": [
+      "JJ-AF 61-132"
+    ],
+	"F-105G Thunderchief": [
+      "128th TFS Georgia"
+    ],
+	"OV-10A Bronco": [
+      "VAL-4 Black Ponies UM15",
+	  "VAL-4 Black Ponies UM17",
+	  "VAL-4 Black Ponies UM114",
+	  "VAL-4 Black Ponies UM119",
+	  "VMO-2",
+	  "VMO-5 UV"
+    ],
+	"UH-1H Iroquois": [
+      "Army Standard",
+      "US ARMY 1972",
+      "US DOS",
+      "US NAVY",
+      "[Civilian] Medical",
+      "USAF SOC Vietnam"
+    ],
+	"AH-1G Cobra": [
+      "USA X Black"
+    ],
+	"Mi-24P Hind-F": [
+      "Low Level Hell"
+    ],
+	"Ka-50 Hokum": [
+      "us army",
+	  "us marines 1"
+    ],
+	"B-52H Stratofortress": [
+      "USAF - 69th BS - camo",
+      "USAF - 96th BS - green"
+    ],
+	"C-130": [
+      "1302",
+      "1310",
+      "1315",
+      "KQVN HCF",
+      "KQVN HCL",
+      "USAF DZ63-779",
+      "USAF PR63-820",
+      "USAF SEA",
+      "USAF SG56-471",
+      "USAF YJ56-470"
+    ],
+	"A-20G Havoc": [
+      "USAF 668th BS"
+    ],
+	"P-47D-40 Thunderbolt": [
+      "Skyraider"
+    ],
+	"P-51D-30-NA Mustang": [
+      "USAF Sandy"
+    ],
+	"F-86F Sabre": [
+      "USAF SEA Camo"
+    ]
+  },
+  "liveries_overrides_ground_forces": {
+    "Soldier M249": [
+      "summer"
+    ],
+    "Soldier M4": [
+      "summer"
+    ],
+    "Soldier M4 GRG": [
+      "Vietnam 1st air cav m69",
+      "Vietnam 1st air cav susp",
+      "Vietnam 1st inf m69",
+      "Vietnam 1st inf susp"
+    ],
+    "m-109": [
+      "VIETNAM",
+      "VIETNAM 1",
+      "VIETNAM2"
+    ],
+    "m-113": [
+      "summer",
+      "summer_MED",
+      "autumn",
+      "autumn_MED",
+      "spring",
+      "spring_MED",
+      "green",
+      "green_MED",
+      "Vietnam"
+    ],
+    "m 818": [
+      "Vietnam"
+    ],
+	"La_Combattante_II": [
+      "USA"
+    ]
+  }
+}
