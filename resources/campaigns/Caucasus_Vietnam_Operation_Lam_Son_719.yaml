@@ -3,8 +3,8 @@ name: Caucasus - Vietnam - Operation Lam Son 719
 theater: Caucasus
 authors: Ghosti
 description: <p>This campaign is set during Operation Lam Son 719 in the Vietnam War. Operation Lam Son 719 was a limited-objective offensive campaign conducted in the southeastern portion of the Kingdom of Laos. The campaign was carried out by the armed forces of South Vietnam from 8 February 1971, during the Vietnam War.</p>
-recommended_player_faction: USA 1970 Limited Armor
-recommended_enemy_faction: Vietnam 1970 Limited Armor
+recommended_player_faction: 1971 USA Vietnam War
+recommended_enemy_faction: USSR 1971 Vietnam War
 recommended_start_date: 1971-03-01
 miz: Caucasus_Vietnam_Operation_Lam_Son_719.miz
 performance: 3
@@ -24,7 +24,7 @@ squadrons:
     - primary: SEAD
       secondary: any
       aircraft:
-        - F-4B Phantom II
+        - F-4C Phantom II
   Nha Trang Helicopter Base:
     - primary: CAS
       secondary: air-to-ground
@@ -62,6 +62,11 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - F-86F Sabre
+  Tuy Hoa Airfield:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - F-86F Sabre
   Pleiku Airfield:
     - primary: CAS
       secondary: air-to-ground
@@ -77,22 +82,27 @@ squadrons:
       secondary: any
       aircraft:
         - F-4B Phantom II
-  Nakhon Phanom RTAFB South:
+  Nakhon Phanom RTAFB East:
     - primary: CAS
       secondary: air-to-ground
       aircraft:
         - P-47D-40 Thunderbolt
-  Nakhon Phanom RTAFB North:
+  Nakhon Phanom RTAFB West:
     - primary: CAS
       secondary: air-to-ground
       aircraft:
         - P-51D-30-NA Mustang
-  Udorn RTAFB:
+  Udorn RTAFB West:
     - primary: SEAD
       secondary: any
       aircraft:
-        - F-4B Phantom II
-  Korat RTAFB South:
+        - F-4C Phantom II
+  Udorn RTAFB East:
+    - primary: SEAD
+      secondary: any
+      aircraft:
+        - F-4C Phantom II
+  Korat RTAFB West:
     - primary: BARCAP
       secondary: any
       aircraft:
@@ -100,7 +110,7 @@ squadrons:
     - primary: SEAD
       secondary: any
       aircraft:
-        - F-4B Phantom II
+        - F-4C Phantom II
   Korat RTAFB East:
     - primary: BARCAP
       secondary: any
@@ -109,39 +119,21 @@ squadrons:
     - primary: SEAD
       secondary: any
       aircraft:
-        - F-4B Phantom II
-  Korat RTAFB West:
-    - primary: CAS
-      secondary: air-to-ground
+        - F-4C Phantom II
+  Korat RTAFB Southeast:
+    - primary: BARCAP
+      secondary: any
       aircraft:
-        - F-105D Thunderchief
+        - F-4E Phantom II
     - primary: SEAD
-      secondary: air-to-ground
+      secondary: any
       aircraft:
-        - F-105G Thunderchief
-  Korat RTAFB North:
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - F-105D Thunderchief
-    - primary: SEAD
-      secondary: air-to-ground
-      aircraft:
-        - F-105G Thunderchief
+        - F-4C Phantom II
   Takhli RTAFB South:
     - primary: CAS
       secondary: air-to-ground
       aircraft:
         - F-100 Super Sabre
-  Takhli RTAFB Northwest:
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - F-105D Thunderchief
-    - primary: SEAD
-      secondary: air-to-ground
-      aircraft:
-        - F-105G Thunderchief
   Takhli RTAFB North:
     - primary: CAS
       secondary: air-to-ground
@@ -151,20 +143,6 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - F-105G Thunderchief
-  Takhli RTAFB Northeast:
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - F-105D Thunderchief
-    - primary: SEAD
-      secondary: air-to-ground
-      aircraft:
-        - F-105G Thunderchief
-  Takhli RTAFB Heliport:
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - UH-1H Iroquois
   Don Muang RTAFB:
     - primary: CAS
       secondary: air-to-ground
@@ -175,26 +153,111 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - UH-1H Iroquois
-  U-Tapao RTAFB South:
+  U-Tapao RTAFB Heliport:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+  U-Tapao RTAFB - 4258th - East:
     - primary: Strike
       secondary: air-to-ground
       aircraft:
         - B-52H Stratofortress
-  U-Tapao RTAFB West:
+  U-Tapao RTAFB - 4258th - West:
     - primary: Strike
       secondary: air-to-ground
       aircraft:
         - B-52H Stratofortress
-  U-Tapao RTAFB Northwest:
+  U-Tapao RTAFB - 307th - East:
     - primary: Strike
       secondary: air-to-ground
       aircraft:
         - B-52H Stratofortress
-  U-Tapao RTAFB East:
+  U-Tapao RTAFB - 307th - West:
     - primary: Strike
       secondary: air-to-ground
       aircraft:
         - B-52H Stratofortress
+  U-Tapao Royal Thai Navy Base - East:
+    - primary: Strike
+      secondary: air-to-ground
+      aircraft:
+        - B-52H Stratofortress
+  U-Tapao Royal Thai Navy Base - West:
+    - primary: Strike
+      secondary: air-to-ground
+      aircraft:
+        - B-52H Stratofortress
+  U-Tapao Royal Thai Navy Base - Heliport:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Ka-50 Hokum
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+  Nam Phong RTAFB Heliport:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Ka-50 Hokum
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+  Nam Phong RTAFB West:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+  Nam Phong RTAFB East:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+  Project Field Goal North Airstrip:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - P-47D-40 Thunderbolt
+  Project Field Goal South Airstrip:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - P-51D-30-NA Mustang
+  Operation Millpond North Airstrip:
+    - primary: CAS
+      aircraft:
+        - A-20G Havoc
+  Operation Millpond South Airstrip:
+    - primary: CAS
+      aircraft:
+        - A-20G Havoc
+  609th Special Operations North Airstrip:
+    - primary: CAS
+      aircraft:
+        - A-20G Havoc
+  609th Special Operations East Airstrip:
+    - primary: CAS
+      aircraft:
+        - A-20G Havoc
+  609th Special Operations West Airstrip:
+    - primary: CAS
+      aircraft:
+        - A-20G Havoc
+  609th Special Operations South Airstrip:
+    - primary: CAS
+      aircraft:
+        - A-20G Havoc
   Chu Lai Helicopter Base:
     - primary: CAS
       secondary: air-to-ground
@@ -306,14 +369,36 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - Mi-8MTV2 Hip
+  # Ho Chi Minh Trail - Vientiane:
+  # Ho Chi Minh Trail - Ban Longtiang:
   # Ho Chi Minh Trail - Savannakhet:
   # Ho Chi Minh Trail - Muong Phine:
-  # Ho Chi Minh Trail - Pakse:
   # Ho Chi Minh Trail - Tchepone:
   # Ho Chi Minh Trail - Saravane:
   # Ho Chi Minh Trail - Attopeu:
+  # Ho Chi Minh Trail - Pakse North:
+  # Ho Chi Minh Trail - Pakse South:
   # Ho Chi Minh Trail - Paksong:
+  # Paksong Airfield South:
+  # Paksong Airfield North:
+  # Tchepone Airfield:
+  # Nape Pass Airfield:
   Nape Pass FARP:
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  Rao Co Mountain West Outpost:
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  Rao Co Mountain East Outpost:
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  Nam Phao FARP:
     - primary: BAI
       secondary: air-to-ground
       aircraft:
