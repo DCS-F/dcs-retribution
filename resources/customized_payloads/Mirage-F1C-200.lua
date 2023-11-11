@@ -88,11 +88,11 @@ local unitPayloads = {
 					["num"] = 1,
 				},
 				[3] = {
-					["CLSID"] = "{SAMP400LD}",
+					["CLSID"] = "{MATRA_F1_SNEBT253}",
 					["num"] = 5,
 				},
 				[4] = {
-					["CLSID"] = "{SAMP400LD}",
+					["CLSID"] = "{MATRA_F1_SNEBT253}",
 					["num"] = 3,
 				},
 				[5] = {
@@ -100,11 +100,11 @@ local unitPayloads = {
 					["num"] = 4,
 				},
 				[6] = {
-					["CLSID"] = "{SAMP400LD}",
+					["CLSID"] = "{MATRA_F1_SNEBT253}",
 					["num"] = 6,
 				},
 				[7] = {
-					["CLSID"] = "{SAMP400LD}",
+					["CLSID"] = "{MATRA_F1_SNEBT253}",
 					["num"] = 2,
 				},
 			},
@@ -219,11 +219,11 @@ local unitPayloads = {
 					["num"] = 1,
 				},
 				[3] = {
-					["CLSID"] = "{SAMP400LD}",
+					["CLSID"] = "{MATRA_F1_SNEBT253}",
 					["num"] = 5,
 				},
 				[4] = {
-					["CLSID"] = "{SAMP400LD}",
+					["CLSID"] = "{MATRA_F1_SNEBT253}",
 					["num"] = 3,
 				},
 				[5] = {
@@ -231,11 +231,11 @@ local unitPayloads = {
 					["num"] = 4,
 				},
 				[6] = {
-					["CLSID"] = "{SAMP400LD}",
+					["CLSID"] = "{MATRA_F1_SNEBT253}",
 					["num"] = 6,
 				},
 				[7] = {
-					["CLSID"] = "{SAMP400LD}",
+					["CLSID"] = "{MATRA_F1_SNEBT253}",
 					["num"] = 2,
 				},
 			},

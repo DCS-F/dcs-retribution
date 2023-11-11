@@ -2,6 +2,58 @@ local unitPayloads = {
 	["name"] = "C-101CC",
 	["payloads"] = {
 		[1] = {
+			["name"] = "CAS",
+			["pylons"] = {
+				[1] = {
+					["CLSID"] = "{C-101-DEFA553}",
+					["num"] = 4,
+				},
+				[2] = {
+					["CLSID"] = "{08164777-5E9C-4B08-B48E-5AA7AFB246E2}",
+					["num"] = 5,
+				},
+				[3] = {
+					["CLSID"] = "{08164777-5E9C-4B08-B48E-5AA7AFB246E2}",
+					["num"] = 3,
+				},
+				[4] = {
+					["CLSID"] = "{FD90A1DC-9147-49FA-BF56-CB83EF0BD32B}",
+					["num"] = 2,
+				},
+				[5] = {
+					["CLSID"] = "{FD90A1DC-9147-49FA-BF56-CB83EF0BD32B}",
+					["num"] = 6,
+				},
+				[6] = {
+					["CLSID"] = "{6CEB49FC-DED8-4DED-B053-E1F033FF72D3}",
+					["num"] = 7,
+				},
+				[7] = {
+					["CLSID"] = "{6CEB49FC-DED8-4DED-B053-E1F033FF72D3}",
+					["num"] = 1,
+				},
+			},
+			["tasks"] = {
+				[1] = 31,
+			},
+		},
+		[2] = {
+			["name"] = "ANTISHIP",
+			["pylons"] = {
+				[1] = {
+					["CLSID"] = "{1461CD18-429A-42A9-A21F-4C621ECD4573}",
+					["num"] = 6,
+				},
+				[2] = {
+					["CLSID"] = "{1461CD18-429A-42A9-A21F-4C621ECD4573}",
+					["num"] = 2,
+				},
+			},
+			["tasks"] = {
+				[1] = 30,
+			},
+		},
+		[3] = {
 			["name"] = "CAP",
 			["pylons"] = {
 				[1] = {
@@ -19,58 +71,6 @@ local unitPayloads = {
 			},
 			["tasks"] = {
 				[1] = 17,
-			},
-		},
-		[2] = {
-			["name"] = "CAS",
-			["pylons"] = {
-				[1] = {
-					["CLSID"] = "{C-101-DEFA553}",
-					["num"] = 4,
-				},
-				[2] = {
-					["CLSID"] = "{A021F29D-18AB-4d3e-985C-FC9C60E35E9E}",
-					["num"] = 5,
-				},
-				[3] = {
-					["CLSID"] = "{A021F29D-18AB-4d3e-985C-FC9C60E35E9E}",
-					["num"] = 3,
-				},
-				[4] = {
-					["CLSID"] = "{A021F29D-18AB-4d3e-985C-FC9C60E35E9E}",
-					["num"] = 2,
-				},
-				[5] = {
-					["CLSID"] = "{A021F29D-18AB-4d3e-985C-FC9C60E35E9E}",
-					["num"] = 6,
-				},
-				[6] = {
-					["CLSID"] = "{6CEB49FC-DED8-4DED-B053-E1F033FF72D3}",
-					["num"] = 7,
-				},
-				[7] = {
-					["CLSID"] = "{6CEB49FC-DED8-4DED-B053-E1F033FF72D3}",
-					["num"] = 1,
-				},
-			},
-			["tasks"] = {
-				[1] = 31,
-			},
-		},
-		[3] = {
-			["name"] = "ANTISHIP",
-			["pylons"] = {
-				[1] = {
-					["CLSID"] = "{1461CD18-429A-42A9-A21F-4C621ECD4573}",
-					["num"] = 6,
-				},
-				[2] = {
-					["CLSID"] = "{1461CD18-429A-42A9-A21F-4C621ECD4573}",
-					["num"] = 2,
-				},
-			},
-			["tasks"] = {
-				[1] = 30,
 			},
 		},
 		[4] = {
@@ -106,6 +106,14 @@ local unitPayloads = {
 						["function_delay_ctrl_FMU139CB_LD"] = 0,
 					},
 				},
+				[6] = {
+					["CLSID"] = "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}",
+					["num"] = 6,
+				},
+				[7] = {
+					["CLSID"] = "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}",
+					["num"] = 2,
+				},
 			},
 			["tasks"] = {
 				[1] = 31,
@@ -133,6 +141,14 @@ local unitPayloads = {
 				[5] = {
 					["CLSID"] = "{6CEB49FC-DED8-4DED-B053-E1F033FF72D3}",
 					["num"] = 1,
+				},
+				[6] = {
+					["CLSID"] = "{A021F29D-18AB-4d3e-985C-FC9C60E35E9E}",
+					["num"] = 3,
+				},
+				[7] = {
+					["CLSID"] = "{A021F29D-18AB-4d3e-985C-FC9C60E35E9E}",
+					["num"] = 5,
 				},
 			},
 			["tasks"] = {
