@@ -3,8 +3,8 @@ name: Caucasus - Vietnam - Operation Lam Son 719
 theater: Caucasus
 authors: Ghosti
 description: <p>This campaign is set during Operation Lam Son 719 in the Vietnam War. Operation Lam Son 719 was a limited-objective offensive campaign conducted in the southeastern portion of the Kingdom of Laos. The campaign was carried out by the armed forces of South Vietnam from 8 February 1971, during the Vietnam War.</p>
-recommended_player_faction: 1971 USA Vietnam War
-recommended_enemy_faction: USSR 1971 Vietnam War
+recommended_player_faction: USA 1970 Limited Armor
+recommended_enemy_faction: Vietnam 1970 Limited Armor
 recommended_start_date: 1971-03-01
 miz: Caucasus_Vietnam_Operation_Lam_Son_719.miz
 performance: 3
