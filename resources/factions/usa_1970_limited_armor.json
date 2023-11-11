@@ -9,11 +9,12 @@
   "aircrafts": [
     "A-4E Skyhawk",
 	"A-6A Intruder",
+    "AJS-37 Viggen",
     "B-52H Stratofortress",
     "C-130",
     "CH-47D",
 	"F-4B Phantom II",
-    "F-4D Phantom II",
+    "F-4C Phantom II",
 	"F-4E Phantom II",
     "F-5E Tiger II",
     "F-86F Sabre",
@@ -23,7 +24,7 @@
 	"F-105G Thunderchief",
 	"OV-10A Bronco",
     "UH-1H Iroquois",
-	"AH-1G Cobra",
+	"AH-1W SuperCobra",
 	"Ka-50 Hokum",
 	"Mi-24P Hind-F",
 	"A-20G Havoc",
@@ -159,8 +160,23 @@
       "Trainer USN Bare Metal 1956"
     ],
     "F-4B Phantom II": [
-      "USAF_67463",
-      "VSN_F-4B_SEA_no_markings"
+      "VF-151 213 USS MIDWAY by Urbi",
+      "VMFA-212 AC01 by Urbi",
+      "#f VF-84 Jolly Rogers 200 15-5868 by Urbi",
+      "#h VF-121-118 by Urbi",
+      "#h VF-161 101 by Urbi",
+      "#h VF-41 Black Aces 101 15-5865 by Urbi",
+      "#h VF-96 100 USS CONSTALLATION by Urbi",
+      "#h VMFA-314 5 by Urbi"
+    ],
+    "F-4C Phantom II": [
+      "#f 555 TFS-OY 468 by Urbi",
+      "#h 433rd TFS 64-0829 by Raptic",
+      "#h 480th TFS 63-7489 by Raptic",
+      "#h 57th FIS 63-0666 by Raptic",
+      "#h 57th FIS 63-7475 by Urbi",
+      "113 TFS 63-7623 by Urbi",
+      "433 TFS 63-7680 by Urbi"
     ],
     "F-4E Phantom II": [
       "af standard",
@@ -169,7 +185,7 @@
       "af standard 4",
       "af standard 5"
     ],
-    "F-4D Phantom II": [
+    "AJS-37 Viggen": [
       "DDS_AJS37_M90_Blue",
 	  "ThunderVigg"
     ],
@@ -204,7 +220,7 @@
       "[Civilian] Medical",
       "USAF SOC Vietnam"
     ],
-	"AH-1G Cobra": [
+	"AH-1W SuperCobra": [
       "USA X Black"
     ],
 	"Mi-24P Hind-F": [
