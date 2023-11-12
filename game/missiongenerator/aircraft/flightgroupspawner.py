@@ -35,7 +35,7 @@ from game.missiongenerator.missiondata import MissionData
 from game.naming import namegen
 from game.theater import Airfield, ControlPoint, Fob, NavalControlPoint, OffMapSpawn
 from game.utils import feet, meters
-from pydcs_extensions import A_4E_C
+from pydcs_extensions import A_4E_C, VSN_F4B, VSN_F4C
 
 WARM_START_HELI_ALT = meters(500)
 WARM_START_ALTITUDE = meters(3000)
@@ -405,7 +405,17 @@ class FlightGroupSpawner:
         if self.start_type is not StartType.COLD or (
             not ground_power_available
             and self.flight.unit_type.dcs_unit_type
-            in [A_4E_C, F_5E_3, F_86F_Sabre, MiG_15bis, F_14A_135_GR, F_14B, C_101CC]
+            in [
+                A_4E_C,
+                F_5E_3,
+                F_86F_Sabre,
+                MiG_15bis,
+                F_14A_135_GR,
+                F_14B,
+                C_101CC,
+                VSN_F4B,
+                VSN_F4C,
+            ]
         ):
             group.points[0].action = PointAction.FromGroundAreaHot
             group.points[0].type = "TakeOffGroundHot"
