@@ -822,8 +822,12 @@ do
                             for i,v in ipairs(foundUnits) do
                                 group_coalition = gr:getCoalition()
                                 found_unit_coalition = v:getCoalition()
-                                if v:getDesc().category == Unit.Category.GROUND_UNIT then
+                                if v:getDesc().category == Unit.Category.GROUND_UNIT and v:getLife() and (v:getLife() / v:getDesc().life) > 0.1 then
                                     if found_unit_coalition ~= group_coalition then
+                                        attributes = v:getDesc().attributes
+                                        for n,a in ipairs(attributes) do
+                                            env.info('GroupMonitor: processSurface ['..v:getName()..'] has attribute '..a)
+                                        end
                                         if v:hasAttribute('Infantry') or v:hasAttribute('Armored vehicles') then
                                             env.info('GroupMonitor: processSurface ['..group.name..'] cannot detonate structure at '..z.name..' because blocked by '..v:getName())
                                             canDetonate = false
@@ -849,7 +853,7 @@ do
 							end
 						end
 
-						if not success then
+						if canDetonate and not success then
 							env.info('GroupMonitor: processSurface ['..group.name..'] no targets to detonate, switching to atdestination')
 							group.state = 'atdestination'
 							group.lastStateTime = timer.getAbsTime()
@@ -6164,7 +6168,7 @@ do
 			
 			for name, zone in pairs(zones) do
 				if zone.keepActive then
-					if (zone.closestEnemyDist and zone.closestEnemyDist > BattlefieldManager.farOverride) and ((not zone.distToFront) or (zone.distToFront and zone.distToFront > 3)) then
+					if not zone.distToFront or (zone.distToFront and zone.distToFront > 2) then
 						zone.mode = ZoneCommand.modes.export
 					else
 						if zone.mode ~= ZoneCommand.modes.normal then
@@ -6173,17 +6177,15 @@ do
 						zone.mode = ZoneCommand.modes.normal
 					end
 				else
-					if not zone.distToFront then
+					if not zone.distToFront or (zone.distToFront and zone.distToFront > 2) then
 						zone.mode = ZoneCommand.modes.export
-					elseif zone.distToFront == 0 or (zone.closestEnemyDist and zone.closestEnemyDist < BattlefieldManager.closeOverride) then
+					elseif zone.distToFront == 2 then
+						zone.mode = ZoneCommand.modes.supply
+					else
 						if zone.mode ~= ZoneCommand.modes.normal then
 							zone:fullBuild(1.0)
 						end
 						zone.mode = ZoneCommand.modes.normal
-					elseif zone.distToFront == 1 then
-						zone.mode = ZoneCommand.modes.supply
-					elseif zone.distToFront > 1 then
-						zone.mode = ZoneCommand.modes.export
 					end
 				end
 
