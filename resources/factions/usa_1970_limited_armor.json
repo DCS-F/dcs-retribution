@@ -74,21 +74,16 @@
   ],
   "naval_units": [
     "FFG Oliver Hazard Perry",
-    "FAC La Combattante IIa"
+    "LS Samuel Chase",
+	"LST Mk.II",
+    "CV-59 Forrestal",
+    "LHA-1 Tarawa"
   ],
   "ewrs": [
     "HawkEwrGenerator"
   ],
   "helicopter_carrier": [
     "LHA_Tarawa"
-  ],
-  "destroyers": [
-    "PERRY",
-	"USS_Samuel_Chase"
-  ],
-  "cruisers": [
-    "TICONDEROG",
-	"LST_Mk2"
   ],
   "carriers": {
     "Forrestal": [
@@ -108,7 +103,6 @@
     "CV-62 Independence",
     "CV-63 Kitty Hawk",
     "CV-64 Constellation",
-    "CVN-65 Enterprise",
     "CV-66 America",
     "CV-67 John F. Kennedy"
   ],
@@ -120,12 +114,6 @@
     "LPH-10 Tripoli",
     "LPH-11 New Orleans",
     "LPH-12 Inchon"
-  ],
-  "naval_units": [
-    "FFG Oliver Hazard Perry",
-	"FAC La Combattante IIa",
-    "LS Samuel Chase",
-	"LST Mk.II"
   ],
   "has_jtac": true,
   "jtac_unit": "UH-1H Iroquois",

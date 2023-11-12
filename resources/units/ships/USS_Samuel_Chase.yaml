@@ -1,4 +1,4 @@
-class: LandingShip
+class: Destroyer
 price: 0
 variants:
   LS Samuel Chase: null
