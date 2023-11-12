@@ -9,59 +9,43 @@ recommended_start_date: 1971-03-01
 miz: Caucasus_Vietnam_Operation_Lam_Son_719.miz
 performance: 3
 version: "10.2"
+
+settings:
+  pretense_extra_zone_connections: 0
+  pretense_disable_supply_convoys: true
+  pretense_ground_assaults_prefer_roads: false
+  pretense_num_of_cargo_planes: 1
+  pretense_do_not_generate_sead_missions: true
+  perf_culling: true
+  perf_culling_distance: 30
+  player_skill: "High"
+  enemy_skill: "Average"
+  enemy_vehicle_skill: "Average"
+  night_day_missions": NightMissions.OnlyDay
+  labels: "Dot Only"
+
+  ground_start_ai_planes: true
+  ground_start_scenery_remove_triggers: false
+  ground_start_ground_power_trucks: false
+  ground_start_ground_power_trucks_roadbase: false
+
+  plugins:
+    gamemaster: true
+    splashdamageclusters: true
+    splashdamageclusters.bdaMessages: true
+    splashdamageclusters.clusterEffects: true
+    splashdamageclusters.shipRadarDamage: true
+ #Mods to be used
+  a4_skyhawk: true
+  a6a_intruder: true
+  f4bc_phantom: true
+  f100_supersabre: true
+  f104_starfighter: true
+  f105_thunderchief: true
+  frenchpack: true
+  ov10a_bronco: true
+
 squadrons:
-  Binh Thuy Airfield:
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - P-47D-40 Thunderbolt
-  Phan Rang Airfield:
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - F-100 Super Sabre
-  Cam Ranh Airfield:
-    - primary: SEAD
-      secondary: any
-      aircraft:
-        - F-4C Phantom II
-  Nha Trang Helicopter Base:
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - AH-1G Cobra
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - UH-1H Iroquois
-  Tan Son Nhut Airfield:
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - P-51D-30-NA Mustang
-  Bien Hoa Airfield:
-    - primary: CAS
-      aircraft:
-        - A-20G Havoc
-  Tan Son Nhut Airfield:
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - P-47D-40 Thunderbolt
-  Binh Thuy Airfield:
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - P-51D-30-NA Mustang
-  Phu Cat Airfield:
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - F-100 Super Sabre
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - F-86F Sabre
   Tuy Hoa Airfield:
     - primary: CAS
       secondary: air-to-ground
@@ -71,17 +55,17 @@ squadrons:
     - primary: CAS
       secondary: air-to-ground
       aircraft:
-        - F-86F Sabre
+        - F-100 Super Sabre
   Ubon RTAFB South:
     - primary: SEAD
       secondary: any
       aircraft:
-        - F-4B Phantom II
+        - F-4C Phantom II
   Ubon RTAFB North:
     - primary: SEAD
       secondary: any
       aircraft:
-        - F-4B Phantom II
+        - F-4C Phantom II
   Nakhon Phanom RTAFB East:
     - primary: CAS
       secondary: air-to-ground
@@ -540,12 +524,94 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - Mi-8MTV2 Hip
-  # Anapa-Vityazevo
-  12:
+        
+  # Maykop-Khanskaya
+  # 16:
+
+  # Gelendzhik
+  17:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - F-100 Super Sabre
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - F-4E Phantom II
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - F-4C Phantom II
     - primary: BARCAP
       secondary: any
       aircraft:
         - F-5E Tiger II
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AJS-37 Viggen
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - OV-10A Bronco
+  # Mineralnye Vody
+  26:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-5E Tiger II
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-104C Starfighter
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - F-105D Thunderchief
+    - primary: SEAD
+      secondary: air-to-ground
+      aircraft:
+        - F-105G Thunderchief
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - P-47D-40 Thunderbolt
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - P-51D-30-NA Mustang
+  # Nalchik
+  27:
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - F-4E Phantom II
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - F-4C Phantom II
+  # Mozdok
+  28:
+    - primary: Strike
+      secondary: air-to-ground
+      aircraft:
+        - B-52H Stratofortress
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - F-4E Phantom II
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - F-4C Phantom II
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - F-105D Thunderchief
+    - primary: SEAD
+      secondary: air-to-ground
+      aircraft:
+        - F-105G Thunderchief
     - primary: Transport
       aircraft:
         - C-130
@@ -561,104 +627,6 @@ squadrons:
     - primary: Refueling
       aircraft:
         - KC-135 Stratotanker MPRS
-        
-  # Krasnodar-Center
-  13:
-    - primary: BARCAP
-      secondary: any
-      aircraft:
-        - F-5E Tiger II
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - AH-1G Cobra
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - UH-1H Iroquois
-
-  # Novorossiysk
-  14:
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - UH-1H Iroquois
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - F-100 Super Sabre
-    - primary: BARCAP
-      secondary: any
-      aircraft:
-        - F-104C Starfighter
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - F-105D Thunderchief
-    - primary: SEAD
-      secondary: air-to-ground
-      aircraft:
-        - F-105G Thunderchief
-  # Krymsk
-  15:
-    - primary: BARCAP
-      secondary: any
-      aircraft:
-        - F-4E Phantom II
-    - primary: SEAD
-      secondary: any
-      aircraft:
-        - F-4B Phantom II
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - UH-1H Iroquois
-        
-  # Maykop-Khanskaya
-  # 16:
-
-  # Gelendzhik
-  17:
-    - primary: BAI
-      secondary: any
-      aircraft:
-        - F-4E Phantom II
-    - primary: BAI
-      secondary: any
-      aircraft:
-        - F-4B Phantom II
-    - primary: BARCAP
-      secondary: any
-      aircraft:
-        - F-5E Tiger II
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - F-4D Phantom II
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - OV-10A Bronco
-  # Krasnodar-Pashkovsky
-  19:
-    - primary: BARCAP
-      secondary: any
-      aircraft:
-        - F-5E Tiger II
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - OV-10A Bronco
-  # Mineralnye Vody
-  26:
-    - primary: BAI
-      secondary: any
-      aircraft:
-        - F-4E Phantom II
-    - primary: BAI
-      secondary: any
-      aircraft:
-        - F-4B Phantom II
   # Beslan
   32:
     - primary: CAS

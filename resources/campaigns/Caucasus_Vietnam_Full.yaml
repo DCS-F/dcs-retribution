@@ -10,11 +10,6 @@ miz: Caucasus_Vietnam_Full.miz
 performance: 3
 version: "10.2"
 squadrons:
-  Binh Thuy Airfield:
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - P-47D-40 Thunderbolt
   Phan Rang Airfield:
     - primary: CAS
       secondary: air-to-ground
@@ -34,11 +29,6 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - UH-1H Iroquois
-  Tan Son Nhut Airfield:
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - P-51D-30-NA Mustang
   Bien Hoa Airfield:
     - primary: CAS
       aircraft:
