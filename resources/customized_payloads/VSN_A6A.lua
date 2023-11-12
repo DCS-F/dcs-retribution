@@ -162,6 +162,37 @@ local unitPayloads = {
 				[3] = 32,
 			},
 		},
+		[6] = {
+			["displayName"] = "SEAD Escort",
+			["name"] = "SEAD Escort",
+			["pylons"] = {
+				[1] = {
+					["CLSID"] = "{B06DD79A-F21E-4EB9-BD9D-AB3844618C93}",
+					["num"] = 1,
+				},
+				[2] = {
+					["CLSID"] = "{BRU41A_6*MK20_ROCKEYE}",
+					["num"] = 2,
+				},
+				[3] = {
+					["CLSID"] = "{0395076D-2F77-4420-9D33-087A4398130B}",
+					["num"] = 3,
+				},
+				[4] = {
+					["CLSID"] = "{BRU41A_6*MK20_ROCKEYE}",
+					["num"] = 4,
+				},
+				[5] = {
+					["CLSID"] = "{B06DD79A-F21E-4EB9-BD9D-AB3844618C93}",
+					["num"] = 5,
+				},
+			},
+			["tasks"] = {
+				[1] = 15,
+				[2] = 29,
+				[3] = 32,
+			},
+		},
 	},
 	["tasks"] = {
 	},
