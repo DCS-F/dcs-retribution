@@ -981,6 +981,18 @@ class Settings:
             "to adjust performance."
         ),
     )
+    pretense_extra_zone_connections: int = bounded_int_option(
+        "Extra friendly zone connections",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=2,
+        min=0,
+        max=10,
+        detail=(
+            "Add connections from each zone to this many closest friendly zones,"
+            "which don't have an existing supply route defined in the campaign."
+        ),
+    )
     pretense_disable_ground_assaults: bool = boolean_option(
         "Disable ground assaults",
         page=PRETENSE_PAGE,
