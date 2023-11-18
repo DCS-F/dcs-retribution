@@ -6448,8 +6448,8 @@ do
             if not player then return end
             
             if event.id==world.event.S_EVENT_PLAYER_ENTER_UNIT then
-                if event.initiator and event.initiator:getCategory() == Object.Category.UNIT and 
-                    (event.initiator:getDesc().category == Unit.Category.AIRPLANE or event.initiator:getDesc().category == Unit.Category.HELICOPTER)  then
+                if event.initiator and Object.getCategory(event.initiator) == Object.Category.UNIT and
+                    (Object.getCategory(event.initiator) == Unit.Category.AIRPLANE or Object.getCategory(event.initiator) == Unit.Category.HELICOPTER)  then
                     
                         local pname = event.initiator:getPlayerName()
                         if pname then
