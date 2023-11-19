@@ -12,7 +12,9 @@
     "MiG-19P Farmer-B",
     "MiG-21bis Fishbed-N",
 	"Su-22M4 Fitter-K",
-	"L-39ZA Albatros"
+	"L-39ZA Albatros",
+    "An-26B",
+    "An-30M"
   ],
   "frontline_units": [
     "BRDM-2",
@@ -99,6 +101,12 @@
     "Mi-8MTV2 Hip": [
       "Russia_MVD_Standard",
 	  "China PLAAA Camo"
+    ],
+    "An-26B": [
+      "China PLAAF"
+    ],
+    "An-30M": [
+      "China CAAC"
     ]
   },
   "liveries_overrides_ground_forces": {
