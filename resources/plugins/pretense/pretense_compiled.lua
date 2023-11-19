@@ -952,7 +952,7 @@ do
 								if tgt.visible and tgt.object and tgt.object.isExist and tgt.object:isExist() then
 									if tgt.object.getCategory and tgt.object:getCategory() == Object.Category.UNIT and 
 										tgt.object.getCoalition and tgt.object:getCoalition()~=frUnit:getCoalition() and 
-										tgt.object:getDesc().category == Unit.Category.GROUND_UNIT then
+										tgt.object:getCategory() == Unit.Category.GROUND_UNIT then
 
 										local dist = mist.utils.get3DDist(frUnit:getPoint(), tgt.object:getPoint())
 										if dist < 2000 then
@@ -4727,8 +4727,8 @@ do
 			if self.distToFront == nil then return false end
 
 			for _,tgt in pairs(self.neighbours) do
-				if self:isSupplyMissionValid(product, tgt) then
-					return true
+				if self:isSupplyMissionValid(product, tgt) then 
+					return true 
 				end
 			end
 		elseif product.missionType == ZoneCommand.missionTypes.supply_transfer then
@@ -4758,8 +4758,8 @@ do
 		elseif not Config.disableGroundAssaults and product.missionType == ZoneCommand.missionTypes.assault then
 			if self.mode ~= ZoneCommand.modes.normal then return false end
 			for _,tgt in pairs(self.neighbours) do
-				if self:isAssaultMissionValid(product, tgt) then
-					return true
+				if self:isAssaultMissionValid(product, tgt) then 
+					return true 
 				end
 			end
 		elseif product.missionType == ZoneCommand.missionTypes.cas then
@@ -12532,7 +12532,7 @@ do
         for _,m in pairs(self.activeMissions) do
             if m.players[player] then
                 if m.state == Mission.states.active then
-                    if weapon:getDesc().category == Weapon.Category.BOMB then
+                    if weapon:getCategory() == Weapon.Category.BOMB then
                         timer.scheduleFunction(function (params, time)
                             if not params.weapon:isExist() then
                                 return nil -- weapon despawned
