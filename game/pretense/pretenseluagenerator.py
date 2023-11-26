@@ -819,8 +819,14 @@ class PretenseLuaGenerator(LuaGenerator):
             other_cp_name not in connected_points[cp_name]
             and cp_name not in connected_points[other_cp_name]
         ):
+            cp_name_conn = "".join(
+                [i for i in cp_name if i.isalnum() or i.isspace() or i == "-"]
+            )
+            cp_name_conn_other = "".join(
+                [i for i in other_cp_name if i.isalnum() or i.isspace() or i == "-"]
+            )
             lua_string_connman = (
-                f"    cm: addConnection('{cp_name}', '{other_cp_name}')\n"
+                f"    cm: addConnection('{cp_name_conn}', '{cp_name_conn_other}')\n"
             )
             connected_points[cp_name].append(other_cp_name)
             connected_points[other_cp_name].append(cp_name)
@@ -884,6 +890,9 @@ class PretenseLuaGenerator(LuaGenerator):
                 continue
 
             cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalpha()])
+            cp_name = "".join(
+                [i for i in cp.name if i.isalnum() or i.isspace() or i == "-"]
+            )
             cp_side = 2 if cp.captured else 1
             for side in range(1, 3):
                 if cp_name_trimmed not in self.game.pretense_air[cp_side]:
@@ -893,7 +902,7 @@ class PretenseLuaGenerator(LuaGenerator):
                 if cp_name_trimmed not in self.game.pretense_ground_assault[cp_side]:
                     self.game.pretense_ground_assault[side][cp_name_trimmed] = list()
             lua_string_zones += (
-                f"zones.{cp_name_trimmed} = ZoneCommand:new('{cp.name}')\n"
+                f"zones.{cp_name_trimmed} = ZoneCommand:new('{cp_name}')\n"
             )
             lua_string_zones += (
                 f"zones.{cp_name_trimmed}.initialState = "
@@ -935,9 +944,9 @@ class PretenseLuaGenerator(LuaGenerator):
                 f"zones.{cp_name_trimmed}.keepActive = " + is_keep_active + "\n"
             )
             if cp.is_fleet:
-                lua_string_zones += self.generate_pretense_zone_sea(cp.name)
+                lua_string_zones += self.generate_pretense_zone_sea(cp_name)
             else:
-                lua_string_zones += self.generate_pretense_zone_land(cp.name)
+                lua_string_zones += self.generate_pretense_zone_land(cp_name)
 
         lua_string_connman = "	cm = ConnectionManager:new()\n"
 

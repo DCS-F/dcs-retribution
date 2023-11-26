@@ -227,13 +227,16 @@ class PretenseTriggerGenerator:
                 trigger_radius = TRIGGER_RADIUS_PRETENSE_CARRIER
             else:
                 trigger_radius = TRIGGER_RADIUS_CAPTURE
+            cp_name = "".join(
+                [i for i in cp.name if i.isalnum() or i.isspace() or i == "-"]
+            )
             if not isinstance(cp, OffMapSpawn):
                 zone_color = {1: 0.0, 2: 0.0, 3: 0.0, 4: 0.15}
                 self.mission.triggers.add_triggerzone(
                     cp.position,
                     radius=trigger_radius,
                     hidden=False,
-                    name=cp.name,
+                    name=cp_name,
                     color=zone_color,
                 )
             cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalpha()])
