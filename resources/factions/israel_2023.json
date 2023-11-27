@@ -1,0 +1,159 @@
+{
+  "country": "Israel",
+  "name": "Israel 2023",
+  "authors": "Ghosti",
+  "description": "<p>A present day Israeli faction with fictional F-14B and F/A-18C imports to allow more players fly as wingmen for Strike Eagle flights.</p>",
+  "locales": [
+    "he_IL"
+  ],
+  "aircrafts": [
+    "AH-64D Apache Longbow",
+    "AH-64D Apache Longbow (AI)",
+    "C-130",
+    "C-130J-30 Super Hercules",
+    "F-14B Tomcat",
+    "F-15C Eagle",
+    "F-15D Baz",
+    "F-15E Strike Eagle (AI)",
+    "F-15E Strike Eagle (Suite 4+)",
+    "F-16CM Fighting Falcon (Block 50)",
+    "F-16D Barak (Block 30)",
+    "F-16D Barak (Block 40)",
+    "F-16I Sufa",
+    "F/A-18C Hornet (Lot 20)",
+    "UH-1H Iroquois",
+    "UH-60L"
+  ],
+  "awacs": [
+    "E-2C Hawkeye"
+  ],
+  "tankers": [
+    "KC-130",
+    "KC-135 Stratotanker",
+    "KC-135 Stratotanker MPRS"
+  ],
+  "frontline_units": [
+    "M1043 HMMWV (M2 HMG)",
+    "M1045 HMMWV (BGM-71 TOW)",
+    "M113",
+    "M163 Vulcan Air Defense System",
+    "Merkava Mk IV"
+  ],
+  "artillery_units": [
+    "M109A6 Paladin",
+    "M270 Multiple Launch Rocket System"
+  ],
+  "logistics_units": [
+    "Truck M818 6x6"
+  ],
+  "infantry_units": [
+    "Infantry M249",
+    "Infantry M4",
+    "Infantry M4 Georgia",
+    "MANPADS Stinger",
+    "Mortar 2B11 120mm"
+  ],
+  "preset_groups": [
+    "Hawk",
+    "Iron Dome",
+    "Patriot"
+  ],
+  "naval_units": [
+    "DDG Arleigh Burke IIa"
+  ],
+  "missiles": [],
+  "air_defense_units": [
+    "SAM Hawk SR (AN/MPQ-50)",
+    "M163 Vulcan Air Defense System",
+    "M48 Chaparral"
+  ],
+  "requirements": {},
+  "carrier_names": [],
+  "helicopter_carrier_names": [],
+  "has_jtac": true,
+  "jtac_unit": "MQ-9 Reaper",
+  "liveries_overrides": {
+    "F-15C Eagle": [
+      "390th Fighter SQN"
+    ],
+    "F-15E Strike Eagle (AI)": [
+      "IDF No 69 Hammers Squadron"
+    ],
+    "F-15E Strike Eagle (Suite 4+)": [
+      "IDF RA'AM, 69 Hammer Sqn"
+    ],
+    "F-16CM Fighting Falcon (Block 50)": [
+      "IAF_101st_squadron",
+      "IAF_110th_Squadron",
+      "IAF_115th_Aggressors_Squadron",
+      "IAF_117th_Squadron"
+    ],
+    "AH-64D Apache Longbow": [
+      "IAF 113th Hornet Squadron",
+	  "Israel Experimental Green Sand"
+    ],
+    "AH-64D Apache Longbow (AI)": [
+      "ah-64_d_isr"
+    ],
+    "F-14B Tomcat": [
+      "IAF 144th Phoenix (1999)"
+    ],
+    "F/A-18C Hornet (Lot 20)": [
+      "Fictional Israel Air Force"
+    ],
+    "UH-1H Iroquois": [
+      "Israel Army"
+    ],
+    "UH-60L": [
+      "Israeli Air Force",
+      "Israel Experimental Green Sand"
+    ]	
+  },
+  "liveries_overrides_ground_forces": {
+	"Hummer": [
+      "desert"
+    ],
+	"M1043 HMMWV Armament": [
+      "desert"
+    ],
+	"M1045 HMMWV TOW": [
+      "desert"
+    ],
+	"M-109": [
+      "desert"
+    ],
+	"M-113": [
+      "desert",
+      "desert_MED"
+    ],
+    "Vulcan": [
+      "ISR_autumn",
+      "ISR_spring",
+      "ISR_summer",
+      "ISR_winter"
+    ],
+    "M 818": [
+      "summer"
+    ],
+    "Soldier M249": [
+      "Desert",
+      "MOP Suit"
+    ],
+    "Soldier M4": [
+      "Desert",
+      "MOP Suit"
+    ],
+    "Soldier M4 GRG": [
+      "DBDU + BDU",
+      "DBDU DS",
+      "DBDU DS 2",
+	  "DBDU MOPP",
+	  "Delta Force",
+	  "Delta Force 2"
+    ],
+    "Soldier stinger": [
+      "Desert"
+    ]
+  },
+  "unrestricted_satnav": true
+}

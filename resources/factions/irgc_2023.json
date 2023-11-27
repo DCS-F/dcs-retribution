@@ -1,0 +1,270 @@
+{
+  "country": "Iran",
+  "name": "IRGC 2023",
+  "authors": "Ghosti",
+  "description": "<p>Iranian Islamic Revolutionary Guard Corps 2023s faction with some Hezbollah technicals and tanks thrown in.</p>",
+  "locales": [
+    "fa_IR"
+  ],
+  "aircrafts": [
+    "F-14A Tomcat (AI)",
+    "F-14A Tomcat (Block 135-GR Late)",
+    "F-4C Phantom II",
+    "F-4E Phantom II",
+    "F-5E Tiger II",
+    "IL-76MD",
+    "UH-1H Iroquois",
+    "AH-1W SuperCobra",
+    "Ka-50 Hokum",
+    "Ka-50 Hokum III",
+    "MiG-21bis Fishbed-N",
+    "MiG-29A Fulcrum-A",
+    "Mirage-F1EQ",
+    "Su-22M4 Fitter-K",
+    "Su-24MK Fencer-D",
+    "Su-25 Frogfoot",
+    "Su-25T Frogfoot"
+  ],
+  "awacs": [
+    "A-50"
+  ],
+  "tankers": [
+    "IL-78M",
+    "KC-135 Stratotanker MPRS"
+  ],
+  "frontline_units": [
+    "Chieftain Mk.3",
+    "BMP-1",
+    "BMP-2",
+    "BTR-80",
+    "M113",
+    "M60A3 \"Patton\"",
+    "T-55A",
+    "T-72B with Kontakt-1 ERA",
+    "SPAAA LC with ZU-23",
+    "Scout LC with DSHK 12.7mm",
+    "Scout LC with KORD 12.7mm",
+    "Scout HL with DSHK 12.7mm",
+    "Scout HL with KORD 12.7mm",
+    "SPAAA HL with ZU-23",
+    "ZSU-23-4 Shilka",
+    "ZSU-57-2 'Sparka'"
+  ],
+  "artillery_units": [
+    "2S1 Gvozdika",
+    "M109A6 Paladin",
+    "BM-21 Grad"
+  ],
+  "logistics_units": [
+    "LUV UAZ-469 Jeep",
+    "Truck Ural-375"
+  ],
+  "infantry_units": [
+    "Infantry RPG",
+    "Insurgent AK-74",
+    "MANPADS SA-18 Igla \"Grouse\" Ins"
+  ],
+  "preset_groups": [
+    "Hawk",
+    "SA-5/S-200",
+    "SA-2/S-75",
+    "HQ-2",
+    "SA-6",
+    "SA-11",
+    "Rapier",
+    "SA-17",
+    "KS-19/SON-9",
+    "Silkworm"
+  ],
+  "naval_units": [
+    "Corvette 1124.4 Grisha",
+    "Corvette 1241.1 Molniya",
+    "FAC La Combattante IIa",
+    "Frigate 1135M Rezky"
+  ],
+  "air_defense_units": [
+    "SAM P19 \"Flat Face\" SR (SA-2/3)",
+    "SAM Hawk SR (AN/MPQ-50)",
+    "SA-15 Tor",
+    "ZSU-57-2 'Sparka'",
+    "ZU-23 on Ural-375 Insurgent",
+    "AAA ZU-23 Insurgent Closed Emplacement",
+    "ZSU-23-4 Shilka"
+  ],
+  "helicopter_carrier_names": [],
+  "requirements": {},
+  "carrier_names": [],
+  "missiles": [
+    "SSM SS-1C Scud-B"
+  ],
+  "has_jtac": true,
+  "jtac_unit": "MQ-9 Reaper",
+  "liveries_overrides": {
+    "F-14A Tomcat (AI)": [
+      "IRIAF Asia minor"
+    ],
+    "F-14A Tomcat (Block 135-GR Late)": [
+      "IRIAF Asia Minor"
+    ],
+    "F-4C Phantom II": [
+      "#f IRIAF by BigDuke6"
+    ],
+    "F-4E Phantom II": [
+      "IRIAF Asia Minor"
+    ],
+    "F-5E Tiger II": [
+      "IR IRIAF 43rd TFS",
+      "IR IRIAF Azarakhsh",
+	  "IR IRIAF Camo"
+    ],
+    "A-50": [
+      "Iranian Revolutionary Guard"
+    ],
+    "IL-78M": [
+      "Iranian Revolutionary Guard"
+    ],
+    "IL-76MD": [
+      "Iranian Revolutionary Guard"
+    ],
+    "KC-135 Stratotanker MPRS": [
+      "IRIAF (1)",
+      "IRIAF (2)",
+      "IRIAF (3)"
+    ],
+    "AH-1W SuperCobra": [
+      "I.R.I.A.A",
+      "Islamic Republic of Iran Army"
+    ],
+    "Ka-50 Hokum": [
+      "IRIAA Desert",
+      "IRIAA Ka50 - Tan and Brown"
+    ],
+    "Ka-50 Hokum III": [
+      "IRIAF_-_Digital_Camo"
+    ],
+    "MiG-21bis Fishbed-N": [
+      "Iran - 51st Sqn",
+	  "Iran - Standard"
+    ],
+    "MiG-29A Fulcrum-A": [
+      "IRIAF Sand-Blue"
+    ],
+    "Su-22M4 Fitter-K": [
+      "af standard",
+	  "af standard (worn-out)",
+	  "splinter limanskoye ab"
+    ],
+    "Su-24MK Fencer-D": [
+      "Iran Air Force"
+    ],
+    "Su-25 Frogfoot": [
+      "IRGC 54"
+    ],
+    "Su-25T Frogfoot": [
+      "IRGC",
+      "IRIAF"
+    ],
+	"C-130": [
+      "IRIAF 5-8503",
+      "IRIAF 5-8518"
+    ],
+    "UH-1H Iroquois": [
+      "IRIAA Generic"
+    ]
+  },
+  "liveries_overrides_ground_forces": {
+    "SAU Gvozdika": [
+      "Desert"
+    ],
+    "M-109": [
+      "desert"
+    ],
+    "M-113": [
+      "desert",
+      "desert_MED"
+    ],
+    "M-60": [
+      "desert"
+    ],
+    "Chieftain_mk3": [
+      "Default"
+    ],
+    "BMP-1": [
+      "Desert"
+    ],
+    "BMP-2": [
+      "IRGC Desert"
+    ],
+    "BRDM-2": [
+      "Desert"
+    ],
+    "BTR-80": [
+      "Military Police Summer"
+    ],
+    "MTLB": [
+      "Desert"
+    ],
+    "T-55": [
+      "Desert"
+    ],
+    "T-72B": [
+      "Desert"
+    ],
+	"Strela-1 9P31": [
+      "Desert"
+    ],
+	"Strela-10M3": [
+      "Desert"
+    ],
+	"Osa 9A33 ln": [
+      "Desert"
+    ],
+    "ZSU-23-4 Shilka": [
+      "Desert"
+    ],
+    "ZSU_57_2": [
+      "Desert"
+    ],
+	"Ural-375 ZU-23 Insurgent": [
+      "Desert"
+    ],
+	"Ural-375 ZU-23": [
+      "Desert"
+    ],
+	"S-60_Type59_Artillery": [
+      "Syrian"
+    ],
+	"LUV Land Rover 109": [
+      "Summer"
+    ],
+    "Ural-375": [
+      "Desert"
+    ],
+	"Ural-4320-31": [
+      "Desert"
+    ],
+	"Ural-4320T": [
+      "Desert"
+    ],
+	"GAZ-66": [
+      "Desert"
+    ],
+	"KAMAZ Truck": [
+      "Desert"
+    ],
+	"Infantry AK Ins": [
+      "Insurgent 8",
+      "Insurgent 10",
+      "OBL"
+    ],
+    "La_Combattante_II": [
+      "IRN_212",
+      "IRN_214",
+      "IRN_215",
+      "IRN_216",
+      "IRN_217",
+      "IRN_218",
+      "IRN_219"
+    ]
+  }
+}
