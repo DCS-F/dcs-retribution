@@ -1,48 +1,45 @@
 local unitPayloads = {
-	["name"] = "F-16C",
+	["name"] = "F-16C_50",
 	["payloads"] = {
 		[1] = {
-			["name"] = "Retribution OCA/Runway",
+			["displayName"] = "Retribution BARCAP",
+			["name"] = "Retribution BARCAP",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
-					["num"] = 1,
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 9,
 				},
 				[2] = {
 					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
-					["num"] = 2,
+					["num"] = 8,
 				},
 				[3] = {
-					["CLSID"] = "{AB8B8299-F1CC-4359-89B5-2172E0CF4A5A}",
-					["num"] = 3,
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 7,
 				},
 				[4] = {
 					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
-					["num"] = 4,
+					["num"] = 6,
 				},
 				[5] = {
-					["CLSID"] = "{A111396E-D3E8-4b9c-8AC9-2432489304D5}",
+					["CLSID"] = "{8A0BE8AE-58D4-4572-9263-3144C0D06364}",
 					["num"] = 5,
 				},
 				[6] = {
 					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
-					["num"] = 7,
+					["num"] = 4,
 				},
 				[7] = {
-					["CLSID"] = "{AB8B8299-F1CC-4359-89B5-2172E0CF4A5A}",
-					["num"] = 8,
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 3,
 				},
 				[8] = {
 					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
-					["num"] = 9,
+					["num"] = 2,
 				},
 				[9] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
-					["num"] = 10,
-				},
-				[10] = {
-					["CLSID"] = "{8A0BE8AE-58D4-4572-9263-3144C0D06364}",
-					["num"] = 6,
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 1,
 				},
 			},
 			["tasks"] = {
@@ -50,376 +47,622 @@ local unitPayloads = {
 			},
 		},
 		[2] = {
-			["name"] = "Retribution Strike",
+			["displayName"] = "Retribution Fighter Sweep",
+			["name"] = "Retribution Fighter Sweep",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
-					["num"] = 10,
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 9,
 				},
 				[2] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
-					["num"] = 1,
+					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
+					["num"] = 8,
 				},
 				[3] = {
-					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
-					["num"] = 2,
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 7,
 				},
 				[4] = {
-					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
-					["num"] = 9,
+					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
+					["num"] = 6,
 				},
 				[5] = {
 					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
-					["num"] = 7,
-				},
-				[6] = {
-					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
 					["num"] = 4,
 				},
-				[7] = {
-					["CLSID"] = "{GBU-31}",
+				[6] = {
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
 					["num"] = 3,
 				},
+				[7] = {
+					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
+					["num"] = 2,
+				},
 				[8] = {
-					["CLSID"] = "{GBU-31}",
-					["num"] = 8,
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 1,
 				},
 				[9] = {
-					["CLSID"] = "{A111396E-D3E8-4b9c-8AC9-2432489304D5}",
-					["num"] = 5,
-				},
-				[10] = {
 					["CLSID"] = "{8A0BE8AE-58D4-4572-9263-3144C0D06364}",
-					["num"] = 6,
+					["num"] = 5,
 				},
 			},
 			["tasks"] = {
-				[1] = 33,
+				[1] = 11,
 			},
 		},
 		[3] = {
-			["name"] = "CAS",
+			["displayName"] = "Retribution Anti-ship",
+			["name"] = "Retribution Anti-ship",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "{A111396E-D3E8-4b9c-8AC9-2432489304D5}",
-					["num"] = 5,
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 9,
 				},
 				[2] = {
-					["CLSID"] = "{DAC53A2F-79CA-42FF-A77A-F5649B601308}",
+					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
 					["num"] = 8,
 				},
 				[3] = {
-					["CLSID"] = "{DAC53A2F-79CA-42FF-A77A-F5649B601308}",
-					["num"] = 3,
-				},
-				[4] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
-					["num"] = 2,
-				},
-				[5] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
-					["num"] = 1,
-				},
-				[6] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
-					["num"] = 9,
-				},
-				[7] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
-					["num"] = 10,
-				},
-				[8] = {
-					["CLSID"] = "{5335D97A-35A5-4643-9D9B-026C75961E52}",
-					["num"] = 4,
-				},
-				[9] = {
-					["CLSID"] = "{5335D97A-35A5-4643-9D9B-026C75961E52}",
+					["CLSID"] = "{69DC8AE7-8F77-427B-B8AA-B19D3F478B66}",
 					["num"] = 7,
 				},
-				[10] = {
-					["CLSID"] = "{8A0BE8AE-58D4-4572-9263-3144C0D06364}",
+				[4] = {
+					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
 					["num"] = 6,
+				},
+				[5] = {
+					["CLSID"] = "{8A0BE8AE-58D4-4572-9263-3144C0D06364}",
+					["num"] = 5,
+				},
+				[6] = {
+					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
+					["num"] = 4,
+				},
+				[7] = {
+					["CLSID"] = "{69DC8AE7-8F77-427B-B8AA-B19D3F478B66}",
+					["num"] = 3,
+				},
+				[8] = {
+					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
+					["num"] = 2,
+				},
+				[9] = {
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 1,
+				},
+				[10] = {
+					["CLSID"] = "{A111396E-D3E8-4b9c-8AC9-2432489304D5}",
+					["num"] = 11,
 				},
 			},
 			["tasks"] = {
+				[1] = 11,
 			},
 		},
 		[4] = {
-			["name"] = "Retribution SEAD",
+			["displayName"] = "Retribution OCA/Runway",
+			["name"] = "Retribution OCA/Runway",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
 					["num"] = 9,
 				},
 				[2] = {
-					["CLSID"] = "{B06DD79A-F21E-4EB9-BD9D-AB3844618C93}",
+					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
 					["num"] = 8,
 				},
 				[3] = {
-					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
-					["num"] = 7,
-				},
-				[4] = {
-					["CLSID"] = "{A111396E-D3E8-4b9c-8AC9-2432489304D5}",
-					["num"] = 5,
-				},
-				[5] = {
-					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
-					["num"] = 4,
-				},
-				[6] = {
-					["CLSID"] = "{B06DD79A-F21E-4EB9-BD9D-AB3844618C93}",
-					["num"] = 3,
-				},
-				[7] = {
 					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
 					["num"] = 2,
 				},
-				[8] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
+				[4] = {
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
 					["num"] = 1,
 				},
+				[5] = {
+					["CLSID"] = "{GBU-31V3B}",
+					["num"] = 7,
+				},
+				[6] = {
+					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
+					["num"] = 6,
+				},
+				[7] = {
+					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
+					["num"] = 4,
+				},
+				[8] = {
+					["CLSID"] = "{GBU-31V3B}",
+					["num"] = 3,
+				},
 				[9] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
-					["num"] = 10,
+					["CLSID"] = "{A111396E-D3E8-4b9c-8AC9-2432489304D5}",
+					["num"] = 11,
 				},
 				[10] = {
-					["CLSID"] = "ALQ_184",
-					["num"] = 6,
+					["CLSID"] = "{8A0BE8AE-58D4-4572-9263-3144C0D06364}",
+					["num"] = 5,
 				},
 			},
 			["tasks"] = {
-				[1] = 29,
+				[1] = 11,
 			},
 		},
 		[5] = {
+			["displayName"] = "Retribution Escort",
+			["name"] = "Retribution Escort",
+			["pylons"] = {
+				[1] = {
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 9,
+				},
+				[2] = {
+					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
+					["num"] = 8,
+				},
+				[3] = {
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 7,
+				},
+				[4] = {
+					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
+					["num"] = 6,
+				},
+				[5] = {
+					["CLSID"] = "{8A0BE8AE-58D4-4572-9263-3144C0D06364}",
+					["num"] = 5,
+				},
+				[6] = {
+					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
+					["num"] = 4,
+				},
+				[7] = {
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 3,
+				},
+				[8] = {
+					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
+					["num"] = 2,
+				},
+				[9] = {
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 1,
+				},
+			},
+			["tasks"] = {
+				[1] = 11,
+			},
+		},
+		[6] = {
+			["displayName"] = "Retribution Strike",
+			["name"] = "Retribution Strike",
+			["pylons"] = {
+				[1] = {
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 9,
+				},
+				[2] = {
+					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
+					["num"] = 8,
+				},
+				[3] = {
+					["CLSID"] = "{GBU-31V3B}",
+					["num"] = 7,
+				},
+				[4] = {
+					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
+					["num"] = 6,
+				},
+				[5] = {
+					["CLSID"] = "{A111396E-D3E8-4b9c-8AC9-2432489304D5}",
+					["num"] = 11,
+				},
+				[6] = {
+					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
+					["num"] = 4,
+				},
+				[7] = {
+					["CLSID"] = "{8A0BE8AE-58D4-4572-9263-3144C0D06364}",
+					["num"] = 5,
+				},
+				[8] = {
+					["CLSID"] = "{GBU-31V3B}",
+					["num"] = 3,
+				},
+				[9] = {
+					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
+					["num"] = 2,
+				},
+				[10] = {
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 1,
+				},
+			},
+			["tasks"] = {
+				[1] = 11,
+			},
+		},
+		[7] = {
 			["displayName"] = "Retribution DEAD",
 			["name"] = "Retribution DEAD",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
-					["num"] = 1,
+					["CLSID"] = "{BRU57_2*AGM-154A}",
+					["num"] = 7,
 				},
 				[2] = {
-					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
-					["num"] = 2,
+					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
+					["num"] = 6,
 				},
 				[3] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
-					["num"] = 10,
+					["CLSID"] = "{8A0BE8AE-58D4-4572-9263-3144C0D06364}",
+					["num"] = 5,
 				},
 				[4] = {
 					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
-					["num"] = 9,
+					["num"] = 8,
 				},
 				[5] = {
-					["CLSID"] = "{AGM-154A}",
-					["num"] = 8,
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 9,
 				},
 				[6] = {
 					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
-					["num"] = 7,
+					["num"] = 4,
 				},
 				[7] = {
-					["CLSID"] = "{AGM-154A}",
+					["CLSID"] = "{BRU57_2*AGM-154A}",
 					["num"] = 3,
 				},
 				[8] = {
-					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
-					["num"] = 4,
-				},
-				[9] = {
-					["CLSID"] = "{A111396E-D3E8-4b9c-8AC9-2432489304D5}",
-					["num"] = 5,
-				},
-				[10] = {
-					["CLSID"] = "{8A0BE8AE-58D4-4572-9263-3144C0D06364}",
-					["num"] = 6,
-				},
-			},
-			["tasks"] = {
-				[1] = 31,
-			},
-		},
-		[6] = {
-			["name"] = "ANTISHIP",
-			["pylons"] = {
-				[1] = {
-					["CLSID"] = "{DAC53A2F-79CA-42FF-A77A-F5649B601308}",
-					["num"] = 8,
-				},
-				[2] = {
-					["CLSID"] = "{DAC53A2F-79CA-42FF-A77A-F5649B601308}",
-					["num"] = 3,
-				},
-				[3] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
-					["num"] = 2,
-				},
-				[4] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
-					["num"] = 1,
-				},
-				[5] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
-					["num"] = 9,
-				},
-				[6] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
-					["num"] = 10,
-				},
-				[7] = {
-					["CLSID"] = "{A111396E-D3E8-4b9c-8AC9-2432489304D5}",
-					["num"] = 5,
-				},
-				[8] = {
-					["CLSID"] = "{8A0BE8AE-58D4-4572-9263-3144C0D06364}",
-					["num"] = 6,
-				},
-				[9] = {
-					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
-					["num"] = 7,
-				},
-				[10] = {
-					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
-					["num"] = 4,
-				},
-			},
-			["tasks"] = {
-			},
-		},
-		[7] = {
-			["name"] = "Retribution Ferry",
-			["pylons"] = {
-				[1] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
-					["num"] = 10,
-				},
-				[2] = {
-					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
-					["num"] = 9,
-				},
-				[3] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
-					["num"] = 1,
-				},
-				[4] = {
 					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
 					["num"] = 2,
 				},
-				[5] = {
-					["CLSID"] = "MXU-648-TP",
-					["num"] = 7,
+				[9] = {
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 1,
 				},
-				[6] = {
-					["CLSID"] = "MXU-648-TP",
-					["num"] = 4,
-				},
-				[7] = {
-					["CLSID"] = "{8A0BE8AE-58D4-4572-9263-3144C0D06364}",
-					["num"] = 6,
+				[10] = {
+					["CLSID"] = "{A111396E-D3E8-4b9c-8AC9-2432489304D5}",
+					["num"] = 11,
 				},
 			},
 			["tasks"] = {
+				[1] = 11,
 			},
 		},
 		[8] = {
-			["name"] = "CAP",
+			["displayName"] = "Retribution TARCAP",
+			["name"] = "Retribution TARCAP",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "{A111396E-D3E8-4b9c-8AC9-2432489304D5}",
-					["num"] = 5,
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 9,
 				},
 				[2] = {
 					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
 					["num"] = 8,
 				},
 				[3] = {
-					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
-					["num"] = 3,
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 7,
 				},
 				[4] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
-					["num"] = 2,
+					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
+					["num"] = 6,
 				},
 				[5] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
-					["num"] = 1,
+					["CLSID"] = "{8A0BE8AE-58D4-4572-9263-3144C0D06364}",
+					["num"] = 5,
 				},
 				[6] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
-					["num"] = 9,
-				},
-				[7] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
-					["num"] = 10,
-				},
-				[8] = {
 					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
 					["num"] = 4,
 				},
-				[9] = {
-					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
-					["num"] = 7,
+				[7] = {
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 3,
 				},
-				[10] = {
-					["CLSID"] = "{8A0BE8AE-58D4-4572-9263-3144C0D06364}",
-					["num"] = 6,
+				[8] = {
+					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
+					["num"] = 2,
+				},
+				[9] = {
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 1,
 				},
 			},
 			["tasks"] = {
+				[1] = 11,
 			},
 		},
 		[9] = {
+			["displayName"] = "Retribution CAS",
+			["name"] = "Retribution CAS",
+			["pylons"] = {
+				[1] = {
+					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
+					["num"] = 6,
+				},
+				[2] = {
+					["CLSID"] = "{A111396E-D3E8-4b9c-8AC9-2432489304D5}",
+					["num"] = 11,
+				},
+				[3] = {
+					["CLSID"] = "{E6A6262A-CA08-4B3D-B030-E1A993B98452}",
+					["num"] = 3,
+				},
+				[4] = {
+					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
+					["num"] = 2,
+				},
+				[5] = {
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 1,
+				},
+				[6] = {
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 9,
+				},
+				[7] = {
+					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
+					["num"] = 8,
+				},
+				[8] = {
+					["CLSID"] = "{E6A6262A-CA08-4B3D-B030-E1A993B98453}",
+					["num"] = 7,
+				},
+				[9] = {
+					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
+					["num"] = 4,
+				},
+				[10] = {
+					["CLSID"] = "{8A0BE8AE-58D4-4572-9263-3144C0D06364}",
+					["num"] = 5,
+				},
+			},
+			["tasks"] = {
+				[1] = 11,
+			},
+		},
+		[10] = {
 			["displayName"] = "Retribution SEAD Escort",
 			["name"] = "Retribution SEAD Escort",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
-					["num"] = 9,
+					["CLSID"] = "LAU_88_AGM_65H_2_R",
+					["num"] = 7,
 				},
 				[2] = {
 					["CLSID"] = "{B06DD79A-F21E-4EB9-BD9D-AB3844618C93}",
-					["num"] = 8,
+					["num"] = 6,
 				},
 				[3] = {
-					["CLSID"] = "{69DC8AE7-8F77-427B-B8AA-B19D3F478B66}",
-					["num"] = 7,
-				},
-				[4] = {
-					["CLSID"] = "{A111396E-D3E8-4b9c-8AC9-2432489304D5}",
+					["CLSID"] = "{8A0BE8AE-58D4-4572-9263-3144C0D06364}",
 					["num"] = 5,
 				},
+				[4] = {
+					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
+					["num"] = 8,
+				},
 				[5] = {
-					["CLSID"] = "{69DC8AE7-8F77-427B-B8AA-B19D3F478B66}",
-					["num"] = 4,
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 9,
 				},
 				[6] = {
 					["CLSID"] = "{B06DD79A-F21E-4EB9-BD9D-AB3844618C93}",
-					["num"] = 3,
+					["num"] = 4,
 				},
 				[7] = {
+					["CLSID"] = "LAU_88_AGM_65H_2_L",
+					["num"] = 3,
+				},
+				[8] = {
 					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
 					["num"] = 2,
 				},
-				[8] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
+				[9] = {
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
 					["num"] = 1,
 				},
-				[9] = {
-					["CLSID"] = "{C8E06185-7CD6-4C90-959F-044679E90751}",
+				[10] = {
+					["CLSID"] = "{AN_ASQ_213}",
 					["num"] = 10,
 				},
-				[10] = {
+				[11] = {
+					["CLSID"] = "{A111396E-D3E8-4b9c-8AC9-2432489304D5}",
+					["num"] = 11,
+				},
+			},
+			["tasks"] = {
+				[1] = 11,
+			},
+		},
+		[11] = {
+			["displayName"] = "Retribution OCA/Aircraft",
+			["name"] = "Retribution OCA/Aircraft",
+			["pylons"] = {
+				[1] = {
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 9,
+				},
+				[2] = {
+					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
+					["num"] = 8,
+				},
+				[3] = {
+					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
+					["num"] = 2,
+				},
+				[4] = {
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 1,
+				},
+				[5] = {
+					["CLSID"] = "{BRU57_2*CBU-103}",
+					["num"] = 7,
+				},
+				[6] = {
+					["CLSID"] = "{A111396E-D3E8-4b9c-8AC9-2432489304D5}",
+					["num"] = 11,
+				},
+				[7] = {
+					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
+					["num"] = 4,
+				},
+				[8] = {
+					["CLSID"] = "{BRU57_2*CBU-103}",
+					["num"] = 3,
+				},
+				[9] = {
 					["CLSID"] = "{8A0BE8AE-58D4-4572-9263-3144C0D06364}",
+					["num"] = 5,
+				},
+				[10] = {
+					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
 					["num"] = 6,
 				},
 			},
 			["tasks"] = {
-				[1] = 29,
+				[1] = 11,
+			},
+		},
+		[12] = {
+			["name"] = "Clean",
+			["pylons"] = {
+				[1] = {
+					["CLSID"] = "<CLEAN>",
+					["num"] = 8,
+				},
+				[2] = {
+					["CLSID"] = "<CLEAN>",
+					["num"] = 7,
+				},
+				[3] = {
+					["CLSID"] = "<CLEAN>",
+					["num"] = 6,
+				},
+				[4] = {
+					["CLSID"] = "<CLEAN>",
+					["num"] = 2,
+				},
+				[5] = {
+					["CLSID"] = "<CLEAN>",
+					["num"] = 3,
+				},
+				[6] = {
+					["CLSID"] = "<CLEAN>",
+					["num"] = 4,
+				},
+				[7] = {
+					["CLSID"] = "<CLEAN>",
+					["num"] = 5,
+				},
+			},
+			["tasks"] = {
+				[1] = 11,
+			},
+		},
+		[13] = {
+			["displayName"] = "Retribution BAI",
+			["name"] = "Retribution BAI",
+			["pylons"] = {
+				[1] = {
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 9,
+				},
+				[2] = {
+					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
+					["num"] = 8,
+				},
+				[3] = {
+					["CLSID"] = "LAU_88_AGM_65H_2_R",
+					["num"] = 7,
+				},
+				[4] = {
+					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
+					["num"] = 6,
+				},
+				[5] = {
+					["CLSID"] = "{A111396E-D3E8-4b9c-8AC9-2432489304D5}",
+					["num"] = 11,
+				},
+				[6] = {
+					["CLSID"] = "{F376DBEE-4CAE-41BA-ADD9-B2910AC95DEC}",
+					["num"] = 4,
+				},
+				[7] = {
+					["CLSID"] = "{8A0BE8AE-58D4-4572-9263-3144C0D06364}",
+					["num"] = 5,
+				},
+				[8] = {
+					["CLSID"] = "LAU_88_AGM_65H_2_L",
+					["num"] = 3,
+				},
+				[9] = {
+					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
+					["num"] = 2,
+				},
+				[10] = {
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 1,
+				},
+			},
+			["tasks"] = {
+				[1] = 11,
+			},
+		},
+		[14] = {
+			["displayName"] = "Retribution SEAD",
+			["name"] = "Retribution SEAD",
+			["pylons"] = {
+				[1] = {
+					["CLSID"] = "{B06DD79A-F21E-4EB9-BD9D-AB3844618C93}",
+					["num"] = 7,
+				},
+				[2] = {
+					["CLSID"] = "{B06DD79A-F21E-4EB9-BD9D-AB3844618C93}",
+					["num"] = 6,
+				},
+				[3] = {
+					["CLSID"] = "{8A0BE8AE-58D4-4572-9263-3144C0D06364}",
+					["num"] = 5,
+				},
+				[4] = {
+					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
+					["num"] = 8,
+				},
+				[5] = {
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 9,
+				},
+				[6] = {
+					["CLSID"] = "{B06DD79A-F21E-4EB9-BD9D-AB3844618C93}",
+					["num"] = 4,
+				},
+				[7] = {
+					["CLSID"] = "{B06DD79A-F21E-4EB9-BD9D-AB3844618C93}",
+					["num"] = 3,
+				},
+				[8] = {
+					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
+					["num"] = 2,
+				},
+				[9] = {
+					["CLSID"] = "{40EF17B7-F508-45de-8566-6FFECC0C1AB8}",
+					["num"] = 1,
+				},
+				[10] = {
+					["CLSID"] = "{AN_ASQ_213}",
+					["num"] = 10,
+				},
+			},
+			["tasks"] = {
+				[1] = 11,
 			},
 		},
 	},
-	["unitType"] = "F-16C bl.52d",
+	["unitType"] = "F-16C_50",
 }
 return unitPayloads
