@@ -116,9 +116,11 @@ explTable = {
   ["RB75"] = 57,
   ["RB75B"] = 57,
   ["RB75T"] = 136,
+  ["AGM_45"] = 68,
   ["AGM_45A"] = 68,
   ["AGM_65D"] = 57,
   ["AGM_65F"] = 136,
+  ["AGM_65G"] = 136,
   ["AGM_65H"] = 57,
   ["AGM_65K"] = 136,
   ["AGM_84A"] = 221,
@@ -131,6 +133,7 @@ explTable = {
   ["AGM_123"] = 274,
   ["AGM_130"] = 582,
   ["AGM_119"] = 176,
+  ["AGM_154"]  = 305,                            -- AGM-154C - JSOW Unitary BROACH
   ["AGM_154A"]  = 10,                            -- AGM-154A - JSOW CEB (CBU-type) - 145 BLU-97/B Combined Effects Bomb (CEB) submunitions
   ["AGM_154C"]  = 305,                           -- AGM-154C - JSOW Unitary BROACH
   ["S-24A"] = 24,                                --
@@ -270,6 +273,7 @@ clusterWeaps = {
 }
 
 antiRadiationMissile = {
+  ["AGM_45"] = 1,
   ["AGM_45A"] = 1,
   ["AGM_88"] = 1,
   ["AGM_88C"] = 1,
