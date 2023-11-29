@@ -596,9 +596,9 @@ class VSN_F4C(PlaneType):
             Weapons.BRU_42_with_3_x_Mk_82___500lb_GP_Bombs_LD,
         )
         Mk_84___2000lb_GP_Bomb_LD = (3, Weapons.Mk_84___2000lb_GP_Bomb_LD)
-        LAU_118a_with_AGM_45B_Shrike_ARM__Imp_ = (
+        LAU_118A___AGM_45B_Shrike_ARM__Imp_ = (
             3,
-            Weapons.LAU_118a_with_AGM_45B_Shrike_ARM__Imp_,
+            Weapons.LAU_118A___AGM_45B_Shrike_ARM__Imp_,
         )
         LAU_10_pod___4_x_127mm_ZUNI__UnGd_Rkts_Mk71__HE_FRAG = (
             3,
@@ -711,9 +711,9 @@ class VSN_F4C(PlaneType):
             Weapons.BRU_42_with_3_x_Mk_82___500lb_GP_Bombs_LD,
         )
         Mk_84___2000lb_GP_Bomb_LD = (9, Weapons.Mk_84___2000lb_GP_Bomb_LD)
-        LAU_118a_with_AGM_45B_Shrike_ARM__Imp_ = (
+        LAU_118A___AGM_45B_Shrike_ARM__Imp_ = (
             9,
-            Weapons.LAU_118a_with_AGM_45B_Shrike_ARM__Imp_,
+            Weapons.LAU_118A___AGM_45B_Shrike_ARM__Imp_,
         )
         LAU_10_pod___4_x_127mm_ZUNI__UnGd_Rkts_Mk71__HE_FRAG = (
             9,
