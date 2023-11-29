@@ -4667,6 +4667,10 @@ do
 					if step > self.resource then step = 1 end
 
 					local progress = step*self.missionBuildSpeedReduction
+					if self.currentMissionBuild.product.missionType == ZoneCommand.missionTypes.supply_convoy
+					 or self.currentMissionBuild.product.missionType == ZoneCommand.missionTypes.assault then
+    					progress = step*0.12
+					end
 					local reducedCost = math.max(1, math.floor(progress))
 					if reducedCost <= self.resource then
 						self:removeResource(reducedCost)
