@@ -869,6 +869,10 @@ class PretenseLuaGenerator(LuaGenerator):
             lua_string_config += "Config.disablePlayerSead = true\n"
         else:
             lua_string_config += "Config.disablePlayerSead = false\n"
+        if self.game.settings.pretense_do_not_generate_csar_missions:
+            lua_string_config += "Config.disablePlayerCsar = true\n"
+        else:
+            lua_string_config += "Config.disablePlayerCsar = false\n"
 
         trigger = TriggerStart(comment="Pretense config")
         trigger.add_action(DoScript(String(lua_string_config)))

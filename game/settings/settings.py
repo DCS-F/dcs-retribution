@@ -1033,6 +1033,12 @@ class Settings:
         section=GENERAL_SECTION,
         default=False,
     )
+    pretense_do_not_generate_csar_missions: bool = boolean_option(
+        "Do not generate player CSAR missions",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=False,
+    )
     pretense_num_of_cargo_planes: int = bounded_int_option(
         "Number of cargo planes per side",
         page=PRETENSE_PAGE,
