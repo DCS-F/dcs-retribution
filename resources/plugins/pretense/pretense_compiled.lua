@@ -38,6 +38,7 @@ Config.disableSupplyConvoys = Config.disableSupplyConvoys or false
 Config.groundAssaultsPreferRoads = Config.groundAssaultsPreferRoads and true
 Config.supplyConvoysPreferRoads = Config.supplyConvoysPreferRoads and true
 Config.disablePlayerSead = Config.disablePlayerSead or false
+Config.disablePlayerCsar = Config.disablePlayerCsar or false
 
 Config.missions = Config.missions or {}
 
@@ -12810,7 +12811,7 @@ do
             return BAI.canCreate()
         elseif misType == Mission.types.anti_runway then
             return Anti_Runway.canCreate()
-        elseif misType == Mission.types.csar then
+        elseif Config.disablePlayerCsar == false and misType == Mission.types.csar then
             return CSAR.canCreate()
         elseif misType == Mission.types.extraction then
             return Extraction.canCreate()
