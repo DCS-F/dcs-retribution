@@ -7,6 +7,7 @@
     "he_IL"
   ],
   "aircrafts": [
+    "A-10C Thunderbolt II (Suite 3)",
     "AH-64D Apache Longbow",
     "AH-64D Apache Longbow (AI)",
     "C-130",
@@ -56,6 +57,9 @@
   "preset_groups": [
     "Hawk",
     "Iron Dome",
+    "Iron Dome (Semicircle)",
+    "David's Sling",
+    "David's Sling (Semicircle)",
     "Patriot"
   ],
   "naval_units": [
@@ -63,6 +67,9 @@
   ],
   "missiles": [],
   "air_defense_units": [
+    "ELM-2084MMR AD Rotating Mode",
+    "ELM-2084MMR AD Sector Mode",
+    "ELM-2084MMR WLR Mode",
     "SAM Hawk SR (AN/MPQ-50)",
     "M163 Vulcan Air Defense System",
     "M48 Chaparral"
@@ -73,6 +80,9 @@
   "has_jtac": true,
   "jtac_unit": "MQ-9 Reaper",
   "liveries_overrides": {
+    "A-10C Thunderbolt II (Suite 3)": [
+      "Fictional Israel 115 Sqn Flying Dragon"
+    ],
     "F-15C Eagle": [
       "390th Fighter SQN"
     ],

@@ -11,6 +11,7 @@
 * **[Modding]** Updated support for Su-30 mod to V2.1.12 beta
 * **[Modding]** Updated support for Su-57 mod to build-04
 * **[Modding]** Updated support for F-4B/C Phantom mod to 2.8.7.201
+* **[Modding]** Updated Irondome support to IDF Assets Pack V1.1, adding support for the David's Sling
 * **[Radios]** Added HF-FM band for AN/ARC-222
 * **[Radios]** Ability to define preset channels for radios on squadron level (for human pilots only)
 * **[Mission Planning]** Avoid helicopters being assigned as escort to planes and vice-versa
