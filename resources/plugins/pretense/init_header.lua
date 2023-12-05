@@ -260,6 +260,52 @@ do
 		dataCategory= TemplateDB.type.group
 	}
 
+	TemplateDB.templates["irondome"] = {
+		units = {
+			"Iron_Dome_David_Sling_CP",
+			"ELM2084_MMR_AD_RT",
+			"ELM2084_MMR_AD_SC",
+			"ELM2084_MMR_WLR",
+			"M 818",
+			"M 818",
+			"IRON_DOME_LN",
+			"IRON_DOME_LN",
+			"IRON_DOME_LN",
+			"IRON_DOME_LN",
+			"M48 Chaparral",
+			"M48 Chaparral",
+			"Vulcan",
+			"Vulcan",
+			"Vulcan"
+		},
+		maxDist = 300,
+		skill = "Good",
+		dataCategory= TemplateDB.type.group
+	}
+
+	TemplateDB.templates["davidsling"] = {
+		units = {
+			"Iron_Dome_David_Sling_CP",
+			"ELM2084_MMR_AD_RT",
+			"ELM2084_MMR_AD_SC",
+			"ELM2084_MMR_WLR",
+			"M 818",
+			"M 818",
+			"DAVID_SLING_LN",
+			"DAVID_SLING_LN",
+			"DAVID_SLING_LN",
+			"DAVID_SLING_LN",
+			"M48 Chaparral",
+			"M48 Chaparral",
+			"Vulcan",
+			"Vulcan",
+			"Vulcan"
+		},
+		maxDist = 300,
+		skill = "Good",
+		dataCategory= TemplateDB.type.group
+	}
+
 	TemplateDB.templates["blueShipGroup"] = {
 		units = {
 			"PERRY",
@@ -568,6 +614,18 @@ presets = {
 				type='defense',
 				template='nasams',
 			}),
+			irondome = Preset:new({
+				display = 'SAM',
+				cost=20000,
+				type='defense',
+				template='irondome',
+			}),
+			davidsling = Preset:new({
+				display = 'SAM',
+				cost=30000,
+				type='defense',
+				template='davidsling',
+			}),
 			redShipGroup = Preset:new({
 				display = 'SAM',
 				cost=3000,
@@ -641,6 +699,18 @@ presets = {
 				cost=3000,
 				type='defense',
 				template='nasams',
+			}),
+			irondome = Preset:new({
+				display = 'SAM',
+				cost=20000,
+				type='defense',
+				template='irondome',
+			}),
+			davidsling = Preset:new({
+				display = 'SAM',
+				cost=30000,
+				type='defense',
+				template='davidsling',
 			}),
 			blueShipGroup = Preset:new({
 				display = 'SAM',

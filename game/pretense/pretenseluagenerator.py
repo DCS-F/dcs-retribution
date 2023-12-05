@@ -22,6 +22,7 @@ from game.plugins import LuaPluginManager
 from game.theater import Airfield, OffMapSpawn, TheaterGroundObject
 from game.theater.iadsnetwork.iadsrole import IadsRole
 from game.utils import escape_string_for_lua
+from pydcs_extensions import IRON_DOME_LN, DAVID_SLING_LN
 
 if TYPE_CHECKING:
     from game import Game
@@ -276,6 +277,8 @@ class PretenseLuaGenerator(LuaGenerator):
             "hawk",
             "patriot",
             "nasams",
+            "irondome",
+            "davidsling",
         ]:
             sam_presets[sam_name] = PretenseSam(sam_name)
 
@@ -368,6 +371,10 @@ class PretenseLuaGenerator(LuaGenerator):
                         or ground_unit.unit_type.dcs_unit_type == AirDefence.NASAMS_LN_C
                     ):
                         sam_presets["nasams"].enabled = True
+                    if ground_unit.unit_type.dcs_unit_type == IRON_DOME_LN:
+                        sam_presets["irondome"].enabled = True
+                    if ground_unit.unit_type.dcs_unit_type == DAVID_SLING_LN:
+                        sam_presets["davidsling"].enabled = True
 
         cp_has_sams = False
         for sam_name in sam_presets:

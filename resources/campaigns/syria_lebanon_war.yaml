@@ -9,6 +9,39 @@ recommended_start_date: 2023-10-07
 miz: syria_lebanon_war.miz
 performance: 3
 version: 10.0
+
+settings:
+  pretense_extra_zone_connections: 0
+  pretense_disable_supply_convoys: true
+  pretense_ground_assaults_prefer_roads: false
+  pretense_num_of_cargo_planes: 1
+  pretense_do_not_generate_sead_missions: true
+  pretense_do_not_generate_csar_missions: true
+  perf_culling: true
+  perf_culling_distance: 30
+  player_skill: "High"
+  enemy_skill: "Average"
+  enemy_vehicle_skill: "Average"
+  night_day_missions": NightMissions.OnlyDay
+  labels: "Dot Only"
+
+  ground_start_ai_planes: true
+  ground_start_scenery_remove_triggers: false
+  ground_start_ground_power_trucks: false
+  ground_start_ground_power_trucks_roadbase: false
+
+  plugins:
+    gamemaster: true
+    ewrs: true
+    splashdamageclusters: true
+    splashdamageclusters.bdaMessages: true
+    splashdamageclusters.clusterEffects: true
+    splashdamageclusters.shipRadarDamage: true
+ #Mods to be used
+  f4bc_phantom: true
+  f_16_idf: true
+  irondome: true
+
 squadrons:
   # Eyn Shemer
   10:
