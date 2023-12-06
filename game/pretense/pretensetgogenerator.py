@@ -122,6 +122,7 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
         self.game = game
         self.m = mission
         self.unit_map = unit_map
+        self.coalition = ground_object.coalition
 
     @property
     def culled(self) -> bool:
@@ -139,9 +140,9 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
             unit_class: Class of unit to return.
         """
         faction_units = (
-            set(self.ground_object.coalition.faction.frontline_units)
-            | set(self.ground_object.coalition.faction.artillery_units)
-            | set(self.ground_object.coalition.faction.logistics_units)
+            set(self.coalition.faction.frontline_units)
+            | set(self.coalition.faction.artillery_units)
+            | set(self.coalition.faction.logistics_units)
         )
         of_class = list({u for u in faction_units if u.unit_class is unit_class})
 
@@ -184,7 +185,7 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
             max_num: Maximum number of units to generate per group.
         """
 
-        if self.ground_object.coalition.faction.has_access_to_unit_class(unit_class):
+        if self.coalition.faction.has_access_to_unit_class(unit_class):
             unit_type = self.ground_unit_of_class(unit_class)
             if unit_type is not None and len(vehicle_units) < max_num:
                 unit_id = self.game.next_unit_id()
@@ -236,7 +237,7 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
             max_num: Maximum number of units to generate per group.
         """
         unit_type = None
-        faction = self.ground_object.coalition.faction
+        faction = self.coalition.faction
         is_player = True
         side = (
             2
@@ -286,7 +287,7 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
                     default_ifv_unit_chinese = groundunittype
                 elif unit == vehicles.Armor.MTLB:
                     default_amphibious_unit = groundunittype
-                if self.ground_object.coalition.faction.has_access_to_dcs_type(unit):
+                if self.coalition.faction.has_access_to_dcs_type(unit):
                     if groundunittype.unit_class == unit_class:
                         unit_type = groundunittype
                         break
@@ -353,7 +354,7 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
 
         for group in self.ground_object.groups:
             vehicle_units: list[TheaterUnit] = []
-            # Split the different unit types to be compliant to dcs limitation
+
             for unit in group.units:
                 if unit.is_static:
                     # Add supply convoy
@@ -566,7 +567,7 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
 
         for unit in units:
             assert issubclass(unit.type, VehicleType)
-            faction = unit.ground_object.control_point.coalition.faction
+            faction = self.coalition.faction
             if vehicle_group is None:
                 vehicle_group = self.m.vehicle_group(
                     self.country,
@@ -771,6 +772,7 @@ class PretenseTgoGenerator(TgoGenerator):
                 else:
                     continue
 
+                generator.coalition = other_coalition
                 generator.generate()
 
         self.mission_data.runways = list(self.runways.values())
