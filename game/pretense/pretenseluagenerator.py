@@ -841,7 +841,7 @@ class PretenseLuaGenerator(LuaGenerator):
         return lua_string_connman
 
     def generate_pretense_plugin_data(self) -> None:
-        self.inject_plugin_script("base", "mist_4_5_121.lua", "mist_4_5_121")
+        self.inject_plugin_script("base", "mist_4_5_122.lua", "mist_4_5_122")
 
         lua_string_config = "Config = Config or {}\n"
 
