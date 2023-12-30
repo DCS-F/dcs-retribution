@@ -24,6 +24,8 @@ from dcs.condition import (
 )
 from dcs.mission import Mission
 from dcs.task import Option
+from dcs.terrain.caucasus.airports import Krasnodar_Pashkovsky
+from dcs.terrain.syria.airports import Damascus, Khalkhalah
 from dcs.translation import String
 from dcs.triggers import Event, TriggerCondition, TriggerOnce
 from dcs.unit import Skill
@@ -226,7 +228,14 @@ class PretenseTriggerGenerator:
             if cp.is_fleet:
                 trigger_radius = TRIGGER_RADIUS_PRETENSE_CARRIER
             else:
-                trigger_radius = TRIGGER_RADIUS_CAPTURE
+                if cp.dcs_airport is not None and (
+                    isinstance(cp.dcs_airport, Damascus)
+                    or isinstance(cp.dcs_airport, Khalkhalah)
+                    or isinstance(cp.dcs_airport, Krasnodar_Pashkovsky)
+                ):
+                    trigger_radius = TRIGGER_RADIUS_CAPTURE * 1.8
+                else:
+                    trigger_radius = TRIGGER_RADIUS_CAPTURE
             cp_name = "".join(
                 [i for i in cp.name if i.isalnum() or i.isspace() or i == "-"]
             )
