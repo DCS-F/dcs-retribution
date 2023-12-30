@@ -205,10 +205,10 @@ presets = {
 		},
 		airdef = {
 			bunker = Preset:new({
-				display = 'Excavator',
+				display = 'Bunker',
 				cost = 1500,
 				type = 'upgrade',
-				template = "excavator"
+				template = "bunker-1"
 			}),
 			comCenter = Preset:new({
 				display = 'Command Center',
