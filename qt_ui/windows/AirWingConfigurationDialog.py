@@ -691,7 +691,7 @@ class AirWingConfigurationTab(QWidget):
         # List of all Aircrafts possible to operate with the given bases
         possible_aircrafts = {
             aircraft
-            for aircraft in self.coalition.faction.aircrafts
+            for aircraft in self.coalition.faction.all_aircraft
             if isinstance(aircraft, AircraftType)
             and any(base.can_operate(aircraft) for base in bases)
         }

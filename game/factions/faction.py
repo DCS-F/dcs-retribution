@@ -180,7 +180,7 @@ class Faction:
         return sorted(air_defenses)
 
     @cached_property
-    def aircrafts(self) -> list[UnitType[Any]]:
+    def all_aircraft(self) -> list[UnitType[Any]]:
         # Migrator can't cope with this, so we need to do it here...
         self.aircraft = set(self.aircraft)
         self.awacs = set(self.awacs)
