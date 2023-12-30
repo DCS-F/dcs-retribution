@@ -898,7 +898,7 @@ class PretenseLuaGenerator(LuaGenerator):
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.INFANTRY])}",\n'
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.INFANTRY])}",\n'
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.INFANTRY])}",\n'
-        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.MANPAD, UnitClass.INFANTRY])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.MANPAD, UnitClass.INFANTRY])}"\n'
         lua_string_ground_groups += "            },\n"
         lua_string_ground_groups += f'            skill = "{skill_str}",\n'
         lua_string_ground_groups += "            dataCategory = TemplateDB.type.group\n"
@@ -912,7 +912,7 @@ class PretenseLuaGenerator(LuaGenerator):
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.INFANTRY])}",\n'
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.INFANTRY])}",\n'
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.INFANTRY])}",\n'
-        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.MANPAD, UnitClass.INFANTRY])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.MANPAD, UnitClass.INFANTRY])}"\n'
         lua_string_ground_groups += "            },\n"
         lua_string_ground_groups += f'            skill = "{skill_str}",\n'
         lua_string_ground_groups += "            dataCategory = TemplateDB.type.group\n"
@@ -926,7 +926,7 @@ class PretenseLuaGenerator(LuaGenerator):
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.SHORAD, UnitClass.AAA, UnitClass.MANPAD])}",\n'
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.LOGISTICS])}",\n'
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.AAA, UnitClass.SHORAD, UnitClass.MANPAD])}",\n'
-        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.AAA, UnitClass.SHORAD, UnitClass.MANPAD])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.AAA, UnitClass.SHORAD, UnitClass.MANPAD])}"\n'
         lua_string_ground_groups += "            },\n"
         lua_string_ground_groups += "            maxDist = 300,\n"
         lua_string_ground_groups += f'            skill = "{skill_str}",\n'
@@ -1095,7 +1095,7 @@ class PretenseLuaGenerator(LuaGenerator):
         lua_string_ground_groups += "    units = {\n"
         lua_string_ground_groups += '                "NASAMS_Command_Post",\n'
         lua_string_ground_groups += '                "NASAMS_Radar_MPQ64F1",\n'
-        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.AAA, UnitClass.SHORAD, UnitClass.MANPAD])}"\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.AAA, UnitClass.SHORAD, UnitClass.MANPAD])}",\n'
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.LOGISTICS])}",\n'
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.LOGISTICS])}",\n'
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.SHORAD, UnitClass.AAA, UnitClass.MANPAD])}",\n'
@@ -1369,7 +1369,7 @@ class PretenseLuaGenerator(LuaGenerator):
         init_body_2 = init_body_2_file.read()
 
         init_body_3_file = open("./resources/plugins/pretense/init_body_3.lua", "r")
-        init_body_3 = init_body_2_file.read()
+        init_body_3 = init_body_3_file.read()
 
         init_footer_file = open("./resources/plugins/pretense/init_footer.lua", "r")
         init_footer = init_footer_file.read()
