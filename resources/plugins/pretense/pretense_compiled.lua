@@ -5801,7 +5801,7 @@ do
 	function ZoneCommand:isPatrolMissionValid(product, target)
 		--if target.side ~= product.side then return false end
 		if target.name == self.name then return false end
-		if not target.distToFront or target.distToFront > 1 then return false end
+		if not target.distToFront or target.distToFront > 4 then return false end
 		if target.side ~= product.side and target.side ~= 0 then return false end
 		local dist = mist.utils.get2DDist(self.zone.point, target.zone.point)
 		if dist > 150000 then return false end
@@ -5854,7 +5854,7 @@ do
 
 	function ZoneCommand:isSeadMissionValid(product, target)
 		if target.side == 0 then return false end
-		if not target.distToFront or target.distToFront > 1 then return false end
+		if not target.distToFront or target.distToFront > 4 then return false end
 		
 		--if MissionTargetRegistry.isZoneTargeted(target.name) then return false end
 
@@ -6048,16 +6048,22 @@ do
 	end
 
 	function ZoneCommand:isStrikeMissionValid(product, target)
+        env.info("ZoneCommand - "..product.name.." checking for strike mission validity against "..target.name)
 		if target.side == 0 then return false end
+		env.info("Target side is valid")
 		if target.side == product.side then return false end
-		if not target.distToFront or target.distToFront > 4 then return false end
+		env.info("Producth side is valid")
+		if not target.distToFront or target.distToFront >= 4 then return false end
+		env.info("Distance to front is valid")
 
 		if target:hasEnemySAMRadar(product) then return false end
+		env.info("SAM check is valid")
 
 		--if MissionTargetRegistry.isZoneTargeted(target.name) then return false end
 
 		for i,v in pairs(target.built) do
 			if v.type == ZoneCommand.productTypes.upgrade and v.side ~= product.side then 
+		        env.info("Product type check is valid")
 				return true
 			end
 		end
