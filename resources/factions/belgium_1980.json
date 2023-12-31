@@ -1,0 +1,97 @@
+{
+  "country": "Belgium",
+  "name": "Belgium 1980",
+  "authors": "Ghosti",
+  "description": "<p>Belgium 1980. Because there are no player-flyable Mirage 5 or F-16A/B in DCS, Mirage 2000C and F-16C/D are used instead.</p>",
+  "locales": [
+    "fr_FR"
+  ],
+  "doctrine": "coldwar",
+  "aircrafts": [
+    "C-130",
+    "Mirage 2000C",
+    "F-16A",
+    "F-16CM Fighting Falcon (Block 50)",
+    "F-16D Fighting Falcon (Block 52)",
+	"F-104G Starfighter",
+    "SA 342L Gazelle",
+    "SA 342M Gazelle",
+    "SA 342M Gazelle Mistral",
+	"UH-1H Iroquois"
+  ],
+  "awacs": [
+    "E-3A"
+  ],
+  "tankers": [
+    "KC-135 Stratotanker",
+    "KC-135 Stratotanker MPRS"
+  ],
+  "frontline_units": [
+    "M113",
+    "Flakpanzer Gepard",
+    "Leopard 1A3",
+    "AMX-13 75mm",
+    "AMX-13 90mm",
+    "M4A4 Sherman Firefly",
+    "M60A3 \"Patton\"",
+    "FV510 Warrior",
+    "TPz Fuchs"
+  ],
+  "artillery_units": [
+    "M109A6 Paladin"
+  ],
+  "logistics_units": [
+    "Truck M818 6x6"
+  ],
+  "infantry_units": [
+    "Infantry M249",
+    "Infantry M4",
+    "MANPADS Stinger",
+    "Mortar 2B11 120mm"
+  ],
+  "preset_groups": [
+    "Hawk",
+    "Roland"
+  ],
+  "naval_units": [
+    "DDG Arleigh Burke IIa",
+    "CG Ticonderoga",
+    "LHA-1 Tarawa"
+  ],
+  "missiles": [],
+  "requirements": {
+    "frenchpack V3.5": "https://forums.eagle.ru/showthread.php?t=279974",
+	"WW2 Asset Pack": "https://www.digitalcombatsimulator.com/en/products/other/wwii_assets_pack/"
+  },
+  "carrier_names": [
+  ],
+  "helicopter_carrier_names": [
+    "BNS F930 Leopold I",
+    "BNS F931 Louise-Marie"
+  ],
+  "has_jtac": true,
+  "jtac_unit": "MQ-9 Reaper",
+  "liveries_overrides": {
+    "Mirage 2000C": [
+      "BAF BA-17 What-If Mirage 2000"
+    ],
+    "F-104G Starfighter": [
+      "Belgium_FX-47"
+    ],
+    "F-16A": [
+      "2nd squadron `comet` florennes ab"
+    ],
+    "F-16CM Fighting Falcon (Block 50)": [
+      "BAF FA-95 S"
+    ],
+    "F-16D Fighting Falcon (Block 52)": [
+      "BAF FB-24"
+    ],
+	"F-104G Starfighter": [
+      "Belgium_FX-47"
+    ],
+	"UH-1H Iroquois": [
+      "Belgian SAR"
+    ]
+  }
+}

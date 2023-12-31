@@ -1,0 +1,487 @@
+---
+name: Normandy - South of the Channel
+theater: Normandy
+authors: Ghosti
+description: <p>This is a scenario on the Normandy map taking place on the southern side of the channel. Soviet forces have launched an attack according to their Seven Days to the River Rhine plan and 9-day extended plan to Lyon. French armed forces, outside the regular NATO command structure at the time, need to defend their country while the rest of NATO is engaged with the Soviet forces elsewhere.</p>
+recommended_player_faction: Belgium 1980
+recommended_enemy_faction: Russia 1975 (Mi-24P)
+recommended_start_date: 1980-06-01
+miz: normandy_south.miz
+performance: 3
+version: "10.0"
+squadrons:
+  # Blue CV-1:
+   # - primary: BARCAP
+   #   secondary: air-to-air
+   #   aircraft:
+   #     - F-14B Tomcat
+   # - primary: BARCAP
+   #   secondary: any
+   #   aircraft:
+   #     - F-14B Tomcat
+   # - primary: Refueling
+   #   aircraft:
+   #     - S-3B Tanker
+   #  - primary: Strike
+   #    secondary: any
+   #    aircraft:
+   #      - Super Etendard (SFM)
+   #  - primary: BAI
+   #    secondary: any
+   #    aircraft:
+   #      - Super Etendard (SFM)
+   #  - primary: CAS
+   #    secondary: air-to-ground
+   #    aircraft:
+   #      - Mi-8MTV2 Hip
+   #  - primary: AEW&C
+   #    aircraft:
+   #      - E-2C Hawkeye
+  # Blue CV-2:
+   # - primary: BARCAP
+   #   secondary: air-to-air
+   #   aircraft:
+   #     - F-14B Tomcat
+   # - primary: BARCAP
+   #   secondary: any
+   #   aircraft:
+   #     - F-14B Tomcat
+   # - primary: Refueling
+   #   aircraft:
+   #     - S-3B Tanker
+   #  - primary: Strike
+   #    secondary: any
+   #    aircraft:
+   #      - Super Etendard (SFM)
+   #  - primary: BAI
+   #    secondary: any
+   #    aircraft:
+   #      - Super Etendard (SFM)
+   #  - primary: CAS
+   #    secondary: air-to-ground
+   #    aircraft:
+   #      - Mi-8MTV2 Hip
+  Blue LHA-1:
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342M Gazelle
+  Blue LHA-2:
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342M Gazelle
+  Blue LHA-3:
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342M Gazelle
+  Red CV:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  Red LHA:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  
+  # Cherbourg-Querqueville Airfield
+  # Cotentin Peninsula, west of Cherbourg
+  # Ground start airbase, ~1500m runway (road)
+  Cherbourg-Querqueville Airfield:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-104G Starfighter
+
+  # Pierreville-Culule Airfield
+  # Cotentin Peninsula, SSW of Cherbourg
+  # Ground start airbase, ~1500m runway (road)
+  Pierreville-Culule Airfield:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-16CM Fighting Falcon (Block 50)
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-16D Fighting Falcon (Block 52)
+
+  # Maupertus
+  # Cotentin Peninsula, on the coast
+  # 1550m runway
+  4:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-16A
+    - primary: Transport
+      aircraft:
+        - C-130
+    - primary: Refueling
+      aircraft:
+        - KC-130
+  # Azeville
+  # Cotentin Peninsula
+  # 1150m runway
+  15:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-16A
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+  # Biniville
+  # Cotentin Peninsula
+  # 1100m runway
+  10:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-16A
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+  # Saint Pierre du Mont
+  # On the coast, south of the Channel
+  # 1500m runway
+  #1:
+  # Lignerolles
+  # Inland
+  # 1600m runway
+  2:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - L-39ZA Albatros
+  # Cretteville
+  # Cotentin Peninsula
+  # 1500m runway
+  3:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-16CM Fighting Falcon (Block 50)
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-16D Fighting Falcon (Block 52)
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+  # Brucheville
+  # Cotentin Peninsula
+  # 1600m runway
+  5:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-104G Starfighter
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-16A
+  # Meautis
+  # Cotentin Peninsula
+  # 1400m runway
+  6:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-16A
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - F-104G Starfighter
+  # Cricqueville-en-Bessin
+  # On the coast, south of the Channel
+  # 1550m runway, right next to Deux Jumeaux
+  #7:
+  # Lessay
+  # Western France
+  # 1800m & 1500m runways
+  8:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-16A
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-16A
+  # Sainte-Laurent-sur-Mer
+  # On the coast, south of the Channel
+  # 1500m runway
+  #9:
+  # Cardonville
+  # On the coast, south of the Channel
+  # 1500m runway, lots of parking
+  #11:
+  # Deux Jumeaux
+  # On the coast, south of the Channel
+  # 1550m runway, right next to Cricqueville-en-Bessin
+  12:
+    - primary: Strike
+      secondary: air-to-ground
+      aircraft:
+        - Su-17M4 Fitter-K
+    - primary: Strike
+      secondary: air-to-ground
+      aircraft:
+        - MiG-23MLD Flogger-K
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Su-25 Frogfoot
+  # Chippelle
+  # On the coast, south of the Channel, slightly inland
+  # 1750m runway
+  13:
+    - primary: BARCAP
+      secondary: air-to-air
+      aircraft:
+        - MiG-25PD Foxbat-E
+  # Beuzeville
+  # Cotentin Peninsula
+  # 1400m runway
+  14:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-104G Starfighter
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-16A
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+  # Picauville
+  # Cotentin Peninsula
+  # 1400m runway
+  16:
+    - primary: BAI
+      secondary: air-to-air
+      aircraft:
+        - Spitfire LF Mk IX
+    - primary: BAI
+      secondary: air-to-air
+      aircraft:
+        - P-47D-40 Thunderbolt
+    - primary: BAI
+      secondary: air-to-air
+      aircraft:
+        - MosquitoFBMkVI
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - F-104G Starfighter
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+  # Le Molay
+  # On the coast, south of the Channel, slightly inland
+  # 1400m runway
+  #17:
+  # Longues-sur-Mer
+  # On the coast, south of the Channel
+  # 1350m runway, wide
+  18:
+    - primary: BARCAP
+      secondary: air-to-ground
+      aircraft:
+        - MiG-23MLD Flogger-K
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Su-25 Frogfoot
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Carpiquet
+  # Inland
+  # 1650m runway
+  19:
+    - primary: CAS
+      secondary: air-to-air
+      aircraft:
+        - MiG-21bis Fishbed-N
+    - primary: Strike
+      secondary: air-to-ground
+      aircraft:
+        - Su-24M Fencer-D
+    - primary: Refueling
+    - primary: Transport
+  # Bazenville
+  # On the coast, south of the Channel
+  # 1700m runway
+  #20:
+  # Sainte-Croix-sur-Mer
+  # On the coast, south of the Channel
+  # 1400m runway
+  #21:
+  # Beny-sur-Mer
+  # On the coast, south of the Channel
+  # 1300m runway, wide
+  #22:
+  # Rucqueville
+  # On the coast, south of the Channel, slightly inland
+  # 1500m runway
+  #23:
+  # Sommervieu
+  # On the coast, south of the Channel
+  # 1400m runway
+  #24:
+  # Lantheuil
+  # On the coast, south of the Channel, slightly inland
+  # 1400m runway, wide
+  25:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - L-39ZA Albatros
+    - primary: CAS
+      secondary: air-to-air
+      aircraft:
+        - MiG-21bis Fishbed-N
+  # Evreux
+  # Easternmost airfield
+  # 2x 1650m runways
+  26:
+    - primary: CAS
+      secondary: air-to-air
+      aircraft:
+        - MiG-21bis Fishbed-N
+    - primary: BARCAP
+      secondary: air-to-air
+      aircraft:
+        - MiG-25PD Foxbat-E
+    - primary: Refueling
+    - primary: Transport
+  # Argentan
+  # Inland
+  # 1100m runway
+  #32:
+  #  - primary: CAS
+  #    secondary: air-to-ground
+  #    aircraft:
+  #      - Mi-24V Hind-E
+  # Goulet
+  # Inland
+  # 1100m runway
+  #33:
+  #  - primary: BAI
+  #    secondary: air-to-ground
+  #    aircraft:
+  #      - Mi-8MTV2 Hip
+  # Barville
+  # Deep inland
+  # 2x 1400m runways
+  34:
+    - primary: Strike
+      secondary: air-to-ground
+      aircraft:
+        - Su-24M Fencer-D
+    - primary: Refueling
+    - primary: Transport
+  # Essay
+  # Inland
+  # 1100m runway
+  #35:
+  #  - primary: CAS
+  #    secondary: air-to-ground
+  #    aircraft:
+  #      - Mi-8MTV2 Hip
+  # Hauterive
+  # Inland
+  # 1100m runway
+  #36:
+  #  - primary: BAI
+  #    secondary: air-to-ground
+  #    aircraft:
+  #      - Mi-8MTV2 Hip
+  # Vrigny
+  # Inland
+  # 1100m runway
+  #38:
+  #  - primary: BAI
+  #    secondary: air-to-ground
+  #    aircraft:
+  #      - Mi-8MTV2 Hip
+  # Conches
+  # Inland
+  # 1650m runway, southeast of Evreux
+  #40:
