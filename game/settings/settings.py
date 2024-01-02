@@ -776,7 +776,7 @@ class Settings:
         "AI fixed-wing aircraft can use roadbases / bases with only ground spawns",
         MISSION_GENERATOR_PAGE,
         GAMEPLAY_SECTION,
-        default=False,
+        default=True,
         detail=(
             "If enabled, AI can use roadbases or airbases which only have ground spawns."
             "AI will always air-start from these bases (due to DCS limitation)."
