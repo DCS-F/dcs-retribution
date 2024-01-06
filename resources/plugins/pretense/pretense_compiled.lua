@@ -539,7 +539,8 @@ do
 	GroupMonitor.blockedDespawnTimeGroundAssault = 90*60 --used to despawn assault units that are stuck en route for some reason
 	GroupMonitor.landedDespawnTime = 10
 	GroupMonitor.atDestinationTime = 2*60
-	GroupMonitor.atDestinationDespawnTime = 40*60
+	GroupMonitor.atDestinationDespawnTime = 2*60
+	GroupMonitor.atDestinationDespawnTimeGroundAssault = 40*60
 	GroupMonitor.recoveryReduction = 0.8 -- reduce recovered resource from landed missions by this amount to account for maintenance
 
 	GroupMonitor.siegeExplosiveTime = 5*60 -- how long until random upgrade is detonated in zone
@@ -894,9 +895,16 @@ do
 						group.lastStateTime = timer.getAbsTime()
 					end
 
-                    if timer.getAbsTime() - group.lastStateTime > GroupMonitor.atDestinationDespawnTime then
-     					env.info('GroupMonitor: processSurface ['..group.name..'] despawned after arriving at destination')
-     					gr:destroy()
+                    if group.product.missionType == 'assault' then
+                        if timer.getAbsTime() - group.lastStateTime > GroupMonitor.atDestinationDespawnTimeGroundAssault then
+                            env.info('GroupMonitor: processSurface ['..group.name..'] despawned after arriving at destination')
+                            gr:destroy()
+        			    end
+        			else
+                        if timer.getAbsTime() - group.lastStateTime > GroupMonitor.atDestinationDespawnTime then
+                            env.info('GroupMonitor: processSurface ['..group.name..'] despawned after arriving at destination')
+                            gr:destroy()
+        			    end
         			end
 
 					return true
