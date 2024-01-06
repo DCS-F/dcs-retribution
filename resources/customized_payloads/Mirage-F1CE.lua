@@ -14,11 +14,11 @@ local unitPayloads = {
 					["num"] = 1,
 				},
 				[3] = {
-					["CLSID"] = "{MATRA_F1_SNEBT253}",
+					["CLSID"] = "{BLG66_BELOUGA}",
 					["num"] = 5,
 				},
 				[4] = {
-					["CLSID"] = "{MATRA_F1_SNEBT253}",
+					["CLSID"] = "{BLG66_BELOUGA}",
 					["num"] = 3,
 				},
 				[5] = {
@@ -26,11 +26,11 @@ local unitPayloads = {
 					["num"] = 4,
 				},
 				[6] = {
-					["CLSID"] = "{MATRA_F1_SNEBT253}",
+					["CLSID"] = "{BLG66_BELOUGA}",
 					["num"] = 6,
 				},
 				[7] = {
-					["CLSID"] = "{MATRA_F1_SNEBT253}",
+					["CLSID"] = "{BLG66_BELOUGA}",
 					["num"] = 2,
 				},
 			},
@@ -286,11 +286,11 @@ local unitPayloads = {
 					["num"] = 1,
 				},
 				[3] = {
-					["CLSID"] = "{MATRA_F1_SNEBT253}",
+					["CLSID"] = "{BLG66_BELOUGA}",
 					["num"] = 5,
 				},
 				[4] = {
-					["CLSID"] = "{MATRA_F1_SNEBT253}",
+					["CLSID"] = "{BLG66_BELOUGA}",
 					["num"] = 3,
 				},
 				[5] = {
@@ -298,11 +298,11 @@ local unitPayloads = {
 					["num"] = 4,
 				},
 				[6] = {
-					["CLSID"] = "{MATRA_F1_SNEBT253}",
+					["CLSID"] = "{BLG66_BELOUGA}",
 					["num"] = 6,
 				},
 				[7] = {
-					["CLSID"] = "{MATRA_F1_SNEBT253}",
+					["CLSID"] = "{BLG66_BELOUGA}",
 					["num"] = 2,
 				},
 			},
