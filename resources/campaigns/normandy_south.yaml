@@ -3,12 +3,43 @@ name: Normandy - South of the Channel
 theater: Normandy
 authors: Ghosti
 description: <p>This is a scenario on the Normandy map taking place on the southern side of the channel. Soviet forces have launched an attack according to their Seven Days to the River Rhine plan and 9-day extended plan to Lyon. French armed forces, outside the regular NATO command structure at the time, need to defend their country while the rest of NATO is engaged with the Soviet forces elsewhere.</p>
-recommended_player_faction: Belgium 1980
+recommended_player_faction: West Germany 1979
 recommended_enemy_faction: Russia 1975 (Mi-24P)
-recommended_start_date: 1980-06-01
+recommended_start_date: 1979-06-01
 miz: normandy_south.miz
 performance: 3
 version: "10.0"
+settings:
+  pretense_extra_zone_connections: 0
+  pretense_disable_supply_convoys: true
+  pretense_ground_assaults_prefer_roads: false
+  pretense_num_of_cargo_planes: 1
+  pretense_do_not_generate_sead_missions: true
+  pretense_do_not_generate_csar_missions: true
+  perf_culling: true
+  perf_culling_distance: 110
+  player_skill: "High"
+  enemy_skill: "Average"
+  enemy_vehicle_skill: "Average"
+  night_day_missions": "NightMissions.OnlyDay"
+  labels: "Dot Only"
+
+  ground_start_ai_planes: true
+  ground_start_scenery_remove_triggers: false
+  ground_start_ground_power_trucks: false
+  ground_start_ground_power_trucks_roadbase: false
+
+  plugins:
+    gamemaster: true
+    ewrs: true
+    splashdamageclusters: true
+    splashdamageclusters.bdaMessages: true
+    splashdamageclusters.clusterEffects: true
+    splashdamageclusters.shipRadarDamage: true
+ #Mods to be used
+  f4bc_phantom: true
+  f104_starfighter: true
+
 squadrons:
   # Blue CV-1:
    # - primary: BARCAP
@@ -130,20 +161,16 @@ squadrons:
     - primary: CAS
       secondary: any
       aircraft:
-        - F-104G Starfighter
+        - Tornado IDS
 
   # Pierreville-Culule Airfield
   # Cotentin Peninsula, SSW of Cherbourg
   # Ground start airbase, ~1500m runway (road)
   Pierreville-Culule Airfield:
-    - primary: BARCAP
-      secondary: any
-      aircraft:
-        - F-16CM Fighting Falcon (Block 50)
     - primary: CAS
       secondary: any
       aircraft:
-        - F-16D Fighting Falcon (Block 52)
+        - Tornado IDS
 
   # Maupertus
   # Cotentin Peninsula, on the coast
@@ -152,11 +179,11 @@ squadrons:
     - primary: BARCAP
       secondary: any
       aircraft:
-        - Mirage 2000C
+        - F-4C Phantom II
     - primary: CAS
       secondary: any
       aircraft:
-        - F-16A
+        - F-4E Phantom II
     - primary: Transport
       aircraft:
         - C-130
@@ -167,14 +194,14 @@ squadrons:
   # Cotentin Peninsula
   # 1150m runway
   15:
-    - primary: BARCAP
-      secondary: any
-      aircraft:
-        - Mirage 2000C
     - primary: CAS
       secondary: any
       aircraft:
-        - F-16A
+        - F-4E Phantom II
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-4C Phantom II
     - primary: BAI
       secondary: air-to-ground
       aircraft:
@@ -183,14 +210,14 @@ squadrons:
   # Cotentin Peninsula
   # 1100m runway
   10:
-    - primary: BARCAP
-      secondary: any
-      aircraft:
-        - Mirage 2000C
     - primary: CAS
       secondary: any
       aircraft:
-        - F-16A
+        - F-4E Phantom II
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-4C Phantom II
     - primary: BAI
       secondary: air-to-ground
       aircraft:
@@ -214,11 +241,11 @@ squadrons:
     - primary: BARCAP
       secondary: any
       aircraft:
-        - F-16CM Fighting Falcon (Block 50)
+        - F-14A Tomcat (Block 135-GR Late)
     - primary: CAS
       secondary: any
       aircraft:
-        - F-16D Fighting Falcon (Block 52)
+        - AJS-37 Viggen
     - primary: CAS
       secondary: air-to-ground
       aircraft:
@@ -227,18 +254,18 @@ squadrons:
   # Cotentin Peninsula
   # 1600m runway
   5:
-    - primary: BARCAP
-      secondary: any
-      aircraft:
-        - F-104G Starfighter
-    - primary: BARCAP
-      secondary: any
-      aircraft:
-        - Mirage 2000C
     - primary: CAS
       secondary: any
       aircraft:
-        - F-16A
+        - F-4E Phantom II
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-14A Tomcat (Block 135-GR Late)
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-4C Phantom II
   # Meautis
   # Cotentin Peninsula
   # 1400m runway
@@ -246,11 +273,11 @@ squadrons:
     - primary: BARCAP
       secondary: any
       aircraft:
-        - F-16A
+        - F-4E Phantom II
     - primary: BAI
       secondary: any
       aircraft:
-        - F-104G Starfighter
+        - F-4C Phantom II
   # Cricqueville-en-Bessin
   # On the coast, south of the Channel
   # 1550m runway, right next to Deux Jumeaux
@@ -262,19 +289,19 @@ squadrons:
     - primary: BARCAP
       secondary: any
       aircraft:
-        - Mirage 2000C
+        - F-4E Phantom II
     - primary: BARCAP
       secondary: any
       aircraft:
-        - F-16A
-    - primary: BARCAP
-      secondary: any
-      aircraft:
-        - Mirage 2000C
+        - F-4C Phantom II
     - primary: CAS
       secondary: any
       aircraft:
-        - F-16A
+        - F-4E Phantom II
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-4C Phantom II
   # Sainte-Laurent-sur-Mer
   # On the coast, south of the Channel
   # 1500m runway
@@ -314,15 +341,15 @@ squadrons:
     - primary: BARCAP
       secondary: any
       aircraft:
-        - F-104G Starfighter
+        - Mirage-F1CE
     - primary: BARCAP
       secondary: any
       aircraft:
-        - Mirage 2000C
+        - F-4C Phantom II
     - primary: CAS
       secondary: any
       aircraft:
-        - F-16A
+        - F-4E Phantom II
     - primary: CAS
       secondary: air-to-ground
       aircraft:
