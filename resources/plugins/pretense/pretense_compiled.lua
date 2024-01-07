@@ -6344,7 +6344,7 @@ do
 			
 			for name, zone in pairs(zones) do
 				if zone.keepActive then
-					if zone.closestEnemyDist and zone.closestEnemyDist > BattlefieldManager.farOverride and zone.distToFront > 3 then
+					if not zone.distToFront or (zone.distToFront and zone.distToFront > 2) then
 						zone.mode = ZoneCommand.modes.export
 					else
 						if zone.mode ~= ZoneCommand.modes.normal then
@@ -6353,15 +6353,15 @@ do
 						zone.mode = ZoneCommand.modes.normal
 					end
 				else
-					if not zone.distToFront or zone.distToFront == 0 or (zone.closestEnemyDist and zone.closestEnemyDist < BattlefieldManager.closeOverride) then
+					if not zone.distToFront or (zone.distToFront and zone.distToFront > 2) then
+						zone.mode = ZoneCommand.modes.export
+					elseif zone.distToFront == 2 then
+						zone.mode = ZoneCommand.modes.supply
+					else
 						if zone.mode ~= ZoneCommand.modes.normal then
 							zone:fullBuild(1.0)
 						end
 						zone.mode = ZoneCommand.modes.normal
-					elseif zone.distToFront == 1 then
-						zone.mode = ZoneCommand.modes.supply
-					elseif zone.distToFront > 1 then
-						zone.mode = ZoneCommand.modes.export
 					end
 				end
 
