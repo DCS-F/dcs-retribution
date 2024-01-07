@@ -1,0 +1,136 @@
+{
+  "country": "Germany",
+  "name": "West Germany 1979",
+  "authors": "Ghosti",
+  "description": "<p>Late 1970s West Germany, right after the introduction of the Panavia Tornado.</p>",
+  "locales": [
+    "de_DE"
+  ],
+  "aircrafts": [
+    "F-4F Phantom II",
+    "F-4C Phantom II",
+    "Tornado IDS",
+    "F-14A Tomcat (Block 135-GR Late)",
+    "AJS-37 Viggen",
+    "Mirage-F1CE",
+    "SA 342L Gazelle",
+    "SA 342M Gazelle",
+    "AH-64D Apache Longbow",
+    "Ka-50 Hokum",
+    "Mi-24P Hind-F",
+	"UH-1H Iroquois"
+  ],
+  "awacs": [
+    "E-3A"
+  ],
+  "tankers": [
+    "KC-130",
+    "KC-135 Stratotanker"
+  ],
+  "frontline_units": [
+    "Flakpanzer Gepard",
+    "Leopard 1A3",
+    "Marder 1A3",
+    "TPz Fuchs"
+  ],
+  "artillery_units": [],
+  "logistics_units": [
+    "Truck M818 6x6"
+  ],
+  "infantry_units": [
+    "Infantry M249",
+    "Infantry M4",
+    "MANPADS Stinger",
+    "Mortar 2B11 120mm"
+  ],
+  "preset_groups": [
+    "Hawk",
+    "Roland"
+  ],
+  "naval_units": [
+    "FFG Oliver Hazard Perry",
+    "FAC La Combattante IIa",
+    "CG Ticonderoga"
+  ],
+  "missiles": [],
+  "air_defense_units": [
+    "SAM Patriot STR",
+    "Flakpanzer Gepard"
+  ],
+  "requirements": {},
+  "aircraft_carrier": [],
+  "helicopter_carrier": [],
+  "destroyers": [],
+  "cruisers": [],
+  "carrier_names": [],
+  "helicopter_carrier_names": [],
+  "navy_generators": [
+    "SchnellbootGroupGenerator"
+  ],
+  "navy_group_count": 2,
+  "missiles_group_count": 1,
+  "has_jtac": true,
+  "jtac_unit": "Ju 88 A-4",
+  "doctrine": "coldwar",
+  "building_set": "ww2germany",
+  "liveries_overrides": {
+	"F-104G Starfighter": [
+      "JaboG 31 NMF",
+	  "JaboG 32 - Bavaria",
+	  "JaboG 33 Norm 62",
+	  "JaboG 34 Norm 62",
+	  "JaboG 36 Norm 62",
+	  "JaboG 36 Norm 62 early",
+	  "JG 71 Norm 62",
+	  "JG 74 Norm 62",
+	  "MFG 1 MARINE Norm 62",
+	  "MFG 2 MARINE Norm 76"
+    ],
+    "F-4F Phantom II": [
+      "luft1",
+      "luft2",
+      "luft3",
+      "luft4"
+    ],
+    "F-4C Phantom II": [
+      "LUFTWAFFE 51",
+      "LUFTWAFFE TAK 51",
+      "LUFTWAFFE TAK 74"
+    ],
+    "F-14A Tomcat (Block 135-GR Late)": [
+      "FTC"
+    ],
+    "Tornado IDS": [
+      "aufklarungsgeschwader 51 `immelmann` jagel ab luftwaffe",
+      "jagdbombergeschwader 33 buchel ab no. 43+19 experimental scheme",
+      "marinefliegergeschwader 2 eggebek ab marineflieger"
+    ],
+    "AJS-37 Viggen": [
+      "JaboG_33"
+    ],
+    "Mirage-F1CE": [
+	  "Bundeswehr"
+    ],
+	"UH-1H Iroquois": [
+      "Luftwaffe",
+	  "Luftwaffe SAR"
+    ],
+    "SA 342L Gazelle": [
+      "Germany Fictional"
+    ],
+    "SA 342M Gazelle": [
+      "Germany Fictional"
+    ],
+    "AH-64D Apache Longbow": [
+      "AH-64 Germany Army Wood",
+      "BW - Wood",
+      "German Luftwaffe - 3-color Flecktarn"
+    ],
+    "Ka-50 Hokum": [
+      "german fictional camo 8325"
+    ],
+    "Mi-24P Hind-F": [
+      "BW - Wood"
+    ]
+  }
+}
