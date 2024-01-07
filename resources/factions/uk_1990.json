@@ -8,12 +8,19 @@
   ],
   "aircrafts": [
     "AH-64A Apache",
+    "AH-64D Apache Longbow",
     "AV-8B Harrier II Night Attack",
     "C-130",
     "C-130J-30 Super Hercules",
-    "Gazelle AH.1",
-    "Phantom F.3",
-    "Tornado GR4"
+    "SA 342L Gazelle",
+    "SA 342M Gazelle",
+    "F-14A Tomcat (Block 135-GR Late)",
+    "F-4E Phantom II",
+    "F-4B Phantom II",
+    "AJS-37 Viggen",
+    "Tornado GR4",
+    "CH-47D",
+    "UH-1H Iroquois"
   ],
   "awacs": [
     "E-3A"
@@ -28,14 +35,18 @@
     "FV510 Warrior",
     "M1043 HMMWV (M2 HMG)",
     "M1045 HMMWV (BGM-71 TOW)",
-    "M1097 Heavy HMMWV Avenger"
+    "M1097 Heavy HMMWV Avenger",
+    "LUV Land Rover 109",
+    "Truck Land Rover 101 FC"
   ],
   "artillery_units": [
     "M109A6 Paladin",
     "M270 Multiple Launch Rocket System"
   ],
   "logistics_units": [
-    "Truck M818 6x6"
+    "Truck M818 6x6",
+    "LUV Land Rover 109",
+    "Truck Land Rover 101 FC"
   ],
   "infantry_units": [
     "Infantry M249",
@@ -44,19 +55,16 @@
     "Mortar 2B11 120mm"
   ],
   "preset_groups": [
+    "Patriot",
     "Hawk",
     "Rapier"
   ],
   "naval_units": [
-    "P265 Dumbarton Castle",
-    "F72 Ariadne",
-    "F57 Andromeda",
-    "F12 Achilles",
-    "FFG Oliver Hazard Perry",
-    "DDG Arleigh Burke IIa",
-    "CG Ticonderoga",
-    "R05 Invincible",
-    "CVN-74 John C. Stennis"
+    "FAC La Combattante IIa",
+	"P265 Dumbarton Castle",
+	"F72 Ariadne",
+	"F57 Andromeda",
+	"F12 Achilles"
   ],
   "missiles": [],
   "air_defense_units": [
@@ -64,12 +72,104 @@
     "M1097 Heavy HMMWV Avenger"
   ],
   "requirements": {},
-  "carrier_names": [],
-  "helicopter_carrier_names": [
-    "HMS Invincible",
-    "HMS Illustrious",
-    "HMS Ark Royal"
-  ],
+  "carriers": {
+    "Forrestal": [
+      "HMS Eagle (R05)",
+      "HMS Ark Royal (R09)",
+	  "HMS Audacious (R05)"
+    ]
+  },
+  "helicopter_carriers": {
+    "Hms_invincible": [
+      "HMS Invincible (R05)",
+      "HMS Illustrious (R06)",
+      "HMS Hermes (R12)",
+      "HMS Ocean (L12)"
+    ],
+    "Type_071": [
+      "RFA Argus (A135)",
+      "RFA Engadine (K08)",
+      "HMS Fearless (L10)",
+      "HMS Intrepid (L11)"
+    ]
+  },
   "has_jtac": true,
-  "jtac_unit": "MQ-9 Reaper"
+  "jtac_unit": "SA 342M Gazelle",
+  "liveries_overrides": {
+    "AH-64A Apache": [
+      "ah-64_a_green uk"
+    ],
+    "AH-64D Apache Longbow": [
+      "Royal Army Camo"
+    ],
+    "AV-8B Harrier II Night Attack": [
+      "1RAF_ZD403_Green",
+      "3RAF_ZD349_Green",
+      "4RAF_ZG533_Green",
+      "19RAF_ZK421_Bluetail_Green",
+      "19RAF_ZK421_Green",
+      "71RAF_ZG570_Green"
+    ],
+    "C-130": [
+      "Royal Air Force"
+    ],
+    "SA 342L Gazelle": [
+      "UK Fictional"
+    ],
+    "SA 342M Gazelle": [
+      "UK Fictional"
+    ],
+    "F-14A Tomcat (Block 135-GR Late)": [
+      "Royal Air Force Tomcat No. 43 Sqn (1970s Late)"
+    ],
+    "F-4E Phantom II": [
+      "RAF 23 Sqn Camo P",
+      "RAF 23 Sqn Camo T"
+    ],
+    "F-4B Phantom II": [
+      "#f Royal Navy 864 FLY NASU VL by Urbi"
+    ],
+    "AJS-37 Viggen": [
+      "06 Sqn RAF Camo 2",
+      "41 Sqn RAF Camo 2",
+      "43 Sqn RAF Camo 3",
+      "54 Sqn AN RAF Camo 3",
+      "54 Sqn RAF Camo 2"
+    ],
+    "Tornado GR4": [
+      "bb of 14 squadron raf lossiemouth",
+      "no. 9 squadron raf marham ab (norfolk)",
+      "no. 12 squadron raf lossiemouth ab (morayshire)",
+      "no. 14 squadron raf lossiemouth ab (morayshire)",
+      "no. 617 squadron raf lossiemouth ab (morayshire)",
+      "o of ii (ac) squadron raf marham"
+    ],
+    "CH-47D": [
+      "RAF_18Sqn_100year_ZA712"
+    ],
+    "UH-1H Iroquois": [
+      "British Army Air Corps",
+      "RAF Olive Drab",
+      "Royal Navy"
+    ]
+  },
+  "liveries_overrides_ground_forces": {
+    "Soldier M249": [
+      "DPM"
+    ],
+    "Soldier M4": [
+      "DPM"
+    ],
+    "Chieftain_mk3": [
+      "Bronze Green Camo"
+    ],
+	"Forrestal": [
+      "HMS Queen Elizabeth R01",
+	  "HMS Duke of Edinburgh R02",
+	  "HMS Prince of Wales R03"
+    ],
+	"La_Combattante_II": [
+      "Royal Navy"
+    ]
+  }
 }
