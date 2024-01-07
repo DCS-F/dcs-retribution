@@ -22,7 +22,7 @@ settings:
   player_skill: "High"
   enemy_skill: "Average"
   enemy_vehicle_skill: "Average"
-  night_day_missions": NightMissions.OnlyDay
+  night_day_missions: NightMissions.OnlyDay
   labels: "Dot Only"
 
   ground_start_ai_planes: true
