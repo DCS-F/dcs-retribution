@@ -49,12 +49,10 @@ tasks:
   BAI: 630
   BARCAP: 520
   CAS: 630
-  DEAD: 240
   Escort: 520
   Fighter sweep: 520
   Intercept: 520
   OCA/Aircraft: 630
   OCA/Runway: 550
-  SEAD: 90
   Strike: 550
   TARCAP: 520
