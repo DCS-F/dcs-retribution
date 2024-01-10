@@ -3,8 +3,8 @@ name: Caucasus - Unrest in the Balkans (KFOR)
 theater: Caucasus
 authors: Ghosti
 description: <p>A faux NATO vs. Serbia scenario in the Caucasus mountains, intended to represent a fictional large scale conflict sparked by the 2004 Kosovo unrest. Campaign timeframe allows for both Tomcat and Super Hornet carrier ops.</p>
-recommended_player_faction: NATO Desert Storm
-recommended_enemy_faction: Russia 1975 (Mi-24P)
+recommended_player_faction: USA 2005
+recommended_enemy_faction: Serbia 1999
 recommended_start_date: 2004-03-17
 miz: Caucasus_KFOR_Unrest.miz
 performance: 3
@@ -100,32 +100,6 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - AV-8B Harrier II Night Attack
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - UH-1H Iroquois
-  # HMS Invincible (R05)
-  Blue R05:
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - AV-8B Harrier II Night Attack
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - AV-8B Harrier II Night Attack
-  # Giuseppe Garibaldi (551)
-  Blue C551:
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - AV-8B Harrier II Night Attack
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - UH-1H Iroquois
-  # RFA Argus (A135)
-  Blue A135:
     - primary: CAS
       secondary: air-to-ground
       aircraft:
