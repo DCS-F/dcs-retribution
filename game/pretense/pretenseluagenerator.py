@@ -1201,7 +1201,7 @@ class PretenseLuaGenerator(LuaGenerator):
         trigger = TriggerStart(comment="Pretense init")
 
         now = datetime.now()
-        date_time = now.strftime("%Y-%d-%mT%H_%M_%S")
+        date_time = now.strftime("%Y-%m-%dT%H_%M_%S")
         lua_string_savefile = (
             f"local savefile = 'pretense_retribution_{date_time}.json'"
         )
