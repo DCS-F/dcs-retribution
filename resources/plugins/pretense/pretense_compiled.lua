@@ -7742,11 +7742,13 @@ do
                 if b.type == 'defense' then
                     local typeList = {}
                     local gr = Group.getByName(b.name)
-                    for _,unit in ipairs(gr:getUnits()) do
-                        table.insert(typeList, unit:getDesc().typeName)
-                    end
+                    if gr ~= nil then
+                        for _,unit in ipairs(gr:getUnits()) do
+                            table.insert(typeList, unit:getDesc().typeName)
+                        end
 
-                    tosave.zones[i].built[n] = typeList
+                        tosave.zones[i].built[n] = typeList
+                    end
                 else
                     tosave.zones[i].built[n] = true
                 end
