@@ -14,10 +14,11 @@ from dcs.planes import plane_map
 from dcs.unitpropertydescription import UnitPropertyDescription
 from dcs.unittype import FlyingType
 from dcs.weapons_data import weapon_ids
+from typing_extensions import Self
 
 from game.data.units import UnitClass
 from game.dcs.lasercodeconfig import LaserCodeConfig
-from game.dcs.unittype import UnitType
+from game.dcs.unittype import UnitType, DcsUnitTypeT
 from game.persistency import user_custom_weapon_injections_dir
 from game.radio.channels import (
     ApacheChannelNamer,
@@ -402,6 +403,23 @@ class AircraftType(UnitType[Type[FlyingType]]):
     def each_dcs_type() -> Iterator[Type[FlyingType]]:
         yield from helicopter_map.values()
         yield from plane_map.values()
+
+    @classmethod
+    def _each_variant_of(cls, unit: DcsUnitTypeT) -> Iterator[Self]:
+        # Replace slashes with underscores because slashes are not allowed in filenames
+        aircraft_id = unit.id.replace("/", "_")
+        data_path = Path("resources/units/aircraft") / f"{aircraft_id}.yaml"
+        if not data_path.exists():
+            logging.warning(f"No data for {aircraft_id}; it will not be available")
+            return
+
+        with data_path.open(encoding="utf-8") as data_file:
+            data = yaml.safe_load(data_file)
+
+        for variant_id, variant_data in data.get("variants", {unit.id: {}}).items():
+            if variant_data is None:
+                variant_data = {}
+            yield cls._variant_from_dict(unit, variant_id, data | variant_data)
 
     @staticmethod
     def _set_props_overrides(
