@@ -7,8 +7,8 @@
     "en_US"
   ],
   "aircrafts": [
+    "A-10A Thunderbolt II",
     "A-10C Thunderbolt II (Suite 3)",
-    "A-10C Thunderbolt II (Suite 7)",
     "AH-64D Apache Longbow",
     "AH-64D Apache Longbow (AI)",
     "AV-8B Harrier II Night Attack",
@@ -220,14 +220,6 @@
 	  "no. 617 squadron raf lossiemouth ab (morayshire)",
 	  "o of ii (ac) squadron raf marham"
     ],
-    "Tornado GR4 (SFM)": [
-      "27 Sqn Camo",
-      "31 Sqn Camo",
-      "41 Sqn Camo",
-      "617 Sqncamo",
-      "II Sqn Camo",
-      "IX Sqn Camo"
-    ],
 	"Tornado IDS": [
       "aufklarungsgeschwader 51 `immelmann` jagel ab luftwaffe",
       "jagdbombergeschwader 31 `boelcke` norvenich ab luftwaffe",
@@ -238,13 +230,6 @@
       "ITA Tornado Black",
       "ITA Tornado MM7042",
       "ITA Tornado MM55004"
-    ],
-	"Tornado IDS (SFM)": [
-      "aufklarungsgeschwader 51 `immelmann` jagel ab luftwaffe",
-      "jagdbombergeschwader 31 `boelcke` norvenich ab luftwaffe",
-      "jagdbombergeschwader 32 lechfeld ab luftwaffe",
-      "jagdbombergeschwader 33 buchel ab no. 43+19 experimental scheme",
-      "marinefliegergeschwader 2 eggebek ab marineflieger"
     ],
     "Mirage 2000C": [
 	  "AdA Alsace LF-2",
@@ -261,18 +246,6 @@
 	  "SPA48 Bleu",
 	  "VERT ATLAS",
 	  "2000N"
-    ],
-	"Super Etendard (SFM)": [
-	  "Aeronavale 1",
-	  "Flotille 11F Camo 1",
-	  "Flotille 11F Camo 2",
-	  "Flotille 11F Grey 1",
-	  "Flotille 11F Grey 2",
-	  "Flotille 17F Camo",
-	  "Flotille 17F Grey",
-	  "Flottille 11F",
-	  "Flottille 14F",
-	  "Flottille 17F"
     ],
     "F/A-18C Hornet (AI)": [
       "VFA-94"
