@@ -233,7 +233,7 @@ class PretenseTriggerGenerator:
                     or isinstance(cp.dcs_airport, Khalkhalah)
                     or isinstance(cp.dcs_airport, Krasnodar_Pashkovsky)
                 ):
-                    trigger_radius = TRIGGER_RADIUS_CAPTURE * 1.8
+                    trigger_radius = int(TRIGGER_RADIUS_CAPTURE * 1.8)
                 else:
                     trigger_radius = TRIGGER_RADIUS_CAPTURE
             cp_name = "".join(
