@@ -202,7 +202,7 @@ local unitPayloads = {
 					["num"] = 7,
 				},
 				[4] = {
-					["CLSID"] = "{FPU_12_FUEL_TANK}",
+					["CLSID"] = "{LAU-115 - AIM-120C}",
 					["num"] = 6,
 				},
 				[5] = {
@@ -214,7 +214,7 @@ local unitPayloads = {
 					["num"] = 3,
 				},
 				[7] = {
-					["CLSID"] = "{FPU_12_FUEL_TANK}",
+					["CLSID"] = "{BRU33_2X_GBU-12}",
 					["num"] = 5,
 				},
 				[8] = {
@@ -224,6 +224,10 @@ local unitPayloads = {
 				[9] = {
 					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
 					["num"] = 1,
+				},
+				[10] = {
+					["CLSID"] = "{FPU_12_FUEL_TANK}",
+					["num"] = 10,
 				},
 			},
 			["tasks"] = {
@@ -243,11 +247,11 @@ local unitPayloads = {
 					["num"] = 8,
 				},
 				[3] = {
-					["CLSID"] = "{GBU_32_V_2B}",
+					["CLSID"] = "LAU_117_AGM_65F",
 					["num"] = 7,
 				},
 				[4] = {
-					["CLSID"] = "{FPU_12_FUEL_TANK}",
+					["CLSID"] = "{LAU-115 - AIM-120C}",
 					["num"] = 6,
 				},
 				[5] = {
@@ -255,11 +259,11 @@ local unitPayloads = {
 					["num"] = 4,
 				},
 				[6] = {
-					["CLSID"] = "{GBU_32_V_2B}",
+					["CLSID"] = "LAU_117_AGM_65F",
 					["num"] = 3,
 				},
 				[7] = {
-					["CLSID"] = "{FPU_12_FUEL_TANK}",
+					["CLSID"] = "{BRU33_2X_GBU-12}",
 					["num"] = 5,
 				},
 				[8] = {
@@ -269,6 +273,10 @@ local unitPayloads = {
 				[9] = {
 					["CLSID"] = "{5CE2FF2A-645A-4197-B48D-8720AC69394F}",
 					["num"] = 1,
+				},
+				[10] = {
+					["CLSID"] = "{FPU_12_FUEL_TANK}",
+					["num"] = 10,
 				},
 			},
 			["tasks"] = {
