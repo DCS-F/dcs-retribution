@@ -61,7 +61,8 @@
     "M1134 Stryker ATGM (BGM-71 TOW)",
     "M1A2 Abrams",
     "M2A2 Bradley",
-    "M6 Linebacker"
+    "M6 Linebacker",
+    "M163 Vulcan Air Defense System"
   ],
   "artillery_units": [
     "M109A6 Paladin",
@@ -91,7 +92,8 @@
   "air_defense_units": [
     "EWR AN/FPS-117 Radar",
     "M1097 Heavy HMMWV Avenger",
-    "M6 Linebacker"
+    "M6 Linebacker",
+    "M163 Vulcan Air Defense System"
   ],
   "requirements": {},
   "carrier_names": [
@@ -185,8 +187,7 @@
 	  "179th_Fighter_Squadron",
 	  "480th_Fighter_Squadron",
 	  "522nd_Fighter_Squadron",
-	  "Dark_Viper",
-	  "AMI, 5 Stormo 23 Gruppo"
+	  "Dark_Viper"
     ],
     "UH-1H Iroquois": [
       "British Army Air Corps",
@@ -212,47 +213,10 @@
       "US Navy Grey",
       "USAF Rescue"
     ],
-    "Tornado GR4": [
-      "bb of 14 squadron raf lossiemouth",
-	  "no. 9 squadron raf marham ab (norfolk)",
-	  "no. 12 squadron raf lossiemouth ab (morayshire)",
-	  "no. 14 squadron raf lossiemouth ab (morayshire)",
-	  "no. 617 squadron raf lossiemouth ab (morayshire)",
-	  "o of ii (ac) squadron raf marham"
-    ],
-	"Tornado IDS": [
-      "aufklarungsgeschwader 51 `immelmann` jagel ab luftwaffe",
-      "jagdbombergeschwader 31 `boelcke` norvenich ab luftwaffe",
-      "jagdbombergeschwader 32 lechfeld ab luftwaffe",
-      "jagdbombergeschwader 33 buchel ab no. 43+19 experimental scheme",
-      "marinefliegergeschwader 2 eggebek ab marineflieger",
-      "ITA Tornado (Sesto Stormo Diavoli Rossi)",
-      "ITA Tornado Black",
-      "ITA Tornado MM7042",
-      "ITA Tornado MM55004"
-    ],
-    "Mirage 2000C": [
-	  "AdA Alsace LF-2",
-	  "AdA Chasse 2-5",
-	  "Cambresis",
-	  "AdA EC 3-2 Forest",
-	  "M2KC_11_EE",
-	  "M2KC_133-XF",
-	  "M2000C-D Navarre SPA 153 Leader",
-	  "M2000C-D Navarre SPA 153 Wingman",
-	  "M2000C-N Lafayette 318",
-	  "M2000C-N Lafayette 321",
-	  "Navarre 133mq",
-	  "SPA48 Bleu",
-	  "VERT ATLAS",
-	  "2000N"
-    ],
     "F/A-18C Hornet (AI)": [
       "VFA-94"
     ],
     "F/A-18C Hornet (Lot 20)": [
-      "Canada 409th Squadron",
-      "Canada 425th Squadron",
       "VFA-106",
       "VFA-113",
       "VFA-122",
@@ -268,21 +232,7 @@
       "VMFA-251",
       "VMFA-312",
       "VMFA-314",
-      "VMFA-323",
-	  "Spain 111th Escuadron C.15-73",
-	  "Spain 111th Escuadron C.15-88",
-	  "Spain 121th Escuadron C.15-34 50th Anniversary",
-	  "Spain 121th Escuadron C.15-45",
-	  "Spain 121th Escuadron C.15-50",
-	  "Spain 121th Escuadron C.15-60",
-	  "Spain 151th Escuadron C.15-14",
-	  "Spain 151th Escuadron C.15-18",
-	  "Spain 151th Escuadron C.15-23",
-	  "Spain 151th Escuadron C.15-24",
-	  "Spain 211th Escuadron C.15-76",
-	  "Spain 211th Escuadron C.15-77",
-	  "Spain 462th Escuadron C.15-79",
-	  "Spain 462th Escuadron C.15-90"
+      "VMFA-323"
     ]
   },
   "liveries_overrides_ground_forces": {
