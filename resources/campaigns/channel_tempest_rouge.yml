@@ -1,0 +1,126 @@
+name: "The Channel - Tempest Rouge"
+theater: "The Channel"
+authors: "Ghost"
+recommended_player_faction: "United Kingdom 1990"
+recommended_enemy_faction: "Soviet Union 1989"
+description: "<p>The Battle of Dunkirk (French: Bataille de Dunkerque) was fought around the French port of Dunkirk (Dunkerque) during the Second World War, between the Allies and Nazi Germany. As the Allies were losing the Battle of France on the Western Front, the Battle of Dunkirk was the defence and evacuation of British and other Allied forces to Britain from 26 May to 4 June 1940..</p>"
+miz: "channel_tempest_rouge.miz"
+performance: 2
+version: "10.4"
+squadrons:
+  # Abbeville Drucat
+  # Southernmost airfield, France
+  # 3x1600m runways
+  1:
+    - primary: SEAD
+      secondary: air-to-ground
+      aircraft:
+        - Su-17M4 Fitter-K
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - MiG-23MLD Flogger-K
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Su-25 Frogfoot
+    - primary: BARCAP
+      secondary: air-to-air
+      aircraft:
+        - MiG-25PD Foxbat-E
+  # Merville Calonne
+  # Easternmost airfield, France
+  # 2x1600m runways, 1x1700m runway
+  2:
+    - primary: SEAD
+      secondary: air-to-ground
+      aircraft:
+        - Su-17M4 Fitter-K
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - MiG-23MLD Flogger-K
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Su-25 Frogfoot
+    - primary: BARCAP
+      secondary: air-to-air
+      aircraft:
+        - MiG-25PD Foxbat-E
+  # St Omer
+  # Short runway airfield, France
+  # 670m runway + grass area
+  3:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Bf 109 K-4 Kurfürst
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Fw 190 A-8 Anton
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Ju 88 A-4
+  # Dunkirk Mardyck
+  # Coast of the Channel, France
+  # 650m runway
+  4:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Spitfire LF Mk IX
+  # Manston
+  # Coast of the Channel, UK
+  # 2800m runway (wide)
+  5:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Boston Mk.III
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Spitfire LF Mk IX
+  # Hawkinge
+  # Coast of the Channel, UK
+  # 2x1000m grass runways
+  6:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - MosquitoFBMkVI
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Spitfire LF Mk IX
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Spitfire LF Mk IX (Clipped Wings)
+    # Lympne
+    # Coast of the Channel, UK
+    # 1100m grass runway
+    7:
+    # Detling
+    # Inland, UK
+    # 1400m grass runway
+    8:
+    # Eastchurch
+    # Coast of the Channel (north), UK
+    # 2x1100m grass/dirt runways
+    10:
+    # High Halden
+    # Inland, UK
+    # 2x1300m dirt runways
+    12:
+    # Headcorn
+    # Inland, UK
+    # 1x1300m dirt runway, 1x1200m dirt runway
+    13:
+    # Biggin Hill
+    # Inland, UK
+    # 1x1600m runway, 2x900m runways
+    14:

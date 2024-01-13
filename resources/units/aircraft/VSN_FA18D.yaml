@@ -1,0 +1,23 @@
+carrier_capable: false
+description:
+  "The F/A-18D Hornet is twin engine, supersonic fighter. The D-model can be configured
+  for training or as an all-weather strike craft. The 'missionized' D model's rear seat
+  is configured for a Marine Corps Naval Flight Officer who functions as a Weapons and
+  Sensors Officer to assist in operating the weapons systems. The F/A-18D is primarily
+  operated by the U.S. Marine Corps in the night attack and Forward Air Controller
+  (Airborne) (FAC(A)) roles. The Finnish Air Force F/A-18Ds are also fully mission
+  capable.
+  
+  The Hornet is also known for its extreme, slow-speed maneuverability in a dogfight.
+  Although incredibly deadly, the Hornet is also a very easy aircraft to fly.
+  
+  This is the air combat variant."
+introduced: 1987
+manufacturer: McDonnell Douglas
+origin: USA
+price: 24
+role: Multirole Fighter
+# DCS default livery for the Hornet is the Blue Angels.
+default_livery: "Jolly Rogers"
+variants:
+  F/A-18D Hornet (A/A): {}

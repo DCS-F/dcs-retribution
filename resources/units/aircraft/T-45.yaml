@@ -1,0 +1,10 @@
+carrier_capable: true
+description: McDonnell Douglas T-45 Goshawk is a modified, carrier-capable version of the British BAE Systems Hawk land-based training jet aircraft.
+introduced: 1991
+manufacturer: McDonnell Douglas
+origin: USA
+price: 5
+role: Carrier-based Attack/Light Fighter
+variants:
+  T-45 Goshawk: {}
+  Hawk Mk.60: {}
