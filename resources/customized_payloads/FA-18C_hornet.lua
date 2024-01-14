@@ -17,11 +17,11 @@ local unitPayloads = {
 					["num"] = 6,
 				},
 				[4] = {
-					["CLSID"] = "{FPU_8A_FUEL_TANK}",
+					["CLSID"] = "{AF42E6DF-9A60-46D8-A9A0-1708B241AADB}",
 					["num"] = 7,
 				},
 				[5] = {
-					["CLSID"] = "{FPU_8A_FUEL_TANK}",
+					["CLSID"] = "{AF42E6DF-9A60-46D8-A9A0-1708B241AADB}",
 					["num"] = 3,
 				},
 				[6] = {
@@ -37,7 +37,7 @@ local unitPayloads = {
 					["num"] = 4,
 				},
 				[9] = {
-					["CLSID"] = "<CLEAN>",
+					["CLSID"] = "{FPU_8A_FUEL_TANK}",
 					["num"] = 5,
 				},
 			},
@@ -192,11 +192,11 @@ local unitPayloads = {
 					["num"] = 1,
 				},
 				[2] = {
-					["CLSID"] = "{GBU_31_V_2B}",
+					["CLSID"] = "{C40A1E3A-DD05-40D9-85A4-217729E37FAE}",
 					["num"] = 2,
 				},
 				[3] = {
-					["CLSID"] = "{FPU_8A_FUEL_TANK}",
+					["CLSID"] = "{GBU_31_V_2B}",
 					["num"] = 3,
 				},
 				[4] = {
@@ -208,11 +208,11 @@ local unitPayloads = {
 					["num"] = 6,
 				},
 				[6] = {
-					["CLSID"] = "{FPU_8A_FUEL_TANK}",
+					["CLSID"] = "{GBU_31_V_2B}",
 					["num"] = 7,
 				},
 				[7] = {
-					["CLSID"] = "{GBU_31_V_2B}",
+					["CLSID"] = "{C40A1E3A-DD05-40D9-85A4-217729E37FAE}",
 					["num"] = 8,
 				},
 				[8] = {
@@ -220,7 +220,7 @@ local unitPayloads = {
 					["num"] = 9,
 				},
 				[9] = {
-					["CLSID"] = "<CLEAN>",
+					["CLSID"] = "{FPU_8A_FUEL_TANK}",
 					["num"] = 5,
 				},
 			},
@@ -289,19 +289,19 @@ local unitPayloads = {
 					["num"] = 1,
 				},
 				[3] = {
-					["CLSID"] = "LAU_117_AGM_65F",
+					["CLSID"] = "{BRU33_2X_GBU-12}",
 					["num"] = 2,
 				},
 				[4] = {
-					["CLSID"] = "LAU_117_AGM_65F",
+					["CLSID"] = "{BRU33_2X_GBU-12}",
 					["num"] = 8,
 				},
 				[5] = {
-					["CLSID"] = "LAU_117_AGM_65F",
+					["CLSID"] = "{BRU33_2X_GBU-12}",
 					["num"] = 7,
 				},
 				[6] = {
-					["CLSID"] = "LAU_117_AGM_65F",
+					["CLSID"] = "{BRU33_2X_GBU-12}",
 					["num"] = 3,
 				},
 				[7] = {
