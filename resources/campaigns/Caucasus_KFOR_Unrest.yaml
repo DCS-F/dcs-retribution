@@ -18,7 +18,7 @@ settings:
   pretense_do_not_generate_sead_missions: true
   pretense_do_not_generate_csar_missions: true
   perf_culling: true
-  perf_culling_distance: 30
+  perf_culling_distance: 110
   player_skill: "High"
   enemy_skill: "Average"
   enemy_vehicle_skill: "Average"
@@ -40,6 +40,7 @@ settings:
  #Mods to be used
   f4bc_phantom: true
   f_16_idf: true
+  fa_18d: true
   fa_18efg: true
   uh_60l: true
   
