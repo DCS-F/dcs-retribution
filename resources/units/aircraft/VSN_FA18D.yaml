@@ -21,3 +21,9 @@ role: Multirole Fighter
 default_livery: "Jolly Rogers"
 variants:
   F/A-18D Hornet (A/A): {}
+tasks:
+  BARCAP: 440
+  Escort: 410
+  Fighter sweep: 440
+  Intercept: 440
+  TARCAP: 440

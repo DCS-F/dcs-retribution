@@ -21,3 +21,13 @@ role: Multirole Fighter
 default_livery: "Jolly Rogers"
 variants:
   F/A-18D Hornet (A/G): {}
+tasks:
+  Anti-ship: 140
+  BAI: 730
+  CAS: 730
+  DEAD: 440
+  OCA/Aircraft: 730
+  OCA/Runway: 590
+  SEAD: 440
+  SEAD Escort: 440
+  Strike: 590

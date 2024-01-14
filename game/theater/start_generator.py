@@ -61,6 +61,7 @@ class ModSettings:
     f15d_baz: bool = False
     f_15_idf: bool = False
     f_16_idf: bool = False
+    fa_18d: bool = False
     fa_18efg: bool = False
     f22_raptor: bool = False
     f84g_thunderjet: bool = False
@@ -71,6 +72,8 @@ class ModSettings:
     irondome: bool = False
     uh_60l: bool = False
     jas39_gripen: bool = False
+    t45_goshawk: bool = False
+    hawk_t1a: bool = False
     su30_flanker_h: bool = False
     su57_felon: bool = False
     frenchpack: bool = False

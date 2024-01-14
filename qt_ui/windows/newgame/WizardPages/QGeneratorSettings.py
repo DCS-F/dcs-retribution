@@ -106,6 +106,8 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.registerField("f_15_idf", self.f_15_idf)
         self.f_16_idf = QtWidgets.QCheckBox()
         self.registerField("f_16_idf", self.f_16_idf)
+        self.fa_18d = QtWidgets.QCheckBox()
+        self.registerField("fa_18d", self.fa_18d)
         self.fa_18efg = QtWidgets.QCheckBox()
         self.registerField("fa_18efg", self.fa_18efg)
         self.f22_raptor = QtWidgets.QCheckBox()
@@ -120,6 +122,10 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.registerField("f105_thunderchief", self.f105_thunderchief)
         self.jas39_gripen = QtWidgets.QCheckBox()
         self.registerField("jas39_gripen", self.jas39_gripen)
+        self.t45_goshawk = QtWidgets.QCheckBox()
+        self.registerField("t45_goshawk", self.t45_goshawk)
+        self.hawk_t1a = QtWidgets.QCheckBox()
+        self.registerField("hawk_t1a", self.hawk_t1a)
         self.su30_flanker_h = QtWidgets.QCheckBox()
         self.registerField("su30_flanker_h", self.su30_flanker_h)
         self.su57_felon = QtWidgets.QCheckBox()
@@ -156,6 +162,7 @@ class GeneratorOptions(QtWidgets.QWizardPage):
             ("F-15D Baz (v1.0)", self.f15d_baz),
             ("F-15I Ra'am (v1.0 by IDF Mods Project)", self.f_15_idf),
             ("F-16I Sufa & F-16D (v3.6 by IDF Mods Project)", self.f_16_idf),
+            ("F/A-18D Hornet (version v2.7.12.01)", self.fa_18d),
             ("F/A-18E/F/G Super Hornet (version 2.1)", self.fa_18efg),
             ("F-22A Raptor", self.f22_raptor),
             ("F-84G Thunderjet (v2.5.7.01)", self.f84g_thunderjet),
@@ -166,6 +173,8 @@ class GeneratorOptions(QtWidgets.QWizardPage):
             ("High Digit SAMs", self.high_digit_sams),
             ("Swedish Military Assets pack (1.10)", self.swedishmilitaryassetspack),
             ("JAS 39 Gripen (v1.8.5-beta)", self.jas39_gripen),
+            ("T-45 Goshawk (version 1.01)", self.t45_goshawk),
+            ("Hawk T1A", self.hawk_t1a),
             ("OV-10A Bronco", self.ov10a_bronco),
             ("Su-30 Flanker-H (V2.1.12 beta)", self.su30_flanker_h),
             ("Su-57 Felon (build-04)", self.su57_felon),
@@ -218,6 +227,7 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.f15d_baz.setChecked(s.get("f15d_baz", False))
         self.f_15_idf.setChecked(s.get("f_15_idf", False))
         self.f_16_idf.setChecked(s.get("f_16_idf", False))
+        self.fa_18d.setChecked(s.get("fa_18d", False))
         self.fa_18efg.setChecked(s.get("fa_18efg", False))
         self.f22_raptor.setChecked(s.get("f22_raptor", False))
         self.f84g_thunderjet.setChecked(s.get("f84g_thunderjet", False))
@@ -225,6 +235,8 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.f104_starfighter.setChecked(s.get("f104_starfighter", False))
         self.f105_thunderchief.setChecked(s.get("f105_thunderchief", False))
         self.jas39_gripen.setChecked(s.get("jas39_gripen", False))
+        self.t45_goshawk.setChecked(s.get("t45_goshawk", False))
+        self.hawk_t1a.setChecked(s.get("hawk_t1a", False))
         self.su30_flanker_h.setChecked(s.get("su30_flanker_h", False))
         self.su57_felon.setChecked(s.get("su57_felon", False))
         self.ov10a_bronco.setChecked(s.get("ov10a_bronco", False))

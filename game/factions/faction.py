@@ -443,10 +443,17 @@ class Faction:
             self.remove_vehicle("SAM SA-14 Strela-3 manpad")
             self.remove_vehicle("SAM SA-24 Igla-S manpad")
             self.remove_vehicle("Polyana-D4M1 C2 node")
+        if not mod_settings.fa_18d:
+            self.remove_aircraft("VSN_FA18D")
+            self.remove_aircraft("VSN_FA18D_AG")
         if not mod_settings.fa_18efg:
             self.remove_aircraft("FA-18E")
             self.remove_aircraft("FA-18F")
             self.remove_aircraft("EA-18G")
+        if not mod_settings.t45_goshawk:
+            self.remove_aircraft("T-45")
+        if not mod_settings.hawk_t1a:
+            self.remove_aircraft("Hawk-T1A")
         # spanish naval assets pack
         if not mod_settings.spanishnavypack:
             self.remove_ship("L61")
