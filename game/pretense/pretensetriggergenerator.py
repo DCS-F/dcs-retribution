@@ -55,6 +55,7 @@ TRIGGER_RADIUS_CLEAR_SCENERY = 1000
 TRIGGER_RADIUS_PRETENSE_TGO = 500
 TRIGGER_RADIUS_PRETENSE_SUPPLY = 500
 TRIGGER_RADIUS_PRETENSE_HELI = 1000
+TRIGGER_RADIUS_PRETENSE_HELI_BUFFER = 500
 TRIGGER_RADIUS_PRETENSE_CARRIER = 50000
 TRIGGER_RUNWAY_LENGTH_PRETENSE = 2500
 TRIGGER_RUNWAY_WIDTH_PRETENSE = 400
@@ -226,7 +227,20 @@ class PretenseTriggerGenerator:
         """
         for cp in self.game.theater.controlpoints:
             if cp.is_fleet:
-                trigger_radius = TRIGGER_RADIUS_PRETENSE_CARRIER
+                trigger_radius = float(TRIGGER_RADIUS_PRETENSE_CARRIER)
+            elif isinstance(cp, Fob) and cp.has_helipads:
+                trigger_radius = TRIGGER_RADIUS_PRETENSE_HELI
+                for helipad in list(
+                    cp.helipads + cp.helipads_quad + cp.helipads_invisible
+                ):
+                    if cp.position.distance_to_point(helipad) > trigger_radius:
+                        trigger_radius = cp.position.distance_to_point(helipad)
+                for ground_spawn, ground_spawn_wp in list(
+                    cp.ground_spawns + cp.ground_spawns_roadbase
+                ):
+                    if cp.position.distance_to_point(ground_spawn) > trigger_radius:
+                        trigger_radius = cp.position.distance_to_point(ground_spawn)
+                trigger_radius += TRIGGER_RADIUS_PRETENSE_HELI_BUFFER
             else:
                 if cp.dcs_airport is not None and (
                     isinstance(cp.dcs_airport, Damascus)
