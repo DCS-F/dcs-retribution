@@ -27,7 +27,8 @@
   ],
   "tankers": [
     "KC-130",
-    "KC-135 Stratotanker"
+    "KC-135 Stratotanker",
+    "KC-135 Stratotanker MPRS"
   ],
   "frontline_units": [
     "Chieftain Mk.3",
@@ -69,7 +70,8 @@
   "missiles": [],
   "air_defense_units": [
     "SAM Hawk SR (AN/MPQ-50)",
-    "M1097 Heavy HMMWV Avenger"
+    "M1097 Heavy HMMWV Avenger",
+    "M163 Vulcan Air Defense System"
   ],
   "requirements": {},
   "carriers": {

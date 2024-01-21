@@ -3,6 +3,7 @@ theater: "The Channel"
 authors: "Ghost"
 recommended_player_faction: "United Kingdom 1990"
 recommended_enemy_faction: "Soviet Union 1989"
+recommended_start_date: 1986-08-07
 description: "<p>Militants from Soviet Azerbaijan destroy an oil production refinery in Nizhnevartovsk, threatening to cripple the Soviet Union's economy due to oil shortages. After much deliberation, the Soviet Politburo decides to seize the Persian Gulf by military force in order to recoup the country's oil losses. Knowing that the United States had pledged to defend the oil-producing countries in the Persian Gulf, the Soviets decide that neutralizing NATO is a necessary first step before its military operation can take place. West Germany and parts of Belgium and France have been occupied by Soviet and Warsaw Pact forces, which are next planning invasions against Iceland and the UK.</p>"
 miz: "channel_tempest_rouge.miz"
 performance: 2
@@ -36,7 +37,8 @@ settings:
     splashdamageclusters.shipRadarDamage: true
  #Mods to be used
   f4bc_phantom: true
-  f104_starfighter: true
+  hawk_t1a: true
+  t45_goshawk: true
 
 squadrons:
   # Abbeville Drucat
