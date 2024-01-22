@@ -280,11 +280,23 @@ presets = {
 				type='defense',
 				template='patriot-red',
 			}),
-			nasams = Preset:new({
+			nasamsb = Preset:new({
 				display = 'SAM',
 				cost=3000,
 				type='defense',
-				template='nasams-red',
+				template='nasamsb-red',
+			}),
+			nasamsc = Preset:new({
+				display = 'SAM',
+				cost=3000,
+				type='defense',
+				template='nasamsc-red',
+			}),
+			rapier = Preset:new({
+				display = 'SAM',
+				cost=3000,
+				type='defense',
+				template='rapier-red',
 			}),
 			redShipGroup = Preset:new({
 				display = 'SAM',
@@ -354,11 +366,23 @@ presets = {
 				type='defense',
 				template='patriot-blue',
 			}),
-			nasams = Preset:new({
+			nasamsb = Preset:new({
 				display = 'SAM',
 				cost=3000,
 				type='defense',
-				template='nasams-blue',
+				template='nasamsb-blue',
+			}),
+			nasamsc = Preset:new({
+				display = 'SAM',
+				cost=3000,
+				type='defense',
+				template='nasamsc-blue',
+			}),
+			rapier = Preset:new({
+				display = 'SAM',
+				cost=3000,
+				type='defense',
+				template='rapier-blue',
 			}),
 			blueShipGroup = Preset:new({
 				display = 'SAM',

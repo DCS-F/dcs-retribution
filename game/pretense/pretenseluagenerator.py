@@ -280,7 +280,9 @@ class PretenseLuaGenerator(LuaGenerator):
             "sa11",
             "hawk",
             "patriot",
-            "nasams",
+            "nasamsb",
+            "nasamsc",
+            "rapier",
             "irondome",
             "davidsling",
         ]:
@@ -370,11 +372,15 @@ class PretenseLuaGenerator(LuaGenerator):
                         sam_presets["hawk"].enabled = True
                     if ground_unit.unit_type.dcs_unit_type == AirDefence.Patriot_ln:
                         sam_presets["patriot"].enabled = True
+                    if ground_unit.unit_type.dcs_unit_type == AirDefence.NASAMS_LN_B:
+                        sam_presets["nasamsb"].enabled = True
+                    if ground_unit.unit_type.dcs_unit_type == AirDefence.NASAMS_LN_C:
+                        sam_presets["nasamsc"].enabled = True
                     if (
-                        ground_unit.unit_type.dcs_unit_type == AirDefence.NASAMS_LN_B
-                        or ground_unit.unit_type.dcs_unit_type == AirDefence.NASAMS_LN_C
+                        ground_unit.unit_type.dcs_unit_type
+                        == AirDefence.Rapier_fsa_launcher
                     ):
-                        sam_presets["nasams"].enabled = True
+                        sam_presets["rapier"].enabled = True
                     if ground_unit.unit_type.dcs_unit_type == IRON_DOME_LN:
                         sam_presets["irondome"].enabled = True
                     if ground_unit.unit_type.dcs_unit_type == DAVID_SLING_LN:
@@ -1090,7 +1096,31 @@ class PretenseLuaGenerator(LuaGenerator):
         lua_string_ground_groups += "}\n"
 
         lua_string_ground_groups += (
-            'TemplateDB.templates["nasams-' + side_str + '"] = {\n'
+            'TemplateDB.templates["nasamsb-' + side_str + '"] = {\n'
+        )
+        lua_string_ground_groups += "    units = {\n"
+        lua_string_ground_groups += '                "NASAMS_Command_Post",\n'
+        lua_string_ground_groups += '                "NASAMS_Radar_MPQ64F1",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.AAA, UnitClass.SHORAD, UnitClass.MANPAD])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.LOGISTICS])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.LOGISTICS])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.SHORAD, UnitClass.AAA, UnitClass.MANPAD])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.SHORAD, UnitClass.AAA, UnitClass.MANPAD])}",\n'
+        lua_string_ground_groups += '                "NASAMS_LN_B",\n'
+        lua_string_ground_groups += '                "NASAMS_LN_B",\n'
+        lua_string_ground_groups += '                "NASAMS_LN_B",\n'
+        lua_string_ground_groups += '                "NASAMS_LN_B",\n'
+        lua_string_ground_groups += '                "NASAMS_Radar_MPQ64F1",\n'
+        lua_string_ground_groups += '                "NASAMS_Radar_MPQ64F1",\n'
+        lua_string_ground_groups += '                "NASAMS_Radar_MPQ64F1"\n'
+        lua_string_ground_groups += "            },\n"
+        lua_string_ground_groups += "            maxDist = 300,\n"
+        lua_string_ground_groups += f'            skill = "{skill_str}",\n'
+        lua_string_ground_groups += "            dataCategory = TemplateDB.type.group\n"
+        lua_string_ground_groups += "}\n"
+
+        lua_string_ground_groups += (
+            'TemplateDB.templates["nasamsc-' + side_str + '"] = {\n'
         )
         lua_string_ground_groups += "    units = {\n"
         lua_string_ground_groups += '                "NASAMS_Command_Post",\n'
@@ -1107,6 +1137,36 @@ class PretenseLuaGenerator(LuaGenerator):
         lua_string_ground_groups += '                "NASAMS_Radar_MPQ64F1",\n'
         lua_string_ground_groups += '                "NASAMS_Radar_MPQ64F1",\n'
         lua_string_ground_groups += '                "NASAMS_Radar_MPQ64F1"\n'
+        lua_string_ground_groups += "            },\n"
+        lua_string_ground_groups += "            maxDist = 300,\n"
+        lua_string_ground_groups += f'            skill = "{skill_str}",\n'
+        lua_string_ground_groups += "            dataCategory = TemplateDB.type.group\n"
+        lua_string_ground_groups += "}\n"
+
+        lua_string_ground_groups += (
+            'TemplateDB.templates["rapier-' + side_str + '"] = {\n'
+        )
+        lua_string_ground_groups += "    units = {\n"
+        lua_string_ground_groups += '                "rapier_fsa_blindfire_radar",\n'
+        lua_string_ground_groups += '                "rapier_fsa_blindfire_radar",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.AAA, UnitClass.SHORAD, UnitClass.MANPAD])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.LOGISTICS])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.LOGISTICS])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.SHORAD, UnitClass.AAA, UnitClass.MANPAD])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.SHORAD, UnitClass.AAA, UnitClass.MANPAD])}",\n'
+        lua_string_ground_groups += '                "rapier_fsa_launcher",\n'
+        lua_string_ground_groups += '                "rapier_fsa_launcher",\n'
+        lua_string_ground_groups += '                "rapier_fsa_launcher",\n'
+        lua_string_ground_groups += '                "rapier_fsa_launcher",\n'
+        lua_string_ground_groups += (
+            '                "rapier_fsa_optical_tracker_unit",\n'
+        )
+        lua_string_ground_groups += (
+            '                "rapier_fsa_optical_tracker_unit",\n'
+        )
+        lua_string_ground_groups += (
+            '                "rapier_fsa_optical_tracker_unit"\n'
+        )
         lua_string_ground_groups += "            },\n"
         lua_string_ground_groups += "            maxDist = 300,\n"
         lua_string_ground_groups += f'            skill = "{skill_str}",\n'
