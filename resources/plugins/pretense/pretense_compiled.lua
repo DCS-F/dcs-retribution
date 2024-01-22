@@ -676,13 +676,13 @@ do
 					group.lastStateTime = timer.getAbsTime()
 					MissionTargetRegistry.addBaiTarget(group)
 				elseif group.product.missionType == 'assault' and timer.getAbsTime() - group.lastStateTime > GroupMonitor.blockedDespawnTimeGroundAssault then
-					env.info('GroupMonitor: processSurface ['..group.name..'] despawned due to blockage')
+					env.info('GroupMonitor: processSurface assault group ['..group.name..'] despawned due to blockage')
 					gr:destroy()
 					local todeliver = math.floor(group.product.cost)
 					z:addResource(todeliver)
 					return true
 				elseif timer.getAbsTime() - group.lastStateTime > GroupMonitor.blockedDespawnTimeGround then
-					env.info('GroupMonitor: processSurface ['..group.name..'] despawned due to blockage')
+					env.info('GroupMonitor: processSurface ground group ['..group.name..'] despawned due to blockage')
 					gr:destroy()
 					local todeliver = math.floor(group.product.cost)
 					z:addResource(todeliver)
@@ -885,23 +885,32 @@ do
 				if gr then
 					local firstUnit = gr:getUnit(1):getName()
 					local z = ZoneCommand.getZoneOfUnit(firstUnit)
-					if z and z.side == 0 then
-						env.info('GroupMonitor: processSurface ['..group.name..'] is at neutral zone')
-						z:capture(gr:getCoalition())
-						env.info('GroupMonitor: processSurface ['..group.name..'] has captured ['..z.name..']')
-					else
-						env.info('GroupMonitor: processSurface ['..group.name..'] starting siege')
-						group.state = 'siege'
-						group.lastStateTime = timer.getAbsTime()
-					end
 
-                    if group.product.missionType == 'assault' then
-                        if timer.getAbsTime() - group.lastStateTime > GroupMonitor.atDestinationDespawnTimeGroundAssault then
+                    if group.product.missionType ~= 'assault' then
+                        if z and z.side == 0 then
+                            env.info('GroupMonitor: processSurface ['..group.name..'] is at neutral zone')
+                            z:capture(gr:getCoalition())
+                            env.info('GroupMonitor: processSurface ['..group.name..'] has captured ['..z.name..']')
+                        else
+                            env.info('GroupMonitor: processSurface ['..group.name..'] is still at destination')
+                        end
+
+                        if timer.getAbsTime() - group.lastStateTime > GroupMonitor.atDestinationDespawnTime then
                             env.info('GroupMonitor: processSurface ['..group.name..'] despawned after arriving at destination')
                             gr:destroy()
         			    end
         			else
-                        if timer.getAbsTime() - group.lastStateTime > GroupMonitor.atDestinationDespawnTime then
+                        if z and z.side == 0 then
+                            env.info('GroupMonitor: processSurface ['..group.name..'] is at neutral zone')
+                            z:capture(gr:getCoalition())
+                            env.info('GroupMonitor: processSurface ['..group.name..'] has captured ['..z.name..']')
+                        else
+                            env.info('GroupMonitor: processSurface ['..group.name..'] starting siege')
+                            group.state = 'siege'
+                            group.lastStateTime = timer.getAbsTime()
+                        end
+
+                        if timer.getAbsTime() - group.lastStateTime > GroupMonitor.atDestinationDespawnTimeGroundAssault then
                             env.info('GroupMonitor: processSurface ['..group.name..'] despawned after arriving at destination')
                             gr:destroy()
         			    end
