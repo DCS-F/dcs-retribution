@@ -298,6 +298,18 @@ presets = {
 				type='defense',
 				template='rapier-red',
 			}),
+			irondome = Preset:new({
+				display = 'SAM',
+				cost=20000,
+				type='defense',
+				template='irondome-red',
+			}),
+			davidsling = Preset:new({
+				display = 'SAM',
+				cost=30000,
+				type='defense',
+				template='davidsling-red',
+			}),
 			redShipGroup = Preset:new({
 				display = 'SAM',
 				cost=3000,
@@ -383,6 +395,18 @@ presets = {
 				cost=3000,
 				type='defense',
 				template='rapier-blue',
+			}),
+			irondome = Preset:new({
+				display = 'SAM',
+				cost=20000,
+				type='defense',
+				template='irondome-blue',
+			}),
+			davidsling = Preset:new({
+				display = 'SAM',
+				cost=30000,
+				type='defense',
+				template='davidsling-blue',
 			}),
 			blueShipGroup = Preset:new({
 				display = 'SAM',
