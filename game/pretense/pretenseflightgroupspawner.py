@@ -5,7 +5,8 @@ from typing import Any, Tuple
 from dcs import Mission
 from dcs.country import Country
 from dcs.mapping import Vector2, Point
-from dcs.terrain import NoParkingSlotError
+from dcs.terrain import NoParkingSlotError, TheChannel
+from dcs.terrain.thechannel.airports import Manston
 from dcs.unitgroup import (
     FlyingGroup,
     ShipGroup,
@@ -37,6 +38,10 @@ class PretenseNameGenerator(NameGenerator):
 
 
 namegen = PretenseNameGenerator
+# Air-start AI aircraft which are faster than this on WWII terrains
+# 1000 km/h is just above the max speed of the Harrier and Su-25,
+# so they will still start normally from grass and dirt strips
+WW2_TERRAIN_SUPERSONIC_AI_AIRSTART_SPEED = 1000
 
 
 class PretenseFlightGroupSpawner(FlightGroupSpawner):
@@ -152,6 +157,18 @@ class PretenseFlightGroupSpawner(FlightGroupSpawner):
                     pad_group = self._generate_at_cp_helipad(name, cp)
                     if pad_group is not None:
                         return pad_group
+                # Air-start supersonic AI aircraft if the campaign is being flown in a WWII terrain
+                # This will improve these terrains' use in cold war campaigns
+                if isinstance(cp.theater.terrain, TheChannel) and not isinstance(
+                    cp.dcs_airport, Manston
+                ):
+                    if (
+                        self.flight.client_count == 0
+                        and self.flight.squadron.aircraft.max_speed.speed_in_kph
+                        > WW2_TERRAIN_SUPERSONIC_AI_AIRSTART_SPEED
+                    ):
+                        self.insert_into_pretense(name)
+                        return self._generate_over_departure(name, cp)
                 if (
                     cp.has_ground_spawns
                     and len(self.ground_spawns[cp])
