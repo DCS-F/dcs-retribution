@@ -72,7 +72,7 @@ squadrons:
     - primary: Strike
       secondary: any
       aircraft:
-        - MiG-23MLD Flogger-K
+        - MiG-27K Flogger-J2
     - primary: CAS
       secondary: air-to-ground
       aircraft:
@@ -108,7 +108,7 @@ squadrons:
     - primary: BARCAP
       secondary: any
       aircraft:
-        - F-4C Phantom II
+        - Tornado GR4
     - primary: BAI
       secondary: air-to-ground
       aircraft:
@@ -127,6 +127,10 @@ squadrons:
       secondary: any
       aircraft:
         - AJS-37 Viggen
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - AV-8B Harrier II Night Attack
   # Lympne
   # Coast of the Channel, UK
   # 1100m grass runway
@@ -135,6 +139,10 @@ squadrons:
       secondary: any
       aircraft:
         - AJS-37 Viggen
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - AV-8B Harrier II Night Attack
   # Detling
   # Inland, UK
   # 1400m grass runway
@@ -146,7 +154,7 @@ squadrons:
     - primary: BARCAP
       secondary: any
       aircraft:
-        - F-4C Phantom II
+        - Tornado GR4
   # Eastchurch
   # Coast of the Channel (north), UK
   # 2x1100m grass/dirt runways
@@ -155,6 +163,10 @@ squadrons:
       secondary: any
       aircraft:
         - AJS-37 Viggen
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - AV-8B Harrier II Night Attack
   # High Halden
   # Inland, UK
   # 2x1300m dirt runways
@@ -166,7 +178,7 @@ squadrons:
     - primary: BARCAP
       secondary: any
       aircraft:
-        - F-4C Phantom II
+        - Tornado GR4
   # Headcorn
   # Inland, UK
   # 1x1300m dirt runway, 1x1200m dirt runway
@@ -178,7 +190,7 @@ squadrons:
     - primary: BARCAP
       secondary: any
       aircraft:
-        - F-4C Phantom II
+        - Tornado GR4
   # Biggin Hill
   # Inland, UK
   # 1x1600m runway, 2x900m runways
@@ -190,7 +202,7 @@ squadrons:
     - primary: BARCAP
       secondary: any
       aircraft:
-        - F-4C Phantom II
+        - Tornado GR4
     - primary: Refueling
       aircraft:
         - KC-135 Stratotanker MPRS
