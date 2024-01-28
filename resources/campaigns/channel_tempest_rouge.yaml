@@ -105,6 +105,10 @@ squadrons:
       secondary: any
       aircraft:
         - F-4E Phantom II
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-4B Phantom II
     - primary: BARCAP
       secondary: any
       aircraft:
@@ -151,6 +155,10 @@ squadrons:
       secondary: any
       aircraft:
         - F-4E Phantom II
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-4B Phantom II
     - primary: BARCAP
       secondary: any
       aircraft:
@@ -175,6 +183,10 @@ squadrons:
       secondary: any
       aircraft:
         - F-4E Phantom II
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-4B Phantom II
     - primary: BARCAP
       secondary: any
       aircraft:
@@ -187,6 +199,10 @@ squadrons:
       secondary: any
       aircraft:
         - F-4E Phantom II
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-4B Phantom II
     - primary: BARCAP
       secondary: any
       aircraft:
@@ -199,6 +215,14 @@ squadrons:
       secondary: any
       aircraft:
         - F-4E Phantom II
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-4B Phantom II
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-4C Phantom II
     - primary: BARCAP
       secondary: any
       aircraft:
