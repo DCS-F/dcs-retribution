@@ -35,7 +35,7 @@ local unitPayloads = {
 					},
 				},
 				[6] = {
-					["CLSID"] = "{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}",
+					["CLSID"] = "{AB8B8299-F1CC-4359-89B5-2172E0CF4A5A}",
 					["num"] = 2,
 					["settings"] = {
 						["GUI_fuze_type"] = 1,
