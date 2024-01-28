@@ -17,6 +17,7 @@
     "F-14A Tomcat (Block 135-GR Late)",
     "F-4E Phantom II",
     "F-4B Phantom II",
+    "F-4C Phantom II",
     "AJS-37 Viggen",
     "Tornado GR4",
     "CH-47D",
@@ -142,6 +143,9 @@
     ],
     "F-4B Phantom II": [
       "#f Royal Navy 864 FLY NASU VL by Urbi"
+    ],
+    "F-4C Phantom II": [
+      "#f RAF No.54 Squadron F-4M H-50"
     ],
     "AJS-37 Viggen": [
       "06 Sqn RAF Camo 2",
