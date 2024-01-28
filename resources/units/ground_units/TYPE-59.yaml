@@ -8,5 +8,6 @@ origin: USSR/China
 price: 18
 role: Main Battle Tank
 variants:
+  MT Type 59: {}
   Type 59: {}
   T-54A: {}
