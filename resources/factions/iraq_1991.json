@@ -15,6 +15,7 @@
     "MiG-25PD Foxbat-E",
     "MiG-29A Fulcrum-A",
     "Mirage-F1EQ",
+    "SA 342L Gazelle",
     "SA 342M Gazelle",
     "Su-22M4 Fitter-K",
     "Su-24M Fencer-D",
@@ -30,29 +31,47 @@
   ],
   "frontline_units": [
     "2S1 Gvozdika",
+	"2S3 Akatsiya",
     "Chieftain Mk.3",
+    "BMD-1",
     "BMP-1",
+    "BMP-2",
     "BRDM-2",
     "BTR-80",
     "MT-LB",
+    "MT-LBu",
     "PT-76",
     "T-55A",
     "T-72B with Kontakt-1 ERA",
     "ZSU-23-4 Shilka",
-    "ZSU-57-2 'Sparka'"
+    "ZSU-57-2 'Sparka'",
+	"ZU-23 on Ural-375 Insurgent",
+	"S-60 57mm",
+	"Bofors 40 mm Gun",
+    "LUV UAZ-469 Jeep",
+	"LUV Land Rover 109",
+    "Truck Ural-375",
+	"Truck Ural-4320-31 Arm'd",
+	"Truck Ural-4320T",
+	"Truck GAZ-66"
   ],
   "artillery_units": [
+    "2S1 Gvozdika",
+	"2S3 Akatsiya",
     "BM-21 Grad"
   ],
   "logistics_units": [
     "LUV UAZ-469 Jeep",
-    "Truck Ural-375"
+	"LUV Land Rover 109",
+    "Truck Ural-375",
+	"Truck Ural-4320-31 Arm'd",
+	"Truck Ural-4320T",
+	"Truck GAZ-66"
   ],
   "infantry_units": [
-    "Infantry AK-74 Rus",
-    "MANPADS SA-18 Igla \"Grouse\"",
-    "Paratrooper AKS",
-    "Paratrooper RPG-16"
+    "Insurgent AK-74",
+    "MANPADS SA-18 Igla \"Grouse\" Ins",
+    "Infantry RPG"
   ],
   "preset_groups": [
     "SA-2/S-75",
@@ -60,11 +79,7 @@
     "SA-3/S-125",
     "SA-3/S-125 V-601P/5V27",
     "SA-6",
-    "Cold-War-Flak",
-    "KS-19/SON-9"
-  ],
-  "naval_units": [
-    "Corvette 1124.4 Grisha"
+    "Cold-War-Flak"
   ],
   "air_defense_units": [
     "SAM P19 \"Flat Face\" SR (SA-2/3)",
@@ -82,5 +97,151 @@
   "helicopter_carrier_names": [],
   "requirements": {},
   "carrier_names": [],
-  "doctrine": "coldwar"
+  "naval_units": [
+    "Corvette 1124.4 Grisha"
+  ],
+  "doctrine": "coldwar",
+  "liveries_overrides": {
+    "A-50": [
+      "Syrian Air"
+    ],
+    "IL-76MD": [
+      "Syrian Air"
+    ],
+    "IL-78M": [
+      "Syrian Air"
+    ],
+    "L-39ZA Albatros": [
+      "Iraqi Air Force",
+	  "Takistani Air Force",
+	  "Splinter camo desert"
+    ],
+    "Mi-24V Hind-E": [
+      "SAA MI-24"
+    ],
+    "Mi-24P Hind-F": [
+      "IQAF"
+    ],
+    "Mi-8MTV2 Hip": [
+      "Mi-17 Iraq"
+    ],
+    "MiG-19P Farmer-B": [
+      "IQAF",
+	  "Syrian AF 1967"
+    ],
+    "MiG-21bis Fishbed-N": [
+      "Iraq - 9th Sqn",
+	  "Iraq - 17th Sqn (1)",
+	  "Iraq - 17th Sqn (2)"
+    ],
+    "MiG-23ML Flogger-G": [
+      "Algerian Air Force"
+    ],
+    "MiG-25PD Foxbat-E": [
+      "Iraqi Air Force"
+    ],
+    "MiG-29A Fulcrum-A": [
+      "MiG-29A Iraq"
+    ],
+    "SA 342L Gazelle": [
+      "Syria Fictional"
+    ],
+    "SA 342M Gazelle": [
+      "Syria Fictional"
+    ],
+    "Su-22M4 Fitter-K": [
+      "SAAF"
+    ],
+    "Su-24M Fencer-D": [
+      "Syrian Air Force"
+    ],
+    "Su-25 Frogfoot": [
+      "Su-25A Iraq"
+    ],
+	"H-6J Badger": [
+      "Badger-C"
+    ]
+  },
+  "liveries_overrides_ground_forces": {
+    "SAU Gvozdika": [
+      "Desert"
+    ],
+	"SAU Akatsia": [
+      "Desert"
+    ],
+    "Chieftain_mk3": [
+      "Default"
+    ],
+    "BMD-1": [
+      "Desert"
+    ],
+    "BMP-1": [
+      "Desert"
+    ],
+    "BMP-2": [
+      "Desert"
+    ],
+    "BRDM-2": [
+      "Desert"
+    ],
+    "BTR-80": [
+      "Military Police Summer"
+    ],
+    "MTLB": [
+      "Desert"
+    ],
+    "T-55": [
+      "Desert"
+    ],
+    "T-72B": [
+      "Desert"
+    ],
+	"Strela-1 9P31": [
+      "Desert"
+    ],
+	"Strela-10M3": [
+      "Desert"
+    ],
+	"Osa 9A33 ln": [
+      "Desert"
+    ],
+    "ZSU-23-4 Shilka": [
+      "Desert"
+    ],
+    "ZSU_57_2": [
+      "Desert"
+    ],
+	"Ural-375 ZU-23 Insurgent": [
+      "Desert"
+    ],
+	"Ural-375 ZU-23": [
+      "Desert"
+    ],
+	"S-60_Type59_Artillery": [
+      "Syrian"
+    ],
+	"LUV Land Rover 109": [
+      "Summer"
+    ],
+    "Ural-375": [
+      "Desert"
+    ],
+	"Ural-4320-31": [
+      "Desert"
+    ],
+	"Ural-4320T": [
+      "Desert"
+    ],
+	"GAZ-66": [
+      "Desert"
+    ],
+	"KAMAZ Truck": [
+      "Desert"
+    ],
+	"Infantry AK Ins": [
+      "Insurgent 8",
+      "Insurgent 10",
+      "OBL"
+    ]
+  }
 }
