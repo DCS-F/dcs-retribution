@@ -191,13 +191,13 @@ class PretenseAircraftGenerator:
         """
 
         squadron_def = coalition.air_wing.squadron_def_generator.generate_for_task(
-            flight_type, cp
+            flight_type, cp, self.game.settings.squadron_random_chance
         )
         for retries in range(num_retries):
             if squadron_def is None or fixed_wing == squadron_def.aircraft.helicopter:
                 squadron_def = (
                     coalition.air_wing.squadron_def_generator.generate_for_task(
-                        flight_type, cp
+                        flight_type, cp, self.game.settings.squadron_random_chance
                     )
                 )
 
