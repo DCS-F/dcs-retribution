@@ -8,11 +8,17 @@
   ],
   "aircrafts": [
     "A-4E Skyhawk",
+    "AJS-37 Viggen",
     "AH-1W SuperCobra",
+    "AH-64D Apache Longbow",
     "F-15C Eagle",
     "F-16A",
     "F-16CM Fighting Falcon (Block 50)",
+    "F-16D Barak (Block 30)",
+    "F-4B Phantom II",
+    "F-4C Phantom II",
     "F-4E Phantom II",
+    "Mirage 2000C",
     "UH-1H Iroquois"
   ],
   "awacs": [
@@ -20,16 +26,22 @@
   ],
   "tankers": [
     "KC-130",
-    "KC-135 Stratotanker"
+    "KC-135 Stratotanker",
+    "KC-135 Stratotanker MPRS"
   ],
   "frontline_units": [
     "M113",
     "M163 Vulcan Air Defense System",
-    "M60A3 \"Patton\""
+    "M2A1 Half-Track",
+    "M48 Chaparral",
+	"M10 3-inch Gun Motor Carriage",
+    "M4A2(75) Sherman",
+	"M4A4 Sherman Firefly",
+    "M60A3 \"Patton\"",
+	"M4 High-Speed Tractor"
   ],
   "artillery_units": [
-    "(IDF Mods Project) BM-21 Grad 122mm",
-    "(IDF Mods Project) Urgan BM-27 220mm"
+	"M12 Gun Motor Carriage"
   ],
   "logistics_units": [
     "Truck M818 6x6"
@@ -53,6 +65,96 @@
   },
   "carrier_names": [],
   "helicopter_carrier_names": [],
+  "liveries_overrides": {
+    "KC-135 Stratotanker": [
+      "Re'em"
+    ],
+    "KC-135 Stratotanker MPRS": [
+      "Re'em"
+    ],
+    "Mirage 2000C": [
+	  "IAF 101",
+	  "IAF 101 mirage DTN",
+	  "IAF 101 squadron mirage 52 by BarTzi",
+	  "IAF 101 squadron mirage 158 by BarTzi",
+	  "IAF 101 squadron mirage 159 by BarTzi",
+	  "IAF 101 squadron mirage 259 by BarTzi",
+	  "IAF 253 mirage DTN",
+	  "IAF 253 squadron mirage 129 by BarTzi",
+	  "IAF 253 squadron mirage 177 by BarTzi"
+    ],
+    "A-4E Skyhawk": [
+      "International Israel"
+    ],
+	"F-4B Phantom II": [
+      "IAF 69th Fighter Squadron - 113",
+      "IAF 69th Fighter Squadron - 124",
+      "IAF 69th Fighter Squadron - 169",
+      "IAF 69th Fighter Squadron - 171",
+      "IAF 69th Fighter Squadron - 221",
+      "IAF 69th Fighter Squadron - 230",
+      "IAF 69th Fighter Squadron - 301",
+      "IAF 69th Fighter Squadron - 323"
+    ],
+	"F-4C Phantom II": [
+      "IAF 69th Fighter Squadron - 113",
+      "IAF 69th Fighter Squadron - 124",
+      "IAF 69th Fighter Squadron - 169",
+      "IAF 69th Fighter Squadron - 171",
+      "IAF 69th Fighter Squadron - 221",
+      "IAF 69th Fighter Squadron - 230",
+      "IAF 69th Fighter Squadron - 301",
+      "IAF 69th Fighter Squadron - 323"
+    ],
+	"F-4E Phantom II": [
+      "IDF1",
+      "IDF2",
+      "IDF3",
+      "IDF4"
+    ],
+    "F-15C Eagle": [
+      "IAF F-15 106 Squadron",
+      "IAF F-15 133sqdn"
+    ],
+	"F-16CM Fighting Falcon (Block 50)": [
+      "IAF_101st_squadron",
+      "IAF_110th_Squadron",
+      "IAF_115th_Aggressors_Squadron",
+      "IAF_117th_Squadron"
+    ],
+    "F-16D Barak (Block 30)": [
+      "109sq"
+    ],
+    "AJS-37 Viggen": [
+      "IAF - 69th sqdrn - Hammers",
+	  "Israel - IAF 119 squadron - The Bat"
+    ],
+    "AH-1W SuperCobra": [
+      "ah1 tzefa black snake",
+	  "ah1 tzefa standard",
+      "ah1 tzefa tan snake"
+    ],
+    "AH-64D Apache Longbow": [
+      "IAF 113th Hornet Squadron",
+	  "Israel Experimental Green Sand"
+    ],
+    "UH-1H Iroquois": [
+      "Israel Army"
+    ],
+	"P-51D-30-NA Mustang": [
+      "Israeli Air Force"
+    ]
+  },
+  "liveries_overrides_ground_forces": {
+    "Soldier M249": [
+      "Desert",
+      "MOP Suit"
+    ],
+    "Soldier M4": [
+      "Desert",
+      "MOP Suit"
+    ]
+  },
   "has_jtac": true,
   "jtac_unit": "MQ-9 Reaper"
 }
