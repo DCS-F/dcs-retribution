@@ -1065,7 +1065,7 @@ class Settings:
         "Number of AI SEAD flights per control point / zone",
         page=PRETENSE_PAGE,
         section=GENERAL_SECTION,
-        default=2,
+        default=1,
         min=1,
         max=10,
     )
@@ -1073,7 +1073,7 @@ class Settings:
         "Number of AI CAS flights per control point / zone",
         page=PRETENSE_PAGE,
         section=GENERAL_SECTION,
-        default=2,
+        default=1,
         min=1,
         max=10,
     )
@@ -1081,7 +1081,7 @@ class Settings:
         "Number of AI BAI flights per control point / zone",
         page=PRETENSE_PAGE,
         section=GENERAL_SECTION,
-        default=2,
+        default=1,
         min=1,
         max=10,
     )
@@ -1089,7 +1089,7 @@ class Settings:
         "Number of AI Strike flights per control point / zone",
         page=PRETENSE_PAGE,
         section=GENERAL_SECTION,
-        default=2,
+        default=1,
         min=1,
         max=10,
     )
@@ -1097,7 +1097,7 @@ class Settings:
         "Number of AI BARCAP flights per control point / zone",
         page=PRETENSE_PAGE,
         section=GENERAL_SECTION,
-        default=2,
+        default=1,
         min=1,
         max=10,
     )
@@ -1113,7 +1113,7 @@ class Settings:
         "Number of player flights per aircraft type at each base",
         page=PRETENSE_PAGE,
         section=GENERAL_SECTION,
-        default=2,
+        default=1,
         min=1,
         max=10,
     )
