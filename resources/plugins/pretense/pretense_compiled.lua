@@ -6353,7 +6353,7 @@ do
 			
 			for name, zone in pairs(zones) do
 				if zone.keepActive then
-					if not zone.distToFront or (zone.distToFront and zone.distToFront > 4) then
+					if not zone.distToFront or (zone.distToFront and zone.distToFront > 3) then
 						zone.mode = ZoneCommand.modes.export
 					else
 						if zone.mode ~= ZoneCommand.modes.normal then
@@ -6362,9 +6362,9 @@ do
 						zone.mode = ZoneCommand.modes.normal
 					end
 				else
-					if not zone.distToFront or (zone.distToFront and zone.distToFront > 4) then
+					if not zone.distToFront or (zone.distToFront and zone.distToFront > 3) then
 						zone.mode = ZoneCommand.modes.export
-					elseif zone.distToFront == 4 then
+					elseif zone.distToFront == 3 then
 						zone.mode = ZoneCommand.modes.supply
 					else
 						if zone.mode ~= ZoneCommand.modes.normal then
