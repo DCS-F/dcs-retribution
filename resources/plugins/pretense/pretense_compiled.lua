@@ -7006,22 +7006,32 @@ do
             local player = event.initiator:getPlayerName()
             if not player then return end
             
-            if event.id==world.event.S_EVENT_PLAYER_ENTER_UNIT then
-                if event.initiator and Object.getCategory(event.initiator) == Object.Category.UNIT and 
+            local blocked = false
+            if event.id==world.event.S_EVENT_BIRTH then
+                if event.initiator and Object.getCategory(event.initiator) == Object.Category.UNIT and
                     (Unit.getCategoryEx(event.initiator) == Unit.Category.AIRPLANE or Unit.getCategoryEx(event.initiator) == Unit.Category.HELICOPTER)  then
-                    
+
                         local pname = event.initiator:getPlayerName()
                         if pname then
                             local gr = event.initiator:getGroup()
                             if trigger.misc.getUserFlag(gr:getName())==1 then
+                                blocked = true
                                 trigger.action.outTextForGroup(gr:getID(), 'Can not spawn as '..gr:getName()..' in enemy/neutral zone or zone without enough resources',5)
                                 event.initiator:destroy()
+
+                                for i,v in pairs(net.get_player_list()) do
+                                    if net.get_name(v) == pname then
+                                        net.send_chat_to('Can not spawn as '..gr:getName()..' in enemy/neutral zone or zone without enough resources' , v)
+                                        net.force_player_slot(v, 0, '')
+                                        break
+                                    end
+                                end
                             end
                         end
                 end
             end
 
-            if event.id == world.event.S_EVENT_BIRTH then
+            if event.id == world.event.S_EVENT_BIRTH and not blocked then
                 -- init stats for player if not exist
                 if not self.context.stats[player] then
                     self.context.stats[player] = {}
@@ -8214,7 +8224,7 @@ do
                 local zone = ZoneCommand.getZoneByName(v.zname)
                 local product = zone:getProductByName(v.pname)
 
-                MissionTarget.strikeTargets[i] = {
+                MissionTargetRegistry.strikeTargets[i] = {
                     data = product,
                     zone = zone,
                     addedTime = timer.getAbsTime() - v.elapsedTime,
