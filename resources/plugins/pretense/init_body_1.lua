@@ -211,10 +211,10 @@ presets = {
 				template = "bunker-1"
 			}),
 			comCenter = Preset:new({
-				display = 'Command Center',
+				display = 'Fire Control Center',
 				cost = 12500,
 				type = 'upgrade',
-				template = "command-center"
+				template = "fire_control"
 			})
 		}
 	},

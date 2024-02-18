@@ -8651,6 +8651,8 @@ do
     
     TemplateDB.templates["military-staff"] = { type="Military staff", category="Fortifications", shape="aviashtab", dataCategory=TemplateDB.type.static }
 
+    TemplateDB.templates["fire_control"] = { type="Fire Control Bunker", category="Fortifications", shape="fire_control", dataCategory=TemplateDB.type.static }
+
     TemplateDB.templates["ship-tanker-seawisegiant"] = { type="Seawise_Giant", category="Ships", dataCategory=TemplateDB.type.static }
 
     TemplateDB.templates["ship-supply-tilde"] = { type="Ship_Tilde_Supply", category="Ships", dataCategory=TemplateDB.type.static }
