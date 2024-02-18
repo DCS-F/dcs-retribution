@@ -4750,6 +4750,8 @@ do
 		self.side = side
 		self:refreshSpawnBlocking()
 
+        env.info('ZoneCommand: setSide ['..side..']')
+
 		if side == 0 then
 			self.revealTime = 0
 		end
@@ -4787,6 +4789,91 @@ do
 				end
 			end
 		end
+
+        local z = ZoneCommand.getZoneByName(self.name)
+        local u = mist.getUnitsInZones(mist.makeUnitTable({'[all]'}), {self.name})
+        local countries = {}
+        for i = 1, #u do
+            env.info('ZoneCommand: looping unit:  ['..i..'] at ['..self.name..']')
+
+            unit_name = u[i]:getName()
+            if unit_name ~= nil then
+                env.info('ZoneCommand: setSide unit:  ['..unit_name..'], side: ['..self.side..']')
+
+                env.info('ZoneCommand: setting coalition of  ['..unit_name..']')
+                local gp = nil
+                local n = 0
+                if string.find(unit_name, '_fuel') ~= nil then
+                    n, _ = string.find(unit_name, '_fuel')
+                    if string.sub(unit_name,1,n) ~= nil then
+                        env.info('ZoneCommand: spawning group ['..string.sub(unit_name,1,n-1)..']')
+                        gp = mist.getCurrentGroupData(string.sub(unit_name,1,n-1))
+                    end
+                end
+                if string.find(unit_name, '_ammo') ~= nil then
+                    n, _ = string.find(unit_name, '_ammo')
+                    if gp == nil and string.sub(unit_name,1,n) ~= nil then
+                        env.info('ZoneCommand: spawning group ['..string.sub(unit_name,1,n-1)..']')
+                        gp = mist.getCurrentGroupData(string.sub(unit_name,1,n-1))
+                    end
+                end
+                if gp ~= nil then
+                    if self.side==1 then
+                        gp.country = 81 -- Combined Joint Task Forces Red
+                    elseif self.side==2 then
+                        gp.country = 80 -- Combined Joint Task Forces Blue
+                    end
+                    if self.side==1 or self.side==2 then
+                       gp.name = string.sub(unit_name,1,n-1)
+                       env.info('ZoneCommand: despawning group ['..gp.name..']')
+                       unitDesc = u[i]:getDesc()
+                       env.info('ZoneCommand: unit typeName = ['..unitDesc.typeName..']')
+                       env.info('ZoneCommand: unit x = ['..u[i]:getPoint().x..']')
+                       env.info('ZoneCommand: unit y = ['..u[i]:getPoint().y..']')
+
+                       unitDesc.side = self.side
+                       unitDesc.country = gp.country
+                       unitDesc.category = "Fortifications"
+                       unitDesc.rate = 100
+                       unitDesc.type = unitDesc.typeName
+                       unitDesc.clone = true
+                       if string.find(unit_name, '_fuel') ~= nil then
+                           unitDesc.shapeName = "GSM Rus"
+                       elseif string.find(unit_name, '_ammo') ~= nil then
+                           unitDesc.shapeName = "SetkaKP"
+                       end
+                       unitDesc.x = u[i]:getPoint().x
+                       unitDesc.y = u[i]:getPoint().z
+                       unitDesc.heading = mist.getHeading(u[i])
+
+                       mist.dynAddStatic(unitDesc)
+                       u[i]:destroy()
+--                                 Group.getByName(gp.name):destroy()
+--                                 gp.type = 'M978 HEMTT Tanker'
+--                                 gp.category = 2  -- Group.Category.GROUND = 2
+--                                 env.info('ZoneCommand: spawning group ['..string.sub(unit_name,1,n-1)..'] on side ['..gp.country..']')
+--                                 mist.dynAdd(gp)
+--                                 env.info('ZoneCommand: spawned group ['..gp.name..']')
+-- 			local farpAmmo = {
+-- 				["category"] = 'static',
+-- 				["categoryStatic"] = 'Fortifications',
+-- 				["coalition"] = farpCoalition,
+-- 				["country"] = u.country,
+-- 				["countryId"] = u.countryId,
+-- 				["heading"] = u.heading,
+-- 				["type"] = 'FARP Ammo Dump Coating',
+-- 				["x"] = u.x,
+-- 				["y"] = u.y,
+-- 			}
+-- 			if groupName then
+-- 				tent["groupName"] = groupName
+-- 			end
+-- 			mist.dynAddStatic(tent)
+
+                    end
+                end
+            end
+        end
 	end
 	
 	function ZoneCommand:addResource(amount)
