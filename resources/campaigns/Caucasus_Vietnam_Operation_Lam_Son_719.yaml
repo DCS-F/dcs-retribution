@@ -365,8 +365,16 @@ squadrons:
   # Ho Chi Minh Trail - Paksong:
   # Paksong Airfield South:
   # Paksong Airfield North:
-  # Tchepone Airfield:
-  # Nape Pass Airfield:
+  Tchepone Airfield:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+  Nape Pass Airfield:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
   Nape Pass FARP:
     - primary: BAI
       secondary: air-to-ground
@@ -392,6 +400,16 @@ squadrons:
       secondary: any
       aircraft:
         - MiG-15bis Fagot
+  Thanh Hoa Bridge:
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  Hoa Lac Airbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
   Dien Bien Phu Airfield:
     - primary: BARCAP
       secondary: any
