@@ -865,10 +865,16 @@ class PretenseLuaGenerator(LuaGenerator):
             else:
                 return "KS-19"
         elif desired_unit_classes[0] == UnitClass.MANPAD:
-            if side == PRETENSE_BLUE_SIDE:
-                return "Soldier stinger"
+            if coalition.game.date.year >= 1990:
+                if side == PRETENSE_BLUE_SIDE:
+                    return "Soldier stinger"
+                else:
+                    return "SA-18 Igla manpad"
             else:
-                return "SA-18 Igla manpad"
+                if side == PRETENSE_BLUE_SIDE:
+                    return "Soldier M4"
+                else:
+                    return "Infantry AK"
         elif desired_unit_classes[0] == UnitClass.LOGISTICS:
             if side == PRETENSE_BLUE_SIDE:
                 return "M 818"
