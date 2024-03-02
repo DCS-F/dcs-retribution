@@ -720,6 +720,8 @@ class PretenseLuaGenerator(LuaGenerator):
         return lua_string_zones
 
     def generate_pretense_zone_land(self, cp_name: str) -> str:
+        is_artillery_zone = random.choice([True, False])
+
         lua_string_zones = ""
         cp_name_trimmed = "".join([i for i in cp_name.lower() if i.isalpha()])
 
@@ -728,11 +730,12 @@ class PretenseLuaGenerator(LuaGenerator):
         lua_string_zones += "        presets.upgrades.basic.tent:extend({\n"
         lua_string_zones += f"            name='{cp_name_trimmed}-tent-red',\n"
         lua_string_zones += "            products = {\n"
-        lua_string_zones += (
-            "                presets.special.red.infantry:extend({ name='"
-            + cp_name_trimmed
-            + "-defense-red'})\n"
-        )
+        if not is_artillery_zone:
+            lua_string_zones += (
+                "                presets.special.red.infantry:extend({ name='"
+                + cp_name_trimmed
+                + "-defense-red'})\n"
+            )
         lua_string_zones += "            }\n"
         lua_string_zones += "        }),\n"
         lua_string_zones += "        presets.upgrades.basic.comPost:extend({\n"
@@ -743,23 +746,25 @@ class PretenseLuaGenerator(LuaGenerator):
             + cp_name_trimmed
             + "-defense-red'}),\n"
         )
-        lua_string_zones += (
-            "                presets.defenses.red.infantry:extend({ name='"
-            + cp_name_trimmed
-            + "-garrison-red' })\n"
-        )
+        if not is_artillery_zone:
+            lua_string_zones += (
+                "                presets.defenses.red.infantry:extend({ name='"
+                + cp_name_trimmed
+                + "-garrison-red' })\n"
+            )
         lua_string_zones += "            }\n"
         lua_string_zones += "        }),\n"
-        lua_string_zones += "        presets.upgrades.basic.artyBunker:extend({\n"
-        lua_string_zones += f"            name='{cp_name_trimmed}-arty-red',\n"
-        lua_string_zones += "            products = {\n"
-        lua_string_zones += (
-            "                presets.defenses.red.artillery:extend({ name='"
-            + cp_name_trimmed
-            + "-artillery-red'})\n"
-        )
-        lua_string_zones += "            }\n"
-        lua_string_zones += "        }),\n"
+        if is_artillery_zone:
+            lua_string_zones += "        presets.upgrades.basic.artyBunker:extend({\n"
+            lua_string_zones += f"            name='{cp_name_trimmed}-arty-red',\n"
+            lua_string_zones += "            products = {\n"
+            lua_string_zones += (
+                "                presets.defenses.red.artillery:extend({ name='"
+                + cp_name_trimmed
+                + "-artillery-red'})\n"
+            )
+            lua_string_zones += "            }\n"
+            lua_string_zones += "        }),\n"
 
         lua_string_zones += self.generate_pretense_land_upgrade_supply(
             cp_name, PRETENSE_RED_SIDE
@@ -771,11 +776,12 @@ class PretenseLuaGenerator(LuaGenerator):
         lua_string_zones += "        presets.upgrades.basic.tent:extend({\n"
         lua_string_zones += f"            name='{cp_name_trimmed}-tent-blue',\n"
         lua_string_zones += "            products = {\n"
-        lua_string_zones += (
-            "                presets.special.blue.infantry:extend({ name='"
-            + cp_name_trimmed
-            + "-defense-blue'})\n"
-        )
+        if not is_artillery_zone:
+            lua_string_zones += (
+                "                presets.special.blue.infantry:extend({ name='"
+                + cp_name_trimmed
+                + "-defense-blue'})\n"
+            )
         lua_string_zones += "            }\n"
         lua_string_zones += "        }),\n"
         lua_string_zones += "        presets.upgrades.basic.comPost:extend({\n"
@@ -786,23 +792,25 @@ class PretenseLuaGenerator(LuaGenerator):
             + cp_name_trimmed
             + "-defense-blue'}),\n"
         )
-        lua_string_zones += (
-            "                presets.defenses.blue.infantry:extend({ name='"
-            + cp_name_trimmed
-            + "-garrison-blue' })\n"
-        )
+        if not is_artillery_zone:
+            lua_string_zones += (
+                "                presets.defenses.blue.infantry:extend({ name='"
+                + cp_name_trimmed
+                + "-garrison-blue' })\n"
+            )
         lua_string_zones += "            }\n"
         lua_string_zones += "        }),\n"
-        lua_string_zones += "        presets.upgrades.basic.artyBunker:extend({\n"
-        lua_string_zones += f"            name='{cp_name_trimmed}-arty-blue',\n"
-        lua_string_zones += "            products = {\n"
-        lua_string_zones += (
-            "                presets.defenses.blue.artillery:extend({ name='"
-            + cp_name_trimmed
-            + "-artillery-blue'})\n"
-        )
-        lua_string_zones += "            }\n"
-        lua_string_zones += "        }),\n"
+        if is_artillery_zone:
+            lua_string_zones += "        presets.upgrades.basic.artyBunker:extend({\n"
+            lua_string_zones += f"            name='{cp_name_trimmed}-arty-blue',\n"
+            lua_string_zones += "            products = {\n"
+            lua_string_zones += (
+                "                presets.defenses.blue.artillery:extend({ name='"
+                + cp_name_trimmed
+                + "-artillery-blue'})\n"
+            )
+            lua_string_zones += "            }\n"
+            lua_string_zones += "        }),\n"
 
         lua_string_zones += self.generate_pretense_land_upgrade_supply(
             cp_name, PRETENSE_BLUE_SIDE
