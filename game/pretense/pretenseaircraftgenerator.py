@@ -302,7 +302,10 @@ class PretenseAircraftGenerator:
         # First check what are the capabilities of the squadrons on this CP
         for squadron in cp.squadrons:
             for task in sead_tasks:
-                if task in squadron.auto_assignable_mission_types:
+                if (
+                    task in squadron.auto_assignable_mission_types
+                    or FlightType.DEAD in squadron.auto_assignable_mission_types
+                ):
                     sead_capable_cp = True
             for task in strike_tasks:
                 if task in squadron.auto_assignable_mission_types:
