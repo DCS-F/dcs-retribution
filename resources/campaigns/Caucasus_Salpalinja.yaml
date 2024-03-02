@@ -9,18 +9,99 @@ recommended_start_date: 1970-03-01
 miz: Caucasus_Salpalinja.miz
 performance: 3
 version: "10.2"
+
+settings:
+  pretense_extra_zone_connections: 2
+  pretense_disable_supply_convoys: true
+  pretense_ground_assaults_prefer_roads: true
+  pretense_num_of_cargo_planes: 1
+  pretense_do_not_generate_sead_missions: true
+  pretense_do_not_generate_csar_missions: true
+  perf_culling: true
+  perf_culling_distance: 50
+  player_skill: "High"
+  enemy_skill: "Average"
+  enemy_vehicle_skill: "Average"
+  night_day_missions: NightMissions.OnlyDay
+  labels: "Dot Only"
+
+  ground_start_ai_planes: true
+  ground_start_scenery_remove_triggers: false
+  ground_start_ground_power_trucks: false
+  ground_start_ground_power_trucks_roadbase: false
+
+  plugins:
+    gamemaster: true
+    splashdamageclusters: true
+    splashdamageclusters.bdaMessages: true
+    splashdamageclusters.clusterEffects: true
+    splashdamageclusters.shipRadarDamage: true
+ #Mods to be used
+  a4_skyhawk: true
+
 squadrons:
 #  Sennoy Roadbase:
 #  Starotitarovskaya Roadbase:
 #  Belyy Helicopter Base:
 #  Arhipo-Osipovka Roadbase:
 #  Mihaylovskiy Pereval Helicopter Base:
-#  Adagum Roadbase:
-#  Mingrelskaya Roadbase:
-#  Yablonovskiy Roadbase:
-#  Kazazov Roadbase:
-#  Saratovskaya Roadbase:
-#  Pervomayskiy Roadbase:
+  Adagum Roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - A-4E Skyhawk
+  Mingrelskaya Roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+        - MiG-15bis Fagot
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+  Yablonovskiy Roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - C-101CC Aviojet
+  Kazazov Roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+        - MiG-15bis Fagot
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - A-4E Skyhawk
+  Saratovskaya Roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - C-101CC Aviojet
+  Pervomayskiy Roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+        - MiG-15bis Fagot
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
   Guriyskaya FARP:
     - primary: BAI
       secondary: any
