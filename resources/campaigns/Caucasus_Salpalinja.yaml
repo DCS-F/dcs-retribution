@@ -12,8 +12,10 @@ version: "10.2"
 
 settings:
   pretense_extra_zone_connections: 2
+  pretense_disable_ground_assaults: true
   pretense_disable_supply_convoys: true
   pretense_ground_assaults_prefer_roads: true
+  pretense_supply_convoys_prefer_roads: true
   pretense_num_of_cargo_planes: 1
   pretense_do_not_generate_sead_missions: true
   pretense_do_not_generate_csar_missions: true
@@ -54,6 +56,10 @@ squadrons:
       secondary: any
       aircraft:
         - A-4E Skyhawk
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - AJS-37 Viggen
   Mingrelskaya Roadbase:
     - primary: BARCAP
       secondary: any
@@ -64,6 +70,10 @@ squadrons:
       secondary: any
       aircraft:
         - L-39ZA Albatros
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - AJS-37 Viggen
   Yablonovskiy Roadbase:
     - primary: BARCAP
       secondary: any
@@ -83,21 +93,32 @@ squadrons:
       secondary: any
       aircraft:
         - A-4E Skyhawk
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - AJS-37 Viggen
   Saratovskaya Roadbase:
     - primary: BARCAP
       secondary: any
       aircraft:
-        - MiG-19P Farmer-B
-    - primary: CAS
+        - Mirage 2000C
+    - primary: Strike
       secondary: any
       aircraft:
-        - C-101CC Aviojet
+        - AJS-37 Viggen
   Pervomayskiy Roadbase:
     - primary: BARCAP
       secondary: any
       aircraft:
-        - MiG-21bis Fishbed-N
-        - MiG-15bis Fagot
+        - Mirage-F1CE
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage-F1EE
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - AJS-37 Viggen
     - primary: CAS
       secondary: any
       aircraft:
@@ -111,12 +132,12 @@ squadrons:
     - primary: BAI
       secondary: any
       aircraft:
-        - Mi-8MTV2 Hip  
+        - Mi-24P Hind-F
   Apsheronsk FARP:
     - primary: CAS
       secondary: air-to-ground
       aircraft:
-        - Mi-24V Hind-E
+        - Mi-24P Hind-F
   Kubanskaya FARP:
     - primary: CAS
       secondary: air-to-ground
@@ -132,7 +153,11 @@ squadrons:
       secondary: any
       aircraft:
         - Mi-8MTV2 Hip
-#  Oktyabrskiy Helicopter Base:
+  Oktyabrskiy Helicopter Base:
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - Mi-24P Hind-F
 #  Ostrovskaya Shel Helicopter Base:
 #  Georgievskoe Helicopter Base:
 #  Tuapse Helicopter Base:
@@ -143,8 +168,30 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - Mi-24V Hind-E
-#  Abadzehskaya Roadbase North:
-#  Abadzehskaya Roadbase South:
+  Abadzehskaya Roadbase North:
+    - primary: Anti-ship
+      secondary: any
+      aircraft:
+        - Tu-142 Bear-F
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-95MS Bear-H
+    - primary: DEAD
+      aircraft:
+        - Tu-16 Badger
+  Abadzehskaya Roadbase South:
+    - primary: Anti-ship
+      secondary: any
+      aircraft:
+        - Tu-142 Bear-F
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-95MS Bear-H
+    - primary: DEAD
+      aircraft:
+        - Tu-16 Badger
   Abadzehskaya FARP:
     - primary: CAS
       secondary: air-to-ground
@@ -155,7 +202,11 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - Mi-28N Havoc
-#  Hamyshki Pass Roadbase:
+  Hamyshki Pass Roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
 #  FOB Guzeripl:
 #  Neftegorsk Outpost:
 #  Chernigovskoe Helicopter Base:
@@ -168,8 +219,16 @@ squadrons:
 #  Volnyy Roadbase:
 #  Kaladzhinskaya Roadbase:
 #  Gofitskoe Roadbase:
-#  Psebay Roadbase North:
-#  Psebay Roadbase South:
+  Psebay Roadbase North:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
+  Psebay Roadbase South:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
 #  Pregradnaya Roadbase:
   Besstrashnaya Roadbase:
     - primary: CAS
@@ -265,24 +324,24 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - Mi-24V Hind-E
-  Red LHA-1:
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - Mi-8MTV2 Hip
-    - primary: BAI
-      secondary: air-to-ground
-      aircraft:
-        - Mi-8MTV2 Hip
-  Red LHA-2:
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - Mi-8MTV2 Hip
-    - primary: BAI
-      secondary: air-to-ground
-      aircraft:
-        - Mi-8MTV2 Hip
+#  Red LHA-1:
+#    - primary: CAS
+#      secondary: air-to-ground
+#      aircraft:
+#        - Mi-8MTV2 Hip
+#    - primary: BAI
+#      secondary: air-to-ground
+#      aircraft:
+#        - Mi-8MTV2 Hip
+#  Red LHA-2:
+#    - primary: CAS
+#      secondary: air-to-ground
+#      aircraft:
+#        - Mi-8MTV2 Hip
+#    - primary: BAI
+#      secondary: air-to-ground
+#      aircraft:
+#        - Mi-8MTV2 Hip
   # Anapa-Vityazevo
   12:
     - primary: AEW&C
@@ -347,6 +406,14 @@ squadrons:
         - Mirage-F1EE
   # Maykop-Khanskaya
   16:
+    - primary: Anti-ship
+      secondary: any
+      aircraft:
+        - Tu-142 Bear-F
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-95MS Bear-H
     - primary: CAS
       secondary: any
       aircraft:
@@ -442,14 +509,10 @@ squadrons:
       secondary: any
       aircraft:
         - L-39ZA Albatros
-    - primary: Anti-ship
-      secondary: any
-      aircraft:
-        - Tu-142 Bear-F
     - primary: Strike
       secondary: any
       aircraft:
-        - Tu-95MS Bear-H
+        - Tu-16 Badger
     - primary: Transport
       aircraft:
         - IL-76MD
@@ -459,11 +522,13 @@ squadrons:
       secondary: any
       aircraft:
         - Su-17M4 Fitter-K
+        - Tu-16 Badger
     - primary: Strike
       secondary: any
       aircraft:
         - Su-24M Fencer-D
-        
+        - Tu-16 Badger
+
   
 carriers:
   Blue CV59:
