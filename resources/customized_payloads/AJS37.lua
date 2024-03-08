@@ -69,19 +69,19 @@ local unitPayloads = {
 			["name"] = "CAS",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "{RB75}",
+					["CLSID"] = "{RB75T}",
 					["num"] = 5,
 				},
 				[2] = {
-					["CLSID"] = "{RB75}",
+					["CLSID"] = "{RB75T}",
 					["num"] = 3,
 				},
 				[3] = {
-					["CLSID"] = "{RB75}",
+					["CLSID"] = "{RB75T}",
 					["num"] = 2,
 				},
 				[4] = {
-					["CLSID"] = "{RB75}",
+					["CLSID"] = "{RB75T}",
 					["num"] = 6,
 				},
 				[5] = {
@@ -106,19 +106,19 @@ local unitPayloads = {
 			["name"] = "STRIKE",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "{M71BOMB}",
+					["CLSID"] = "{BK90MJ2}",
 					["num"] = 6,
 				},
 				[2] = {
-					["CLSID"] = "{M71BOMB}",
+					["CLSID"] = "{BK90MJ2}",
 					["num"] = 5,
 				},
 				[3] = {
-					["CLSID"] = "{M71BOMB}",
+					["CLSID"] = "{BK90MJ2}",
 					["num"] = 3,
 				},
 				[4] = {
-					["CLSID"] = "{M71BOMB}",
+					["CLSID"] = "{BK90MJ2}",
 					["num"] = 2,
 				},
 				[5] = {
