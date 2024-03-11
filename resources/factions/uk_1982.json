@@ -1,0 +1,114 @@
+{
+  "country": "UK",
+  "name": "United Kingdom 1982",
+  "authors": "Ghosti",
+  "description": "<p>United Kingdom Army in the 1982, during the Falklands War.</p>",
+  "locales": [
+    "en_UK"
+  ],
+  "aircrafts": [
+    "Harrier GR.3",
+    "C-130",
+    "C-130J-30 Super Hercules",
+    "SA 342M Gazelle Mistral",
+    "SA 342L Gazelle",
+    "SA 342M Gazelle",
+	"Chinook HC.1",
+	"UH-1H Iroquois"
+  ],
+  "awacs": [
+  ],
+  "tankers": [
+    "KC-130"
+  ],
+  "frontline_units": [
+    "LUV Land Rover 109",
+    "Truck Land Rover 101 FC",
+    "M1043 HMMWV (M2 HMG)"
+  ],
+  "artillery_units": [
+    "M109A6 Paladin"
+  ],
+  "logistics_units": [
+    "LUV Land Rover 109",
+    "Truck Land Rover 101 FC"
+  ],
+  "infantry_units": [
+    "Infantry M249",
+    "Infantry M4",
+    "Mortar 2B11 120mm"
+  ],
+  "air_defenses": [
+    "BoforsGenerator",
+    "RapierGenerator"
+  ],
+  "ewrs": [
+    "HawkEwrGenerator"
+  ],
+  "aircraft_carrier": [
+    "Stennis"
+  ],
+  "helicopter_carrier": [
+    "LHA_Tarawa"
+  ],
+  "destroyers": [
+    "Type_093"
+  ],
+  "cruisers": [
+	"LST_Mk2",
+	"USS_Samuel_Chase"	
+  ],
+  "requirements": {},
+  "carrier_names": [
+    "HMS Eagle (R05)",
+    "HMS Ark Royal (R09)"
+  ],
+  "helicopter_carrier_names": [
+    "HMS Invincible (R05)",
+    "HMS Hermes (R12)"
+  ],
+  "navy_generators": [
+	"WW2LSTGroupGenerator"
+  ],
+  "has_jtac": true,
+  "jtac_unit": "SA 342M Gazelle",
+  "liveries_overrides": {
+    "Harrier GR.3": [
+	  "RAF GR3 XV754",
+	  "RAF GR3 XZ132",
+	  "RAF GR3 XZ969",
+	  "RAF ZG479"
+    ],
+    "C-130": [
+      "Royal Air Force"
+    ],
+    "KC-130": [
+      "Royal Air Force"
+    ],
+    "SA 342M Gazelle Mistral": [
+      "UK Fictional"
+    ],
+    "SA 342L Gazelle": [
+      "UK Fictional"
+    ],
+    "SA 342M Gazelle": [
+      "UK Fictional"
+    ],
+	"Chinook HC.1": [
+      "RAF_18Sqn_100year_ZA712"
+    ],
+	"UH-1H Iroquois": [
+      "British Army Air Corps",
+	  "RAF Olive Drab",
+	  "Royal Navy"
+    ]
+  },
+  "liveries_overrides_ground_forces": {
+    "Infantry M249": [
+      "DPM"
+    ],
+    "Infantry M4": [
+      "DPM"
+    ]
+  }
+}
