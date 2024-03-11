@@ -1,0 +1,219 @@
+{
+  "country": "USSR",
+  "name": "Soviet Union 1970",
+  "authors": "Ghosti",
+  "description": "<p>Soviet armed forces in the turn of the 1970s.</p>",
+  "locales": [
+    "ru_RU"
+  ],
+  "aircrafts": [
+    "IL-76MD",
+    "An-26B",
+    "An-30M",
+    "Mi-24V Hind-E",
+    "Mi-8MTV2 Hip",
+    "L-39ZA Albatros",
+    "MiG-21bis Fishbed-N",
+    "MiG-23MLD Flogger-K",
+    "MiG-25PD Foxbat-E",
+    "Su-17M4 Fitter-K",
+    "Tu-142 Bear-F",
+    "Tu-95MS Bear-H",
+	"Tu-16 Badger"
+  ],
+  "awacs": [
+    "A-50"
+  ],
+  "tankers": [
+    "IL-78M"
+  ],
+  "frontline_units": [
+    "BMD-1",
+    "BMP-1",
+    "BRDM-2",
+    "BTR-80",
+    "BTR-D",
+    "PT-76",
+    "SAM SA-8 Osa \"Gecko\" TEL",
+    "SA-9 Strela",
+    "T-54A",
+	"T-55A",
+	"T-62",
+	"T-72A",
+    "T-72B with Kontakt-1 ERA",
+    "MT-LB",
+    "MT-LBu",
+	"ZSU-23-4 Shilka",
+    "ZSU-57-2 'Sparka'",
+    "LUV UAZ-469 Jeep",
+	"Truck GAZ-66",
+    "Truck Ural-375"
+  ],
+  "artillery_units": [
+    "2S1 Gvozdika",
+    "2S9 Nona-S",
+    "BM-21 Grad"
+  ],
+  "logistics_units": [
+    "LUV UAZ-469 Jeep",
+    "Truck GAZ-66",
+	"Truck Ural-375"
+  ],
+  "infantry_units": [
+    "Infantry AK-74 Rus",
+	"Infantry AK-74 Rus ver2",
+	"Infantry AK-74 Rus ver3",
+    "Mortar 2B11 120mm",
+    "Paratrooper AKS",
+    "Paratrooper RPG-16"
+  ],
+  "preset_groups": [
+    "SA-2/S-75",
+    "SA-2/S-75 V-759/5V23",
+    "SA-3/S-125",
+    "SA-3/S-125 V-601P/5V27",
+    "SA-6",
+    "KS-19/SON-9"
+  ],
+  "naval_units": [
+    "Corvette 1241.1 Molniya",
+    "Corvette 1124.4 Grisha",
+    "Type 071 Amphibious Transport Dock"
+  ],
+  "air_defense_units": [
+    "SAM P19 \"Flat Face\" SR (SA-2/3)",
+    "SAM SA-5 S-200 ST-68U \"Tin Shield\" SR",
+    "SAM SA-8 Osa \"Gecko\" TEL",
+    "SA-9 Strela",
+    "SA-13 Gopher (9K35 Strela-10M3)",
+    "ZSU-57-2 'Sparka'",
+    "AAA ZU-23 Closed Emplacement",
+    "ZU-23 on Ural-375",
+    "ZSU-23-4 Shilka"
+  ],
+  "aircraft_carrier": [
+    "KUZNECOW"
+  ],
+  "carrier_names": [
+    "1143 Kiev",
+    "1143 Minsk",
+    "11433 Novorossiysk",
+    "11434 Admiral Gorshkov"
+  ],
+  "helicopter_carrier_names": [
+    "1123 Moskva",
+    "1123 Leningrad"
+  ],
+  "missiles": [
+    "SSM SS-1C Scud-B"
+  ],
+  "requirements": {},
+  "has_jtac": false,
+  "doctrine": "coldwar",
+  "liveries_overrides": {
+    "A-50": [
+      "RF Air Force"
+    ],
+	"IL-78M": [
+      "RF Air Force"
+    ],
+	"IL-76MD": [
+      "RF Air Force"
+    ],
+    "An-26B": [
+      "RF Air Force"
+    ],
+	"An-30M": [
+      "RF Air Force"
+    ],
+    "Mi-24V Hind-E": [
+      "standard 1"
+    ],
+    "Mi-8MTV2 Hip": [
+      "Standard",
+      "Russia_MVD_Mozdok",
+      "Russia_MVD_Standard",
+      "Russia_FSB",
+      "Russia_PF_Ambulance",
+      "Russia_VVS_Grey",
+      "Russia_VVS_Grey_2",
+      "Russia_VVS_MA",
+      "Russia_VVS_Standard",
+      "Russia_VVS_Standard_2"
+    ],
+    "L-39ZA Albatros": [
+      "Russian Air Force"
+    ],
+    "MiG-21bis Fishbed-N": [
+      "VVS - 115 GvIAP",
+      "VVS - 116 CBP",
+      "VVS - AMT-11 Grey",
+      "VVS - 185th GvIAP",
+      "VVS - Metal"
+    ],
+    "MiG-23MLD Flogger-K": [
+      "af standard",
+      "af standard-1",
+      "af standard-2",
+      "af standard-3 (worn-out)"
+    ],
+    "MiG-25PD Foxbat-E": [
+      "af standard"
+    ],
+    "Su-17M4 Fitter-K": [
+      "af standard (RUS)",
+      "af standard (worn-out) (RUS)",
+      "shap limanskoye ab"
+    ],
+	"Tu-16 Badger": [
+      "Badger-C"
+    ]
+  },
+  "liveries_overrides_ground_forces": {
+    "SAU Gvozdika": [
+      "summer"
+    ],
+	"SAU Akatsia": [
+      "summer"
+    ],
+    "BRDM-2": [
+      "summer"
+    ],
+    "BTR-80": [
+      "Green summer"
+    ],
+    "ZSU-23-4 Shilka": [
+      "summer"
+    ],
+    "ZSU_57_2": [
+      "summer"
+    ],
+	"Ural-375 ZU-23": [
+      "summer"
+    ],
+    "M4_Sherman": [
+      "3rd Guard Mech Corps - Za Stalina"
+    ],
+	"M2A1_halftrack": [
+      "redstar"
+    ],
+	"S-60_Type59_Artillery": [
+      "summer"
+    ],
+    "Ural-375": [
+      "summer"
+    ],
+	"Ural-4320-31": [
+      "summer"
+    ],
+	"Ural-4320T": [
+      "summer"
+    ],
+	"GAZ-66": [
+      "summer"
+    ],
+	"KAMAZ Truck": [
+      "summer"
+    ]
+  }
+}

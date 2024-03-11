@@ -21,6 +21,12 @@ presets = {
 				cost = 1500,
 				type = 'upgrade',
 				template = "outpost"
+			}),
+			artyBunker = Preset:new({
+				display = 'Artillery Bunker',
+				cost = 2000,
+				type = 'upgrade',
+				template = "SK_C_28_naval_gun"
 			})
 		},
 		attack = {
@@ -226,6 +232,12 @@ presets = {
 				type='defense', 
 				template='infantry-red',
 			}),
+			artillery = Preset:new({
+				display = 'Artillery',
+				cost=2500,
+				type='defense',
+				template='artillery-red',
+			}),
 			shorad = Preset:new({
 				display = 'SHORAD',
 				cost=2500, 
@@ -323,6 +335,12 @@ presets = {
 				cost=2000,
 				type='defense',
 				template='infantry-blue',
+			}),
+			artillery = Preset:new({
+				display = 'Artillery',
+				cost=2500,
+				type='defense',
+				template='artillery-blue',
 			}),
 			shorad = Preset:new({
 				display = 'SHORAD',

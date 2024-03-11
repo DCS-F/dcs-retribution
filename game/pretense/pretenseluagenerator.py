@@ -7,13 +7,14 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Optional, List, Type
 
 from dcs import Mission
 from dcs.action import DoScript, DoScriptFile
 from dcs.translation import String
 from dcs.triggers import TriggerStart
-from dcs.vehicles import AirDefence
+from dcs.unittype import VehicleType
+from dcs.vehicles import AirDefence, Unarmed
 
 from game.ato import FlightType
 from game.coalition import Coalition
@@ -719,6 +720,8 @@ class PretenseLuaGenerator(LuaGenerator):
         return lua_string_zones
 
     def generate_pretense_zone_land(self, cp_name: str) -> str:
+        is_artillery_zone = random.choice([True, False])
+
         lua_string_zones = ""
         cp_name_trimmed = "".join([i for i in cp_name.lower() if i.isalpha()])
 
@@ -727,11 +730,12 @@ class PretenseLuaGenerator(LuaGenerator):
         lua_string_zones += "        presets.upgrades.basic.tent:extend({\n"
         lua_string_zones += f"            name='{cp_name_trimmed}-tent-red',\n"
         lua_string_zones += "            products = {\n"
-        lua_string_zones += (
-            "                presets.special.red.infantry:extend({ name='"
-            + cp_name_trimmed
-            + "-defense-red'})\n"
-        )
+        if not is_artillery_zone:
+            lua_string_zones += (
+                "                presets.special.red.infantry:extend({ name='"
+                + cp_name_trimmed
+                + "-defense-red'})\n"
+            )
         lua_string_zones += "            }\n"
         lua_string_zones += "        }),\n"
         lua_string_zones += "        presets.upgrades.basic.comPost:extend({\n"
@@ -742,13 +746,25 @@ class PretenseLuaGenerator(LuaGenerator):
             + cp_name_trimmed
             + "-defense-red'}),\n"
         )
-        lua_string_zones += (
-            "                presets.defenses.red.infantry:extend({ name='"
-            + cp_name_trimmed
-            + "-garrison-red' })\n"
-        )
+        if not is_artillery_zone:
+            lua_string_zones += (
+                "                presets.defenses.red.infantry:extend({ name='"
+                + cp_name_trimmed
+                + "-garrison-red' })\n"
+            )
         lua_string_zones += "            }\n"
         lua_string_zones += "        }),\n"
+        if is_artillery_zone:
+            lua_string_zones += "        presets.upgrades.basic.artyBunker:extend({\n"
+            lua_string_zones += f"            name='{cp_name_trimmed}-arty-red',\n"
+            lua_string_zones += "            products = {\n"
+            lua_string_zones += (
+                "                presets.defenses.red.artillery:extend({ name='"
+                + cp_name_trimmed
+                + "-artillery-red'})\n"
+            )
+            lua_string_zones += "            }\n"
+            lua_string_zones += "        }),\n"
 
         lua_string_zones += self.generate_pretense_land_upgrade_supply(
             cp_name, PRETENSE_RED_SIDE
@@ -760,11 +776,12 @@ class PretenseLuaGenerator(LuaGenerator):
         lua_string_zones += "        presets.upgrades.basic.tent:extend({\n"
         lua_string_zones += f"            name='{cp_name_trimmed}-tent-blue',\n"
         lua_string_zones += "            products = {\n"
-        lua_string_zones += (
-            "                presets.special.blue.infantry:extend({ name='"
-            + cp_name_trimmed
-            + "-defense-blue'})\n"
-        )
+        if not is_artillery_zone:
+            lua_string_zones += (
+                "                presets.special.blue.infantry:extend({ name='"
+                + cp_name_trimmed
+                + "-defense-blue'})\n"
+            )
         lua_string_zones += "            }\n"
         lua_string_zones += "        }),\n"
         lua_string_zones += "        presets.upgrades.basic.comPost:extend({\n"
@@ -775,13 +792,25 @@ class PretenseLuaGenerator(LuaGenerator):
             + cp_name_trimmed
             + "-defense-blue'}),\n"
         )
-        lua_string_zones += (
-            "                presets.defenses.blue.infantry:extend({ name='"
-            + cp_name_trimmed
-            + "-garrison-blue' })\n"
-        )
+        if not is_artillery_zone:
+            lua_string_zones += (
+                "                presets.defenses.blue.infantry:extend({ name='"
+                + cp_name_trimmed
+                + "-garrison-blue' })\n"
+            )
         lua_string_zones += "            }\n"
         lua_string_zones += "        }),\n"
+        if is_artillery_zone:
+            lua_string_zones += "        presets.upgrades.basic.artyBunker:extend({\n"
+            lua_string_zones += f"            name='{cp_name_trimmed}-arty-blue',\n"
+            lua_string_zones += "            products = {\n"
+            lua_string_zones += (
+                "                presets.defenses.blue.artillery:extend({ name='"
+                + cp_name_trimmed
+                + "-artillery-blue'})\n"
+            )
+            lua_string_zones += "            }\n"
+            lua_string_zones += "        }),\n"
 
         lua_string_zones += self.generate_pretense_land_upgrade_supply(
             cp_name, PRETENSE_BLUE_SIDE
@@ -819,11 +848,47 @@ class PretenseLuaGenerator(LuaGenerator):
     def get_ground_unit(
         self, coalition: Coalition, side: int, desired_unit_classes: list[UnitClass]
     ) -> str:
+        ammo_trucks: List[Type[VehicleType]] = [
+            Unarmed.S_75_ZIL,
+            Unarmed.GAZ_3308,
+            Unarmed.GAZ_66,
+            Unarmed.KAMAZ_Truck,
+            Unarmed.KrAZ6322,
+            Unarmed.Ural_375,
+            Unarmed.Ural_375_PBU,
+            Unarmed.Ural_4320_31,
+            Unarmed.Ural_4320T,
+            Unarmed.ZIL_135,
+            Unarmed.Blitz_36_6700A,
+            Unarmed.M_818,
+            Unarmed.Bedford_MWD,
+        ]
+
         for unit_class in desired_unit_classes:
             if coalition.faction.has_access_to_unit_class(unit_class):
                 dcs_unit_type = PretenseGroundObjectGenerator.ground_unit_of_class(
                     coalition=coalition, unit_class=unit_class
                 )
+                if (
+                    dcs_unit_type is not None
+                    and unit_class == UnitClass.LOGISTICS
+                    and dcs_unit_type.dcs_unit_type.__class__ not in ammo_trucks
+                ):
+                    # ground_unit_of_class returned a logistics unit not capable of ammo resupply
+                    # Retry up to 10 times
+                    for truck_retry in range(10):
+                        dcs_unit_type = (
+                            PretenseGroundObjectGenerator.ground_unit_of_class(
+                                coalition=coalition, unit_class=unit_class
+                            )
+                        )
+                        if (
+                            dcs_unit_type is not None
+                            and dcs_unit_type.dcs_unit_type in ammo_trucks
+                        ):
+                            break
+                        else:
+                            dcs_unit_type = None
                 if dcs_unit_type is not None:
                     return dcs_unit_type.dcs_id
 
@@ -849,6 +914,11 @@ class PretenseLuaGenerator(LuaGenerator):
                 return "LAV-25"
             else:
                 return "BTR-80"
+        elif desired_unit_classes[0] == UnitClass.ARTILLERY:
+            if side == PRETENSE_BLUE_SIDE:
+                return "M-109"
+            else:
+                return "SAU Gvozdika"
         elif desired_unit_classes[0] == UnitClass.RECON:
             if side == PRETENSE_BLUE_SIDE:
                 return "M1043 HMMWV Armament"
@@ -910,6 +980,26 @@ class PretenseLuaGenerator(LuaGenerator):
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.INFANTRY])}",\n'
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.INFANTRY])}",\n'
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.INFANTRY])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.MANPAD, UnitClass.INFANTRY])}"\n'
+        lua_string_ground_groups += "            },\n"
+        lua_string_ground_groups += f'            skill = "{skill_str}",\n'
+        lua_string_ground_groups += "            dataCategory = TemplateDB.type.group\n"
+        lua_string_ground_groups += "}\n"
+
+        lua_string_ground_groups += (
+            'TemplateDB.templates["artillery-' + side_str + '"] = {\n'
+        )
+        lua_string_ground_groups += "    units = {\n"
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.ARTILLERY])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.ARTILLERY])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.ARTILLERY])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.ARTILLERY])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.INFANTRY])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.INFANTRY])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.INFANTRY])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.INFANTRY])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.LOGISTICS])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.LOGISTICS])}",\n'
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.MANPAD, UnitClass.INFANTRY])}"\n'
         lua_string_ground_groups += "            },\n"
         lua_string_ground_groups += f'            skill = "{skill_str}",\n'
