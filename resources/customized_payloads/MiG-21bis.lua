@@ -9,7 +9,7 @@ local unitPayloads = {
 					["num"] = 6,
 				},
 				[2] = {
-					["CLSID"] = "{R-3S}",
+					["CLSID"] = "{R-13M}",
 					["num"] = 5,
 				},
 				[3] = {
@@ -25,7 +25,7 @@ local unitPayloads = {
 					["num"] = 2,
 				},
 				[6] = {
-					["CLSID"] = "{R-3S}",
+					["CLSID"] = "{R-13M}",
 					["num"] = 1,
 				},
 			},
@@ -42,7 +42,7 @@ local unitPayloads = {
 					["num"] = 6,
 				},
 				[2] = {
-					["CLSID"] = "{R-3S}",
+					["CLSID"] = "{R-13M}",
 					["num"] = 5,
 				},
 				[3] = {
@@ -58,7 +58,7 @@ local unitPayloads = {
 					["num"] = 2,
 				},
 				[6] = {
-					["CLSID"] = "{R-3S}",
+					["CLSID"] = "{R-13M}",
 					["num"] = 1,
 				},
 			},
@@ -75,7 +75,7 @@ local unitPayloads = {
 					["num"] = 6,
 				},
 				[2] = {
-					["CLSID"] = "{R-3S}",
+					["CLSID"] = "{R-13M}",
 					["num"] = 5,
 				},
 				[3] = {
@@ -91,7 +91,7 @@ local unitPayloads = {
 					["num"] = 2,
 				},
 				[6] = {
-					["CLSID"] = "{R-3S}",
+					["CLSID"] = "{R-13M}",
 					["num"] = 1,
 				},
 			},
@@ -108,7 +108,7 @@ local unitPayloads = {
 					["num"] = 6,
 				},
 				[2] = {
-					["CLSID"] = "{R-3S}",
+					["CLSID"] = "{R-13M}",
 					["num"] = 5,
 				},
 				[3] = {
@@ -124,7 +124,7 @@ local unitPayloads = {
 					["num"] = 2,
 				},
 				[6] = {
-					["CLSID"] = "{R-3S}",
+					["CLSID"] = "{R-13M}",
 					["num"] = 1,
 				},
 			},
@@ -144,12 +144,12 @@ local unitPayloads = {
 					["num"] = 3,
 				},
 				[3] = {
-					["CLSID"] = "{UB-32_S5M}",
-					["num"] = 2,
+					["CLSID"] = "{Kh-66_Grom}",
+					["num"] = 4,
 				},
 				[4] = {
-					["CLSID"] = "{UB-32_S5M}",
-					["num"] = 4,
+					["CLSID"] = "{Kh-66_Grom}",
+					["num"] = 2,
 				},
 				[5] = {
 					["CLSID"] = "{S-24B}",
@@ -185,11 +185,11 @@ local unitPayloads = {
 					["num"] = 2,
 				},
 				[5] = {
-					["CLSID"] = "{R-3S}",
+					["CLSID"] = "{R-13M}",
 					["num"] = 5,
 				},
 				[6] = {
-					["CLSID"] = "{R-3S}",
+					["CLSID"] = "{R-13M}",
 					["num"] = 1,
 				},
 			},
@@ -210,19 +210,19 @@ local unitPayloads = {
 					["num"] = 3,
 				},
 				[3] = {
-					["CLSID"] = "{UB-32_S5M}",
-					["num"] = 2,
-				},
-				[4] = {
-					["CLSID"] = "{UB-32_S5M}",
+					["CLSID"] = "{Kh-66_Grom}",
 					["num"] = 4,
 				},
+				[4] = {
+					["CLSID"] = "{Kh-66_Grom}",
+					["num"] = 2,
+				},
 				[5] = {
-					["CLSID"] = "{S-24A}",
+					["CLSID"] = "{S-24B}",
 					["num"] = 1,
 				},
 				[6] = {
-					["CLSID"] = "{S-24A}",
+					["CLSID"] = "{S-24B}",
 					["num"] = 5,
 				},
 			},
@@ -284,11 +284,11 @@ local unitPayloads = {
 					["num"] = 2,
 				},
 				[5] = {
-					["CLSID"] = "{R-3S}",
+					["CLSID"] = "{R-13M}",
 					["num"] = 5,
 				},
 				[6] = {
-					["CLSID"] = "{R-3S}",
+					["CLSID"] = "{R-13M}",
 					["num"] = 1,
 				},
 			},
