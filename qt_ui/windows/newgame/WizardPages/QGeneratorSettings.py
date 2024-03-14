@@ -126,6 +126,8 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.registerField("t45_goshawk", self.t45_goshawk)
         self.hawk_t1a = QtWidgets.QCheckBox()
         self.registerField("hawk_t1a", self.hawk_t1a)
+        self.super_etendard = QtWidgets.QCheckBox()
+        self.registerField("super_etendard", self.super_etendard)
         self.su30_flanker_h = QtWidgets.QCheckBox()
         self.registerField("su30_flanker_h", self.su30_flanker_h)
         self.su57_felon = QtWidgets.QCheckBox()
@@ -176,6 +178,7 @@ class GeneratorOptions(QtWidgets.QWizardPage):
             ("T-45 Goshawk (version 1.01)", self.t45_goshawk),
             ("Hawk T1A", self.hawk_t1a),
             ("OV-10A Bronco", self.ov10a_bronco),
+            ("Super Étendard (v2.5.5)", self.super_etendard),
             ("Su-30 Flanker-H (V2.1.12 beta)", self.su30_flanker_h),
             ("Su-57 Felon (build-04)", self.su57_felon),
             ("UH-60L Black Hawk (v1.3.1)", self.uh_60l),
@@ -237,6 +240,7 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.jas39_gripen.setChecked(s.get("jas39_gripen", False))
         self.t45_goshawk.setChecked(s.get("t45_goshawk", False))
         self.hawk_t1a.setChecked(s.get("hawk_t1a", False))
+        self.super_etendard.setChecked(s.get("super_etendard", False))
         self.su30_flanker_h.setChecked(s.get("su30_flanker_h", False))
         self.su57_felon.setChecked(s.get("su57_felon", False))
         self.ov10a_bronco.setChecked(s.get("ov10a_bronco", False))
