@@ -4,11 +4,45 @@ theater: Falklands
 authors: Ghosti
 recommended_player_faction: Argentina 1982
 recommended_enemy_faction: United Kingdom 1982
-description: <p>A what-if continuation of the Falklands War 1982. British forces have successfully retaken Stanley, but the Argentinians have not surrendered. SAS troops have conducted Operation Mikado, attacking the home base of Argentina's Super Etendard strike fighters at Río Grande, Tierra del Fuego and temporarily taking control of the airfield. Argentine forces are poised for a counterattack, intending to repulse the SAS.</p>
+description: <p>A what-if continuation of the Falklands War 1982. British forces have successfully retaken Stanley, but the Argentinians have not surrendered. SAS troops have conducted Operation Mikado, attacking the home base of Argentina's Super Étendard strike fighters at Río Grande, Tierra del Fuego and temporarily taking control of the airfield. Argentine forces are poised for a counterattack, intending to repulse the SAS.</p>
 miz: Falklands_Operation_Mikado.miz
 performance: 3
 recommended_start_date: 1982-06-14
 version: "10.7"
+
+settings:
+  pretense_extra_zone_connections: 0
+  pretense_disable_ground_assaults: true
+  pretense_disable_supply_convoys: true
+  pretense_ground_assaults_prefer_roads: true
+  pretense_supply_convoys_prefer_roads: true
+  pretense_num_of_cargo_planes: 1
+  pretense_do_not_generate_sead_missions: true
+  pretense_do_not_generate_csar_missions: true
+  perf_culling: false
+  perf_culling_distance: 50
+  player_skill: "High"
+  enemy_skill: "Average"
+  enemy_vehicle_skill: "Average"
+  night_day_missions: NightMissions.OnlyDay
+  labels: "Dot Only"
+
+  ground_start_ai_planes: true
+  ground_start_scenery_remove_triggers: false
+  ground_start_ground_power_trucks: false
+  ground_start_ground_power_trucks_roadbase: false
+
+  plugins:
+    gamemaster: true
+    splashdamageclusters: true
+    splashdamageclusters.bdaMessages: true
+    splashdamageclusters.clusterEffects: true
+    splashdamageclusters.shipRadarDamage: true
+ #Mods to be used
+  a4_skyhawk: true
+  super_etendard: true
+  t45_goshawk: true
+
 squadrons:
   #UK CVN
   UK-CV-1:
@@ -74,19 +108,15 @@ squadrons:
   Arg-CV:
     - primary: BARCAP
       secondary: any
-      size: 12
       aircraft:
         - A-4E Skyhawk
     - primary: Strike
-      secondary: any
-      size: 12
       aircraft:
         - T-45 Goshawk
     - primary: Strike
       secondary: any
-      size: 12
       aircraft:
-        - Super Etendard
+        - Super Étendard
   # Port Stanley
   # East Falklands
   # 1x660m runway
@@ -133,10 +163,13 @@ squadrons:
   # Argentina mainland
   # 1x4000m runway
   5:
-    - primary: BARCAP
+    - primary: Strike
+      aircraft:
+        - T-45 Goshawk
+    - primary: Strike
       secondary: any
       aircraft:
-        - Mirage 2000C
+        - MB-339A
     - primary: CAS
       secondary: any
       aircraft:
@@ -144,7 +177,7 @@ squadrons:
     - primary: Anti-ship
       secondary: air-to-ground
       aircraft:
-        - Super Etendard
+        - Super Étendard
   # Rio Grande
   # Tierra del Fuego
   # 1x2600m runway
@@ -157,10 +190,13 @@ squadrons:
   # Tierra del Fuego
   # 1x3000m runway
   7:
-    - primary: BARCAP
+    - primary: Strike
+      aircraft:
+        - T-45 Goshawk
+    - primary: Strike
       secondary: any
       aircraft:
-        - Mirage 2000C
+        - MB-339A
     - primary: CAS
       secondary: any
       aircraft:
@@ -168,7 +204,7 @@ squadrons:
     - primary: Anti-ship
       secondary: air-to-ground
       aircraft:
-        - Super Etendard
+        - Super Étendard
   # Ushuaia Helo Port
   # Tierra del Fuego
   # 1x1700m runway
@@ -180,7 +216,7 @@ squadrons:
     - primary: Anti-ship
       secondary: air-to-ground
       aircraft:
-        - Super Etendard
+        - Super Étendard
     - primary: Transport
       secondary: air-to-ground
       aircraft:
@@ -204,7 +240,7 @@ squadrons:
     - primary: Anti-ship
       secondary: air-to-ground
       aircraft:
-        - Super Etendard
+        - Super Étendard
     - primary: Transport
       secondary: air-to-ground
       aircraft:
@@ -228,7 +264,7 @@ squadrons:
     - primary: Anti-ship
       secondary: air-to-ground
       aircraft:
-        - Super Etendard
+        - Super Étendard
     - primary: Transport
       secondary: air-to-ground
       aircraft:
@@ -252,7 +288,7 @@ squadrons:
     - primary: Anti-ship
       secondary: air-to-ground
       aircraft:
-        - Super Etendard
+        - Super Étendard
     - primary: Transport
       secondary: air-to-ground
       aircraft:
@@ -308,7 +344,7 @@ squadrons:
     - primary: Anti-ship
       secondary: air-to-ground
       aircraft:
-        - Super Etendard
+        - Super Étendard
     - primary: Transport
       secondary: air-to-ground
       aircraft:
@@ -372,7 +408,7 @@ squadrons:
     - primary: Anti-ship
       secondary: air-to-ground
       aircraft:
-        - Super Etendard
+        - Super Étendard
     - primary: Transport
       secondary: air-to-ground
       aircraft:
@@ -427,7 +463,7 @@ squadrons:
     - primary: Anti-ship
       secondary: air-to-ground
       aircraft:
-        - Super Etendard
+        - Super Étendard
     - primary: Transport
       secondary: air-to-ground
       aircraft:
@@ -451,7 +487,7 @@ squadrons:
     - primary: Anti-ship
       secondary: air-to-ground
       aircraft:
-        - Super Etendard
+        - Super Étendard
     - primary: Transport
       secondary: air-to-ground
       aircraft:
@@ -590,7 +626,7 @@ squadrons:
     - primary: Anti-ship
       secondary: air-to-ground
       aircraft:
-        - Super Etendard
+        - Super Étendard
     - primary: Transport
       secondary: air-to-ground
       aircraft:
