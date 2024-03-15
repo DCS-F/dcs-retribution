@@ -7,13 +7,13 @@
     "en_UK"
   ],
   "aircrafts": [
-    "Harrier GR.3",
+    "AV-8B Harrier II Night Attack",
     "C-130",
     "C-130J-30 Super Hercules",
     "SA 342M Gazelle Mistral",
     "SA 342L Gazelle",
     "SA 342M Gazelle",
-	"Chinook HC.1",
+	"CH-47D",
 	"UH-1H Iroquois"
   ],
   "awacs": [
@@ -30,6 +30,7 @@
     "M109A6 Paladin"
   ],
   "logistics_units": [
+    "Truck Bedford",
     "LUV Land Rover 109",
     "Truck Land Rover 101 FC"
   ],
@@ -38,9 +39,8 @@
     "Infantry M4",
     "Mortar 2B11 120mm"
   ],
-  "air_defenses": [
-    "BoforsGenerator",
-    "RapierGenerator"
+  "preset_groups": [
+    "Rapier"
   ],
   "ewrs": [
     "HawkEwrGenerator"
@@ -67,13 +67,23 @@
     "HMS Invincible (R05)",
     "HMS Hermes (R12)"
   ],
-  "navy_generators": [
-	"WW2LSTGroupGenerator"
+  "naval_units": [
+    "R05 Invincible",
+    "FAC La Combattante IIa",
+	"P265 Dumbarton Castle",
+	"F72 Ariadne",
+	"F57 Andromeda",
+	"F12 Achilles"
+  ],
+  "air_defense_units": [
+    "SAM Hawk SR (AN/MPQ-50)",
+    "M48 Chaparral",
+    "Bofors 40 mm Gun"
   ],
   "has_jtac": true,
   "jtac_unit": "SA 342M Gazelle",
   "liveries_overrides": {
-    "Harrier GR.3": [
+    "AV-8B Harrier II Night Attack": [
 	  "RAF GR3 XV754",
 	  "RAF GR3 XZ132",
 	  "RAF GR3 XZ969",
@@ -94,7 +104,7 @@
     "SA 342M Gazelle": [
       "UK Fictional"
     ],
-	"Chinook HC.1": [
+	"CH-47D": [
       "RAF_18Sqn_100year_ZA712"
     ],
 	"UH-1H Iroquois": [

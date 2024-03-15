@@ -38,25 +38,16 @@
     "Infantry M4",
     "Mortar 2B11 120mm"
   ],
-  "air_defenses": [
-    "BoforsGenerator",
-    "RolandGenerator"
+  "air_defense_units": [
+    "Roland 2 (Marder Chassis)",
+    "Bofors 40 mm Gun"
   ],
-  "ewrs": [
-    "HawkEwrGenerator"
+  "preset_groups": [
+    "Roland"
   ],
-  "aircraft_carrier": [
-    "Forrestal"
-  ],
-  "helicopter_carrier": [
-    "LHA_Tarawa"
-  ],
-  "destroyers": [
-    "KILO"
-  ],
-  "cruisers": [
-	"LST_Mk2",
-	"USS_Samuel_Chase"	
+  "naval_units": [
+    "ARA Veinticinco de Mayo",
+    "P258 Leeds Castle"
   ],
   "requirements": {},
   "carrier_names": [
