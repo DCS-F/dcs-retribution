@@ -6,3 +6,11 @@ price: 5
 role: Attack/Light Fighter
 variants:
   Hawk T1A: {}
+tasks:
+  Anti-ship: 30
+  BAI: 120
+  CAS: 120
+  DEAD: 120
+  OCA/Aircraft: 120
+  OCA/Runway: 120
+  Strike: 120

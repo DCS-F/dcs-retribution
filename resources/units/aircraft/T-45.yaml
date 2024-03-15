@@ -8,3 +8,5 @@ role: Carrier-based Attack/Light Fighter
 variants:
   T-45 Goshawk: {}
   Hawk Mk.60: {}
+tasks:
+  Strike: 110
