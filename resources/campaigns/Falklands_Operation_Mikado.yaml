@@ -1,9 +1,9 @@
 ---
 name: Falklands - Operation Mikado
 theater: Falklands
-authors: tmz42, original campaign by Fuzzle
-recommended_player_faction: UK/US Falklands Task Force
-recommended_enemy_faction: China/Argentina Falklands Occupation Force
+authors: Ghosti
+recommended_player_faction: Argentina 1982
+recommended_enemy_faction: United Kingdom 1982
 description: <p>A what-if continuation of the Falklands War 1982. British forces have successfully retaken Stanley, but the Argentinians have not surrendered. SAS troops have conducted Operation Mikado, attacking the home base of Argentina's Super Etendard strike fighters at Río Grande, Tierra del Fuego and temporarily taking control of the airfield. Argentine forces are poised for a counterattack, intending to repulse the SAS.</p>
 miz: Falklands_Operation_Mikado.miz
 performance: 3
@@ -107,7 +107,6 @@ squadrons:
       secondary: any
       aircraft:
         - AV-8B Harrier II Night Attack
-      size: 12
     - primary: Transport
       aircraft:
         - C-130
@@ -118,7 +117,6 @@ squadrons:
     - primary: AEW&C
       aircraft:
         - E-3A
-      size: 2
   # San Carlos FOB
   # East Falklands
   # 1x440m runway (Harrier / helicopter base)
