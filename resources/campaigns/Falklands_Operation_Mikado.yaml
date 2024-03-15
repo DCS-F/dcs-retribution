@@ -10,8 +10,8 @@ performance: 3
 recommended_start_date: 1982-06-14
 version: "10.7"
 squadrons:
-  #BLUFOR CVN
-  Blue-CV-1:
+  #UK CVN
+  UK-CV-1:
     # Harrier FAA
     - primary: BAI
       secondary: air-to-ground
@@ -25,8 +25,8 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - SA 342L Gazelle
-  #BLUFOR CVN
-  Blue-CV-2:
+  #UK CVN
+  UK-CV-2:
     # Harrier FAA
     - primary: BAI
       secondary: air-to-ground
@@ -40,8 +40,8 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - SA 342M Gazelle
-  # BLUFOR LHA
-  Blue-LHA-1:
+  # UK LHA
+  UK-LHA-1:
     # Harrier FAA
     - primary: BAI
       secondary: air-to-ground
@@ -55,8 +55,8 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - SA 342L Gazelle
-  # BLUFOR LHA
-  Blue-LHA-2:
+  # UK LHA
+  UK-LHA-2:
     # Harrier FAA
     - primary: BAI
       secondary: air-to-ground
@@ -70,8 +70,8 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - SA 342M Gazelle
-  # REDFOR CV
-  Red-CV:
+  # Argentinian CV
+  Arg-CV:
     - primary: BARCAP
       secondary: any
       size: 12
