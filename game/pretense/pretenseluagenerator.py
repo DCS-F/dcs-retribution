@@ -284,6 +284,7 @@ class PretenseLuaGenerator(LuaGenerator):
             "nasamsb",
             "nasamsc",
             "rapier",
+            "roland",
             "irondome",
             "davidsling",
         ]:
@@ -382,6 +383,8 @@ class PretenseLuaGenerator(LuaGenerator):
                         == AirDefence.Rapier_fsa_launcher
                     ):
                         sam_presets["rapier"].enabled = True
+                    if ground_unit.unit_type.dcs_unit_type == AirDefence.Roland_ADS:
+                        sam_presets["roland"].enabled = True
                     if ground_unit.unit_type.dcs_unit_type == IRON_DOME_LN:
                         sam_presets["irondome"].enabled = True
                     if ground_unit.unit_type.dcs_unit_type == DAVID_SLING_LN:
@@ -1263,6 +1266,30 @@ class PretenseLuaGenerator(LuaGenerator):
         lua_string_ground_groups += (
             '                "rapier_fsa_optical_tracker_unit"\n'
         )
+        lua_string_ground_groups += "            },\n"
+        lua_string_ground_groups += "            maxDist = 300,\n"
+        lua_string_ground_groups += f'            skill = "{skill_str}",\n'
+        lua_string_ground_groups += "            dataCategory = TemplateDB.type.group\n"
+        lua_string_ground_groups += "}\n"
+
+        lua_string_ground_groups += (
+            'TemplateDB.templates["roland-' + side_str + '"] = {\n'
+        )
+        lua_string_ground_groups += "    units = {\n"
+        lua_string_ground_groups += '                "Roland ADS",\n'
+        lua_string_ground_groups += '                "Roland ADS",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.AAA, UnitClass.SHORAD, UnitClass.MANPAD])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.LOGISTICS])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.LOGISTICS])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.SHORAD, UnitClass.AAA, UnitClass.MANPAD])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.SHORAD, UnitClass.AAA, UnitClass.MANPAD])}",\n'
+        lua_string_ground_groups += '                "Roland ADS",\n'
+        lua_string_ground_groups += '                "Roland ADS",\n'
+        lua_string_ground_groups += '                "Roland ADS",\n'
+        lua_string_ground_groups += '                "Roland ADS",\n'
+        lua_string_ground_groups += '                "Roland Radar",\n'
+        lua_string_ground_groups += '                "Roland Radar",\n'
+        lua_string_ground_groups += '                "Roland Radar"\n'
         lua_string_ground_groups += "            },\n"
         lua_string_ground_groups += "            maxDist = 300,\n"
         lua_string_ground_groups += f'            skill = "{skill_str}",\n'

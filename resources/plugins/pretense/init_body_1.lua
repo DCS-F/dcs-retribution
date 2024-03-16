@@ -310,6 +310,12 @@ presets = {
 				type='defense',
 				template='rapier-red',
 			}),
+			roland = Preset:new({
+				display = 'SAM',
+				cost=3000,
+				type='defense',
+				template='roland-red',
+			}),
 			irondome = Preset:new({
 				display = 'SAM',
 				cost=20000,
@@ -413,6 +419,12 @@ presets = {
 				cost=3000,
 				type='defense',
 				template='rapier-blue',
+			}),
+			roland = Preset:new({
+				display = 'SAM',
+				cost=3000,
+				type='defense',
+				template='roland-blue',
 			}),
 			irondome = Preset:new({
 				display = 'SAM',
