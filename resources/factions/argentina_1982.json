@@ -8,6 +8,7 @@
   ],
   "aircrafts": [
     "Mirage 2000C",
+    "Mirage-F1CE",
     "AJS-37 Viggen",
 	"Super Étendard",
 	"A-4E Skyhawk",
@@ -61,6 +62,9 @@
   "liveries_overrides": {
     "Mirage 2000C": [
 	  "Argentine Mirage III"
+    ],
+    "Mirage-F1CE": [
+	  "Fictional FAA M-V C-420"
     ],
     "AJS-37 Viggen": [
 	  "Armada Argentina",
