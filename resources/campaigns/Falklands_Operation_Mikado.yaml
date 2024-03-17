@@ -34,6 +34,7 @@ settings:
 
   plugins:
     gamemaster: true
+    skynetiads: false
     splashdamageclusters: true
     splashdamageclusters.bdaMessages: true
     splashdamageclusters.clusterEffects: true
