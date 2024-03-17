@@ -838,6 +838,17 @@ class Settings:
             "Needed to cold-start some aircraft types. Might have a performance impact."
         ),
     )
+    ground_start_airbase_statics_farps_remove: bool = boolean_option(
+        "Remove ground spawn statics, including invisible FARPs, at airbases",
+        MISSION_GENERATOR_PAGE,
+        GAMEPLAY_SECTION,
+        default=True,
+        detail=(
+            "Ammo and fuel statics and invisible FARPs should be unnecessary when creating "
+            "additional spawns for players at airbases. This setting will disable them and "
+            "potentially grant a marginal performance benefit."
+        ),
+    )
 
     # Performance
     perf_smoke_gen: bool = boolean_option(

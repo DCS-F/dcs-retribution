@@ -393,6 +393,16 @@ class FlightGroupSpawner:
         group.points[0].type = "TakeOffGround"
         group.units[0].heading = ground_spawn[0].units[0].heading
 
+        if (
+            cp.coalition.game.settings.ground_start_airbase_statics_farps_remove
+            and isinstance(cp, Airfield)
+        ):
+            # Remove invisible FARPs from airfields because they are unnecessary
+            neutral_country = self.mission.country(
+                cp.coalition.game.neutral_country.name
+            )
+            neutral_country.remove_static_group(ground_spawn[0])
+
         # Hot start aircraft which require ground power to start, when ground power
         # trucks have been disabled for performance reasons
         ground_power_available = (
@@ -449,6 +459,17 @@ class FlightGroupSpawner:
                     ground_spawn[0].x, ground_spawn[0].y, terrain=terrain
                 )
                 group.units[1 + i].heading = ground_spawn[0].units[0].heading
+
+                if (
+                    cp.coalition.game.settings.ground_start_airbase_statics_farps_remove
+                    and isinstance(cp, Airfield)
+                ):
+                    # Remove invisible FARPs from airfields because they are unnecessary
+                    neutral_country = self.mission.country(
+                        cp.coalition.game.neutral_country.name
+                    )
+                    neutral_country.remove_static_group(ground_spawn[0])
+
             except IndexError as ex:
                 raise NoParkingSlotError(
                     f"Not enough STOL slots available at {cp}"

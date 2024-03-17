@@ -147,6 +147,7 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
         faction_units = (
             set(coalition.faction.frontline_units)
             | set(coalition.faction.artillery_units)
+            | set(coalition.faction.air_defense_units)
             | set(coalition.faction.logistics_units)
         )
         of_class = list({u for u in faction_units if u.unit_class is unit_class})

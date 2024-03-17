@@ -60,6 +60,7 @@ from game.theater import (
     TheaterGroundObject,
     TheaterUnit,
     NavalControlPoint,
+    Airfield,
 )
 from game.theater.theatergroundobject import (
     CarrierGroundObject,
@@ -939,7 +940,11 @@ class GroundSpawnRoadbaseGenerator:
             country.id
         )
 
-        if self.game.position_culled(ground_spawn[0]):
+        if self.game.settings.ground_start_airbase_statics_farps_remove and isinstance(
+            self.cp, Airfield
+        ):
+            cull_farp_statics = True
+        elif self.game.position_culled(ground_spawn[0]):
             cull_farp_statics = True
             if self.cp.coalition.player:
                 for package in self.cp.coalition.ato.packages:
@@ -1071,7 +1076,11 @@ class GroundSpawnGenerator:
             country.id
         )
 
-        if self.game.position_culled(vtol_pad[0]):
+        if self.game.settings.ground_start_airbase_statics_farps_remove and isinstance(
+            self.cp, Airfield
+        ):
+            cull_farp_statics = True
+        elif self.game.position_culled(vtol_pad[0]):
             cull_farp_statics = True
             if self.cp.coalition.player:
                 for package in self.cp.coalition.ato.packages:
