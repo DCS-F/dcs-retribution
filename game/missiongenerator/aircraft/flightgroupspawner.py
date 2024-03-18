@@ -402,6 +402,8 @@ class FlightGroupSpawner:
                 cp.coalition.game.neutral_country.name
             )
             neutral_country.remove_static_group(ground_spawn[0])
+            group.points[0].link_unit = None
+            group.points[0].helipad_id = None
 
         # Hot start aircraft which require ground power to start, when ground power
         # trucks have been disabled for performance reasons
