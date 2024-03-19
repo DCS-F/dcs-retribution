@@ -214,6 +214,10 @@ squadrons:
       secondary: any
       aircraft:
         - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage-F1CE
     - primary: Anti-ship
       secondary: air-to-ground
       aircraft:
@@ -234,6 +238,10 @@ squadrons:
       secondary: any
       aircraft:
         - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage-F1CE
     - primary: CAS
       secondary: any
       aircraft:
@@ -258,6 +266,10 @@ squadrons:
       secondary: any
       aircraft:
         - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage-F1CE
     - primary: CAS
       secondary: any
       aircraft:
@@ -282,6 +294,10 @@ squadrons:
       secondary: any
       aircraft:
         - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage-F1CE
     - primary: CAS
       secondary: any
       aircraft:
@@ -338,6 +354,10 @@ squadrons:
       secondary: any
       aircraft:
         - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage-F1CE
     - primary: CAS
       secondary: any
       aircraft:
@@ -402,6 +422,10 @@ squadrons:
       secondary: any
       aircraft:
         - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage-F1CE
     - primary: CAS
       secondary: any
       aircraft:
@@ -457,6 +481,10 @@ squadrons:
       secondary: any
       aircraft:
         - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage-F1CE
     - primary: CAS
       secondary: any
       aircraft:
@@ -481,6 +509,10 @@ squadrons:
       secondary: any
       aircraft:
         - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage-F1CE
     - primary: CAS
       secondary: any
       aircraft:
@@ -620,6 +652,10 @@ squadrons:
       secondary: any
       aircraft:
         - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage-F1CE
     - primary: CAS
       secondary: any
       aircraft:
