@@ -61,7 +61,13 @@
   "jtac_unit": "Mi-8MTV2 Hip",
   "liveries_overrides": {
     "Mirage 2000C": [
-	  "Argentine Mirage III"
+	  "Argentine Mirage III",
+      "Argentina DAGGER",
+      "Argentina DAGGER Esc II",
+      "Argentina DAGGER Esc III",
+      "Argentina DAGGER Esc III Celeste",
+      "Argentina MIRAGE G8C",
+      "Argentina MIRAGE G8C Esc I"
     ],
     "Mirage-F1CE": [
 	  "Fictional FAA M-V C-420"
