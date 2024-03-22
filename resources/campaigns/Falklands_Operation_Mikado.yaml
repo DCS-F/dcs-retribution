@@ -42,6 +42,7 @@ settings:
  #Mods to be used
   a4_skyhawk: true
   super_etendard: true
+  mirage_3: true
   t45_goshawk: true
 
 squadrons:
@@ -191,17 +192,25 @@ squadrons:
   # Tierra del Fuego
   # 1x3000m runway
   7:
-    - primary: Strike
-      aircraft:
-        - T-45 Goshawk
-    - primary: Strike
+    - primary: BARCAP
       secondary: any
       aircraft:
-        - MB-339A
+        - Mirage IIIB/C
     - primary: CAS
       secondary: any
       aircraft:
-        - A-4E Skyhawk
+        - Mirage IIIB/C A/G
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage-F1CE
+    - primary: Strike
+      aircraft:
+        - T-45 Goshawk
     - primary: Anti-ship
       secondary: air-to-ground
       aircraft:
@@ -210,6 +219,14 @@ squadrons:
   # Tierra del Fuego
   # 1x1700m runway
   8:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage IIIB/C
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mirage IIIB/C A/G
     - primary: BARCAP
       secondary: any
       aircraft:
@@ -234,6 +251,14 @@ squadrons:
   # Argentina mainland
   # 1x2700m runway
   11:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage IIIB/C
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mirage IIIB/C A/G
     - primary: BARCAP
       secondary: any
       aircraft:
@@ -265,6 +290,14 @@ squadrons:
     - primary: BARCAP
       secondary: any
       aircraft:
+        - Mirage IIIB/C
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mirage IIIB/C A/G
+    - primary: BARCAP
+      secondary: any
+      aircraft:
         - Mirage 2000C
     - primary: BARCAP
       secondary: any
@@ -290,6 +323,14 @@ squadrons:
   # Argentina mainland
   # 1x2000m runway
   15:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage IIIB/C
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mirage IIIB/C A/G
     - primary: BARCAP
       secondary: any
       aircraft:
@@ -350,6 +391,14 @@ squadrons:
   # Argentina mainland
   # 1x2000m runway
   20:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage IIIB/C
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mirage IIIB/C A/G
     - primary: BARCAP
       secondary: any
       aircraft:
@@ -421,6 +470,14 @@ squadrons:
     - primary: BARCAP
       secondary: any
       aircraft:
+        - Mirage IIIB/C
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mirage IIIB/C A/G
+    - primary: BARCAP
+      secondary: any
+      aircraft:
         - Mirage 2000C
     - primary: BARCAP
       secondary: any
@@ -480,6 +537,14 @@ squadrons:
     - primary: BARCAP
       secondary: any
       aircraft:
+        - Mirage IIIB/C
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mirage IIIB/C A/G
+    - primary: BARCAP
+      secondary: any
+      aircraft:
         - Mirage 2000C
     - primary: BARCAP
       secondary: any
@@ -505,6 +570,14 @@ squadrons:
   # Tierra del Fuego
   # approx. 5000m runway
   Rio Chico Highway Strip:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage IIIB/C
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mirage IIIB/C A/G
     - primary: BARCAP
       secondary: any
       aircraft:
@@ -648,6 +721,14 @@ squadrons:
   # Argentina mainland
   # approx. 3700m runway
   Rio Gallegos Highway Strip:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage IIIB/C
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mirage IIIB/C A/G
     - primary: BARCAP
       secondary: any
       aircraft:
