@@ -14,23 +14,23 @@ local unitPayloads = {
 					["num"] = 1,
 				},
 				[3] = {
-					["CLSID"] = "LAU_117_AGM_65F",
+					["CLSID"] = "{F16A4DE0-116C-4A71-97F0-2CF85B0313EC}",
 					["num"] = 2,
 				},
 				[4] = {
-					["CLSID"] = "LAU_117_AGM_65F",
+					["CLSID"] = "{F16A4DE0-116C-4A71-97F0-2CF85B0313EC}",
 					["num"] = 7,
 				},
 				[5] = {
-					["CLSID"] = "{ALQ_164_RF_Jammer}",
+					["CLSID"] = "{A111396E-D3E8-4b9c-8AC9-2432489304D5}",
 					["num"] = 5,
 				},
 				[6] = {
-					["CLSID"] = "LAU_117_AGM_65F",
+					["CLSID"] = "{F16A4DE0-116C-4A71-97F0-2CF85B0313EC}",
 					["num"] = 6,
 				},
 				[7] = {
-					["CLSID"] = "LAU_117_AGM_65F",
+					["CLSID"] = "{F16A4DE0-116C-4A71-97F0-2CF85B0313EC}",
 					["num"] = 3,
 				},
 				[8] = {
@@ -55,11 +55,11 @@ local unitPayloads = {
 					["num"] = 1,
 				},
 				[3] = {
-					["CLSID"] = "{BRU-42A_3*GBU-12}",
+					["CLSID"] = "{0D33DDAE-524F-4A4E-B5B8-621754FE3ADE}",
 					["num"] = 2,
 				},
 				[4] = {
-					["CLSID"] = "{BRU-42A_3*GBU-12}",
+					["CLSID"] = "{0D33DDAE-524F-4A4E-B5B8-621754FE3ADE}",
 					["num"] = 7,
 				},
 				[5] = {
@@ -203,11 +203,11 @@ local unitPayloads = {
 					["num"] = 1,
 				},
 				[3] = {
-					["CLSID"] = "LAU_117_AGM_65F",
+					["CLSID"] = "{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}",
 					["num"] = 2,
 				},
 				[4] = {
-					["CLSID"] = "LAU_117_AGM_65F",
+					["CLSID"] = "{7A44FF09-527C-4B7E-B42B-3F111CFE50FB}",
 					["num"] = 7,
 				},
 				[5] = {
@@ -215,11 +215,11 @@ local unitPayloads = {
 					["num"] = 5,
 				},
 				[6] = {
-					["CLSID"] = "LAU_117_AGM_65F",
+					["CLSID"] = "{BRU-42_2*Mk-83_RIGHT}",
 					["num"] = 6,
 				},
 				[7] = {
-					["CLSID"] = "LAU_117_AGM_65F",
+					["CLSID"] = "{BRU-42_2*Mk-83_LEFT}",
 					["num"] = 3,
 				},
 				[8] = {
