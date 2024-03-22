@@ -13,6 +13,7 @@ origin: France
 price: 17
 role: Multirole Fighter
 max_range: 400
+gunfighter: true
 variants:
   Mirage 2000C: {}
 radios:
