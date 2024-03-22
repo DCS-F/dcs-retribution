@@ -122,6 +122,8 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.registerField("f105_thunderchief", self.f105_thunderchief)
         self.jas39_gripen = QtWidgets.QCheckBox()
         self.registerField("jas39_gripen", self.jas39_gripen)
+        self.mirage_3 = QtWidgets.QCheckBox()
+        self.registerField("mirage_3", self.mirage_3)
         self.t45_goshawk = QtWidgets.QCheckBox()
         self.registerField("t45_goshawk", self.t45_goshawk)
         self.hawk_t1a = QtWidgets.QCheckBox()
@@ -175,6 +177,7 @@ class GeneratorOptions(QtWidgets.QWizardPage):
             ("High Digit SAMs", self.high_digit_sams),
             ("Swedish Military Assets pack (1.10)", self.swedishmilitaryassetspack),
             ("JAS 39 Gripen (v1.8.5-beta)", self.jas39_gripen),
+            ("Mirage III (v2.5.7.01)", self.mirage_3),
             ("T-45 Goshawk (version 1.01)", self.t45_goshawk),
             ("Hawk T1A", self.hawk_t1a),
             ("OV-10A Bronco", self.ov10a_bronco),
@@ -238,6 +241,7 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.f104_starfighter.setChecked(s.get("f104_starfighter", False))
         self.f105_thunderchief.setChecked(s.get("f105_thunderchief", False))
         self.jas39_gripen.setChecked(s.get("jas39_gripen", False))
+        self.mirage_3.setChecked(s.get("mirage_3", False))
         self.t45_goshawk.setChecked(s.get("t45_goshawk", False))
         self.hawk_t1a.setChecked(s.get("hawk_t1a", False))
         self.super_etendard.setChecked(s.get("super_etendard", False))

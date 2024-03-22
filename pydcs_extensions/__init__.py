@@ -18,6 +18,7 @@ from .hercules import *
 from .highdigitsams import *
 from .irondome import *
 from .jas39 import *
+from .mirage3 import *
 from .t45 import *
 from .hawk_t1a import *
 from .ov10a import *

@@ -7,6 +7,8 @@
     "es_ES"
   ],
   "aircrafts": [
+    "Mirage IIIB/C",
+    "Mirage IIIB/C A/G",
     "Mirage 2000C",
     "Mirage-F1CE",
     "AJS-37 Viggen",
@@ -60,6 +62,14 @@
   "has_jtac": true,
   "jtac_unit": "Mi-8MTV2 Hip",
   "liveries_overrides": {
+    "Mirage IIIB/C": [
+      "Fuerza Rio Galegos",
+      "Grupo-6"
+    ],
+    "Mirage IIIB/C A/G": [
+      "Fuerza Rio Galegos",
+      "Grupo-6"
+    ],
     "Mirage 2000C": [
 	  "Argentine Mirage III",
       "Argentina DAGGER",

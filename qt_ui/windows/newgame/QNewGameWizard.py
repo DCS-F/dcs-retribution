@@ -105,6 +105,7 @@ class NewGameWizard(QtWidgets.QWizard):
             irondome=self.field("irondome"),
             uh_60l=self.field("uh_60l"),
             jas39_gripen=self.field("jas39_gripen"),
+            mirage_3=self.field("mirage_3"),
             t45_goshawk=self.field("t45_goshawk"),
             hawk_t1a=self.field("hawk_t1a"),
             super_etendard=self.field("super_etendard"),
