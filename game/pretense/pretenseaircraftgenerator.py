@@ -363,6 +363,8 @@ class PretenseAircraftGenerator:
                         continue
                     if cp.coalition != squadron.coalition:
                         continue
+                    if num_of_sead >= self.game.settings.pretense_sead_flights_per_cp:
+                        break
 
                     mission_types = squadron.auto_assignable_mission_types
                     if (
@@ -403,6 +405,11 @@ class PretenseAircraftGenerator:
                         continue
                     if cp.coalition != squadron.coalition:
                         continue
+                    if (
+                        num_of_strike
+                        >= self.game.settings.pretense_strike_flights_per_cp
+                    ):
+                        break
 
                     mission_types = squadron.auto_assignable_mission_types
                     for task in strike_tasks:
@@ -425,6 +432,8 @@ class PretenseAircraftGenerator:
                         continue
                     if cp.coalition != squadron.coalition:
                         continue
+                    if num_of_cap >= self.game.settings.pretense_barcap_flights_per_cp:
+                        break
 
                     mission_types = squadron.auto_assignable_mission_types
                     for task in patrol_tasks:
@@ -447,6 +456,8 @@ class PretenseAircraftGenerator:
                         continue
                     if cp.coalition != squadron.coalition:
                         continue
+                    if num_of_cas >= self.game.settings.pretense_cas_flights_per_cp:
+                        break
 
                     mission_types = squadron.auto_assignable_mission_types
                     if (
@@ -470,6 +481,8 @@ class PretenseAircraftGenerator:
                         continue
                     if cp.coalition != squadron.coalition:
                         continue
+                    if num_of_bai >= self.game.settings.pretense_bai_flights_per_cp:
+                        break
 
                     mission_types = squadron.auto_assignable_mission_types
                     if FlightType.BAI in mission_types:
