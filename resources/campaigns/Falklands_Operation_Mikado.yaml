@@ -3,7 +3,7 @@ name: Falklands - Operation Mikado
 theater: Falklands
 authors: Ghosti
 recommended_player_faction: Argentina 1982
-recommended_enemy_faction: United Kingdom 1982
+recommended_enemy_faction: United Kingdom 1982 Black Buck
 description: <p>A what-if continuation of the Falklands War 1982. British forces have successfully retaken Stanley, but the Argentinians have not surrendered. SAS troops have conducted Operation Mikado, attacking the home base of Argentina's Super Étendard strike fighters at Río Grande, Tierra del Fuego and temporarily taking control of the airfield. Argentine forces are poised for a counterattack, intending to repulse the SAS.</p>
 miz: Falklands_Operation_Mikado.miz
 performance: 3
@@ -131,6 +131,10 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - UH-1H Iroquois
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - CH-47D
   # Mount Pleasant
   # East Falklands
   # 1x3000m, 1x1700m runways
@@ -138,7 +142,7 @@ squadrons:
     - primary: CAS
       secondary: any
       aircraft:
-        - AV-8B Harrier II Night Attack
+        - H-6J Badger
     - primary: Transport
       aircraft:
         - C-130
@@ -161,6 +165,10 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - UH-1H Iroquois
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - CH-47D
   # Rio Gallegos
   # Argentina mainland
   # 1x4000m runway
@@ -187,7 +195,7 @@ squadrons:
     - primary: CAS
       secondary: any
       aircraft:
-        - AV-8B Harrier II Night Attack
+        - Tornado GR4
   # Ushuaia
   # Tierra del Fuego
   # 1x3000m runway
@@ -378,7 +386,7 @@ squadrons:
     - primary: CAS
       secondary: any
       aircraft:
-        - AJS-37 Viggen
+        - AV-8B Harrier II Night Attack
     - primary: Transport
       secondary: air-to-ground
       aircraft:
@@ -386,7 +394,7 @@ squadrons:
     - primary: Transport
       secondary: air-to-ground
       aircraft:
-        - Mi-8MTV2 Hip
+        - CH-47D
   # Rio Turbio
   # Argentina mainland
   # 1x2000m runway
@@ -534,74 +542,26 @@ squadrons:
   # Tierra del Fuego
   # approx. 4000m runway
   Punta Maria Highway Strip:
-    - primary: BARCAP
-      secondary: any
-      aircraft:
-        - Mirage IIIB/C
     - primary: CAS
       secondary: any
       aircraft:
-        - Mirage IIIB/C A/G
-    - primary: BARCAP
-      secondary: any
-      aircraft:
-        - Mirage 2000C
-    - primary: BARCAP
-      secondary: any
-      aircraft:
-        - Mirage-F1CE
-    - primary: CAS
-      secondary: any
-      aircraft:
-        - A-4E Skyhawk
-    - primary: Anti-ship
-      secondary: air-to-ground
-      aircraft:
-        - Super Étendard
+        - Tornado GR4
     - primary: Transport
       secondary: air-to-ground
       aircraft:
         - UH-1H Iroquois
-    - primary: Transport
-      secondary: air-to-ground
-      aircraft:
-        - Mi-8MTV2 Hip
   # Rio Chico roadbase (ground spawn)
   # Tierra del Fuego
   # approx. 5000m runway
   Rio Chico Highway Strip:
-    - primary: BARCAP
-      secondary: any
-      aircraft:
-        - Mirage IIIB/C
     - primary: CAS
       secondary: any
       aircraft:
-        - Mirage IIIB/C A/G
-    - primary: BARCAP
-      secondary: any
-      aircraft:
-        - Mirage 2000C
-    - primary: BARCAP
-      secondary: any
-      aircraft:
-        - Mirage-F1CE
-    - primary: CAS
-      secondary: any
-      aircraft:
-        - A-4E Skyhawk
-    - primary: Anti-ship
-      secondary: air-to-ground
-      aircraft:
-        - Super Étendard
+        - Tornado GR4
     - primary: Transport
       secondary: air-to-ground
       aircraft:
         - UH-1H Iroquois
-    - primary: Transport
-      secondary: air-to-ground
-      aircraft:
-        - Mi-8MTV2 Hip
   # Sara helicopter base
   # Tierra del Fuego
   Estancia Sara:

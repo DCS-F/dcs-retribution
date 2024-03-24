@@ -1,0 +1,137 @@
+{
+  "country": "UK",
+  "name": "United Kingdom 1982 Black Buck",
+  "authors": "Ghosti",
+  "description": "<p>Fictional United Kingdom Armed Forces in the 1982, during the Falklands War. Has the H-6J standing in for the Avro Vulcan used in the Black Buck raid</p>",
+  "locales": [
+    "en_UK"
+  ],
+  "aircrafts": [
+    "AV-8B Harrier II Night Attack",
+    "H-6J Badger",
+    "Tornado GR4",
+    "C-130",
+    "C-130J-30 Super Hercules",
+    "SA 342M Gazelle Mistral",
+    "SA 342L Gazelle",
+    "SA 342M Gazelle",
+	"CH-47D",
+	"UH-1H Iroquois"
+  ],
+  "awacs": [
+  ],
+  "tankers": [
+    "KC-130"
+  ],
+  "frontline_units": [
+    "FV510 Warrior",
+    "LUV Land Rover 109",
+    "Truck Land Rover 101 FC",
+    "M1043 HMMWV (M2 HMG)"
+  ],
+  "artillery_units": [
+    "M109A6 Paladin"
+  ],
+  "logistics_units": [
+    "Truck Bedford",
+    "LUV Land Rover 109",
+    "Truck Land Rover 101 FC"
+  ],
+  "infantry_units": [
+    "Infantry M249",
+    "Infantry M4",
+    "Mortar 2B11 120mm"
+  ],
+  "preset_groups": [
+    "Rapier"
+  ],
+  "ewrs": [
+    "HawkEwrGenerator"
+  ],
+  "aircraft_carrier": [
+    "Stennis"
+  ],
+  "helicopter_carrier": [
+    "LHA_Tarawa"
+  ],
+  "destroyers": [
+    "Type_093"
+  ],
+  "cruisers": [
+	"LST_Mk2",
+	"USS_Samuel_Chase"	
+  ],
+  "requirements": {},
+  "carrier_names": [
+    "HMS Eagle (R05)",
+    "HMS Ark Royal (R09)"
+  ],
+  "helicopter_carrier_names": [
+    "HMS Invincible (R05)",
+    "HMS Hermes (R12)"
+  ],
+  "naval_units": [
+    "R05 Invincible",
+    "FAC La Combattante IIa",
+	"P265 Dumbarton Castle",
+	"F72 Ariadne",
+	"F57 Andromeda",
+	"F12 Achilles"
+  ],
+  "air_defense_units": [
+    "SAM Hawk SR (AN/MPQ-50)",
+    "Bofors 40 mm Gun"
+  ],
+  "has_jtac": true,
+  "jtac_unit": "SA 342M Gazelle",
+  "liveries_overrides": {
+    "AV-8B Harrier II Night Attack": [
+	  "RAF GR3 XV754",
+	  "RAF GR3 XZ132",
+	  "RAF GR3 XZ969",
+	  "RAF ZG479"
+    ],
+    "H-6J Badger": [
+      "Royal Air Force"
+    ],
+    "Tornado GR4": [
+      "bb of 14 squadron raf lossiemouth",
+      "no. 9 squadron raf marham ab (norfolk)",
+      "no. 12 squadron raf lossiemouth ab (morayshire)",
+      "no. 14 squadron raf lossiemouth ab (morayshire)",
+      "no. 617 squadron raf lossiemouth ab (morayshire)",
+      "o of ii (ac) squadron raf marham"
+    ],
+    "C-130": [
+      "Royal Air Force"
+    ],
+    "KC-130": [
+      "Royal Air Force"
+    ],
+    "SA 342M Gazelle Mistral": [
+      "UK Fictional"
+    ],
+    "SA 342L Gazelle": [
+      "UK Fictional"
+    ],
+    "SA 342M Gazelle": [
+      "UK Fictional"
+    ],
+	"CH-47D": [
+      "RAF_18Sqn_100year_ZA712"
+    ],
+	"UH-1H Iroquois": [
+      "British Army Air Corps",
+	  "RAF Olive Drab",
+	  "Royal Navy"
+    ]
+  },
+  "liveries_overrides_ground_forces": {
+    "Infantry M249": [
+      "DPM"
+    ],
+    "Infantry M4": [
+      "DPM"
+    ]
+  }
+}
