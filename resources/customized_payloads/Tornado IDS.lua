@@ -208,6 +208,63 @@ local unitPayloads = {
 				[1] = 32,
 			},
 		},
+		[6] = {
+			["displayName"] = "Retribution SEAD Escort",
+			["name"] = "Retribution SEAD Escort",
+			["pylons"] = {
+				[1] = {
+					["CLSID"] = "{8C3F26A2-FA0F-11d5-9190-00A0249B6F00}",
+					["num"] = 1,
+				},
+				[2] = {
+					["CLSID"] = "{B06DD79A-F21E-4EB9-BD9D-AB3844618C93}",
+					["num"] = 2,
+				},
+				[3] = {
+					["CLSID"] = "{6CEB49FC-DED8-4DED-B053-E1F033FF72D3}",
+					["num"] = 3,
+				},
+				[4] = {
+					["CLSID"] = "",
+					["num"] = 4,
+				},
+				[5] = {
+					["CLSID"] = "",
+					["num"] = 9,
+				},
+				[6] = {
+					["CLSID"] = "{6CEB49FC-DED8-4DED-B053-E1F033FF72D3}",
+					["num"] = 10,
+				},
+				[7] = {
+					["CLSID"] = "{B06DD79A-F21E-4EB9-BD9D-AB3844618C93}",
+					["num"] = 11,
+				},
+				[8] = {
+					["CLSID"] = "{8C3F26A2-FA0F-11d5-9190-00A0249B6F00}",
+					["num"] = 12,
+				},
+				[9] = {
+					["CLSID"] = "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}",
+					["num"] = 8,
+				},
+				[10] = {
+					["CLSID"] = "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}",
+					["num"] = 5,
+				},
+				[11] = {
+					["CLSID"] = "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}",
+					["num"] = 6,
+				},
+				[12] = {
+					["CLSID"] = "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}",
+					["num"] = 7,
+				},
+			},
+			["tasks"] = {
+				[1] = 29,
+			},
+		},
 	},
 	["unitType"] = "Tornado IDS",
 }
