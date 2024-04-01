@@ -979,31 +979,105 @@ class Settings:
         default=True,
         causes_expensive_game_update=True,
     )
-    pretense_maxdistfromfront_distance: int = bounded_int_option(
-        "Max distance from front (km)",
+    pretense_supply_mode_dist_to_front: int = bounded_int_option(
+        "Zones to supply mode distance to front",
         page=PRETENSE_PAGE,
         section=GENERAL_SECTION,
-        default=130,
-        min=10,
-        max=10000,
+        default=3,
+        min=1,
+        max=100,
         detail=(
-            "Zones farther away than this from the front line are switched "
-            "into low activity state, but will still be there as functional "
+            "Zones that are more than this setting many hops away from the frontline will "
+            "be switched into low activity state, but will still be there as functional "
             "parts of the economy. Use this to adjust performance."
         ),
     )
-    pretense_closeoverride_distance: int = bounded_int_option(
-        "Close override distance (km)",
+    pretense_export_mode_dist_to_front: int = bounded_int_option(
+        "Zones to export mode distance to front",
         page=PRETENSE_PAGE,
         section=GENERAL_SECTION,
-        default=28,
-        min=5,
-        max=10000,
+        default=4,
+        min=1,
+        max=100,
         detail=(
-            "Zones with keepActive = true and farther away than this from "
-            "the front line are switched into low activity state, but will "
-            "still be there as functional parts of the economy. Use this "
-            "to adjust performance."
+            "Zones that are more than this setting many hops away from the frontline "
+            "will now go to export operating mode even if they would otherwise be "
+            "forced to stay active, these will still build aircraft in export mode. "
+            "This setting should be set higher than the equivalent supply mode "
+            "setting above."
+        ),
+    )
+    pretense_cap_mission_dist_to_front: int = bounded_int_option(
+        "AI CAP missions distance to front",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=4,
+        min=1,
+        max=100,
+        detail=(
+            "Zones that are closer than this setting to the frontline "
+            "are eligible targets for AI CAP flights."
+        ),
+    )
+    pretense_sead_mission_dist_to_front: int = bounded_int_option(
+        "AI SEAD missions distance to front",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=4,
+        min=1,
+        max=100,
+        detail=(
+            "Zones that are closer than this setting to the frontline "
+            "are eligible targets for AI SEAD flights."
+        ),
+    )
+    pretense_strike_mission_dist_to_front: int = bounded_int_option(
+        "AI Strike missions distance to front",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=4,
+        min=1,
+        max=100,
+        detail=(
+            "Zones that are closer than this setting to the frontline "
+            "are eligible targets for AI Strike flights."
+        ),
+    )
+    pretense_controllable_carrier: bool = boolean_option(
+        "Controllable carrier",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=True,
+        detail=(
+            "This can be used to enable or disable the native carrier support in Pretense. The Pretense carrier "
+            "can be controlled through the communication menu (if the Pretense character has enough rank/CMD points) "
+            "and the player can call in AI aerial and cruise missile missions using it."
+            "The controllable carriers in Pretense do not build and deploy AI missions autonomously, so if you prefer "
+            "to have both sides deploy carrier aviation autonomously, you might want to disable this option. "
+            "When this option is disabled, moving the carrier can only be done with the Retribution interface."
+        ),
+    )
+    pretense_carrier_steams_into_wind: bool = boolean_option(
+        "Carriers steam into wind",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=True,
+        detail=(
+            "This setting controls whether carriers and their escorts will steam into wind. Disable to "
+            "to ensure that the carriers stay within the carrier zone in Pretense, but note that "
+            "doing so might limit carrier operations, takeoff weights and landings."
+        ),
+    )
+    pretense_carrier_zones_navmesh: str = choices_option(
+        "Navmesh to use for Pretense carrier zones",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        choices=["Blue navmesh", "Red navmesh"],
+        default="Blue navmesh",
+        detail=(
+            "Use the Retribution map interface options to compare the blue navmesh and the red navmesh."
+            "You can select which navmesh to use when generating the zones in which the controllable carrier(s) "
+            "move and operate."
         ),
     )
     pretense_extra_zone_connections: int = bounded_int_option(

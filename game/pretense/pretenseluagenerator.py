@@ -11,9 +11,10 @@ from typing import TYPE_CHECKING, Optional, List, Type
 
 from dcs import Mission
 from dcs.action import DoScript, DoScriptFile
+from dcs.ships import Stennis, CVN_71, CVN_72, CVN_73, CVN_75, Forrestal
 from dcs.translation import String
 from dcs.triggers import TriggerStart
-from dcs.unittype import VehicleType
+from dcs.unittype import VehicleType, ShipType
 from dcs.vehicles import AirDefence, Unarmed
 
 from game.ato import FlightType
@@ -848,6 +849,156 @@ class PretenseLuaGenerator(LuaGenerator):
 
         return lua_string_zones
 
+    def generate_pretense_zone_carrier(
+        self,
+        cp_name: str,
+        cp_side: int,
+        cp_carrier_group_type: Type[ShipType] | None,
+        cp_carrier_group_name: str | None,
+    ) -> str:
+        lua_string_carrier = "\n"
+        cp_name_trimmed = "".join([i for i in cp_name.lower() if i.isalpha()])
+
+        lua_string_carrier += "cmap1 = CarrierMap:new({"
+        for zone_name in self.game.pretense_carrier_zones:
+            lua_string_carrier += f'"{zone_name}",'
+        lua_string_carrier += "})\n"
+        link4carriers = [Stennis, CVN_71, CVN_72, CVN_73, CVN_75, Forrestal]
+        is_link4carrier = False
+        carrier_unit_name = ""
+        icls_channel = 10
+        link4_freq = 339000000
+        tacan_channel = 44
+        tacan_callsign = ""
+        radio = 137500000
+        if cp_carrier_group_type is not None:
+            if cp_carrier_group_type in link4carriers:
+                is_link4carrier = True
+        else:
+            return lua_string_carrier
+        if cp_carrier_group_name is None:
+            return lua_string_carrier
+
+        for carrier in self.mission_data.carriers:
+            if cp_carrier_group_name == carrier.group_name:
+                carrier_unit_name = carrier.unit_name
+                tacan_channel = carrier.tacan.number
+                tacan_callsign = carrier.callsign
+                radio = carrier.freq.hertz
+                if carrier.link4_freq is not None:
+                    link4_freq = carrier.link4_freq.hertz
+                if carrier.icls_channel is not None:
+                    icls_channel = carrier.icls_channel
+                break
+
+        lua_string_carrier += (
+            f'{cp_name_trimmed} = CarrierCommand:new("'
+            + carrier_unit_name
+            + '", 3000, cmap1:getNavMap(), '
+            + "{\n"
+        )
+        if is_link4carrier:
+            lua_string_carrier += "	icls = " + str(icls_channel) + ",\n"
+            lua_string_carrier += "	acls = true,\n"
+            lua_string_carrier += "	link4 = " + str(link4_freq) + ",\n"
+        lua_string_carrier += (
+            "	tacan = {channel = "
+            + str(tacan_channel)
+            + ', callsign="'
+            + tacan_callsign
+            + '"},\n'
+        )
+        lua_string_carrier += "	radio = " + str(radio) + "\n"
+        lua_string_carrier += "}, 30000)\n"
+
+        for mission_type in self.game.pretense_air[cp_side][cp_name_trimmed]:
+            if mission_type == FlightType.SEAD:
+                mission_name = "supportTypes.strike"
+                for air_group in self.game.pretense_air[cp_side][cp_name_trimmed][
+                    mission_type
+                ]:
+                    lua_string_carrier += (
+                        f'{cp_name_trimmed}:addSupportFlight("{air_group}", 1000, CarrierCommand.{mission_name}, '
+                        + "{altitude = 25000, expend=AI.Task.WeaponExpend.ALL})\n"
+                    )
+            elif mission_type == FlightType.CAS:
+                mission_name = "supportTypes.strike"
+                for air_group in self.game.pretense_air[cp_side][cp_name_trimmed][
+                    mission_type
+                ]:
+                    lua_string_carrier += (
+                        f'{cp_name_trimmed}:addSupportFlight("{air_group}", 1000, CarrierCommand.{mission_name}, '
+                        + "{altitude = 15000, expend=AI.Task.WeaponExpend.ONE})\n"
+                    )
+            elif mission_type == FlightType.BAI:
+                mission_name = "supportTypes.strike"
+                for air_group in self.game.pretense_air[cp_side][cp_name_trimmed][
+                    mission_type
+                ]:
+                    lua_string_carrier += (
+                        f'{cp_name_trimmed}:addSupportFlight("{air_group}", 1000, CarrierCommand.{mission_name}, '
+                        + "{altitude = 10000, expend=AI.Task.WeaponExpend.ONE})\n"
+                    )
+            elif mission_type == FlightType.STRIKE:
+                mission_name = "supportTypes.strike"
+                for air_group in self.game.pretense_air[cp_side][cp_name_trimmed][
+                    mission_type
+                ]:
+                    lua_string_carrier += (
+                        f'{cp_name_trimmed}:addSupportFlight("{air_group}", 2000, CarrierCommand.{mission_name}, '
+                        + "{altitude = 20000})\n"
+                    )
+            elif mission_type == FlightType.BARCAP:
+                mission_name = "supportTypes.cap"
+                for air_group in self.game.pretense_air[cp_side][cp_name_trimmed][
+                    mission_type
+                ]:
+                    lua_string_carrier += (
+                        f'{cp_name_trimmed}:addSupportFlight("{air_group}", 1000, CarrierCommand.{mission_name}, '
+                        + "{altitude = 25000, range=25})\n"
+                    )
+            elif mission_type == FlightType.REFUELING:
+                mission_name = "supportTypes.tanker"
+                for air_group in self.game.pretense_air[cp_side][cp_name_trimmed][
+                    mission_type
+                ]:
+                    tanker_freq = 257.0
+                    tanker_tacan = 37.0
+                    tanker_variant = "Drogue"
+                    for tanker in self.mission_data.tankers:
+                        if tanker.group_name == air_group:
+                            tanker_freq = tanker.freq.hertz / 1000000
+                            tanker_tacan = tanker.tacan.number if tanker.tacan else 0.0
+                            if tanker.variant == "KC-135 Stratotanker":
+                                tanker_variant = "Boom"
+                    lua_string_carrier += (
+                        f'{cp_name_trimmed}:addSupportFlight("{air_group}", 3000, CarrierCommand.{mission_name}, '
+                        + "{altitude = 19000, freq="
+                        + str(tanker_freq)
+                        + ", tacan="
+                        + str(tanker_tacan)
+                        + "})\n"
+                    )
+            elif mission_type == FlightType.AEWC:
+                mission_name = "supportTypes.awacs"
+                for air_group in self.game.pretense_air[cp_side][cp_name_trimmed][
+                    mission_type
+                ]:
+                    awacs_freq = 257.5
+                    for awacs in self.mission_data.awacs:
+                        if awacs.group_name == air_group:
+                            awacs_freq = awacs.freq.hertz / 1000000
+                    lua_string_carrier += (
+                        f'{cp_name_trimmed}:addSupportFlight("{air_group}", 5000, CarrierCommand.{mission_name}, '
+                        + "{altitude = 30000, freq="
+                        + str(awacs_freq)
+                        + "})\n"
+                    )
+
+        # lua_string_carrier += f'{cp_name_trimmed}:addExtraSupport("BGM-109B", 10000, CarrierCommand.supportTypes.mslstrike, ' + '{salvo = 10, wpType = \'weapons.missiles.BGM_109B\'})\n'
+
+        return lua_string_carrier
+
     def get_ground_unit(
         self, coalition: Coalition, side: int, desired_unit_classes: list[UnitClass]
     ) -> str:
@@ -1337,16 +1488,16 @@ class PretenseLuaGenerator(LuaGenerator):
 
         lua_string_config = "Config = Config or {}\n"
 
-        lua_string_config += (
-            f"Config.maxDistFromFront = "
-            + str(self.game.settings.pretense_maxdistfromfront_distance * 1000)
-            + "\n"
-        )
-        lua_string_config += (
-            f"Config.closeOverride = "
-            + str(self.game.settings.pretense_closeoverride_distance * 1000)
-            + "\n"
-        )
+        # lua_string_config += (
+        #     f"Config.maxDistFromFront = "
+        #     + str(self.game.settings.pretense_maxdistfromfront_distance * 1000)
+        #     + "\n"
+        # )
+        # lua_string_config += (
+        #     f"Config.closeOverride = "
+        #     + str(self.game.settings.pretense_closeoverride_distance * 1000)
+        #     + "\n"
+        # )
         lua_string_config += "Config.missionBuildSpeedReduction = 0.36\n"
         if self.game.settings.pretense_disable_ground_assaults:
             lua_string_config += "Config.disableGroundAssaults = true\n"
@@ -1372,6 +1523,12 @@ class PretenseLuaGenerator(LuaGenerator):
             lua_string_config += "Config.disablePlayerCsar = true\n"
         else:
             lua_string_config += "Config.disablePlayerCsar = false\n"
+        lua_string_config += f"Config.supplyDistFromFront = {self.game.settings.pretense_supply_mode_dist_to_front}\n"
+        lua_string_config += f"Config.exportDistFromFront = {self.game.settings.pretense_export_mode_dist_to_front}\n"
+
+        lua_string_config += f"Config.capMissionDistToFront = {self.game.settings.pretense_cap_mission_dist_to_front}\n"
+        lua_string_config += f"Config.seadMissionDistToFront = {self.game.settings.pretense_sead_mission_dist_to_front}\n"
+        lua_string_config += f"Config.strikeMissionDistToFront = {self.game.settings.pretense_strike_mission_dist_to_front}\n"
 
         trigger = TriggerStart(comment="Pretense config")
         trigger.add_action(DoScript(String(lua_string_config)))
@@ -1400,16 +1557,30 @@ class PretenseLuaGenerator(LuaGenerator):
         )
 
         lua_string_zones = ""
+        lua_string_carriers = ""
 
         for cp in self.game.theater.controlpoints:
-            if isinstance(cp, OffMapSpawn):
-                continue
-
             cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalpha()])
             cp_name = "".join(
                 [i for i in cp.name if i.isalnum() or i.isspace() or i == "-"]
             )
             cp_side = 2 if cp.captured else 1
+
+            if isinstance(cp, OffMapSpawn):
+                continue
+            elif (
+                cp.is_fleet
+                and cp.captured
+                and self.game.settings.pretense_controllable_carrier
+            ):
+                # Friendly carrier, generate carrier parameters
+                cp_carrier_group_type = cp.get_carrier_group_type()
+                cp_carrier_group_name = cp.get_carrier_group_name()
+                lua_string_carriers += self.generate_pretense_zone_carrier(
+                    cp_name, cp_side, cp_carrier_group_type, cp_carrier_group_name
+                )
+                continue
+
             for side in range(1, 3):
                 if cp_name_trimmed not in self.game.pretense_air[cp_side]:
                     self.game.pretense_air[side][cp_name_trimmed] = {}
@@ -1482,7 +1653,10 @@ class PretenseLuaGenerator(LuaGenerator):
                     )
             if len(cp.connected_points) == 0 and len(cp.shipping_lanes) == 0:
                 # Also connect carrier and LHA control points to adjacent friendly points
-                if cp.is_fleet:
+                if cp.is_fleet and (
+                    not self.game.settings.pretense_controllable_carrier
+                    or not cp.captured
+                ):
                     num_of_carrier_connections = 0
                     for (
                         other_cp
@@ -1503,7 +1677,13 @@ class PretenseLuaGenerator(LuaGenerator):
                 for extra_connection in range(
                     self.game.settings.pretense_extra_zone_connections
                 ):
-                    if len(closest_cps) > extra_connection:
+                    if (
+                        cp.is_fleet
+                        and cp.captured
+                        and self.game.settings.pretense_controllable_carrier
+                    ):
+                        break
+                    elif len(closest_cps) > extra_connection:
                         lua_string_connman += self.generate_pretense_zone_connection(
                             connected_points,
                             cp.name,
@@ -1543,9 +1723,9 @@ class PretenseLuaGenerator(LuaGenerator):
 
         lua_string_jtac = ""
         for jtac in self.mission_data.jtacs:
-            lua_string_jtac = f"Group.getByName('{jtac.group_name}'): destroy()"
+            lua_string_jtac = f"Group.getByName('{jtac.group_name}'): destroy()\n"
             lua_string_jtac += (
-                "CommandFunctions.jtac = JTAC:new({name = '" + jtac.group_name + "'})"
+                "CommandFunctions.jtac = JTAC:new({name = '" + jtac.group_name + "'})\n"
             )
 
         init_body_2_file = open("./resources/plugins/pretense/init_body_2.lua", "r")
@@ -1567,6 +1747,7 @@ class PretenseLuaGenerator(LuaGenerator):
             + lua_string_connman
             + init_body_2
             + lua_string_jtac
+            + lua_string_carriers
             + init_body_3
             + lua_string_supply
             + init_footer

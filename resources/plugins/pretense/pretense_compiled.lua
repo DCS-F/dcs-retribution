@@ -77,6 +77,13 @@ Config.disablePlayerSead = Config.disablePlayerSead or false
 Config.disablePlayerCsar = Config.disablePlayerCsar or false
 Config.restrictMissionAcceptance = true -- if set to true, missions can only be accepted while landed inside friendly zones
 
+Config.supplyDistFromFront = Config.supplyDistFromFront or 3 -- Zones that are more than this setting many hops away from the frontline will be switched into low activity state, but will still be there as functional parts of the economy. Use this to adjust performance.
+Config.exportDistFromFront = Config.exportDistFromFront or 4 -- Zones that are more than this setting many hops away from the frontline will now go to export operating mode even if they would otherwise be forced to stay active, these will still build aircraft in export mode.
+Config.capMissionDistToFront = Config.capMissionDistToFront or 4
+Config.seadMissionDistToFront = Config.seadMissionDistToFront or 2
+Config.strikeMissionDistToFront = Config.strikeMissionDistToFront or 2
+
+
 if Config.restrictMissionAcceptance == nil then Config.restrictMissionAcceptance = true end -- if set to true, missions can only be accepted while landed inside friendly zones
 
 Config.missions = Config.missions or {}
@@ -6417,7 +6424,7 @@ do
 	function ZoneCommand:isPatrolMissionValid(product, target)
 		--if target.side ~= product.side then return false end
 		if target.name == self.name then return false end
-		if not target.distToFront or target.distToFront > 2 then return false end
+		if not target.distToFront or target.distToFront > Config.capMissionDistToFront then return false end
 		if target.side ~= product.side and target.side ~= 0 then return false end
 		local dist = mist.utils.get2DDist(self.zone.point, target.zone.point)
 		if dist > 150000 then return false end
@@ -6470,7 +6477,7 @@ do
 
 	function ZoneCommand:isSeadMissionValid(product, target)
 		if target.side == 0 then return false end
-		if not target.distToFront or target.distToFront > 2 then return false end
+		if not target.distToFront or target.distToFront > Config.seadMissionDistToFront then return false end
 		
 		--if MissionTargetRegistry.isZoneTargeted(target.name) then return false end
 
@@ -6666,7 +6673,7 @@ do
 	function ZoneCommand:isStrikeMissionValid(product, target)
 		if target.side == 0 then return false end
 		if target.side == product.side then return false end
-		if not target.distToFront or target.distToFront > 2 then return false end
+		if not target.distToFront or target.distToFront > Config.strikeMissionDistToFront then return false end
 
 		if target:hasEnemySAMRadar(product) then return false end
 
@@ -6943,10 +6950,10 @@ do
 				end
 				torank = nexttorank
 			end
-			
+
 			for name, zone in pairs(zones) do
 				if zone.keepActive then
-					if not zone.distToFront or (zone.distToFront and zone.distToFront > 3) then
+					if not zone.distToFront or (zone.distToFront and zone.distToFront >= Config.exportDistFromFront) then
 						zone.mode = ZoneCommand.modes.export
 					else
 						if zone.mode ~= ZoneCommand.modes.normal then
@@ -6955,9 +6962,9 @@ do
 						zone.mode = ZoneCommand.modes.normal
 					end
 				else
-					if not zone.distToFront or (zone.distToFront and zone.distToFront > 3) then
+					if not zone.distToFront or (zone.distToFront and zone.distToFront >= Config.exportDistFromFront) then
 						zone.mode = ZoneCommand.modes.export
-					elseif zone.distToFront == 3 then
+					elseif zone.distToFront >= Config.supplyDistFromFront then
 						zone.mode = ZoneCommand.modes.supply
 					else
 						if zone.mode ~= ZoneCommand.modes.normal then
@@ -7948,25 +7955,40 @@ do
     end
 
     PlayerTracker.ranks = {}
-    PlayerTracker.ranks[1] =  { rank=1,  name='E-1 Airman basic',           requiredXP = 0,        cmdChance = 0,       cmdAward=0,     cmdTrys=0}
-    PlayerTracker.ranks[2] =  { rank=2,  name='E-2 Airman',                 requiredXP = 2000,     cmdChance = 0,       cmdAward=0,     cmdTrys=0}
-    PlayerTracker.ranks[3] =  { rank=3,  name='E-3 Airman first class',     requiredXP = 4500,     cmdChance = 0,       cmdAward=0,     cmdTrys=0}
-    PlayerTracker.ranks[4] =  { rank=4,  name='E-4 Senior airman',          requiredXP = 7700,     cmdChance = 0,       cmdAward=0,     cmdTrys=0}
-    PlayerTracker.ranks[5] =  { rank=5,  name='E-5 Staff sergeant',         requiredXP = 11800,    cmdChance = 0.01,    cmdAward=1,     cmdTrys=1}
-    PlayerTracker.ranks[6] =  { rank=6,  name='E-6 Technical sergeant',     requiredXP = 17000,    cmdChance = 0.01,    cmdAward=5,     cmdTrys=10}
-    PlayerTracker.ranks[7] =  { rank=7,  name='E-7 Master sergeant',        requiredXP = 23500,    cmdChance = 0.03,    cmdAward=5,     cmdTrys=10}
-    PlayerTracker.ranks[8] =  { rank=8,  name='E-8 Senior master sergeant', requiredXP = 31500,    cmdChance = 0.06,    cmdAward=10,    cmdTrys=10}
-    PlayerTracker.ranks[9] =  { rank=9,  name='E-9 Chief master sergeant',  requiredXP = 42000,    cmdChance = 0.10,    cmdAward=10,    cmdTrys=10}
-    PlayerTracker.ranks[10] = { rank=10, name='O-1 Second lieutenant',      requiredXP = 52800,    cmdChance = 0.14,    cmdAward=20,    cmdTrys=15}
-    PlayerTracker.ranks[11] = { rank=11, name='O-2 First lieutenant',       requiredXP = 66500,    cmdChance = 0.20,    cmdAward=20,    cmdTrys=15}
-    PlayerTracker.ranks[12] = { rank=12, name='O-3 Captain',                requiredXP = 82500,    cmdChance = 0.27,    cmdAward=25,    cmdTrys=15, allowCarrierSupport=true}
-    PlayerTracker.ranks[13] = { rank=13, name='O-4 Major',                  requiredXP = 101000,   cmdChance = 0.34,    cmdAward=25,    cmdTrys=20, allowCarrierSupport=true}
-    PlayerTracker.ranks[14] = { rank=14, name='O-5 Lieutenant colonel',     requiredXP = 122200,   cmdChance = 0.43,    cmdAward=25,    cmdTrys=20, allowCarrierSupport=true}
-    PlayerTracker.ranks[15] = { rank=15, name='O-6 Colonel',                requiredXP = 146300,   cmdChance = 0.52,    cmdAward=30,    cmdTrys=20, allowCarrierSupport=true}
-    PlayerTracker.ranks[16] = { rank=16, name='O-7 Brigadier general',      requiredXP = 173500,   cmdChance = 0.63,    cmdAward=35,    cmdTrys=25, allowCarrierSupport=true, allowCarrierCommand=true}
-    PlayerTracker.ranks[17] = { rank=17, name='O-8 Major general',          requiredXP = 204000,   cmdChance = 0.74,    cmdAward=40,    cmdTrys=25, allowCarrierSupport=true, allowCarrierCommand=true}
-    PlayerTracker.ranks[18] = { rank=18, name='O-9 Lieutenant general',     requiredXP = 238000,   cmdChance = 0.87,    cmdAward=45,    cmdTrys=25, allowCarrierSupport=true, allowCarrierCommand=true}
-    PlayerTracker.ranks[19] = { rank=19, name='O-10 General',               requiredXP = 275700,   cmdChance = 0.95,    cmdAward=50,    cmdTrys=30, allowCarrierSupport=true, allowCarrierCommand=true}
+    PlayerTracker.ranks[1] =  { rank=1,  name='OR-1 Recruit',                   requiredXP = 0,        cmdChance = 0,       cmdAward=0,     cmdTrys=0}
+    PlayerTracker.ranks[2] =  { rank=2,  name='E-1 Airman basic',               requiredXP = 2000,     cmdChance = 0,       cmdAward=0,     cmdTrys=0}
+    PlayerTracker.ranks[3] =  { rank=3,  name='E-2 Airman',                     requiredXP = 4500,     cmdChance = 0,       cmdAward=0,     cmdTrys=0}
+    PlayerTracker.ranks[4] =  { rank=4,  name='E-3 Airman first class',         requiredXP = 7700,     cmdChance = 0,       cmdAward=0,     cmdTrys=0}
+    PlayerTracker.ranks[5] =  { rank=5,  name='E-3 Lance corporal',             requiredXP = 11800,    cmdChance = 0.01,    cmdAward=1,     cmdTrys=1}
+    PlayerTracker.ranks[6] =  { rank=6,  name='E-4 Senior airman',              requiredXP = 17000,    cmdChance = 0.01,    cmdAward=5,     cmdTrys=10}
+    PlayerTracker.ranks[7] =  { rank=7,  name='E-4 Corporal',                   requiredXP = 23500,    cmdChance = 0.03,    cmdAward=5,     cmdTrys=10}
+    PlayerTracker.ranks[8] =  { rank=8,  name='E-5 Staff sergeant',             requiredXP = 31500,    cmdChance = 0.06,    cmdAward=10,    cmdTrys=10}
+    PlayerTracker.ranks[9] =  { rank=9,  name='E-6 Technical sergeant',         requiredXP = 42000,    cmdChance = 0.10,    cmdAward=10,    cmdTrys=10}
+    PlayerTracker.ranks[10] = { rank=10, name='E-7 Gunnery sergeant',           requiredXP = 52800,    cmdChance = 0.14,    cmdAward=20,    cmdTrys=15}
+    PlayerTracker.ranks[11] = { rank=11, name='E-7 Master sergeant',            requiredXP = 66500,    cmdChance = 0.20,    cmdAward=20,    cmdTrys=15}
+    PlayerTracker.ranks[12] = { rank=12, name='E-8 Senior master sergeant',     requiredXP = 82500,    cmdChance = 0.27,    cmdAward=25,    cmdTrys=15}
+    PlayerTracker.ranks[13] = { rank=13, name='E-9 Chief master sergeant',      requiredXP = 101000,   cmdChance = 0.34,    cmdAward=25,    cmdTrys=20}
+    PlayerTracker.ranks[14] = { rank=14, name='F/C Flight cadet',               requiredXP = 122200,   cmdChance = 0.43,    cmdAward=25,    cmdTrys=20}
+    PlayerTracker.ranks[15] = { rank=15, name='O-1 Ensign',                     requiredXP = 146300,   cmdChance = 0.52,    cmdAward=30,    cmdTrys=20, allowCarrierSupport=true}
+    PlayerTracker.ranks[16] = { rank=16, name='O-1 Second lieutenant',          requiredXP = 173500,   cmdChance = 0.63,    cmdAward=35,    cmdTrys=25, allowCarrierSupport=true}
+    PlayerTracker.ranks[17] = { rank=17, name='O-2 First lieutenant',           requiredXP = 204000,   cmdChance = 0.74,    cmdAward=40,    cmdTrys=25, allowCarrierSupport=true}
+    PlayerTracker.ranks[18] = { rank=18, name='Sqn Ldr Squadron leader',        requiredXP = 238000,   cmdChance = 0.82,    cmdAward=45,    cmdTrys=25, allowCarrierSupport=true, allowCarrierCommand=true}
+    PlayerTracker.ranks[19] = { rank=19, name='Cdr Commander',                  requiredXP = 275700,   cmdChance = 0.83,    cmdAward=50,    cmdTrys=30, allowCarrierSupport=true, allowCarrierCommand=true}
+    PlayerTracker.ranks[20] = { rank=20, name='O-3 Captain',                    requiredXP = 300000,   cmdChance = 0.84,    cmdAward=55,    cmdTrys=30, allowCarrierSupport=true, allowCarrierCommand=true}
+    PlayerTracker.ranks[21] = { rank=21, name='O-4 Major',                      requiredXP = 325000,   cmdChance = 0.85,    cmdAward=60,    cmdTrys=35, allowCarrierSupport=true, allowCarrierCommand=true}
+    PlayerTracker.ranks[22] = { rank=22, name='Wg Cdr Wing commander',          requiredXP = 350000,   cmdChance = 0.86,    cmdAward=65,    cmdTrys=40, allowCarrierSupport=true, allowCarrierCommand=true}
+    PlayerTracker.ranks[23] = { rank=23, name='Gp Capt Group captain',          requiredXP = 375000,   cmdChance = 0.87,    cmdAward=70,    cmdTrys=45, allowCarrierSupport=true, allowCarrierCommand=true}
+    PlayerTracker.ranks[24] = { rank=24, name='O-5 Lieutenant colonel',         requiredXP = 400000,   cmdChance = 0.88,    cmdAward=75,    cmdTrys=50, allowCarrierSupport=true, allowCarrierCommand=true}
+    PlayerTracker.ranks[25] = { rank=25, name='O-6 Colonel',                    requiredXP = 425000,   cmdChance = 0.89,    cmdAward=80,    cmdTrys=55, allowCarrierSupport=true, allowCarrierCommand=true}
+    PlayerTracker.ranks[26] = { rank=26, name='Air Cdre Air commodore',         requiredXP = 450000,   cmdChance = 0.90,    cmdAward=85,    cmdTrys=60, allowCarrierSupport=true, allowCarrierCommand=true}
+    PlayerTracker.ranks[27] = { rank=27, name='O-7 Brigadier general',          requiredXP = 475000,   cmdChance = 0.91,    cmdAward=90,    cmdTrys=65, allowCarrierSupport=true, allowCarrierCommand=true}
+    PlayerTracker.ranks[28] = { rank=28, name='AVM Air vice-marshal',           requiredXP = 500000,   cmdChance = 0.92,    cmdAward=95,    cmdTrys=70, allowCarrierSupport=true, allowCarrierCommand=true}
+    PlayerTracker.ranks[29] = { rank=29, name='O-8 Major general',              requiredXP = 525000,   cmdChance = 0.93,    cmdAward=100,   cmdTrys=75, allowCarrierSupport=true, allowCarrierCommand=true}
+    PlayerTracker.ranks[30] = { rank=30, name='O-9 Lieutenant general',         requiredXP = 550000,   cmdChance = 0.94,    cmdAward=105,   cmdTrys=80, allowCarrierSupport=true, allowCarrierCommand=true}
+    PlayerTracker.ranks[31] = { rank=31, name='O-10 General',                   requiredXP = 575000,   cmdChance = 0.95,    cmdAward=110,   cmdTrys=85, allowCarrierSupport=true, allowCarrierCommand=true}
+    PlayerTracker.ranks[32] = { rank=32, name='AM Air marshal',                 requiredXP = 600000,   cmdChance = 0.97,    cmdAward=115,   cmdTrys=90, allowCarrierSupport=true, allowCarrierCommand=true}
+    PlayerTracker.ranks[33] = { rank=33, name='ACM Air chief marshal',          requiredXP = 625000,   cmdChance = 0.98,    cmdAward=120,   cmdTrys=95, allowCarrierSupport=true, allowCarrierCommand=true}
+    PlayerTracker.ranks[34] = { rank=34, name='OF-10 Marshal of the air force', requiredXP = 650000,   cmdChance = 0.99,    cmdAward=125,   cmdTrys=99, allowCarrierSupport=true, allowCarrierCommand=true}
 
     function PlayerTracker:getPlayerRank(playername)
         if self.stats[playername] then
