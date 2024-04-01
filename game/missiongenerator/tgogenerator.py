@@ -626,6 +626,8 @@ class GenericCarrierGenerator(GroundObjectGenerator):
                         callsign=tacan_callsign,
                         freq=atc,
                         tacan=tacan,
+                        icls_channel=icls,
+                        link4_freq=link4,
                         blue=self.control_point.captured,
                     )
                 )
