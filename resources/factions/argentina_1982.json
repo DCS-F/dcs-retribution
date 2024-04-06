@@ -19,6 +19,9 @@
     "C-130",
     "C-130J-30 Super Hercules",
     "Mi-8MTV2 Hip",
+    "Mi-24P Hind-F",
+    "Ka-50 Hokum",
+	"Ka-50 Hokum III",
     "UH-1H Iroquois"
   ],
   "awacs": [
@@ -112,6 +115,15 @@
     ],
     "Mi-8MTV2 Hip": [
       "ARGENTINA 7ma Brigada"
+    ],
+    "Mi-24P Hind-F": [
+      "Argentina"
+    ],
+    "Ka-50 Hokum": [
+      "Argentina"
+    ],
+    "Ka-50 Hokum III": [
+      "Argentina"
     ],
     "UH-1H Iroquois": [
       "Argentina AE408 Camuflaje",

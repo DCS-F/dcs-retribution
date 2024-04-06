@@ -19,6 +19,7 @@ settings:
   pretense_num_of_cargo_planes: 1
   pretense_do_not_generate_sead_missions: true
   pretense_do_not_generate_csar_missions: true
+  pretense_controllable_carrier: false
   perf_culling: false
   perf_culling_distance: 50
   player_skill: "High"
@@ -717,15 +718,71 @@ squadrons:
   # West Falklands
   # 1x540m, 1x450m, 1x300m runways (grass)
   Shallow Harbour Airstrip:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - AV-8B Harrier II Night Attack
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
   # Kelp Point Airstrip
   # West Falklands
   # 1x700m, 1x500m runways (grass)
   Kelp Point Airstrip:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - AV-8B Harrier II Night Attack
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
   # Crooked Inlet Airstrip
   # West Falklands
   # 1x600m runway (grass)
   Crooked Inlet Airstrip:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - AV-8B Harrier II Night Attack
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
   # Hill Cove Airstrip
   # West Falklands
   # 1x650m, 1x400m runways (grass)
   Hill Cove Airstrip:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - AV-8B Harrier II Night Attack
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
+  # Pebble Island Airstrip
+  # West Falklands
+  # 1x400m runway (grass)
+  Pebble Island Airstrip:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - AV-8B Harrier II Night Attack
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
+  # Lorenzo Airstrip
+  # East Falklands
+  # 1x440m runway (grass)
+  Lorenzo Airstrip:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - AV-8B Harrier II Night Attack
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
