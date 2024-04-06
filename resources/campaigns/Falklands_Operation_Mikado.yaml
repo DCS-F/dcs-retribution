@@ -713,3 +713,19 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - Mi-8MTV2 Hip
+  # Shallow Harbour Airstrip
+  # West Falklands
+  # 1x540m, 1x450m, 1x300m runways (grass)
+  Shallow Harbour Airstrip:
+  # Kelp Point Airstrip
+  # West Falklands
+  # 1x700m, 1x500m runways (grass)
+  Kelp Point Airstrip:
+  # Crooked Inlet Airstrip
+  # West Falklands
+  # 1x600m runway (grass)
+  Crooked Inlet Airstrip:
+  # Hill Cove Airstrip
+  # West Falklands
+  # 1x650m, 1x400m runways (grass)
+  Hill Cove Airstrip:
