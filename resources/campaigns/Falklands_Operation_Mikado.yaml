@@ -387,7 +387,11 @@ squadrons:
     - primary: CAS
       secondary: any
       aircraft:
-        - AV-8B Harrier II Night Attack
+        - A-4E Skyhawk
+    - primary: Anti-ship
+      secondary: air-to-ground
+      aircraft:
+        - Super Étendard
     - primary: Transport
       secondary: air-to-ground
       aircraft:
@@ -395,7 +399,7 @@ squadrons:
     - primary: Transport
       secondary: air-to-ground
       aircraft:
-        - CH-47D
+        - Mi-8MTV2 Hip
   # Rio Turbio
   # Argentina mainland
   # 1x2000m runway
@@ -543,26 +547,42 @@ squadrons:
   # Tierra del Fuego
   # approx. 4000m runway
   Punta Maria Highway Strip:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage IIIB/C
     - primary: CAS
       secondary: any
       aircraft:
-        - Tornado GR4
+        - Mirage IIIB/C A/G
     - primary: Transport
       secondary: air-to-ground
       aircraft:
         - UH-1H Iroquois
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
   # Rio Chico roadbase (ground spawn)
   # Tierra del Fuego
   # approx. 5000m runway
   Rio Chico Highway Strip:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage IIIB/C
     - primary: CAS
       secondary: any
       aircraft:
-        - Tornado GR4
+        - Mirage IIIB/C A/G
     - primary: Transport
       secondary: air-to-ground
       aircraft:
         - UH-1H Iroquois
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
   # Sara helicopter base
   # Tierra del Fuego
   Estancia Sara:
