@@ -538,7 +538,6 @@ class PretenseLuaGenerator(LuaGenerator):
                 supply_ship = "shipLandingShipLstMk2"
             tanker_ship = "shipTankerSeawisegiant"
             command_ship = "shipLandingShipSamuelChase"
-            ship_group = "blueShipGroup"
         else:
             if random.randint(0, 1):
                 supply_ship = "shipBulkerYakushev"
@@ -546,7 +545,6 @@ class PretenseLuaGenerator(LuaGenerator):
                 supply_ship = "shipCargoIvanov"
             tanker_ship = "shipTankerElnya"
             command_ship = "shipLandingShipRopucha"
-            ship_group = "redShipGroup"
 
         lua_string_zones += (
             "        presets.upgrades.supply." + supply_ship + ":extend({\n"
@@ -571,6 +569,17 @@ class PretenseLuaGenerator(LuaGenerator):
                 + ground_group
                 + "'}),\n"
             )
+        lua_string_zones += "            }\n"
+        lua_string_zones += "        }),\n"
+        lua_string_zones += (
+            "        presets.upgrades.attack." + command_ship + ":extend({\n"
+        )
+        lua_string_zones += (
+            f"            name = '{cp_name_trimmed}-mission-command-"
+            + cp_side_str
+            + "',\n"
+        )
+        lua_string_zones += "            products = {\n"
         for mission_type in self.game.pretense_air[cp_side][cp_name_trimmed]:
             if mission_type == FlightType.AIR_ASSAULT:
                 mission_name = "supply.helo"
@@ -583,28 +592,6 @@ class PretenseLuaGenerator(LuaGenerator):
                         + air_group
                         + "'}),\n"
                     )
-        lua_string_zones += "            }\n"
-        lua_string_zones += "        }),\n"
-        lua_string_zones += (
-            "        presets.upgrades.attack." + command_ship + ":extend({\n"
-        )
-        lua_string_zones += (
-            f"            name = '{cp_name_trimmed}-mission-command-"
-            + cp_side_str
-            + "',\n"
-        )
-        lua_string_zones += "            products = {\n"
-        lua_string_zones += (
-            "                presets.defenses."
-            + cp_side_str
-            + "."
-            + ship_group
-            + ":extend({ name='"
-            + cp_name_trimmed
-            + "-sam-"
-            + cp_side_str
-            + "' }),\n"
-        )
         lua_string_zones += "            }\n"
         lua_string_zones += "        }),\n"
         lua_string_zones += (
@@ -849,7 +836,15 @@ class PretenseLuaGenerator(LuaGenerator):
 
         return lua_string_zones
 
-    def generate_pretense_zone_carrier(
+    def generate_pretense_carrier_zones(self) -> str:
+        lua_string_carrier_zones = "cmap1 = CarrierMap:new({"
+        for zone_name in self.game.pretense_carrier_zones:
+            lua_string_carrier_zones += f'"{zone_name}",'
+        lua_string_carrier_zones += "})\n"
+
+        return lua_string_carrier_zones
+
+    def generate_pretense_carriers(
         self,
         cp_name: str,
         cp_side: int,
@@ -859,10 +854,6 @@ class PretenseLuaGenerator(LuaGenerator):
         lua_string_carrier = "\n"
         cp_name_trimmed = "".join([i for i in cp_name.lower() if i.isalpha()])
 
-        lua_string_carrier += "cmap1 = CarrierMap:new({"
-        for zone_name in self.game.pretense_carrier_zones:
-            lua_string_carrier += f'"{zone_name}",'
-        lua_string_carrier += "})\n"
         link4carriers = [Stennis, CVN_71, CVN_72, CVN_73, CVN_75, Forrestal]
         is_link4carrier = False
         carrier_unit_name = ""
@@ -1558,6 +1549,8 @@ class PretenseLuaGenerator(LuaGenerator):
 
         lua_string_zones = ""
         lua_string_carriers = ""
+        if self.game.settings.pretense_controllable_carrier:
+            lua_string_carriers += self.generate_pretense_carrier_zones()
 
         for cp in self.game.theater.controlpoints:
             cp_name_trimmed = "".join([i for i in cp.name.lower() if i.isalpha()])
@@ -1576,7 +1569,7 @@ class PretenseLuaGenerator(LuaGenerator):
                 # Friendly carrier, generate carrier parameters
                 cp_carrier_group_type = cp.get_carrier_group_type()
                 cp_carrier_group_name = cp.get_carrier_group_name()
-                lua_string_carriers += self.generate_pretense_zone_carrier(
+                lua_string_carriers += self.generate_pretense_carriers(
                     cp_name, cp_side, cp_carrier_group_type, cp_carrier_group_name
                 )
                 continue
@@ -1645,12 +1638,11 @@ class PretenseLuaGenerator(LuaGenerator):
                     connected_points, cp.name, other_cp.name
                 )
             for sea_connection in cp.shipping_lanes:
-                if sea_connection.is_friendly_to(cp):
-                    lua_string_connman += self.generate_pretense_zone_connection(
-                        connected_points,
-                        cp.name,
-                        sea_connection.name,
-                    )
+                lua_string_connman += self.generate_pretense_zone_connection(
+                    connected_points,
+                    cp.name,
+                    sea_connection.name,
+                )
             if len(cp.connected_points) == 0 and len(cp.shipping_lanes) == 0:
                 # Also connect carrier and LHA control points to adjacent friendly points
                 if cp.is_fleet and (
@@ -1680,6 +1672,12 @@ class PretenseLuaGenerator(LuaGenerator):
                     if (
                         cp.is_fleet
                         and cp.captured
+                        and self.game.settings.pretense_controllable_carrier
+                    ):
+                        break
+                    elif (
+                        closest_cps[extra_connection].is_fleet
+                        and closest_cps[extra_connection].captured
                         and self.game.settings.pretense_controllable_carrier
                     ):
                         break

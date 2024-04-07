@@ -4969,51 +4969,29 @@ do
                     end
                     if self.side==1 or self.side==2 then
                        gp.name = string.sub(unit_name,1,n-1)
-                       env.info('ZoneCommand: despawning group ['..gp.name..']')
                        unitDesc = u[i]:getDesc()
-                       env.info('ZoneCommand: unit typeName = ['..unitDesc.typeName..']')
-                       env.info('ZoneCommand: unit x = ['..u[i]:getPoint().x..']')
-                       env.info('ZoneCommand: unit y = ['..u[i]:getPoint().y..']')
 
+                       unitDesc.x = u[i]:getPoint().x
+                       unitDesc.y = u[i]:getPoint().z
+                       unitDesc.alt = 0
+                       unitDesc.heading = mist.getHeading(u[i])
+                       u[i]:destroy()
+                       env.info('ZoneCommand: despawning group ['..gp.name..']')
+                       env.info('ZoneCommand: unit typeName = ['..unitDesc.typeName..']')
+                       env.info('ZoneCommand: unit x = ['..unitDesc.x..']')
+                       env.info('ZoneCommand: unit y = ['..unitDesc.y..']')
                        unitDesc.side = self.side
                        unitDesc.country = gp.country
                        unitDesc.category = "Fortifications"
                        unitDesc.rate = 100
                        unitDesc.type = unitDesc.typeName
-                       unitDesc.clone = true
                        if string.find(unit_name, '_fuel') ~= nil then
                            unitDesc.shapeName = "GSM Rus"
                        elseif string.find(unit_name, '_ammo') ~= nil then
                            unitDesc.shapeName = "SetkaKP"
                        end
-                       unitDesc.x = u[i]:getPoint().x
-                       unitDesc.y = u[i]:getPoint().z
-                       unitDesc.heading = mist.getHeading(u[i])
 
                        mist.dynAddStatic(unitDesc)
-                       u[i]:destroy()
---                                 Group.getByName(gp.name):destroy()
---                                 gp.type = 'M978 HEMTT Tanker'
---                                 gp.category = 2  -- Group.Category.GROUND = 2
---                                 env.info('ZoneCommand: spawning group ['..string.sub(unit_name,1,n-1)..'] on side ['..gp.country..']')
---                                 mist.dynAdd(gp)
---                                 env.info('ZoneCommand: spawned group ['..gp.name..']')
--- 			local farpAmmo = {
--- 				["category"] = 'static',
--- 				["categoryStatic"] = 'Fortifications',
--- 				["coalition"] = farpCoalition,
--- 				["country"] = u.country,
--- 				["countryId"] = u.countryId,
--- 				["heading"] = u.heading,
--- 				["type"] = 'FARP Ammo Dump Coating',
--- 				["x"] = u.x,
--- 				["y"] = u.y,
--- 			}
--- 			if groupName then
--- 				tent["groupName"] = groupName
--- 			end
--- 			mist.dynAddStatic(tent)
-
                     end
                 end
             end

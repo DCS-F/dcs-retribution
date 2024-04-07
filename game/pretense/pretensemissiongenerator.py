@@ -98,8 +98,6 @@ class PretenseMissionGenerator(MissionGenerator):
         )
         tgo_generator.generate()
 
-        ConvoyGenerator(self.mission, self.game, self.unit_map).generate()
-
         # Generate ground conflicts first so the JTACs get the first laser code (1688)
         # rather than the first player flight with a TGP.
         self.generate_ground_conflicts()

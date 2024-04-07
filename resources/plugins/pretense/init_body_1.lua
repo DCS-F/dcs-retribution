@@ -46,24 +46,28 @@ presets = {
                 display = 'Tanker Seawise Giant',
                 cost = 1500,
                 type = 'upgrade',
+				income = 10,
                 template = "ship-tanker-seawisegiant"
             }),
             shipLandingShipSamuelChase = Preset:new({
                 display = 'LST USS Samuel Chase',
                 cost = 1500,
                 type = 'upgrade',
+				income = 10,
                 template = "ship-landingship-samuelchase"
             }),
             shipLandingShipRopucha = Preset:new({
                 display = 'LS Ropucha',
                 cost = 1500,
                 type = 'upgrade',
+				income = 10,
                 template = "ship-landingship-ropucha"
             }),
             shipTankerElnya = Preset:new({
                 display = 'Tanker Elnya',
                 cost = 1500,
                 type = 'upgrade',
+				income = 10,
                 template = "ship-tanker-elnya"
             })
 		},
@@ -188,24 +192,28 @@ presets = {
                 display = 'Ship_Tilde_Supply',
                 cost = 1500,
                 type = 'upgrade',
+				income = 10,
                 template = "ship-supply-tilde"
             }),
             shipLandingShipLstMk2 = Preset:new({
                 display = 'LST Mk.II',
                 cost = 1500,
                 type = 'upgrade',
+				income = 10,
                 template = "ship-landingship-lstmk2"
             }),
             shipBulkerYakushev = Preset:new({
                 display = 'Bulker Yakushev',
                 cost = 1500,
                 type = 'upgrade',
+				income = 10,
                 template = "ship-bulker-yakushev"
             }),
             shipCargoIvanov = Preset:new({
                 display = 'Cargo Ivanov',
                 cost = 1500,
                 type = 'upgrade',
+				income = 10,
                 template = "ship-cargo-ivanov"
             })
 		},
@@ -327,12 +335,6 @@ presets = {
 				cost=30000,
 				type='defense',
 				template='davidsling-red',
-			}),
-			redShipGroup = Preset:new({
-				display = 'SAM',
-				cost=3000,
-				type='defense',
-				template='redShipGroup',
 			})
 		},
 		blue = {
@@ -437,12 +439,6 @@ presets = {
 				cost=30000,
 				type='defense',
 				template='davidsling-blue',
-			}),
-			blueShipGroup = Preset:new({
-				display = 'SAM',
-				cost=3000,
-				type='defense',
-				template='blueShipGroup',
 			})
 		}
 	},
