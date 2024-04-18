@@ -1,0 +1,153 @@
+{
+  "country": "Canada",
+  "name": "Canada 1965",
+  "authors": "Ghosti",
+  "description": "<p>Canada in the 1960s, with the F-14A standing in for the CF-105 Avro Arrow.</p>",
+  "locales": [
+    "en_US",
+    "fr_CA"
+  ],
+  "aircrafts": [
+    "AH-64D Apache Longbow",
+    "AJS-37 Viggen",
+    "Mirage-F1BE",
+    "Mirage-F1CE",
+    "Mirage-F1EE",
+    "MB-339A",
+    "C-130",
+    "C-130J-30 Super Hercules",
+    "F-5E Tiger II",
+    "F-104G Starfighter",
+    "F-14A Tomcat (Block 135-GR Late)",
+    "Ka-50 Hokum",
+    "UH-1H Iroquois"
+  ],
+  "awacs": [
+    "E-3A"
+  ],
+  "tankers": [
+    "KC-130",
+    "KC-135 Stratotanker"
+  ],
+  "frontline_units": [
+    "M113",
+    "M163 Vulcan Air Defense System",
+	"M48 Chaparral",
+    "AAVP-7A1 'Amtrac'",
+    "M8 Greyhound Light Armored Car",
+	"M10 3-inch Gun Motor Carriage",
+    "M1045 HMMWV (BGM-71 TOW)",
+    "M4A2(75) Sherman",
+	"M4A4 Sherman Firefly",
+    "M551 \"Sheridan\"",
+	"QF 3.7-inch AA Gun",
+	"M4 High-Speed Tractor",
+	"M30 Cargo Carrier"
+  ],
+  "artillery_units": [
+    "M109A6 Paladin",
+	"M12 Gun Motor Carriage"
+  ],
+  "logistics_units": [
+    "Truck M818 6x6"
+  ],
+  "infantry_units": [
+    "Infantry M249",
+    "Infantry M4"
+  ],
+  "preset_groups": [
+    "Hawk"
+  ],
+  "naval_units": [
+    "DDG Arleigh Burke IIa",
+    "CG Ticonderoga"
+  ],
+  "missiles": [],
+  "air_defense_units": [
+    "SAM Hawk SR (AN/MPQ-50)",
+    "M163 Vulcan Air Defense System",
+	"M48 Chaparral",
+	"QF 3.7-inch AA Gun"
+  ],
+  "requirements": {
+    "C-130J-30 Super Hercules Mod by Anubis": "https://forums.eagle.ru/topic/252075-dcs-super-hercules-mod-by-anubis/"
+  },
+  "carrier_names": [],
+  "helicopter_carrier_names": [],
+  "has_jtac": true,
+  "jtac_unit": "UH-1H Iroquois",
+  "liveries_overrides": {
+    "C-130": [
+      "Royal Air Force"
+    ],
+    "E-3A": [
+      "RAF"
+    ],
+    "KC-130": [
+      "Royal Air Force"
+    ],
+    "KC-135 Stratotanker": [
+      "KC-135 RAF Grey"
+    ],
+    "AH-64D Apache Longbow": [
+      "AH64D_RCAF_435",
+      "RCAF CAH-164 2 Tone Green (Fictional)",
+      "RCAF CAH-164 428 Squadron 'Ghosts' 2-Tone Green",
+      "RCAF Chinook",
+      "RCAF Relish Warrior HiVis",
+      "RCAF Relish Warrior LowVis"
+    ],
+    "AJS-37 Viggen": [
+      "RCAF Camo 2",
+      "RCAF Camo 3"
+    ],
+    "Mirage-F1BE": [
+      "Canada 434 Fictional 2 Seater",
+      "Canada Cold Lake"
+    ],
+    "Mirage-F1CE": [
+      "CANADA - Interceptor",
+      "CANADA - Varigated",
+      "Canada 434 NM (Fictional)",
+      "Canada 434 Vari (Fictional)"
+    ],
+    "Mirage-F1EE": [
+      "CANADA - Interceptor",
+      "CANADA - Varigated",
+      "Canada 434 NM (Fictional)",
+      "Canada 434 Vari (Fictional)"
+    ],
+    "F-5E Tiger II": [
+      "Canada 419 TFS Green",
+      "Canada 434 TFS - Silver",
+      "Canada 434 TFS Green",
+      "RCAF_433_ETAC_Camo"
+    ],
+    "F-104G Starfighter": [
+      "CF-104_CAF_Green_Late_1CAG",
+      "CF-104_CAF_Green_Late_421",
+      "CF-104_CAF_Green_Late_439",
+      "CF-104_CAF_Green_Late_441",
+      "CF-104_Canada_Varigated_864"
+    ],
+    "F-14A Tomcat (Block 135-GR Late)": [
+      "Canada - 414 (Fictional)",
+      "Canada - 416 Lynx One(Fictional)",
+      "Canada - 425 (Fictional)",
+      "Canada - RCAF Camo - 161300"
+    ],
+    "Ka-50 Hokum": [
+      "canadian forces"
+    ],
+    "UH-1H Iroquois": [
+      "Canadian Force"
+    ],
+    "MB-339A": [
+      "MB339AA 'ARMADA' - Crippa",
+      "MB339AA 'ARMADA' - Yellow Band"
+    ],
+    "C-130J-30 Super Hercules": [
+      "Royal Canadian AF CC-130J"
+    ]
+  }
+}
