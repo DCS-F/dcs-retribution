@@ -52,11 +52,11 @@ local unitPayloads = {
 					["num"] = 1,
 				},
 				[3] = {
-					["CLSID"] = "BR_500",
+					["CLSID"] = "{MATRA_F1_SNEBT257}",
 					["num"] = 5,
 				},
 				[4] = {
-					["CLSID"] = "BR_500",
+					["CLSID"] = "{MATRA_F1_SNEBT257}",
 					["num"] = 3,
 				},
 				[5] = {
@@ -64,11 +64,11 @@ local unitPayloads = {
 					["num"] = 4,
 				},
 				[6] = {
-					["CLSID"] = "BR_500",
+					["CLSID"] = "{MATRA_F1_SNEBT257}",
 					["num"] = 6,
 				},
 				[7] = {
-					["CLSID"] = "BR_500",
+					["CLSID"] = "{MATRA_F1_SNEBT257}",
 					["num"] = 2,
 				},
 			},
