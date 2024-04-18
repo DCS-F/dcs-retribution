@@ -1,10 +1,10 @@
 name: "The Channel - Tempest Rouge"
 theater: "The Channel"
 authors: "Ghost"
-recommended_player_faction: "United Kingdom 1990"
-recommended_enemy_faction: "Soviet Union 1989"
-recommended_start_date: 1986-08-07
-description: "<p>Militants from Soviet Azerbaijan destroy an oil production refinery in Nizhnevartovsk, threatening to cripple the Soviet Union's economy due to oil shortages. After much deliberation, the Soviet Politburo decides to seize the Persian Gulf by military force in order to recoup the country's oil losses. Knowing that the United States had pledged to defend the oil-producing countries in the Persian Gulf, the Soviets decide that neutralizing NATO is a necessary first step before its military operation can take place. West Germany and parts of Belgium and France have been occupied by Soviet and Warsaw Pact forces, which are next planning invasions against Iceland and the UK.</p>"
+recommended_player_faction: "Canada 1965"
+recommended_enemy_faction: "Bulgaria 1970"
+recommended_start_date: 1968-09-13
+description: "<p>Militants from Soviet Azerbaijan destroy an oil production refinery in Nizhnevartovsk, threatening to cripple the Soviet Union's economy due to oil shortages. After much deliberation, the Soviet Politburo decides to seize the Persian Gulf by military force in order to recoup the country's oil losses. Knowing that the United States had pledged to defend the oil-producing countries in the Persian Gulf, the Soviets decide that neutralizing NATO is a necessary first step before its military operation can take place. West Germany and parts of Belgium and France have been occupied by Soviet and Warsaw Pact forces. Soviet Bulgarian People's Army has made landfall in Southeastern UK while the Royal Navy has been preoccupied defending the GIUK gap against the Soviet Navy. Canadian Forces Europe (CFE) is poised to push them back.</p>"
 miz: "channel_tempest_rouge.miz"
 performance: 2
 version: "10.4"
@@ -15,13 +15,15 @@ settings:
   pretense_num_of_cargo_planes: 1
   pretense_do_not_generate_sead_missions: true
   pretense_do_not_generate_csar_missions: true
-  perf_culling: true
+  pretense_controllable_carrier: false
+  perf_culling: false
   perf_culling_distance: 110
   player_skill: "High"
   enemy_skill: "Average"
   enemy_vehicle_skill: "Average"
   night_day_missions: NightMissions.OnlyDay
   labels: "Dot Only"
+  default_start_type_client: StartType.WARM
 
   ground_start_ai_planes: true
   ground_start_scenery_remove_triggers: false
@@ -36,9 +38,8 @@ settings:
     splashdamageclusters.clusterEffects: true
     splashdamageclusters.shipRadarDamage: true
  #Mods to be used
-  f4bc_phantom: true
-  hawk_t1a: true
-  t45_goshawk: true
+  f104_starfighter: true
+  frenchpack: true
 
 squadrons:
   # Abbeville Drucat
@@ -48,19 +49,19 @@ squadrons:
     - primary: SEAD
       secondary: air-to-ground
       aircraft:
-        - Su-17M4 Fitter-K
+        - Su-22M4 Fitter-K
     - primary: Strike
       secondary: any
       aircraft:
-        - MiG-23MLD Flogger-K
+        - MiG-19P Farmer-B
     - primary: CAS
       secondary: air-to-ground
       aircraft:
         - Su-25 Frogfoot
     - primary: BARCAP
-      secondary: air-to-air
+      secondary: any
       aircraft:
-        - MiG-25PD Foxbat-E
+        - MiG-21bis Fishbed-N
   # Merville Calonne
   # Easternmost airfield, France
   # 2x1600m runways, 1x1700m runway
@@ -68,19 +69,19 @@ squadrons:
     - primary: SEAD
       secondary: air-to-ground
       aircraft:
-        - Su-17M4 Fitter-K
+        - Su-22M4 Fitter-K
     - primary: Strike
       secondary: any
       aircraft:
-        - MiG-27K Flogger-J2
+        - Tu-16 Badger
     - primary: CAS
       secondary: air-to-ground
       aircraft:
         - Su-25 Frogfoot
     - primary: BARCAP
-      secondary: air-to-air
+      secondary: any
       aircraft:
-        - MiG-25PD Foxbat-E
+        - MiG-21bis Fishbed-N
   # St Omer
   # Short runway airfield, France
   # 670m runway + grass area
@@ -104,25 +105,28 @@ squadrons:
     - primary: CAS
       secondary: any
       aircraft:
-        - F-4E Phantom II
+        - L-39ZA Albatros
     - primary: CAS
       secondary: any
       aircraft:
-        - F-4B Phantom II
+        - MiG-15bis Fagot
     - primary: BARCAP
       secondary: any
       aircraft:
-        - Tornado GR4
+        - MiG-19P Farmer-B
     - primary: BAI
       secondary: air-to-ground
       aircraft:
-        - UH-1H Iroquois
+        - Mi-8MTV2 Hip
     - primary: Transport
       aircraft:
-        - C-130
+        - An-30M
     - primary: Refueling
       aircraft:
-        - KC-135 Stratotanker
+        - IL-78M
+    - primary: AEW&C
+      aircraft:
+        - A-50
   # Hawkinge
   # Coast of the Channel, UK
   # 2x1000m grass runways
@@ -130,11 +134,7 @@ squadrons:
     - primary: CAS
       secondary: any
       aircraft:
-        - AJS-37 Viggen
-    - primary: CAS
-      secondary: any
-      aircraft:
-        - AV-8B Harrier II Night Attack
+        - MiG-15bis Fagot
   # Lympne
   # Coast of the Channel, UK
   # 1100m grass runway
@@ -142,11 +142,7 @@ squadrons:
     - primary: CAS
       secondary: any
       aircraft:
-        - AJS-37 Viggen
-    - primary: CAS
-      secondary: any
-      aircraft:
-        - AV-8B Harrier II Night Attack
+        - MiG-15bis Fagot
   # Detling
   # Inland, UK
   # 1400m grass runway
@@ -154,15 +150,19 @@ squadrons:
     - primary: CAS
       secondary: any
       aircraft:
-        - F-4E Phantom II
+        - F-5E Tiger II
     - primary: CAS
       secondary: any
       aircraft:
-        - F-4B Phantom II
+        - F-104G Starfighter
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mirage-F1CE
     - primary: BARCAP
       secondary: any
       aircraft:
-        - Tornado GR4
+        - F-14A Tomcat (Block 135-GR Late)
   # Eastchurch
   # Coast of the Channel (north), UK
   # 2x1100m grass/dirt runways
@@ -174,39 +174,23 @@ squadrons:
     - primary: CAS
       secondary: any
       aircraft:
-        - AV-8B Harrier II Night Attack
+        - Mirage-F1BE
   # High Halden
   # Inland, UK
   # 2x1300m dirt runways
   12:
-    - primary: CAS
+    - primary: Strike
       secondary: any
       aircraft:
-        - F-4E Phantom II
-    - primary: CAS
-      secondary: any
-      aircraft:
-        - F-4B Phantom II
-    - primary: BARCAP
-      secondary: any
-      aircraft:
-        - Tornado GR4
+        - MiG-19P Farmer-B
   # Headcorn
   # Inland, UK
   # 1x1300m dirt runway, 1x1200m dirt runway
   13:
-    - primary: CAS
+    - primary: Strike
       secondary: any
       aircraft:
-        - F-4E Phantom II
-    - primary: CAS
-      secondary: any
-      aircraft:
-        - F-4B Phantom II
-    - primary: BARCAP
-      secondary: any
-      aircraft:
-        - Tornado GR4
+        - MiG-19P Farmer-B
   # Biggin Hill
   # Inland, UK
   # 1x1600m runway, 2x900m runways
@@ -214,19 +198,335 @@ squadrons:
     - primary: CAS
       secondary: any
       aircraft:
-        - F-4E Phantom II
+        - F-5E Tiger II
     - primary: CAS
       secondary: any
       aircraft:
-        - F-4B Phantom II
+        - F-104G Starfighter
     - primary: CAS
       secondary: any
       aircraft:
-        - F-4C Phantom II
+        - Mirage-F1BE
     - primary: BARCAP
       secondary: any
       aircraft:
-        - Tornado GR4
+        - F-14A Tomcat (Block 135-GR Late)
     - primary: Refueling
       aircraft:
         - KC-135 Stratotanker MPRS
+    - primary: AEW&C
+      aircraft:
+        - E-3A
+  # Eastbourne roadbase
+  # Inland, UK
+  # 1x1700m roadbase
+  Eastbourne roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+  # Friston roadbase
+  # Inland, UK
+  # 1x2200m roadbase
+  Friston roadbase:
+    - primary: SEAD
+      secondary: air-to-ground
+      aircraft:
+        - Su-22M4 Fitter-K
+  # Faversham
+  # Inland, UK
+  # Helicopter base
+  Faversham:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Calais
+  # Mainland, France
+  # Helicopter base
+  Calais:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Dunkirk Beach
+  # Mainland, France
+  # Helicopter base
+  Dunkirk Beach:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+  # Oostende
+  # Mainland, Belgium
+  # Helicopter base
+  Oostende:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+  # Zeebrugge roadbase
+  # Mainland, Belgium
+  # 1x2500m roadbase
+  Zeebrugge roadbase:
+    - primary: SEAD
+      secondary: air-to-ground
+      aircraft:
+        - Su-22M4 Fitter-K
+  # Brugge roadbase
+  # Mainland, Belgium
+  # 1x1500m roadbase
+  Brugge roadbase:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+  # Oostkamp roadbase
+  # Mainland, Belgium
+  # 1x6000m roadbase
+  Oostkamp roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+  # Aalter roadbase
+  # Mainland, Belgium
+  # 1x5000m roadbase
+  Aalter roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
+    - primary: Transport
+      aircraft:
+        - An-30M
+    - primary: Refueling
+      aircraft:
+        - IL-78M
+    - primary: AEW&C
+      aircraft:
+        - A-50
+  # Ardooie roadbase
+  # Mainland, Belgium
+  # 1x2200m roadbase
+  Ardooie roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+  # Pittem roadbase
+  # Mainland, Belgium
+  # 1x2000m roadbase
+  Pittem roadbase:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+  # Alquines
+  # Mainland, France
+  # Helicopter base
+  Alquines:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+  # Boulogne
+  # Mainland, France
+  # Helicopter base
+  Boulogne:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+  # Maisoncelle
+  # Mainland, France
+  # Helicopter base
+  Maisoncelle:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # St. Pol Ligny-St-Flochel roadbase
+  # Mainland, France
+  # 1x4000m roadbase
+  St. Pol Ligny-St-Flochel roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
+  # Savy-Berlette roadbase
+  # Mainland, France
+  # 1x3500m roadbase
+  Savy-Berlette roadbase:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+  # Arras Dainville roadbase
+  # Mainland, France
+  # 1x7500m roadbase
+  Arras Dainville roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+  # Arras Achicourt roadbase
+  # Mainland, France
+  # 1x900m roadbase
+  Arras Achicourt roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+  # Arras Achicourt roadbase
+  # Mainland, France
+  # 1x1000m roadbase
+  Frevent roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+  # Vacqueriette-Erquieres
+  # Mainland, France
+  # Helicopter base
+  Vacqueriette-Erquieres:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+  # Villers-sous-Ailly roadbase
+  # Mainland, France
+  # 1x1600m roadbase
+  Villers-sous-Ailly roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+  # Vauchelles-les-Domart roadbase
+  # Mainland, France
+  # 1x1600m roadbase
+  Vauchelles-les-Domart roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+  # Bettencourt-Saint-Ouen roadbase
+  # Mainland, France
+  # 1x3000m roadbase
+  Bettencourt-Saint-Ouen roadbase:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+  # Belloy-sur-Somme roadbase
+  # Mainland, France
+  # 1x2700m roadbase
+  Belloy-sur-Somme roadbase:
+    - primary: SEAD
+      secondary: air-to-ground
+      aircraft:
+        - Su-22M4 Fitter-K
+  # Flixecourt roadbase
+  # Mainland, France
+  # 1x1900m roadbase
+  Flixecourt roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+  # Amiens Saleux roadbase
+  # Mainland, France
+  # 1x2000m roadbase
+  Amiens Saleux roadbase:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+  # Amiens Clairy-Saulchoix roadbase
+  # Mainland, France
+  # 1x2500m roadbase
+  Amiens Clairy-Saulchoix roadbase:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+  # Amiens Revelles roadbase
+  # Mainland, France
+  # 1x2500m roadbase
+  Amiens Revelles roadbase:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+  # Namps-au-Mont roadbase
+  # Mainland, France
+  # 1x1000m roadbase
+  Namps-au-Mont roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+  # Lignieres-Chatelain roadbase
+  # Mainland, France
+  # 1x3000m roadbase
+  Lignieres-Chatelain roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
+  # Aumale roadbase
+  # Mainland, France
+  # 1x1300m roadbase
+  Aumale roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+  # Aumale roadbase
+  # Mainland, France
+  # 1x1400m roadbase
+  St. Germain roadbase:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+  # Quievrcourt roadbase
+  # Mainland, France
+  # 1x1200m roadbase
+  Quievrcourt roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+  # Esclavelles roadbase
+  # Mainland, France
+  # 2x1000m roadbase
+  Esclavelles roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+  # Calleville roadbase
+  # Mainland, France
+  # 1x1400m roadbase
+  Calleville roadbase:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+  # Dieppe
+  # Mainland, France
+  # Helicopter base
+  Dieppe:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+  # Treport
+  # Mainland, France
+  # Helicopter base
+  Treport:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
