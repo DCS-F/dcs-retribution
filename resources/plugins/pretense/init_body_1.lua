@@ -324,6 +324,12 @@ presets = {
 				type='defense',
 				template='roland-red',
 			}),
+			hq7 = Preset:new({
+				display = 'SAM',
+				cost=3000,
+				type='defense',
+				template='hq7-red',
+			}),
 			irondome = Preset:new({
 				display = 'SAM',
 				cost=20000,
@@ -427,6 +433,12 @@ presets = {
 				cost=3000,
 				type='defense',
 				template='roland-blue',
+			}),
+			hq7 = Preset:new({
+				display = 'SAM',
+				cost=3000,
+				type='defense',
+				template='hq7-blue',
 			}),
 			irondome = Preset:new({
 				display = 'SAM',
