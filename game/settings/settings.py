@@ -712,6 +712,14 @@ class Settings:
             "will not be included in automatically planned OCA packages."
         ),
     )
+    default_start_type_client: StartType = choices_option(
+        "Default start type for Player flights",
+        page=MISSION_GENERATOR_PAGE,
+        section=GAMEPLAY_SECTION,
+        choices={v.value: v for v in StartType},
+        default=StartType.COLD,
+        detail=("Default start type for flights containing Player/Client slots."),
+    )
     # Mission specific
     desired_player_mission_duration: timedelta = minutes_option(
         "Desired mission duration",
