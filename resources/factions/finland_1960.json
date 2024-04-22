@@ -13,6 +13,9 @@
     "L-39ZA Albatros",
     "A-4E Skyhawk",
 	"C-101CC Aviojet",
+    "F-86F Sabre",
+    "Hawk T1A",
+    "Hawk Mk.60",
     "Mi-8MTV2 Hip",
     "Mi-24P Hind-F",
     "UH-1H Iroquois",
@@ -104,6 +107,16 @@
     ],
     "C-101CC Aviojet": [
       "Finnish"
+    ],
+    "F-86F Sabre": [
+      "Finnish Air Force"
+    ],
+    "Hawk T1A": [
+      "Hawk_Ilmavoimat_Camo01",
+      "Finland HW-329 Green Brown"
+    ],
+    "Hawk Mk.60": [
+      "FiAF  HW-321"
     ],
     "Mi-8MTV2 Hip": [
       "ILMAVOIMAT2",
