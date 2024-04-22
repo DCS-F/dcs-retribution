@@ -3,9 +3,9 @@ name: Caucasus - Salpalinja
 theater: Caucasus
 authors: Ghosti
 description: <p>This campaign depicts a west-east direction ground war across the more forested regions of the Caucasus map, with several roadbases in between the bigger airports and airbases, intended to depict dispersed deployment of aircraft in the event of a Cold War era ground war.</p>
-recommended_player_faction: Finland 1970
-recommended_enemy_faction: Soviet Union 1970
-recommended_start_date: 1970-03-01
+recommended_player_faction: Finland 1960 (TF-51D/P-51D)
+recommended_enemy_faction: Soviet Union 1960
+recommended_start_date: 1965-03-01
 miz: Caucasus_Salpalinja.miz
 performance: 3
 version: "10.2"
@@ -19,6 +19,7 @@ settings:
   pretense_num_of_cargo_planes: 1
   pretense_do_not_generate_sead_missions: true
   pretense_do_not_generate_csar_missions: true
+  pretense_controllable_carrier: false
   perf_culling: true
   perf_culling_distance: 50
   player_skill: "High"
@@ -26,6 +27,7 @@ settings:
   enemy_vehicle_skill: "Average"
   night_day_missions: NightMissions.OnlyDay
   labels: "Dot Only"
+  squadron_random_chance: 100
 
   ground_start_ai_planes: true
   ground_start_scenery_remove_triggers: false
@@ -40,6 +42,8 @@ settings:
     splashdamageclusters.shipRadarDamage: true
  #Mods to be used
   a4_skyhawk: true
+  t45_goshawk: true
+  hawk_t1a: true
 
 squadrons:
 #  Sennoy Roadbase:
@@ -60,6 +64,7 @@ squadrons:
       secondary: any
       aircraft:
         - AJS-37 Viggen
+        - Hawk T1A
   Mingrelskaya Roadbase:
     - primary: BARCAP
       secondary: any
@@ -74,6 +79,7 @@ squadrons:
       secondary: any
       aircraft:
         - AJS-37 Viggen
+        - Hawk Mk.60
   Yablonovskiy Roadbase:
     - primary: BARCAP
       secondary: any
@@ -97,6 +103,7 @@ squadrons:
       secondary: any
       aircraft:
         - AJS-37 Viggen
+        - Hawk Mk.60
   Saratovskaya Roadbase:
     - primary: BARCAP
       secondary: any
@@ -106,19 +113,23 @@ squadrons:
       secondary: any
       aircraft:
         - AJS-37 Viggen
+        - Hawk T1A
   Pervomayskiy Roadbase:
     - primary: BARCAP
       secondary: any
       aircraft:
         - Mirage-F1CE
+        - MiG-19P Farmer-B
     - primary: BARCAP
       secondary: any
       aircraft:
         - Mirage-F1EE
+        - MiG-15bis Fagot
     - primary: Strike
       secondary: any
       aircraft:
         - AJS-37 Viggen
+        - A-4E Skyhawk
     - primary: CAS
       secondary: any
       aircraft:
@@ -177,9 +188,6 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-95MS Bear-H
-    - primary: DEAD
-      aircraft:
-        - Tu-16 Badger
   Abadzehskaya Roadbase South:
     - primary: Anti-ship
       secondary: any
@@ -189,9 +197,6 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-95MS Bear-H
-    - primary: DEAD
-      aircraft:
-        - Tu-16 Badger
   Abadzehskaya FARP:
     - primary: CAS
       secondary: air-to-ground
@@ -230,17 +235,29 @@ squadrons:
       aircraft:
         - Tu-16 Badger
 #  Pregradnaya Roadbase:
-  Besstrashnaya Roadbase:
+  Besstrashnaya FARP:
     - primary: CAS
       secondary: any
       aircraft:
         - Mi-8MTV2 Hip
+#  Podgornaya West Roadbase
+#  Podgornaya East Roadbase
 #  Storozhevaya Roadbase:
   Udobnaya Roadbase:
     - primary: CAS
       secondary: any
       aircraft:
         - Mi-8MTV2 Hip
+  Inzhi-Chishko North Roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
+  Inzhi-Chishko South Roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
   Cherkessk FARP:
     - primary: CAS
       secondary: any
@@ -360,6 +377,7 @@ squadrons:
       secondary: any
       aircraft:
         - Mirage 2000C
+        - MiG-19P Farmer-B
     - primary: Strike
       secondary: any
       aircraft:
@@ -386,24 +404,29 @@ squadrons:
       secondary: any
       aircraft:
         - F/A-18C Hornet (Lot 20)
+        - A-4E Skyhawk
     - primary: BARCAP
       secondary: any
       aircraft:
         - F/A-18C Hornet (AI)
+        - MiG-15bis Fagot
     - primary: Strike
       secondary: any
       aircraft:
         - F/A-18D Hornet
+        - Hawk Mk.60
   # Krymsk
   15:
     - primary: BARCAP
       secondary: any
       aircraft:
         - Mirage-F1CE
+        - MiG-19P Farmer-B
     - primary: BARCAP
       secondary: any
       aircraft:
         - Mirage-F1EE
+        - MiG-15bis Fagot
   # Maykop-Khanskaya
   16:
     - primary: Anti-ship
