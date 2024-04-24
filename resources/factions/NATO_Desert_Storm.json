@@ -26,6 +26,7 @@
 	"F-16D Fighting Falcon (Block 50)",
     "F-4E Phantom II",
     "F/A-18C Hornet (Lot 20)",
+    "F/A-18C Hornet (AI)",
     "Mirage 2000C",
     "OH-58D Kiowa Warrior",
     "S-3B Viking",
@@ -86,7 +87,7 @@
   ],
   "missiles": [],
   "air_defense_units": [
-    "EWR AN/FPS-117 Radar",
+    "SAM Patriot STR",
     "M163 Vulcan Air Defense System",
     "M1097 Heavy HMMWV Avenger",
     "M48 Chaparral"

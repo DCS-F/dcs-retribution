@@ -8,7 +8,9 @@
   ],
   "aircrafts": [
     "A-10A Thunderbolt II",
+    "A-7E Corsair II",
     "AH-64A Apache",
+    "AH-64D Apache Longbow",
     "AV-8B Harrier II Night Attack",
     "B-1B Lancer",
     "B-52H Stratofortress",
@@ -30,6 +32,7 @@
 	"F-16D Fighting Falcon (Block 50+)",
 	"F-16D Fighting Falcon (Block 50)",
     "F/A-18C Hornet (Lot 20)",
+    "F/A-18C Hornet (AI)",
     "S-3B Viking",
     "SH-60B Seahawk",
     "UH-1H Iroquois",
@@ -48,6 +51,8 @@
   ],
   "frontline_units": [
     "LAV-25",
+    "M163 Vulcan Air Defense System",
+	"M48 Chaparral",
     "M1043 HMMWV (M2 HMG)",
     "M1045 HMMWV (BGM-71 TOW)",
     "M1097 Heavy HMMWV Avenger",
@@ -66,6 +71,7 @@
   "infantry_units": [
     "Infantry M249",
     "Infantry M4",
+    "Infantry M4 Georgia",
     "MANPADS Stinger",
     "Mortar 2B11 120mm"
   ],
@@ -82,18 +88,26 @@
   ],
   "missiles": [],
   "air_defense_units": [
-    "EWR AN/FPS-117 Radar",
+    "SAM Patriot STR",
     "M1097 Heavy HMMWV Avenger",
     "M48 Chaparral"
   ],
   "requirements": {},
-  "carrier_names": [
-    "CVN-71 Theodore Roosevelt",
-    "CVN-72 Abraham Lincoln",
-    "CVN-73 George Washington",
-    "CVN-74 John C. Stennis",
-    "CVN-75 Harry S. Truman"
-  ],
+  "carriers": {
+    "Forrestal": [
+      "CV-60 Saratoga",
+      "CV-61 Ranger",
+      "CV-62 Independence",
+      "CV-66 America"
+    ],
+    "Stennis": [
+	  "CVN-71 Theodore Roosevelt",
+	  "CVN-72 Abraham Lincoln",
+	  "CVN-73 George Washington",
+	  "CVN-74 John C. Stennis",
+	  "CVN-75 Harry S. Truman"
+    ]
+  },
   "helicopter_carrier_names": [
     "LHA-1 Tarawa",
     "LHA-2 Saipan",
@@ -104,6 +118,100 @@
   "has_jtac": true,
   "jtac_unit": "MQ-9 Reaper",
   "liveries_overrides": {
+    "A-10A Thunderbolt II": [
+      "23rd TFW England AFB (EL)"
+    ],
+    "AV-8B Harrier II Night Attack": [
+      "VMA-513G"
+    ],
+    "B-1B Lancer": [
+      ""
+    ],
+    "B-52H Stratofortress": [
+      "USAF - 69th BS - camo"
+    ],
+	"C-130": [
+      "1302",
+      "1310",
+      "1315",
+      "KQVN HCF",
+      "KQVN HCL",
+      "USAF DZ63-779",
+      "USAF PR63-820",
+      "USAF SEA",
+      "USAF SG56-471",
+      "USAF YJ56-470"
+    ],
+    "CH-53E": [
+      "USAF",
+	  "marines 2"
+    ],
+    "F-14A Tomcat (Block 135-GR Late)": [
+      "VF-154 Black Knights 101",
+	  "VF-14 Tophatters AB100 (1976)",
+	  "VF-32 Swordsmen AB200 (1976)",
+	  "VF-33 Starfighters AB201 (1988)",
+	  "VF-1 Wolfpack NK100 (1974)",
+	  "VF-1 Wolfpack NK101 (1974)",
+	  "VF-1 Wolfpack NK102 (1974)",
+	  "VF-1 Wolfpack NK103 (1974)",
+	  "VF-41 Black Aces AJ100 (1999 Allied Force)",
+	  "VF-41 Black Aces AJ101 (1999 Allied Force)",
+	  "VF-41 Black Aces AJ102 (1999 Allied Force)",
+	  "VF-41 Black Aces AJ104 (1999 Allied Force)"
+    ],
+    "F-14B Tomcat": [
+      "VF-142 Ghostriders",
+	  "VF-143 Pukin Dogs CAG",
+	  "VF-143 Pukin Dogs Low Vis",
+	  "VF-74 BeDevilers 1991",
+	  "VF-103 Sluggers 207 (1991)",
+	  "VF-102 Diamondbacks 102",
+	  "VF-102 Diamondbacks"
+    ],
+    "F-15C Eagle": [
+      "12th Fighter SQN (AK)",
+	  "58th Fighter SQN (EG)",
+	  "390th Fighter SQN",
+	  "433rd Weapons SQN (WA)",
+	  "493rd Fighter SQN (LN)"
+    ],
+    "F-15E Strike Eagle": [
+      "335th Fighter SQN (SJ)",
+	  "492d Fighter SQN (LN)"
+    ],
+    "F-16CM Fighting Falcon (Block 50)": [
+      "default",
+	  "13th_Fighter_Squadron",
+	  "14th_Fighter_Squadron",
+	  "22nd_Fighter_Squadron",
+	  "23rd_Fighter_Squadron",
+	  "36th_Fighter_Squadron",
+	  "55th_Fighter_Squadron",
+	  "77th_Fighter_Squadron",
+	  "79th_Fighter_Squadron",
+	  "80th_Fighter_Squadron",
+	  "132nd_Wing _Iowa_ANG",
+	  "152nd_Fighter_Squadron",
+	  "174th_Fighter_Squadron",
+	  "179th_Fighter_Squadron",
+	  "480th_Fighter_Squadron",
+	  "522nd_Fighter_Squadron",
+	  "Dark_Viper"
+    ],
+    "UH-1H Iroquois": [
+      "US DOS"
+    ],
+    "UH-60A": [
+      "standard"
+    ],
+	"UH-60L": [
+      "default",
+      "US Army MEDEVAC",
+      "US Army SOAR",
+      "US Navy Grey",
+      "USAF Rescue"
+    ],
     "F/A-18C Hornet (Lot 20)": [
       "VFA-106",
       "VFA-113",
@@ -121,6 +229,27 @@
       "VMFA-312",
       "VMFA-314",
       "VMFA-323"
+    ]
+  },
+  "liveries_overrides_ground_forces": {
+    "Soldier M249": [
+      "Desert",
+      "MOP Suit"
+    ],
+    "Soldier M4": [
+      "Desert",
+      "MOP Suit"
+    ],
+    "Soldier M4 GRG": [
+      "DBDU + BDU",
+      "DBDU DS",
+      "DBDU DS 2",
+	  "DBDU MOPP",
+	  "Delta Force",
+	  "Delta Force 2"
+    ],
+    "Soldier stinger": [
+      "Desert"
     ]
   }
 }
