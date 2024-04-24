@@ -1,0 +1,412 @@
+---
+name: Syria - Desert Storm
+theater: Syria
+authors: Ghosti
+description: <p><p>A fictional western thrust into Iraq during Operation Desert Storm. Carriers are situated in the Mediterranean instead of the Red Sea (which is not included in the terrain).</p>
+recommended_player_faction: USA 1990
+recommended_enemy_faction: Iraq 1991
+recommended_start_date: 1991-01-17
+miz: syria_invasion_of_iraq.miz
+performance: 3
+version: 10.0
+squadrons:
+  # Eyn Shemer
+  10:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-10A Thunderbolt II  
+  # Haifa
+  13:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-10A Thunderbolt II 
+  # Ramat David
+  30:
+    - primary: SEAD
+      secondary: air-to-ground
+      aircraft:
+        - F-16CM Fighting Falcon (Block 50)
+    - primary: TARCAP
+      secondary: air-to-air
+      aircraft:
+        - F-15C Eagle
+    - primary: Strike
+      secondary: air-to-ground
+      aircraft:
+        - F-15E Strike Eagle
+    - primary: Strike
+      secondary: air-to-ground
+      aircraft:
+        - F-117A Nighthawk
+    - primary: Strike
+      secondary: air-to-ground
+      aircraft:
+        - B-1B Lancer
+    - primary: Strike
+      secondary: air-to-ground
+      aircraft:
+        - B-52H Stratofortress
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - C-130
+    - primary: AEW&C
+      aircraft:
+        - E-3A
+    - primary: Refueling
+      aircraft:
+        - KC-135 Stratotanker
+    - primary: Refueling
+      aircraft:
+        - KC-135 Stratotanker MPRS
+  # Megiddo
+  24:
+    - primary: SEAD
+      secondary: air-to-ground
+      aircraft:
+        - F-16CM Fighting Falcon (Block 50)
+  # Rosh Pina
+  34:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-10A Thunderbolt II 
+  # Kiryat Shmona
+  20:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-10A Thunderbolt II 
+  Golan North:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AH-64D Apache Longbow
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: Transport
+      secondary: any
+      aircraft:
+        - UH-60L
+  Golan South:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AH-64D Apache Longbow
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: Transport
+      secondary: any
+      aircraft:
+        - UH-60L
+  # Tha'lah
+  5:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+  # Khalkhalah
+  18:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+  # Marj Ruhayyil
+  23:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mirage-F1EQ
+  # Mezzeh
+  25:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-29A Fulcrum-A
+  Qudssaya Airstrip:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+  # Qabr as Sitt
+  29:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+  # Marj as Sultan North
+  22:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+  # Marj as Sultan South
+  8:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Damascus
+  7:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - L-39ZA Albatros
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-23ML Flogger-G
+    - primary: Transport
+      aircraft:
+        - IL-76MD
+  # Al-Dumayr
+  9:
+    - primary: Strike
+      secondary: air-to-ground
+      aircraft:
+        - Su-22M4 Fitter-K
+  # An Nasiriyah
+  4:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+  # Sayqal
+  35:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mirage-F1EQ
+  Sayqal East Dirt Airfield:
+    - primary: Strike
+      secondary: air-to-ground
+      aircraft:
+        - Su-24MK Fencer-D
+  Sabaa Biar Dirt Airfield:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Su-25 Frogfoot
+  Al Ulayyaniyah FARP:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342M Gazelle
+  # At Tanf
+  63:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
+  Staging Point Rutba:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # H3 Northwest
+  54:
+    - primary: BARCAP
+      secondary: air-to-ground
+      aircraft:
+        - MiG-23ML Flogger-G
+  # H3
+  53:
+    - primary: Strike
+      secondary: air-to-ground
+      aircraft:
+        - Su-22M4 Fitter-K
+  # H3 Southwest
+  55:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+  H3 Highway Strip:
+    - primary: BARCAP
+      secondary: air-to-air
+      aircraft:
+        - MiG-25PD Foxbat-E
+  # Ruwayshid
+  57:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Su-25 Frogfoot
+  # H4
+  12:
+    - primary: AEW&C
+      aircraft:
+        - A-50
+    - primary: Refueling
+      aircraft:
+        - IL-78M
+  BLUFOR CVN:
+    - primary: TARCAP
+      secondary: air-to-air
+      aircraft:
+        - F-14A Tomcat (Block 135-GR Late)
+    - primary: SEAD
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (Lot 20)
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - A-7E Corsair II
+    - primary: SEAD
+      aircraft:
+        - EA-6B Prowler
+    - primary: AEW&C
+      aircraft:
+        - E-2C Hawkeye
+    - primary: Refueling
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - S-3B Viking
+    - primary: Anti-ship
+      aircraft:
+        - SH-60B Seahawk
+    - primary: Transport
+      secondary: any
+      aircraft:
+        - UH-60L
+  BLUFOR CVN 2:
+    - primary: BARCAP
+      secondary: air-to-air
+      aircraft:
+        - F-14B Tomcat
+    - primary: SEAD
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (Lot 20)
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - A-7E Corsair II
+    - primary: SEAD
+      aircraft:
+        - EA-6B Prowler
+    - primary: AEW&C
+      aircraft:
+        - E-2C Hawkeye
+    - primary: Refueling
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - S-3B Viking
+    - primary: Anti-ship
+      aircraft:
+        - SH-60B Seahawk
+    - primary: Transport
+      secondary: any
+      aircraft:
+        - UH-60L
+  BLUFOR CVN 3:
+    - primary: TARCAP
+      secondary: air-to-air
+      aircraft:
+        - F-14B Tomcat
+    - primary: SEAD
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (Lot 20)
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - A-7E Corsair II
+    - primary: SEAD
+      aircraft:
+        - EA-6B Prowler
+    - primary: AEW&C
+      aircraft:
+        - E-2C Hawkeye
+    - primary: Refueling
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - S-3B Viking
+    - primary: Anti-ship
+      aircraft:
+        - SH-60B Seahawk
+    - primary: Transport
+      secondary: any
+      aircraft:
+        - UH-60L
+  BLUFOR CVN 4:
+    - primary: BARCAP
+      secondary: air-to-air
+      aircraft:
+        - F-14A Tomcat (Block 135-GR Late)
+    - primary: SEAD
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (Lot 20)
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - A-7E Corsair II
+    - primary: SEAD
+      aircraft:
+        - EA-6B Prowler
+    - primary: AEW&C
+      aircraft:
+        - E-2C Hawkeye
+    - primary: Refueling
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - S-3B Viking
+    - primary: Anti-ship
+      aircraft:
+        - SH-60B Seahawk
+    - primary: Transport
+      secondary: any
+      aircraft:
+        - UH-60L
+  # BLUFOR LHA
+  BLUFOR LHA:
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - AV-8B Harrier II Night Attack
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AH-64D Apache Longbow
+    - primary: Transport
+      aircraft:
+        - CH-53E
+    - primary: Transport
+      aircraft:
+        - CH-47D
+carriers:
+  BLUFOR CVN:
+    preferred_name: CVN-71 Theodore Roosevelt
+    preferred_type: Stennis
+  BLUFOR CVN 2:
+    preferred_name: CV-60 Saratoga
+    preferred_type: Forrestal
+  BLUFOR CVN 3:
+    preferred_name: CV-66 America
+    preferred_type: Forrestal
+  BLUFOR CVN 4:
+    preferred_name: CV-67 John F. Kennedy 
+    preferred_type: Forrestal
+  BLUFOR LHA:
+    preferred_name: LHA-4 Nassau
+    preferred_type: LHA_Tarawa
