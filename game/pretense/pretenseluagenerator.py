@@ -446,7 +446,7 @@ class PretenseLuaGenerator(LuaGenerator):
                         f"                presets.missions.{mission_name}:extend"
                         + "({name='"
                         + air_group
-                        + "', altitude=15000, expend=AI.Task.WeaponExpend.ONE}),\n"
+                        + "', altitude=15000, expend=AI.Task.WeaponExpend.QUARTER}),\n"
                     )
             elif mission_type == FlightType.BAI:
                 mission_name = "attack.bai"
@@ -457,7 +457,7 @@ class PretenseLuaGenerator(LuaGenerator):
                         f"                presets.missions.{mission_name}:extend"
                         + "({name='"
                         + air_group
-                        + "', altitude=10000, expend=AI.Task.WeaponExpend.ONE}),\n"
+                        + "', altitude=10000, expend=AI.Task.WeaponExpend.QUARTER}),\n"
                     )
             elif mission_type == FlightType.STRIKE:
                 mission_name = "attack.strike"
@@ -630,7 +630,7 @@ class PretenseLuaGenerator(LuaGenerator):
                         f"                presets.missions.{mission_name}:extend"
                         + "({name='"
                         + air_group
-                        + "', altitude=15000, expend=AI.Task.WeaponExpend.ONE}),\n"
+                        + "', altitude=15000, expend=AI.Task.WeaponExpend.QUARTER}),\n"
                     )
             elif mission_type == FlightType.BAI:
                 mission_name = "attack.bai"
@@ -641,7 +641,7 @@ class PretenseLuaGenerator(LuaGenerator):
                         f"                presets.missions.{mission_name}:extend"
                         + "({name='"
                         + air_group
-                        + "', altitude=10000, expend=AI.Task.WeaponExpend.ONE}),\n"
+                        + "', altitude=10000, expend=AI.Task.WeaponExpend.QUARTER}),\n"
                     )
             elif mission_type == FlightType.STRIKE:
                 mission_name = "attack.strike"
@@ -922,7 +922,7 @@ class PretenseLuaGenerator(LuaGenerator):
                 ]:
                     lua_string_carrier += (
                         f'{cp_name_trimmed}:addSupportFlight("{air_group}", 1000, CarrierCommand.{mission_name}, '
-                        + "{altitude = 15000, expend=AI.Task.WeaponExpend.ONE})\n"
+                        + "{altitude = 15000, expend=AI.Task.WeaponExpend.QUARTER})\n"
                     )
             elif mission_type == FlightType.BAI:
                 mission_name = "supportTypes.strike"
@@ -931,7 +931,7 @@ class PretenseLuaGenerator(LuaGenerator):
                 ]:
                     lua_string_carrier += (
                         f'{cp_name_trimmed}:addSupportFlight("{air_group}", 1000, CarrierCommand.{mission_name}, '
-                        + "{altitude = 10000, expend=AI.Task.WeaponExpend.ONE})\n"
+                        + "{altitude = 10000, expend=AI.Task.WeaponExpend.QUARTER})\n"
                     )
             elif mission_type == FlightType.STRIKE:
                 mission_name = "supportTypes.strike"
