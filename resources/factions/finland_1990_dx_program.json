@@ -1,0 +1,202 @@
+{
+  "country": "Finland",
+  "name": "Finland 1990 (DX-program)",
+  "authors": "Ghosti",
+  "description": "<p>1990 Finland, with fictionally added DX program participant airframes.</p>",
+  "locales": [
+    "fi_FI"
+  ],
+  "aircrafts": [
+    "C-130",
+    "MiG-21bis Fishbed-N",
+    "F-16CM Fighting Falcon (Block 50)",
+    "F-16D Barak (Block 30)",
+    "F/A-18C Hornet (Lot 20)",
+    "AV-8B Harrier II Night Attack",
+    "AJS-37 Viggen",
+    "Mirage 2000C",
+    "Mirage-F1CE",
+    "Mirage-F1EE",
+    "A-4E Skyhawk",
+    "Mi-8MTV2 Hip",
+    "Mi-24P Hind-F",
+    "UH-1H Iroquois",
+	"Ka-50 Hokum",
+    "SA 342L Gazelle"
+  ],
+  "awacs": [
+    "E-2C Hawkeye"
+  ],
+  "tankers": [
+    "KC-130",
+    "IL-78M"
+  ],
+  "frontline_units": [
+    "BTR-80",
+    "ZSU-57-2 'Sparka'",
+    "Flakpanzer Gepard",
+    "PT-76",
+    "T-54A",
+	"T-55A",
+	"T-72A",
+    "T-72B with Kontakt-1 ERA",
+    "BMP-1",
+    "MT-LB",
+    "MT-LBu",
+    "BV 410",
+    "LUV UAZ-469 Jeep",
+    "LUV Land Rover 109"
+  ],
+  "artillery_units": [
+    "2S1 Gvozdika",
+    "BM-21 Grad"
+  ],
+  "logistics_units": [
+    "Truck KAMAZ 43101"
+  ],
+  "infantry_units": [
+    "Infantry AK-74 Rus",
+	"Infantry AK-74 Rus ver2",
+	"Infantry AK-74 Rus ver3",
+    "Infantry RPG",
+    "Mortar 2B11 120mm"
+  ],
+  "preset_groups": [
+    "RBS-15",
+    "RBS-70",
+    "HQ-7",
+    "SA-3/S-125"
+  ],
+  "naval_units": [
+	"P265 Dumbarton Castle",
+	"F72 Ariadne",
+	"F57 Andromeda",
+	"F12 Achilles"
+  ],
+  "missiles": [
+    "AShM RBS 15KA"
+  ],
+  "air_defense_units": [
+    "SAM P19 \"Flat Face\" SR (SA-2/3)",
+    "HQ-7 Launcher",
+    "Flakpanzer Gepard",
+    "ZSU-57-2 'Sparka'",
+    "AAA ZU-23 Closed Emplacement",
+    "ZU-23 on Ural-375"
+  ],
+  "requirements": {
+    "frenchpack V3.5": "https://forums.eagle.ru/showthread.php?t=279974",
+    "Swedish Military Assets for DCS by Currenthill": "https://forum.dcs.world/topic/295202-swedish-military-assets-for-dcs-by-currenthill/"
+  },
+  "carrier_names": [],
+  "helicopter_carrier_names": [],
+  "has_jtac": true,
+  "jtac_unit": "Mi-8MTV2 Hip",
+  "liveries_overrides": {
+    "F-16CM Fighting Falcon (Block 50)": [
+      "FiAF_Green_2"
+    ],
+    "F-16D Barak (Block 30)": [
+      "FiAF_Green"
+    ],
+    "F/A-18C Hornet (Lot 20)": [
+      "Finland80sFictional"
+    ],
+    "AV-8B Harrier II Night Attack": [
+      "FIAF_Green"
+    ],
+	"MiG-21bis Fishbed-N": [
+      "Finland - HävLLv 31",
+      "MG-130"
+    ],
+    "AJS-37 Viggen": [
+      "FiAF Early",
+      "FiAF Later"
+    ],
+    "Mirage 2000C": [
+      "Finnish Air Force Green",
+      "Finnish Air Force3"
+    ],
+    "Mirage-F1CE": [
+      "FiAF GNAT",
+      "FiAF HW"
+    ],
+    "Mirage-F1EE": [
+      "FiAF DK"
+    ],
+    "A-4E Skyhawk": [
+      "International Finnish Air Force"
+    ],
+    "Mi-8MTV2 Hip": [
+      "ILMAVOIMAT2",
+      "Ilmavoimat HS-11",
+      "Rajavartiolaitos (green)"
+    ],
+    "Mi-24P Hind-F": [
+      "FIAF",
+      "Rajavartiolaitos"
+    ],
+    "UH-1H Iroquois": [
+      "FiAF"
+    ],
+    "SA 342L Gazelle": [
+      "FIAF"
+    ],
+	"Ka-50 Hokum": [
+      "Musta Hauki"
+    ],
+    "C-130": [
+      "FIAF C-130"
+    ],
+    "KC-130": [
+      "FIAF KC-130"
+    ],
+    "E-2C Hawkeye": [
+      "FiAF"
+    ],
+    "IL-78M": [
+      "Ilmavoimat2"
+    ],
+    "KC-135 Stratotanker MPRS": [
+      "FiAF"
+    ]
+  },
+  "liveries_overrides_ground_forces": {
+    "SAU Gvozdika": [
+      "summer"
+    ],
+	"SAU Akatsia": [
+      "summer"
+    ],
+    "BRDM-2": [
+      "summer"
+    ],
+    "BTR-80": [
+      "Green summer"
+    ],
+    "ZSU_57_2": [
+      "summer"
+    ],
+	"Ural-375 ZU-23": [
+      "summer"
+    ],
+	"S-60_Type59_Artillery": [
+      "summer"
+    ],
+    "Ural-375": [
+      "summer"
+    ],
+	"Ural-4320-31": [
+      "summer"
+    ],
+	"Ural-4320T": [
+      "summer"
+    ],
+	"GAZ-66": [
+      "summer"
+    ],
+	"KAMAZ Truck": [
+      "summer"
+    ]
+  }
+}
