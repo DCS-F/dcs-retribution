@@ -10,6 +10,8 @@
     "C-130",
     "MiG-21bis Fishbed-N",
     "F-16CM Fighting Falcon (Block 50)",
+    "F-16D Fighting Falcon (Block 50)",
+    "F-16D Fighting Falcon (Block 50+)",
     "F-16D Barak (Block 30)",
     "F/A-18C Hornet (Lot 20)",
     "AV-8B Harrier II Night Attack",
@@ -95,6 +97,12 @@
   "liveries_overrides": {
     "F-16CM Fighting Falcon (Block 50)": [
       "FiAF_Green_2"
+    ],
+    "F-16D Fighting Falcon (Block 50)": [
+      "FiAF_Green"
+    ],
+    "F-16D Fighting Falcon (Block 50+)": [
+      "FiAF_Green"
     ],
     "F-16D Barak (Block 30)": [
       "FiAF_Green"
