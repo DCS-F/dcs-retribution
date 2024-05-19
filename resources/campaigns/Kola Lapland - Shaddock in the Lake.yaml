@@ -1,0 +1,434 @@
+---
+name: Kola Peninsula / Lapland - Shaddock in the Lake
+theater: Kola
+authors: Ghosti
+recommended_player_faction: Finland 1990 (DX-program)
+recommended_enemy_faction: Soviet Union 1989
+description:
+  <p>Following a Soviet show of force in 28 December 1984, which resulted in an SS-N-3 Shaddock launched towards Finnish airspace and ending up in Lake Inari, and subsequent failed negotiations at the international conference on cruise missiles, the Soviet Union has invaded Finland in 1985.</p>
+  <p>The northern part of Finland is occupied by the Soviet forces, but the Finnish Defence Forces have successfully pushed the invading Red Army back in the south.</p>
+  <p>Finnish aircraft has been relocated and/or reactivated in Sweden and Norway. Both Sweden and Norway have decided to remain neutral in the conflict, but have granted the Finns access to their airbases as the offensive to retake northern Finland is about to commence.</p>
+miz: Kola Lapland - Shaddock in the Lake.miz
+performance: 3
+recommended_start_date: 1990-06-06
+version: "10.7"
+
+settings:
+  pretense_extra_zone_connections: 0
+  pretense_disable_ground_assaults: true
+  pretense_disable_supply_convoys: true
+  pretense_ground_assaults_prefer_roads: true
+  pretense_supply_convoys_prefer_roads: true
+  pretense_num_of_cargo_planes: 1
+  pretense_do_not_generate_sead_missions: true
+  pretense_do_not_generate_csar_missions: true
+  pretense_controllable_carrier: false
+  perf_culling: true
+  perf_culling_distance: 50
+  player_skill: "High"
+  enemy_skill: "Average"
+  enemy_vehicle_skill: "Average"
+  night_day_missions: NightMissions.OnlyDay
+  labels: "Dot Only"
+  squadron_random_chance: 100
+
+  ground_start_ai_planes: true
+  ground_start_scenery_remove_triggers: false
+  ground_start_ground_power_trucks: false
+  ground_start_ground_power_trucks_roadbase: false
+
+  plugins:
+    gamemaster: true
+    splashdamageclusters: true
+    splashdamageclusters.bdaMessages: true
+    splashdamageclusters.clusterEffects: true
+    splashdamageclusters.shipRadarDamage: true
+ #Mods to be used
+  a4_skyhawk: true
+  t45_goshawk: true
+  hawk_t1a: true
+  f_16_idf: true
+
+squadrons:
+  #Lakselv
+  1:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - AJS-37 Viggen
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (Lot 20)
+    - primary: Refueling
+      aircraft:
+        - IL-78M
+    - primary: AEW&C
+      aircraft:
+        - E-2C Hawkeye
+  Leirpollskogen FARP:
+  Leirpollskogen roadbase:
+  Kirkenes EWR site:
+  #Kiruna
+  5:
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - AJS-37 Viggen
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - Mirage-F1EE
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (Lot 20)
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Ka-50 Hokum
+  #Kalixfors
+  13:
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - AJS-37 Viggen
+  #Bodø
+  7:
+    - primary: Refueling
+      aircraft:
+        - KC-130
+    - primary: AEW&C
+      aircraft:
+        - E-2C Hawkeye
+  #Kemi Tornio
+  3:
+    - primary: DEAD
+      secondary: any
+      aircraft:
+        - F-16CM Fighting Falcon (Block 50)
+    - primary: DEAD
+      secondary: any
+      aircraft:
+        - F-16D Fighting Falcon (Block 50)
+    - primary: DEAD
+      secondary: any
+      aircraft:
+        - F-16D Fighting Falcon (Block 50+)
+    - primary: DEAD
+      secondary: any
+      aircraft:
+        - F-16D Barak (Block 30)
+  Jokkmokk airbase:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AJS-37 Viggen
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - Mirage-F1CE
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (Lot 20)
+  Ranuan varalaskupaikka:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AV-8B Harrier II Night Attack
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-4E Skyhawk
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342M Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Ka-50 Hokum
+  Pudasjärven varalaskupaikka:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AV-8B Harrier II Night Attack
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-4E Skyhawk
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342M Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Ka-50 Hokum
+  #Rovaniemi
+  2:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-23MLD Flogger-K
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-95MS Bear-H
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Su-25 Frogfoot
+  #Vuojärvi highway strip
+  4:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-95MS Bear-H
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - Su-25T Frogfoot
+  Vuojärvi helicopter base:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Sirniö roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Pekkala roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24P Hind-F
+  Kallaanvaara helicopter base:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Kallaanvaara roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24P Hind-F
+  Rajala helicopter base:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Rajala roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24P Hind-F
+  Ylläksen varalaskupaikka:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Lokka roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24P Hind-F
+  Ivalo roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Inari roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24P Hind-F
+  Kaamanen roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Karasjok EWR site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Kovdor roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24P Hind-F
+  Kuolajärvi roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Alakurtti roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24P Hind-F
+  Eyna roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Polarnie Zori roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24P Hind-F
+  Kandalaksha aluminum plant:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Polyarny SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Gadzhiyevo SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Petchenga SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Poselok SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Vajda-Guba EWR site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Kharlovka SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Ostrovnoy SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  #Severomorsk1
+  8:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-29A Fulcrum-A
+    - primary: DEAD
+      secondary: any
+      aircraft:
+        - Su-25T Frogfoot
+  #Severomorsk3
+  6:
+    - primary: AEW&C
+      aircraft:
+        - A-50
+    - primary: Refueling
+      aircraft:
+        - IL-76M
+    - primary: DEAD
+      secondary: any
+      aircraft:
+        - Su-24M Fencer-D
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - Su-27 Flanker-B
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24P Hind-F
+  #Olenegorsk
+  9:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Su-27 Flanker-B
+    - primary: DEAD
+      secondary: any
+      aircraft:
+        - Su-17M4 Fitter-K
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Su-25 Frogfoot
+  #Monchegorsk
+  10:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-29A Fulcrum-A
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - Su-25 Frogfoot
+  #Murmansk International
+  12:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-29A Fulcrum-A
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
+    - primary: Transport
+      secondary: any
+      aircraft:
+        - IL-76MD
