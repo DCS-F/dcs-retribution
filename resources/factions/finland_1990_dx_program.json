@@ -24,7 +24,8 @@
     "Mi-24P Hind-F",
     "UH-1H Iroquois",
 	"Ka-50 Hokum",
-    "SA 342L Gazelle"
+    "SA 342L Gazelle",
+    "SA 342M Gazelle"
   ],
   "awacs": [
     "E-2C Hawkeye"
@@ -148,6 +149,9 @@
       "FiAF"
     ],
     "SA 342L Gazelle": [
+      "FIAF"
+    ],
+    "SA 342M Gazelle": [
       "FIAF"
     ],
 	"Ka-50 Hokum": [
