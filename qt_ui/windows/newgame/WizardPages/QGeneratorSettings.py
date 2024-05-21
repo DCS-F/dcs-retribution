@@ -120,6 +120,8 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.registerField("f104_starfighter", self.f104_starfighter)
         self.f105_thunderchief = QtWidgets.QCheckBox()
         self.registerField("f105_thunderchief", self.f105_thunderchief)
+        self.f106_deltadart = QtWidgets.QCheckBox()
+        self.registerField("f106_deltadart", self.f106_deltadart)
         self.jas39_gripen = QtWidgets.QCheckBox()
         self.registerField("jas39_gripen", self.jas39_gripen)
         self.mirage_3 = QtWidgets.QCheckBox()
@@ -163,6 +165,7 @@ class GeneratorOptions(QtWidgets.QWizardPage):
             ("A-7E Corsair II", self.a7e_corsair2),
             ("C-130J-30 Super Hercules", self.hercules),
             ("F-4B/C Phantom II (2.8.7.201)", self.f4bc_phantom),
+            ("F-106 Delta Dart (v2.9.4.101)", self.f106_deltadart),
             ("F-15D Baz (v1.0)", self.f15d_baz),
             ("F-15I Ra'am (v1.0 by IDF Mods Project)", self.f_15_idf),
             ("F-16I Sufa & F-16D (v3.6 by IDF Mods Project)", self.f_16_idf),
@@ -240,6 +243,7 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.f100_supersabre.setChecked(s.get("f100_supersabre", False))
         self.f104_starfighter.setChecked(s.get("f104_starfighter", False))
         self.f105_thunderchief.setChecked(s.get("f105_thunderchief", False))
+        self.f106_deltadart.setChecked(s.get("f106_deltadart", False))
         self.jas39_gripen.setChecked(s.get("jas39_gripen", False))
         self.mirage_3.setChecked(s.get("mirage_3", False))
         self.t45_goshawk.setChecked(s.get("t45_goshawk", False))
