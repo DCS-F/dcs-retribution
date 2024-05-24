@@ -59,6 +59,25 @@ class MigrationUnpickler(pickle.Unpickler):
             return dcs.terrain.falklands.airports.Hipico_Flying_Club
         if name in ["SaveManager", "SaveGameBundle"]:
             return DummyObject
+        if module == "dcs.terrain.kola.airports":
+            if name == "Lakselv":
+                from dcs.terrain.kola.airports import Banak
+                return Banak
+            elif name == "Severomorsk1":
+                from dcs.terrain.kola.airports import Severomorsk_1
+                return Severomorsk_1
+            elif name == "Severomorsk3":
+                from dcs.terrain.kola.airports import Severomorsk_3
+                return Severomorsk_3
+            elif name == "Olenegorsk":
+                from dcs.terrain.kola.airports import Olenya
+                return Olenya
+        if module == "dcs.vehicles":
+            try:
+                return super().find_class(module, name)
+            except AttributeError:
+                alternate = name.split('.')[:-1] + [name.split('.')[-1][0].lower() + name.split('.')[-1][1:]]
+                name = '.'.join(alternate)
         return super().find_class(module, name)
 # fmt: on
 
