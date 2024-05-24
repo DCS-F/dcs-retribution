@@ -1,31 +1,47 @@
 {
   "country": "Combined Joint Task Forces Blue",
-  "name": "Bluefor Coldwar",
-  "authors": "Khopa",
-  "description": "<p>A generic bluefor coldwar faction. (With the A-4E-C mod)</p>",
+  "name": "Blufor Late Cold War (80s)",
+  "authors": "Starfire",
+  "description": "<p>Blufor 1980s late cold war faction featuring units from NATO and NATO-aligned nations.</p>",
   "aircrafts": [
     "A-10A Thunderbolt II",
     "A-4E Skyhawk",
     "A-6A Intruder",
     "A-7E Corsair II",
+    "AH-1W SuperCobra",
     "AJS-37 Viggen",
+    "AV-8B Harrier II Night Attack",
+    "B-1B Lancer",
     "B-52H Stratofortress",
+    "C-101CC Aviojet",
     "C-130",
     "C-130J-30 Super Hercules",
-    "F-14A Tomcat (AI)",
+    "C-47 Dakota",
+    "CH-47D",
+    "CH-53E",
     "F-14A Tomcat (Block 135-GR Late)",
     "F-14B Tomcat",
+    "F-15C Eagle",
+    "F-15E Strike Eagle (Suite 4+)",
+    "F-16CM Fighting Falcon (Block 50)",
+    "F/A-18C Hornet (Lot 20)",
     "F-4E Phantom II",
     "F-4E-45MC Phantom II",
     "F-5E Tiger II",
+    "Mi-8MTV2 Hip",
+    "MiG-21bis Fishbed-N",
     "Mirage-F1B",
     "Mirage-F1BE",
     "Mirage-F1CE",
     "Mirage-F1C-200",
     "Mirage-F1EE",
+    "S-3B Viking",
     "SA 342L Gazelle",
     "SA 342M Gazelle",
-    "UH-1H Iroquois"
+    "SH-60B Seahawk",
+    "UH-1H Iroquois",
+    "UH-60A",
+    "UH-60L"
   ],
   "awacs": [
     "E-2C Hawkeye",
@@ -37,11 +53,18 @@
   ],
   "frontline_units": [
     "M113",
+    "M163 Vulcan Air Defense System",
     "M48 Chaparral",
-    "M60A3 \"Patton\""
+    "M60A3 \"Patton\"",
+    "Leopard 2",
+    "M1A2 Abrams",
+    "M2A2 Bradley",
+    "Marder 1A3",
+    "VAB Mephisto"
   ],
   "artillery_units": [
-    "M109A6 Paladin"
+    "M109A6 Paladin",
+    "M270 Multiple Launch Rocket System"
   ],
   "logistics_units": [
     "Truck M818 6x6"
@@ -53,27 +76,27 @@
   "missiles": [],
   "preset_groups": [
     "Hawk",
-    "Cold-War-Flak"
+    "Patriot",
+    "Rapier"
   ],
   "naval_units": [
-    "DDG Arleigh Burke IIa",
+    "FFG Oliver Hazard Perry",
     "CG Ticonderoga",
     "LHA-1 Tarawa",
-    "CVN-74 John C. Stennis"
+    "CV-59 Forrestal"
   ],
   "air_defense_units": [
     "SAM Hawk SR (AN/MPQ-50)",
     "M163 Vulcan Air Defense System",
-    "M48 Chaparral"
+    "M48 Chaparral",
+    "Flakpanzer Gepard",
+    "Roland 2 (Marder Chassis)"
   ],
-  "requirements": {
-    "Community A-4E": "https://heclak.github.io/community-a4e-c/"
-  },
   "carrier_names": [
-    "CVN-71 Theodore Roosevelt",
-    "CVN-72 Abraham Lincoln",
-    "CVN-73 George Washington",
-    "CVN-74 John C. Stennis"
+    "CVN-59 Forrestal",
+    "CVN-60 Saratoga",
+    "CVN-61 Ranger",
+    "CVN-62 Independence"
   ],
   "helicopter_carrier_names": [
     "LHA-1 Tarawa",
@@ -82,7 +105,6 @@
     "LHA-4 Nassau",
     "LHA-5 Peleliu"
   ],
-  "has_jtac": true,
-  "jtac_unit": "MQ-9 Reaper",
+  "has_jtac": false,
   "doctrine": "coldwar"
 }

@@ -1,48 +1,46 @@
 {
   "country": "Combined Joint Task Forces Blue",
-  "name": "Israel-USN 2005 (Allied Sword)",
-  "authors": "Fuzzle",
-  "description": "<p>A joint US Navy/Israeli modern faction for use with the Operation Allied Sword scenario.</p>",
+  "name": "UK/US Falklands Task Force",
+  "authors": "tmz42",
+  "description": "<p>United Kingdom/US Navy Task Force for Retake the Falklands.</p>",
   "locales": [
-    "en_US"
+    "en_UK"
   ],
   "aircrafts": [
-    "F-4E Phantom II",
-    "F-15C Eagle",
-    "F-15D Baz",
-    "F-15E Strike Eagle (AI)",
+    "AH-64D Apache Longbow",
+    "AV-8B Harrier II Night Attack",
+    "C-130",
+    "C-130J-30 Super Hercules",
+    "SA 342L Gazelle",
+    "SA 342M Gazelle",
+    "Gazelle AH.1",
+    "Phantom F.3",
+    "Phantom FGR.2",
+    "Tornado GR4",
     "F-15E Strike Eagle (Suite 4+)",
     "F-16CM Fighting Falcon (Block 50)",
-    "F-16D Barak (Block 30)",
-    "F-16D Barak (Block 40)",
-    "F-16I Sufa",
-    "F-14B Tomcat",
-    "F/A-18C Hornet (Lot 20)",
-	"F/A-18E Super Hornet",
-	"F/A-18F Super Hornet",
-	"EA-18G Growler",
-    "AV-8B Harrier II Night Attack",
-    "AH-1W SuperCobra",
-    "AH-64D Apache Longbow",
-    "AH-64D Apache Longbow (AI)",
     "S-3B Viking",
-    "SH-60B Seahawk",
+    "F/A-18C Hornet (Lot 20)",
+    "F-14B Tomcat",
+    "F-14A Tomcat (Block 135-GR Late)",
     "UH-1H Iroquois",
-    "UH-60L"
+    "B-1B Lancer"
+  
   ],
   "awacs": [
-    "E-2C Hawkeye"
+    "E-2D Advanced Hawkeye"
   ],
   "tankers": [
-    "KC-130",
+    "KC-135 Stratotanker",
     "S-3B Tanker"
   ],
   "frontline_units": [
-    "M113",
+    "Chieftain Mk.3",
+    "FV4034 Challenger 2",
+    "FV510 Warrior",
     "M1043 HMMWV (M2 HMG)",
     "M1045 HMMWV (BGM-71 TOW)",
-    "Merkava Mk IV",
-    "M163 Vulcan Air Defense System"
+    "M1097 Heavy HMMWV Avenger"
   ],
   "artillery_units": [
     "M109A6 Paladin",
@@ -52,26 +50,26 @@
     "Truck M818 6x6"
   ],
   "infantry_units": [
-    "Infantry M4",
     "Infantry M249",
-    "MANPADS Stinger"
+    "Infantry M4",
+    "MANPADS Stinger",
+    "Mortar 2B11 120mm"
   ],
   "preset_groups": [
     "Hawk",
-    "Patriot"
+    "Rapier"
   ],
   "naval_units": [
     "FFG Oliver Hazard Perry",
     "DDG Arleigh Burke IIa",
     "CG Ticonderoga",
-    "LHA-1 Tarawa",
+    "R05 Invincible",
     "CVN-74 John C. Stennis"
   ],
   "missiles": [],
   "air_defense_units": [
     "SAM Hawk SR (AN/MPQ-50)",
-    "M163 Vulcan Air Defense System",
-    "M48 Chaparral"
+    "M1097 Heavy HMMWV Avenger"
   ],
   "requirements": {},
   "carrier_names": [
@@ -82,34 +80,11 @@
     "CVN-75 Harry S. Truman"
   ],
   "helicopter_carrier_names": [
-    "LHA-1 Tarawa",
-    "LHA-2 Saipan",
-    "LHA-3 Belleau Wood",
-    "LHA-4 Nassau",
-    "LHA-5 Peleliu"
+    "HMS Invincible",
+    "HMS Illustrious",
+    "HMS Ark Royal"
   ],
   "has_jtac": true,
   "jtac_unit": "MQ-9 Reaper",
-  "doctrine": "modern",
-  "liveries_overrides": {
-    "F-14B Tomcat": [
-      "VF-142 Ghostriders"
-    ],
-    "F/A-18C Hornet (Lot 20)": [
-      "VMFA-251 high visibility"
-    ],
-    "AV-8B Harrier II Night Attack": [
-      "VMAT-542"
-    ],
-    "AH-1W SuperCobra": [
-      "Marines"
-    ],
-    "UH-1H Iroquois": [
-      "US NAVY"
-    ],
-    "UH-60L": [
-      "Israeli Air Force"
-    ]	
-  },
   "unrestricted_satnav": true
 }
