@@ -15,15 +15,20 @@ from PySide6.QtWidgets import (
     QTableWidgetItem,
     QVBoxLayout,
     QWidget,
+    QPushButton,
 )
 
 from game.ato.flight import Flight
+from game.server import EventStream
+from game.sim import GameUpdateEvents
 from game.squadrons import Squadron
 from game.theater import ConflictTheater
 from qt_ui.delegates import TwoColumnRowDelegate
 from qt_ui.models import AirWingModel, AtoModel, GameModel, SquadronModel
 from qt_ui.simcontroller import SimController
+from qt_ui.windows.AirWingConfigurationDialog import AirWingConfigurationDialog
 from qt_ui.windows.SquadronDialog import SquadronDialog
+from qt_ui.windows.newgame.WizardPages.QFactionSelection import QFactionUnits
 
 
 class SquadronDelegate(TwoColumnRowDelegate):
@@ -77,11 +82,12 @@ class SquadronList(QListView):
         self.setItemDelegate(SquadronDelegate(self.air_wing_model))
         self.setModel(self.air_wing_model)
         self.selectionModel().setCurrentIndex(
-            self.air_wing_model.index(0, 0, QModelIndex()), QItemSelectionModel.Select
+            self.air_wing_model.index(0, 0, QModelIndex()),
+            QItemSelectionModel.SelectionFlag.Select,
         )
 
         # self.setIconSize(QSize(91, 24))
-        self.setSelectionBehavior(QAbstractItemView.SelectItems)
+        self.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectItems)
         self.doubleClicked.connect(self.on_double_click)
 
     def on_double_click(self, index: QModelIndex) -> None:
@@ -183,7 +189,7 @@ class AirInventoryView(QWidget):
         self.table = QTableWidget()
         layout.addWidget(self.table)
 
-        self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.table.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.table.verticalHeader().setVisible(False)
         self.set_only_unallocated(False)
 
@@ -233,6 +239,8 @@ class AirWingTabs(QTabWidget):
     def __init__(self, game_model: GameModel) -> None:
         super().__init__()
 
+        self.game_model = game_model
+
         self.addTab(
             SquadronList(
                 game_model.ato_model,
@@ -240,9 +248,48 @@ class AirWingTabs(QTabWidget):
                 game_model.game.theater,
                 game_model.sim_controller,
             ),
-            "Squadrons",
+            "Squadrons OWNFOR",
+        )
+        self.addTab(
+            SquadronList(
+                game_model.red_ato_model,
+                game_model.red_air_wing_model,
+                game_model.game.theater,
+                game_model.sim_controller,
+            ),
+            "Squadrons OPFOR",
         )
         self.addTab(AirInventoryView(game_model), "Inventory")
+
+        if game_model.game.settings.enable_air_wing_adjustments:
+            pb = QPushButton("Open Air Wing Config Dialog")
+            pb.clicked.connect(self.open_awcd)
+            pb.setMaximumWidth(300)
+            layout = QHBoxLayout()
+            layout.addWidget(pb)
+            w = QWidget(layout=layout)
+            self.addTab(w, "Cheats")
+
+        self.addTab(
+            QFactionUnits(
+                game_model.game.coalition_for(True).faction,
+                self,
+            ),
+            "Faction OWNFOR",
+        )
+        self.addTab(
+            QFactionUnits(
+                game_model.game.coalition_for(False).faction,
+                self,
+            ),
+            "Faction OPFOR",
+        )
+
+    def open_awcd(self):
+        AirWingConfigurationDialog(self.game_model.game, True, self).exec_()
+        events = GameUpdateEvents().begin_new_turn()
+        EventStream.put_nowait(events)
+        self.game_model.ato_model.on_sim_update(events)
 
 
 class AirWingDialog(QDialog):
