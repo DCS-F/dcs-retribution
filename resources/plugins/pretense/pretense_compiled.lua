@@ -13427,7 +13427,7 @@ do
 
         local viableZones = {}
         for _,zone in pairs(ZoneCommand.getAllZones()) do
-            if zone.side == 2 and zone.distToFront <=1 and zone:criticalOnSupplies() then
+            if zone.side == 2 and zone.distToFront and zone.distToFront <=1 and zone:criticalOnSupplies() then
                 table.insert(viableZones, zone)
             end
         end
