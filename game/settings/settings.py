@@ -158,7 +158,6 @@ class Settings:
         MISSION_RESTRICTIONS_SECTION,
         default=True,
     )
-
     easy_communication: Optional[bool] = choices_option(
         "Easy Communication",
         page=DIFFICULTY_PAGE,
@@ -208,11 +207,12 @@ class Settings:
         default=False,
         detail=(
             "If checked, squadrons with a primary task matching the mission will be "
-            "preferred even if there is a closer squadron capable of the mission as a"
+            "preferred even if there is a closer squadron capable of the mission as a "
             "secondary task. Expect longer flights, but squadrons will be more often "
             "assigned to their primary task."
         ),
     )
+    # CAMPAIGN DOCTRINE
     autoplan_tankers_for_strike: bool = boolean_option(
         "Auto-planner plans refueling flights for Strike packages",
         page=CAMPAIGN_DOCTRINE_PAGE,
@@ -370,6 +370,32 @@ class Settings:
             "planned to known threat zones."
         ),
     )
+    max_mission_range_planes: int = bounded_int_option(
+        "Auto-planner maximum mission range for airplanes (NM)",
+        page=CAMPAIGN_DOCTRINE_PAGE,
+        section=DOCTRINE_DISTANCES_SECTION,
+        default=150,
+        min=150,
+        max=1000,
+        detail=(
+            "The maximum mission distance that's used by the auto-planner for airplanes. "
+            "This setting won't take effect when a larger "
+            "range is defined in the airplane's yaml specification."
+        ),
+    )
+    max_mission_range_helicopters: int = bounded_int_option(
+        "Auto-planner maximum mission range for helicopters (NM)",
+        page=CAMPAIGN_DOCTRINE_PAGE,
+        section=DOCTRINE_DISTANCES_SECTION,
+        default=100,
+        min=50,
+        max=1000,
+        detail=(
+            "The maximum mission distance that's used by the auto-planner for helicopters. "
+            "This setting won't take effect when a larger "
+            "range is defined in the helicopter's yaml specification."
+        ),
+    )
     # Pilots and Squadrons
     ai_pilot_levelling: bool = boolean_option(
         "Allow AI pilot leveling",
@@ -390,7 +416,7 @@ class Settings:
         default=True,
         detail=(
             "If set, squadrons will be limited to a maximum number of pilots and dead "
-            "pilots will replenish at a fixed rate, each defined with the settings"
+            "pilots will replenish at a fixed rate, each defined with the settings "
             "below. Auto-purchase may buy aircraft for which there are no pilots"
             "available, so this feature is still a work-in-progress."
         ),
@@ -561,7 +587,7 @@ class Settings:
         max=1000,
         default=10,
         detail=(
-            "The number of units that will be bought as reserves for applicable control points"
+            "The number of units that will be bought as reserves for applicable control points."
         ),
     )
 
@@ -588,7 +614,7 @@ class Settings:
         default=35,
         min=0,
         max=100,
-        detail="See 2-ship weight factor (WF2)",
+        detail="See 2-ship weight factor (WF3)",
     )
     fpa_4ship_weight: int = bounded_int_option(
         "4-ship weight factor (WF4)",
@@ -597,7 +623,7 @@ class Settings:
         default=15,
         min=0,
         max=100,
-        detail="See 2-ship weight factor (WF2)",
+        detail="See 2-ship weight factor (WF4)",
     )
 
     # Mission Generator
@@ -720,6 +746,16 @@ class Settings:
         default=StartType.COLD,
         detail=("Default start type for flights containing Player/Client slots."),
     )
+    nevatim_parking_fix: bool = boolean_option(
+        "Force air-starts for aircraft at Nevatim and Ramon Airbase inoperable parking slots",
+        page=MISSION_GENERATOR_PAGE,
+        section=GAMEPLAY_SECTION,
+        default=True,  # TODO: set to False or remove this when DCS is fixed
+        detail=(
+            "Air-starts forced for all aircraft at Nevatim and Ramon Airbase except parking slots "
+            "which are known to work as of DCS World 2.9.4.53990."
+        ),
+    )
     # Mission specific
     desired_player_mission_duration: timedelta = minutes_option(
         "Desired mission duration",
@@ -800,7 +836,7 @@ class Settings:
         GAMEPLAY_SECTION,
         default=True,
         detail=(
-            "If enabled, AI can use roadbases or airbases which only have ground spawns."
+            "If enabled, AI can use roadbases or airbases which only have ground spawns. "
             "AI will always air-start from these bases (due to DCS limitation)."
         ),
     )
@@ -810,7 +846,7 @@ class Settings:
         GAMEPLAY_SECTION,
         default=True,
         detail=(
-            "Can be used to remove lightposts and other obstacles from roadbase runways."
+            "Can be used to remove lightposts and other obstacles from roadbase runways. "
             "Might not work in DCS multiplayer."
         ),
     )
@@ -855,6 +891,16 @@ class Settings:
             "Ammo and fuel statics and invisible FARPs should be unnecessary when creating "
             "additional spawns for players at airbases. This setting will disable them and "
             "potentially grant a marginal performance benefit."
+        ),
+    )
+    ai_unlimited_fuel: bool = boolean_option(
+        "AI flights have unlimited fuel",
+        MISSION_GENERATOR_PAGE,
+        GAMEPLAY_SECTION,
+        default=True,
+        detail=(
+            "AI aircraft have unlimited fuel applied at start, removed at join/racetrack start,"
+            " and reapplied at split/racetrack end for applicable flights. "
         ),
     )
 
@@ -986,6 +1032,16 @@ class Settings:
         section=PERFORMANCE_SECTION,
         default=True,
         causes_expensive_game_update=True,
+    )
+    perf_ai_despawn_airstarted: bool = boolean_option(
+        "De-spawn AI in the air upon RTB",
+        page=MISSION_GENERATOR_PAGE,
+        section=PERFORMANCE_SECTION,
+        default=False,
+        detail=(
+            "If enabled, AI flights will de-spawn over their base "
+            "if the start-up type was manually changed to 'In-Flight'."
+        ),
     )
     pretense_supply_mode_dist_to_front: int = bounded_int_option(
         "Zones to supply mode distance to front",
@@ -1226,6 +1282,8 @@ class Settings:
     enable_base_capture_cheat: bool = False
     enable_transfer_cheat: bool = False
     enable_runway_state_cheat: bool = False
+    enable_air_wing_adjustments: bool = False
+    enable_enemy_buy_sell: bool = False
 
     # LUA Plugins system
     plugins: Dict[str, bool] = field(default_factory=dict)
