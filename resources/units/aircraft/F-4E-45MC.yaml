@@ -16,6 +16,7 @@ role: Fighter-Bomber
 max_range: 200
 variants:
   F-4E-45MC Phantom II: {}
+  F-4E Phantom II (Block 45): {}
   Phantom FGR.2: {}
   F-4EJ Phantom II: {}
 tasks:
