@@ -425,7 +425,7 @@ squadrons:
         - A-50
     - primary: Refueling
       aircraft:
-        - IL-76MD
+        - IL-78M
     - primary: DEAD
       secondary: any
       aircraft:
