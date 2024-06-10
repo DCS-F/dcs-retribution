@@ -1,0 +1,433 @@
+---
+name: Kola Peninsula / Lapland - October Bomber Crisis
+theater: Kola
+authors: Ghosti
+recommended_player_faction: USAF 1960 Air Defence Command
+recommended_enemy_faction: Soviet Union 1960
+description:
+  <p>The Cuban Missile Crisis has gone hot. Soviet forces, trying to run the blockade on Cuba, have been fired upon and have returned fire. No nuclear exchange has taken place, but there are conventional engagements around the world between the US and the Soviet Union.</p>
+  <p>The northern part of Finland is occupied by Soviet forces, and are using the bases there and in the Kola peninsula to launch bomber attacks on US military installations.</p>
+  <p>The USAF Air Defence Command is tasked with intercepting these bombers and to enable a counterstrike.</p>
+miz: Kola Lapland - Shaddock in the Lake.miz
+performance: 3
+recommended_start_date: 1962-10-16
+version: "10.7"
+
+settings:
+  pretense_extra_zone_connections: 0
+  pretense_disable_ground_assaults: true
+  pretense_disable_supply_convoys: true
+  pretense_ground_assaults_prefer_roads: true
+  pretense_supply_convoys_prefer_roads: true
+  pretense_num_of_cargo_planes: 1
+  pretense_do_not_generate_sead_missions: true
+  pretense_do_not_generate_csar_missions: true
+  pretense_controllable_carrier: false
+  perf_culling: false
+  perf_culling_distance: 50
+  player_skill: "High"
+  enemy_skill: "Average"
+  enemy_vehicle_skill: "Average"
+  night_day_missions: NightMissions.OnlyDay
+  labels: "Dot Only"
+  squadron_random_chance: 100
+
+  ground_start_ai_planes: true
+  ground_start_scenery_remove_triggers: false
+  ground_start_ground_power_trucks: false
+  ground_start_ground_power_trucks_roadbase: false
+
+  plugins:
+    gamemaster: true
+    splashdamageclusters: true
+    splashdamageclusters.bdaMessages: true
+    splashdamageclusters.clusterEffects: true
+    splashdamageclusters.shipRadarDamage: true
+ #Mods to be used
+  f100_supersabre: true
+  f104_starfighter: true
+  f106_deltadart: true
+  f4bc_phantom: true
+
+squadrons:
+  #Lakselv
+  1:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-106A Delta Dart
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-104C Starfighter
+    - primary: Refueling
+      aircraft:
+        - KC-135 Stratotanker
+    - primary: AEW&C
+      aircraft:
+        - E-2C Hawkeye
+  Leirpollskogen FARP:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: Transport
+      aircraft:
+        - CH-47D
+  Leirpollskogen roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-86F Sabre
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-4E Skyhawk
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: Transport
+      aircraft:
+        - CH-47D
+  Kirkenes EWR site:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: Transport
+      aircraft:
+        - CH-47D
+  #Kiruna
+  5:
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-100 Super Sabre
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-104C Starfighter
+  #Kalixfors
+  13:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-106A Delta Dart
+  #Bodø
+  7:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - B-52H Stratofortress
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-4C Phantom II
+    - primary: Refueling
+      aircraft:
+        - KC-130
+    - primary: AEW&C
+      aircraft:
+        - E-2C Hawkeye
+  #Kemi Tornio
+  3:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - B-17G Flying Fortress
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-106B Delta Dart
+  Jokkmokk airbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - B-52H Stratofortress
+    - primary: BARCAP
+      secondary: air-to-ground
+      aircraft:
+        - F-100 Super Sabre
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-4C Phantom II
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-104C Starfighter
+  Ranuan varalaskupaikka:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - B-17G Flying Fortress
+    - primary: BARCAP
+      secondary: air-to-ground
+      aircraft:
+        - F-106B Delta Dart
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-4E Skyhawk
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: Transport
+      aircraft:
+        - CH-47D
+  Pudasjärven varalaskupaikka:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - B-17G Flying Fortress
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-106A Delta Dart
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-100 Super Sabre
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-4E Skyhawk
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: Transport
+      aircraft:
+        - CH-47D
+  #Rovaniemi
+  2:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-95MS Bear-H
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+  #Vuojärvi highway strip
+  4:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-95MS Bear-H
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+  Vuojärvi helicopter base:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Sirniö roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Pekkala roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Kallaanvaara helicopter base:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Kallaanvaara roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Rajala helicopter base:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Rajala roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Ylläksen varalaskupaikka:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Lokka roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Ivalo roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Inari roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Kaamanen roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Karasjok EWR site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Kovdor roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Kuolajärvi roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Alakurtti roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Eyna roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Polarnie Zori roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Kandalaksha aluminum plant:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Polyarny SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Gadzhiyevo SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Petchenga SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Poselok SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Vajda-Guba EWR site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Kharlovka SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Ostrovnoy SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  #Severomorsk1
+  8:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: DEAD
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+  #Severomorsk3
+  6:
+    - primary: AEW&C
+      aircraft:
+        - A-50
+    - primary: Refueling
+      aircraft:
+        - IL-78M
+    - primary: DEAD
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  #Olenegorsk
+  9:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+  #Monchegorsk
+  10:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+  #Murmansk International
+  12:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
+    - primary: Transport
+      secondary: any
+      aircraft:
+        - IL-76MD

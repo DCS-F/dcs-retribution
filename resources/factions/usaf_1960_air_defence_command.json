@@ -1,0 +1,215 @@
+{
+  "country": "USA",
+  "name": "USAF 1960 Air Defence Command",
+  "authors": "Ghosti",
+  "description": "<p>USAF Air Defence Command in the early 60s. Contains the Mirage 2000C to stand in for the F-102.</p>",
+  "locales": [
+    "en_US"
+  ],
+  "aircrafts": [
+    "A-4E Skyhawk",
+    "B-17G Flying Fortress",
+    "B-52H Stratofortress",
+    "C-130",
+    "CH-47D",
+	"F-4B Phantom II",
+    "F-4C Phantom II",
+	"F-4E Phantom II (Block 45)",
+    "F-86F Sabre",
+	"F-100 Super Sabre",
+	"F-104C Starfighter",
+    "F-106A Delta Dart",
+    "F-106B Delta Dart",
+    "Mirage 2000C",
+    "UH-1H Iroquois"
+	],
+  "awacs": [
+    "E-2C Hawkeye"
+  ],
+  "tankers": [
+    "KC-130",
+    "KC-135 Stratotanker"
+  ],
+  "frontline_units": [
+    "M113",
+    "M163 Vulcan Air Defense System",
+	"M48 Chaparral",
+    "AAVP-7A1 'Amtrac'",
+    "M8 Greyhound Light Armored Car",
+	"M10 3-inch Gun Motor Carriage",
+    "M1045 HMMWV (BGM-71 TOW)",
+    "M4A2(75) Sherman",
+	"M4A4 Sherman Firefly",
+    "M60A3 \"Patton\"",
+    "M551 \"Sheridan\"",
+	"QF 3.7-inch AA Gun",
+	"M4 High-Speed Tractor",
+	"M30 Cargo Carrier"
+  ],
+  "artillery_units": [
+    "M109A6 Paladin",
+	"M12 Gun Motor Carriage"
+  ],
+  "logistics_units": [
+    "Truck M818 6x6"
+  ],
+  "infantry_units": [
+    "Infantry M249",
+    "Infantry M4",
+    "Infantry M4 Georgia",
+	"Infantry M1 Garand"
+  ],
+  "preset_groups": [
+    "Ally Flak"
+  ],
+  "naval_units": [
+    "FFG Oliver Hazard Perry",
+    "LS Samuel Chase",
+	"LST Mk.II"
+  ],
+  "ewrs": [
+    "HawkEwrGenerator"
+  ],
+  "helicopter_carrier": [],
+  "carrier_names": [],
+  "helicopter_carrier_names": [],
+  "has_jtac": true,
+  "jtac_unit": "UH-1H Iroquois",
+  "requirements": {
+    "WW2 Asset Pack": "https://www.digitalcombatsimulator.com/en/products/other/wwii_assets_pack/"
+  },
+  "doctrine": "coldwar",
+  "building_set": "ww2ally",
+  "liveries_overrides": {
+    "E-2C Hawkeye": [
+      "e-2d demo"
+    ],
+    "KC-130": [
+      "default"
+    ],
+    "KC-135 Stratotanker": [
+      "Standard USAF"
+    ],
+	"C-130": [
+      "US Air Force"
+    ],
+    "CH-47D": [
+      "standard"
+    ],
+    "A-4E Skyhawk": [
+      "Trainer USN Bare Metal 1956"
+    ],
+    "F-4B Phantom II": [
+      "#f F-4D_65-0608_Minnesota_ANG by Cubeboy"
+    ],
+    "F-4C Phantom II": [
+      "#f F-4D_65-0608_Minnesota_ANG by Cubeboy"
+    ],
+    "F-4E Phantom II (Block 45)": [
+      "ADC AF66-300",
+      "ADC AF66-382"
+    ],
+	"F-100 Super Sabre": [
+      "481 TFS 63054"
+    ],
+	"F-104C Starfighter": [
+      "USAF 70914 George AFB"
+    ],
+    "F-106A Delta Dart": [
+      "2nd FIS 0-80783 by Urbi",
+      "27th FIS 90034 by Urbi",
+      "49th FIS 0-80074 by Urbi",
+      "171st FIS Michigan 60465 by Urbi",
+      "Devils 90043 by Urbi",
+      "5th FIS 0-90002 by Urbi",
+      "48th FIS 0-90127 by Urbi",
+      "84th FIS 90062 by Urbi",
+      "87th FIS 90091 by Urbi",
+      "94th FIS 0-80773 by Urbi",
+      "95th FIS 0-72434 by Urbi",
+      "319th FIS 0-80777 by Urbi",
+      "329th FIS 90109 by Urbi",
+      "456th FIS 90117 by Urbi",
+      "498th FIS 72464 by Urbi",
+      "539th FIS 72470 by Urbi",
+      "MO_ANG 0-72490 by Urbi"
+    ],
+	"F-106B Delta Dart": [
+      "95th FIS 0-72522 by Urbi",
+      "171st FIS Michigan 90150 by Urbi",
+      "186th FIS 72518 by Urbi",
+      "539th FIS 72530 by Urbi",
+      "5th FIS 90159 by Urbi",
+      "27th FIS 0-90149 by Urbi",
+      "49th_FIS 72515 by Urbi",
+      "171st FIS Michigan 90153 by Urbi",
+      "329th FIS 90161 by Urbi",
+      "456th FIS 72526 by Urbi",
+      "ADWC by Urbi",
+      "CA_ANG by Urbi",
+      "FL_ANG 72509 by Urbi",
+      "MASS_ANG 72521 by Urbi"
+    ],
+    "Mirage 2000C": [
+      "71st FIS - Cornfield Bomber",
+      "F-106 Delta Dart California ANG (Fictional)",
+      "F-106 Delta Dart Florida ANG (Fictional)",
+      "F-106 Delta Dart Michigan ANG (Fictional)",
+      "F-106 Delta Dart Montana ANG (Fictional)",
+      "F-106 Delta Dart New Jersey ANG (Fictional)",
+      "F-106 Delta Dart USAF blank (Fictional)"
+    ],
+	"UH-1H Iroquois": [
+      "Army Standard",
+      "[Civilian] Medical"
+    ],
+    "B-17G Flying Fortress": [
+      "91st BG, 324th BS Generic",
+      "B-17G"
+    ],
+	"B-52H Stratofortress": [
+      "usaf standard"
+    ],
+	"F-86F Sabre": [
+      "US Air Force",
+      "US Air Force (code FU-178)",
+      "US Air Force (Squadron 39)"
+    ]
+  },
+  "liveries_overrides_ground_forces": {
+    "Soldier M249": [
+      "summer"
+    ],
+    "Soldier M4": [
+      "summer"
+    ],
+    "Soldier M4 GRG": [
+      "Vietnam 1st air cav m69",
+      "Vietnam 1st air cav susp",
+      "Vietnam 1st inf m69",
+      "Vietnam 1st inf susp"
+    ],
+    "m-109": [
+      "VIETNAM",
+      "VIETNAM 1",
+      "VIETNAM2"
+    ],
+    "m-113": [
+      "summer",
+      "summer_MED",
+      "autumn",
+      "autumn_MED",
+      "spring",
+      "spring_MED",
+      "green",
+      "green_MED",
+      "Vietnam"
+    ],
+    "m 818": [
+      "Vietnam"
+    ],
+	"La_Combattante_II": [
+      "USA"
+    ]
+  }
+}
