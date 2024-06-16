@@ -144,6 +144,8 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.registerField("high_digit_sams", self.high_digit_sams)
         self.swedishmilitaryassetspack = QtWidgets.QCheckBox()
         self.registerField("swedishmilitaryassetspack", self.swedishmilitaryassetspack)
+        self.coldwarassets = QtWidgets.QCheckBox()
+        self.registerField("coldwarassets", self.coldwarassets)
         self.SWPack = QtWidgets.QCheckBox()
         self.registerField("SWPack", self.SWPack)
         self.spanishnavypack = QtWidgets.QCheckBox()
@@ -176,7 +178,8 @@ class GeneratorOptions(QtWidgets.QWizardPage):
             ("F-100 Super Sabre (v2.7.18.30765 patch 20.10.22)", self.f100_supersabre),
             ("F-104 Starfighter (v2.7.11.222.01)", self.f104_starfighter),
             ("F-105 Thunderchief (v2.7.12.23x)", self.f105_thunderchief),
-            ("Frenchpack", self.frenchpack),
+            ("Cold War Assets mod (v1.0)", self.coldwarassets),
+            ("Frenchpack (v4.9.1)", self.frenchpack),
             ("High Digit SAMs", self.high_digit_sams),
             ("Swedish Military Assets pack (1.10)", self.swedishmilitaryassetspack),
             ("JAS 39 Gripen (v1.8.5-beta)", self.jas39_gripen),
