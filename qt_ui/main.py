@@ -350,6 +350,7 @@ def create_game(
             hawk_t1a=False,
             su30_flanker_h=False,
             su57_felon=False,
+            coldwarassets=False,
             frenchpack=False,
             high_digit_sams=False,
         ),
