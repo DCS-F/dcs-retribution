@@ -17,7 +17,11 @@
     "MiG-19P Farmer-B",
     "Tu-142 Bear-F",
     "Tu-95MS Bear-H",
-	"Tu-16 Badger"
+    "Tu-4K Bull",
+    "Tu-16 Badger-B",
+    "Tu-22D Blinder",
+    "Tu-22KD Blinder",
+    "Tu-16 Badger"
   ],
   "awacs": [
     "A-50"

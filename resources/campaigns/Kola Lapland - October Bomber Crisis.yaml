@@ -44,6 +44,7 @@ settings:
     splashdamageclusters.clusterEffects: true
     splashdamageclusters.shipRadarDamage: true
  #Mods to be used
+  coldwarassets: true
   f100_supersabre: true
   f104_starfighter: true
   f106_deltadart: true
@@ -235,11 +236,19 @@ squadrons:
       aircraft:
         - Mi-24V Hind-E
   Sirniö roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-22D Blinder
     - primary: Air Assault
       secondary: any
       aircraft:
         - Mi-24V Hind-E
   Pekkala roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-22KD Blinder
     - primary: Air Assault
       secondary: any
       aircraft:
@@ -250,6 +259,10 @@ squadrons:
       aircraft:
         - Mi-24V Hind-E
   Kallaanvaara roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger-B
     - primary: Air Assault
       secondary: any
       aircraft:
@@ -260,31 +273,55 @@ squadrons:
       aircraft:
         - Mi-24V Hind-E
   Rajala roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-22D Blinder
     - primary: Air Assault
       secondary: any
       aircraft:
         - Mi-24V Hind-E
   Ylläksen varalaskupaikka:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-22KD Blinder
     - primary: Air Assault
       secondary: any
       aircraft:
         - Mi-24V Hind-E
   Lokka roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger-B
     - primary: Air Assault
       secondary: any
       aircraft:
         - Mi-24V Hind-E
   Ivalo roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-22D Blinder
     - primary: Air Assault
       secondary: any
       aircraft:
         - Mi-24V Hind-E
   Inari roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-22KD Blinder
     - primary: Air Assault
       secondary: any
       aircraft:
         - Mi-24V Hind-E
   Kaamanen roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger-B
     - primary: Air Assault
       secondary: any
       aircraft:
@@ -295,26 +332,46 @@ squadrons:
       aircraft:
         - Mi-8MTV2 Hip
   Kovdor roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
     - primary: Air Assault
       secondary: any
       aircraft:
         - Mi-24V Hind-E
   Kuolajärvi roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
     - primary: Air Assault
       secondary: any
       aircraft:
         - Mi-24V Hind-E
   Alakurtti roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
     - primary: Air Assault
       secondary: any
       aircraft:
         - Mi-24V Hind-E
   Eyna roadbase:
+    - primary: DEAD
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
     - primary: Air Assault
       secondary: any
       aircraft:
         - Mi-24V Hind-E
   Polarnie Zori roadbase:
+    - primary: DEAD
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
     - primary: Air Assault
       secondary: any
       aircraft:
