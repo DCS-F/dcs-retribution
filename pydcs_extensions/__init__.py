@@ -25,6 +25,7 @@ from .hawk_t1a import *
 from .ov10a import *
 from .spanishnavypack import *
 from .super_etendard import *
+from .su15 import *
 from .su30 import *
 from .su57 import *
 from .swedishmilitaryassetspack import *

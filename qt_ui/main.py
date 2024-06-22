@@ -348,6 +348,7 @@ def create_game(
             jas39_gripen=False,
             t45_goshawk=False,
             hawk_t1a=False,
+            su15_flagon=False,
             su30_flanker_h=False,
             su57_felon=False,
             coldwarassets=False,

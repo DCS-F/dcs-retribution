@@ -77,6 +77,7 @@ class ModSettings:
     t45_goshawk: bool = False
     hawk_t1a: bool = False
     super_etendard: bool = False
+    su15_flagon: bool = False
     su30_flanker_h: bool = False
     su57_felon: bool = False
     frenchpack: bool = False
