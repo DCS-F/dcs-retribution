@@ -96,6 +96,10 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.registerField("a7e_corsair2", self.a7e_corsair2)
         self.hercules = QtWidgets.QCheckBox()
         self.registerField("hercules", self.hercules)
+        self.oh_6 = QtWidgets.QCheckBox()
+        self.registerField("oh_6", self.oh_6)
+        self.oh_6_vietnamassetpack = QtWidgets.QCheckBox()
+        self.registerField("oh_6_vietnamassetpack", self.oh_6_vietnamassetpack)
         self.uh_60l = QtWidgets.QCheckBox()
         self.registerField("uh_60l", self.uh_60l)
         self.f4bc_phantom = QtWidgets.QCheckBox()
@@ -195,6 +199,8 @@ class GeneratorOptions(QtWidgets.QWizardPage):
             ("Su-15 Flagon (v1.0)", self.su15_flagon),
             ("Su-30 Flanker-H (V2.7.3 beta)", self.su30_flanker_h),
             ("Su-57 Felon (build-04)", self.su57_felon),
+            ("OH-6 Cayuse (v1.2)", self.oh_6),
+            ("OH-6 Vietnam Asset Pack (v1.0)", self.oh_6_vietnamassetpack),
             ("UH-60L Black Hawk (v1.3.1)", self.uh_60l),
             ("Star Wars Modpack 2.54+", self.SWPack),
             ("Spanish Naval Assets pack (desdemicabina 3.2.0)", self.spanishnavypack),
