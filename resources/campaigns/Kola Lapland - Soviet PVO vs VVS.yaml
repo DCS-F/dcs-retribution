@@ -1,0 +1,496 @@
+---
+name: Kola Peninsula / Lapland - Soviet PVO vs. VVS
+theater: Kola
+authors: Ghosti
+recommended_player_faction: Soviet Union 1960 (VVS)
+recommended_enemy_faction: Soviet Union 1960 (PVO)
+description:
+  <p>The power struggle between Leonid Brezhnev and Nikita Khrushchev has triggered a civil war within the Soviet Union.</p>
+  <p>The Soviet Air Defence Forces (PVO) still support the old regime, while the Soviet Air Force (VVS) is openly in support of the new one.</p>
+  <p>This has resulted in the PVO interceptors engaging the VVS fighters and long range aviation bombers, some of which have escaped to neutral Finland.</p>
+miz: Kola Lapland - Shaddock in the Lake.miz
+performance: 3
+recommended_start_date: 1964-10-14
+version: "10.7"
+
+settings:
+  pretense_extra_zone_connections: 0
+  pretense_disable_ground_assaults: true
+  pretense_disable_supply_convoys: true
+  pretense_ground_assaults_prefer_roads: true
+  pretense_supply_convoys_prefer_roads: true
+  pretense_num_of_cargo_planes: 1
+  pretense_do_not_generate_sead_missions: true
+  pretense_do_not_generate_csar_missions: true
+  pretense_controllable_carrier: false
+  perf_culling: false
+  perf_culling_distance: 50
+  player_skill: "High"
+  enemy_skill: "Average"
+  enemy_vehicle_skill: "Average"
+  night_day_missions: NightMissions.OnlyDay
+  labels: "Dot Only"
+  squadron_random_chance: 100
+
+  ground_start_ai_planes: true
+  ground_start_scenery_remove_triggers: false
+  ground_start_ground_power_trucks: false
+  ground_start_ground_power_trucks_roadbase: false
+
+  plugins:
+    gamemaster: true
+    splashdamageclusters: true
+    splashdamageclusters.bdaMessages: true
+    splashdamageclusters.clusterEffects: true
+    splashdamageclusters.shipRadarDamage: true
+ #Mods to be used
+  coldwarassets: true
+  su15_flagon: true
+
+squadrons:
+  #Lakselv
+  1:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: Refueling
+      aircraft:
+        - IL-78M
+    - primary: AEW&C
+      aircraft:
+        - A-50
+  Leirpollskogen FARP:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      aircraft:
+        - Mi-8MTV2 Hip
+  Leirpollskogen roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - L-39ZA Albatros
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      aircraft:
+        - Mi-8MTV2 Hip
+  Kirkenes EWR site:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      aircraft:
+        - Mi-8MTV2 Hip
+  #Kiruna
+  5:
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+  #Kalixfors
+  13:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+  #Bodø
+  7:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: Refueling
+      aircraft:
+        - KC-130
+    - primary: AEW&C
+      aircraft:
+        - A-50
+  #Kemi Tornio
+  3:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+  Jokkmokk airbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
+    - primary: BARCAP
+      secondary: air-to-ground
+      aircraft:
+        - MiG-21bis Fishbed-N
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+  Ranuan varalaskupaikka:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
+    - primary: BARCAP
+      secondary: air-to-ground
+      aircraft:
+        - MiG-21bis Fishbed-N
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - L-39ZA Albatros
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      aircraft:
+        - Mi-8MTV2 Hip
+  Pudasjärven varalaskupaikka:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - L-39ZA Albatros
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      aircraft:
+        - Mi-8MTV2 Hip
+  #Rovaniemi
+  2:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-95MS Bear-H
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+  #Vuojärvi highway strip
+  4:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-95MS Bear-H
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+  Vuojärvi helicopter base:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Sirniö roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-22D Blinder
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Pekkala roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-22KD Blinder
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Kallaanvaara helicopter base:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Kallaanvaara roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger-B
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Rajala helicopter base:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Rajala roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-22D Blinder
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Ylläksen varalaskupaikka:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-22KD Blinder
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Lokka roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger-B
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Ivalo roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-22D Blinder
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Inari roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-22KD Blinder
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Kaamanen roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger-B
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Karasjok EWR site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Kovdor roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Kuolajärvi roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Alakurtti roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Eyna roadbase:
+    - primary: DEAD
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Polarnie Zori roadbase:
+    - primary: DEAD
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Kandalaksha aluminum plant:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Polyarny SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Gadzhiyevo SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Petchenga SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Poselok SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Vajda-Guba EWR site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Kharlovka SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Ostrovnoy SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Apatity roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Su-15 Flagon-A
+    - primary: DEAD
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+  #Severomorsk1
+  8:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Su-15 Flagon-A
+    - primary: DEAD
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+  #Severomorsk3
+  6:
+    - primary: AEW&C
+      aircraft:
+        - A-50
+    - primary: Refueling
+      aircraft:
+        - IL-78M
+    - primary: DEAD
+      secondary: any
+      aircraft:
+        - AJS-37 Viggen
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - Su-15 Flagon-A
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  #Olenegorsk
+  9:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Su-15 Flagon-A
+    - primary: DEAD
+      secondary: any
+      aircraft:
+        - AJS-37 Viggen
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+  #Monchegorsk
+  10:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Su-15 Flagon-A
+    - primary: DEAD
+      secondary: any
+      aircraft:
+        - AJS-37 Viggen
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+  #Murmansk International
+  12:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Su-15 Flagon-A
+    - primary: DEAD
+      secondary: any
+      aircraft:
+        - F-4E Phantom II (Block 45)
+    - primary: Transport
+      secondary: any
+      aircraft:
+        - IL-76MD
