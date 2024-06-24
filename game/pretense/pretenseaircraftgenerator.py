@@ -354,6 +354,7 @@ class PretenseAircraftGenerator:
             self.generate_pretense_flight(
                 ato, cp, squadron, aircraft_per_flight, flight_type
             )
+        random.shuffle(random_squadron_list)
         # Then plan SEAD and DEAD, if capable
         if sead_capable_cp:
             while num_of_sead < self.game.settings.pretense_sead_flights_per_cp:
@@ -396,6 +397,7 @@ class PretenseAircraftGenerator:
                     self.generate_pretense_flight(
                         ato, cp, squadron, aircraft_per_flight, flight_type
                     )
+        random.shuffle(random_squadron_list)
         # Then plan Strike, if capable
         if strike_capable_cp:
             while num_of_strike < self.game.settings.pretense_strike_flights_per_cp:
@@ -423,6 +425,7 @@ class PretenseAircraftGenerator:
                                 ato, cp, squadron, aircraft_per_flight, flight_type
                             )
                             break
+        random.shuffle(random_squadron_list)
         # Then plan air-to-air, if capable
         if patrol_capable_cp:
             while num_of_cap < self.game.settings.pretense_barcap_flights_per_cp:
@@ -447,6 +450,7 @@ class PretenseAircraftGenerator:
                                 ato, cp, squadron, aircraft_per_flight, flight_type
                             )
                             break
+        random.shuffle(random_squadron_list)
         # Then plan CAS, if capable
         if cas_capable_cp:
             while num_of_cas < self.game.settings.pretense_cas_flights_per_cp:
@@ -472,6 +476,7 @@ class PretenseAircraftGenerator:
                         self.generate_pretense_flight(
                             ato, cp, squadron, aircraft_per_flight, flight_type
                         )
+        random.shuffle(random_squadron_list)
         # And finally, plan BAI, if capable
         if bai_capable_cp:
             while num_of_bai < self.game.settings.pretense_bai_flights_per_cp:
