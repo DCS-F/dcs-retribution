@@ -14,6 +14,7 @@ origin: France
 price: 16
 role: Multirole Fighter
 max_range: 200
+gunfighter: true
 variants:
   Mirage-F1M-CE: {}
 tasks:

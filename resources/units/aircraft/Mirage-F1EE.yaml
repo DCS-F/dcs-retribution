@@ -12,6 +12,7 @@ role: Multirole Fighter
 max_range: 200
 variants:
   Mirage-F1EE: {}
+gunfighter: true
 radios:
   intra_flight: UHF TRAP 137B
   inter_flight: V/UHF TRAP 136

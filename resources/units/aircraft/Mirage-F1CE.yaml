@@ -10,6 +10,7 @@ origin: France
 price: 14
 role: Fighter
 max_range: 200
+gunfighter: true
 variants:
   Mirage-F1CE: {}
 radios:

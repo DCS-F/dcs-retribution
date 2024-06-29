@@ -15,6 +15,7 @@ origin: USA
 price: 10
 role: Fighter-Bomber
 max_range: 370
+gunfighter: true
 carrier_capable: false
 variants:
   F-4C Phantom II: {}

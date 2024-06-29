@@ -19,6 +19,7 @@ origin: France
 price: 15
 role: Multirole Fighter
 max_range: 200
+gunfighter: true
 variants:
   Mirage-F1CT: {}
 tasks:

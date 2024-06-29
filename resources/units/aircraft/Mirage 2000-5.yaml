@@ -13,6 +13,7 @@ origin: France
 price: 18
 role: Multirole Fighter
 max_range: 400
+gunfighter: true
 variants:
   Mirage 2000-5: {}
 tasks:

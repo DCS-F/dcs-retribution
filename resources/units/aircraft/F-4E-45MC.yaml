@@ -14,6 +14,7 @@ origin: USA
 price: 10
 role: Fighter-Bomber
 max_range: 200
+gunfighter: true
 variants:
   F-4E-45MC Phantom II: {}
   F-4E Phantom II (Block 45): {}
