@@ -1,0 +1,294 @@
+---
+name: Syria - Cyprus face-off
+theater: Syria
+authors: Ghosti
+description: <p>Turkey has invaded Cyprus again and pushed the Cypriot National Guard to the outskirts of Larnaca. The Hellenic Armed Forces and ELDYK Hellenic Force in Cyprus are dispatching reinforcements to help the Cypriots to strike back.</p>
+version: "10.1"
+recommended_player_faction: Greece-Cyprus 1995
+recommended_enemy_faction: Turkey 1985
+miz: syria_cyprus_greece_vs_turkey.miz
+performance: 2
+recommended_start_date: 1995-05-17
+recommended_player_money: 1000
+recommended_enemy_money: 1200
+recommended_player_income_multiplier: 1.1
+recommended_enemy_income_multiplier: 0.7
+squadrons:
+  # BLUFOR CVN
+  Naval-1:
+    - primary: BARCAP
+      secondary: air-to-air
+      aircraft:
+        - F-14B Tomcat
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-14B Tomcat
+    - primary: Refueling
+      aircraft:
+        - S-3B Tanker
+  # BLUFOR LHA
+  Naval-2:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342M Gazelle
+  # OPFOR CVN
+  Naval-3:
+    - primary: BARCAP
+      secondary: air-to-air
+      aircraft:
+        - Su-33 Flanker-D
+    - primary: TARCAP
+      secondary: air-to-ground
+      aircraft:
+        - Su-33 Flanker-D
+  # OPFOR LHA
+  Naval-4:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Ka-50 Hokum
+  # Adana Sakirpasa
+  2:
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-16C Fighting Falcon (IDF mod)
+        - F-86F Sabre
+  # Gaziantep
+  11:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-16D Fighting Falcon (Block 50+)
+        - F-100 Super Sabre
+  # Hatay
+  15:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - F-100 Super Sabre
+  # Incirlik
+  16:
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-16D Fighting Falcon (Block 50)
+        - F-86F Sabre
+    - primary: Transport
+      aircraft:
+        - C-130
+    - primary: Refueling
+      aircraft:
+        - KC-135 Stratotanker
+    - primary: AEW&C
+      aircraft:
+        - E-3A
+  # Gazipasa
+  41:
+    - primary: SEAD
+      secondary: any
+      aircraft:
+        - F-4E Phantom II
+  # Kingsfield
+  45:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AH-1W SuperCobra
+  # Akrotiri
+  # 44:
+  # Paphos
+  46:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-104G Starfighter
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-5E Tiger II
+  # Larnaca
+  47:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342M Gazelle
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - SA 342M Gazelle Mistral
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+  # Lakatamia
+  48:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AH-1W SuperCobra
+  # Ercan
+  49:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - OH-58D Kiowa Warrior
+  # Gecitkale
+  50:
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-104S Starfighter
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - F-104S Starfighter A/G
+  # Pinarbashi
+  51:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois  
+  # Sanliurfa
+  58:
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-5E Tiger II
+  FOB Gecitkale:
+    - primary: Transport
+      aircraft:
+        - UH-60A
+  FOB Guzelyurt:
+    - primary: Transport
+      aircraft:
+        - UH-60L
+  FOB Andreas:       
+    - primary: Transport
+      aircraft:
+        - CH-47D
+  Nicosia Airport:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-84G Thunderjet
+        - F-100 Super Sabre
+  Kalymnos National Airport:
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - Mirage-F1CG
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000-5
+        - F-4E Phantom II
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+  Kos International Airport:
+    - primary: SEAD
+      secondary: any
+      aircraft:
+        - F-4E Phantom II
+    - primary: Transport
+      aircraft:
+        - C-130
+    - primary: Transport
+      aircraft:
+        - C-130J-30 Super Hercules
+  Rhodes Maritsa Air Base:
+    - primary: Refueling
+      aircraft:
+        - KC-130
+    - primary: AEW&C
+      aircraft:
+        - E-3A
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-16A Fighting Falcon (A/G)
+        - F-84G Thunderjet
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-16C Fighting Falcon (Block 50, A/A)
+        - F-86F Sabre
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-16C Fighting Falcon (Block 50, AI)
+        - F-86F Sabre
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-16D Fighting Falcon (Block 52)
+        - F-86F Sabre
+  Karpathos Air Force Detachment:
+    - primary: SEAD
+      secondary: any
+      aircraft:
+        - F-16CJ Fighting Falcon (Block 52D, AI)
+        - F-4E Phantom II
+    - primary: SEAD
+      secondary: any
+      aircraft:
+        - F-16CJ Fighting Falcon (Block 52D)
+        - F-4E Phantom II
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-16CM Fighting Falcon (Block 50, A/A)
+        - F-86F Sabre
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-16CM Fighting Falcon (Block 50, A/G)
+        - F-84G Thunderjet
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-16D Fighting Falcon (Block 52+)
+        - F-86F Sabre
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AH-64A Apache
+        - Ka-50 Hokum
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AH-64D Apache Longbow
+        - F-84G Thunderjet
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AH-64D Apache Longbow (AI)
+        - Ka-50 Hokum
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - OH-58D Kiowa Warrior
+    - primary: Transport
+      aircraft:
+        - CH-47D
+
+
+
+
+
