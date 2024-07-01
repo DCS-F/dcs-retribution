@@ -16,6 +16,7 @@
 	"F-4B Phantom II",
     "F-4C Phantom II",
 	"F-4E Phantom II",
+	"F-4E Phantom II (Block 45)",
     "F-5E Tiger II",
     "F-86F Sabre",
 	"F-100 Super Sabre",
@@ -23,6 +24,7 @@
 	"F-105D Thunderchief",
 	"F-105G Thunderchief",
 	"OV-10A Bronco",
+    "OH-6A Cayuse",
     "UH-1H Iroquois",
 	"AH-1W SuperCobra",
 	"Ka-50 Hokum",
@@ -51,6 +53,7 @@
     "M4A2(75) Sherman",
 	"M4A4 Sherman Firefly",
     "M551 \"Sheridan\"",
+    "M151A1C MUTT w/ 106mm Recoilless Rifle",
 	"QF 3.7-inch AA Gun",
 	"M4 High-Speed Tractor",
 	"M30 Cargo Carrier"
@@ -60,7 +63,10 @@
 	"M12 Gun Motor Carriage"
   ],
   "logistics_units": [
-    "Truck M818 6x6"
+    "Truck M818 6x6",
+    "VAP US M35 Truck",
+    "M151 1/4-ton 4x4 utility truck",
+    "M274 1/2-ton 4x4 utility truck"
   ],
   "infantry_units": [
     "Infantry M249",
@@ -173,12 +179,23 @@
       "af standard 4",
       "af standard 5"
     ],
+	"F-4E Phantom II (Block 45)": [
+      "RS68-480_SEA_512TFS",
+      "RS68-517_SEA_526TFS",
+      "OS68-349_SEAW_36TFS",
+      "JV67-287_SEAW_469TFS",
+      "JV67-288_SEAW_469TFS",
+      "WA68-373_SEA_57TTW"
+    ],
     "AJS-37 Viggen": [
       "DDS_AJS37_M90_Blue",
 	  "ThunderVigg"
     ],
 	"F-5E Tiger II": [
-      "USAF 'Southeast Asia'"
+      "USAF 'Southeast Asia'",
+      "Vietnam RVNAF",
+      "Skoshi Tiger",
+      "USAF NAM"
     ],
 	"F-100 Super Sabre": [
       "AF 53 CT 318"
@@ -191,6 +208,9 @@
     ],
 	"F-105G Thunderchief": [
       "128th TFS Georgia"
+    ],
+    "OH-6A Cayuse": [
+      "USAF SEA Camo"
     ],
 	"OV-10A Bronco": [
       "VAL-4 Black Ponies UM15",
@@ -235,7 +255,7 @@
       "USAF YJ56-470"
     ],
 	"A-20G Havoc": [
-      "USAF 668th BS"
+      "USAF SEA Camo"
     ],
 	"P-47D-40 Thunderbolt": [
       "Skyraider"
