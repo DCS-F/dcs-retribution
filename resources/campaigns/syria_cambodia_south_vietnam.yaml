@@ -1,0 +1,422 @@
+---
+name: Syria - Vietnam/Cambodia - Charlie Don't Surf
+theater: Syria
+authors: Ghosti
+description: <p>This campaign is set during the Tet Offensive in the Vietnam War. North Vietnamese / Viet Cong forces have conducted a surprise attack on South Vietnamese and American forces and have entered the outskirts of Saigon, during the Lunar New Year festival of Tet. Once they have completed regrouping, the American/South Vietnamese begin their counterattack.</p>
+recommended_player_faction: USA 1970 Limited Armor
+recommended_enemy_faction: Viet Cong 1970
+recommended_start_date: 1968-01-31
+miz: syria_cambodia_south_vietnam.miz
+performance: 3
+version: "10.2"
+
+settings:
+  pretense_extra_zone_connections: 0
+  pretense_disable_supply_convoys: true
+  pretense_ground_assaults_prefer_roads: false
+  pretense_num_of_cargo_planes: 1
+  pretense_do_not_generate_sead_missions: true
+  perf_culling: false
+  perf_culling_distance: 30
+  player_skill: "High"
+  enemy_skill: "Average"
+  enemy_vehicle_skill: "Average"
+  night_day_missions: NightMissions.OnlyDay
+  labels: "Dot Only"
+
+  ground_start_ai_planes: true
+  ground_start_scenery_remove_triggers: false
+  ground_start_ground_power_trucks: false
+  ground_start_ground_power_trucks_roadbase: false
+
+  plugins:
+    gamemaster: true
+    splashdamageclusters: true
+    splashdamageclusters.bdaMessages: true
+    splashdamageclusters.clusterEffects: true
+    splashdamageclusters.shipRadarDamage: true
+ #Mods to be used
+  a4_skyhawk: true
+  a6a_intruder: true
+  f4bc_phantom: true
+  f100_supersabre: true
+  f104_starfighter: true
+  f105_thunderchief: true
+  frenchpack: true
+  ov10a_bronco: true
+  oh_6: true
+  oh_6_vietnamassetpack: true
+
+squadrons:
+  # Roadbase, 9000m runway
+  Phnom Penh, Cambodia:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - L-39ZA Albatros
+    - primary: SEAD
+      secondary: air-to-ground
+      aircraft:
+        - Su-22M4 Fitter-K
+  # Roadbase, 3800m & 2800m runways
+  Snuol Airbase, Cambodia:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - L-39ZA Albatros
+    - primary: SEAD
+      secondary: air-to-ground
+      aircraft:
+        - Su-22M4 Fitter-K
+  # Helicopter base, border of Cambodia & South Vietnam
+  Prey Veng, Cambodia:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Helicopter base, City of Memot, "The Fish-hook", Base Area 353, west of Base Area 707
+  Memot Fish-hook:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Roadbase, 1900m runway
+  Parrots Beak, Mekong Delta:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - L-39ZA Albatros
+  # Helicopter base, South Vietnam
+  Tay Ninh Combat Base:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Roadbase, 2x2000m runways
+  Tan Son Nhut Airbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - L-39ZA Albatros
+    - primary: SEAD
+      secondary: air-to-ground
+      aircraft:
+        - Su-22M4 Fitter-K
+  # Roadbase, 1700m runway
+  An Loc Combat Base:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - L-39ZA Albatros
+  # Roadbase, 1800m, 1600m & 1300m runways
+  Bien Hoa Airbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - L-39ZA Albatros
+    - primary: SEAD
+      secondary: air-to-ground
+      aircraft:
+        - Su-22M4 Fitter-K
+  # Helicopter base, South Vietnam
+  Bien Hoa Helicopter Base:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Roadbase, 2000m runway
+  Phan Rang Airbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - L-39ZA Albatros
+  # Roadbase, 1800m runway
+  Cam Ranh Airbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - L-39ZA Albatros
+  # Roadbase, 2x1900m runways
+  Nha Trang Airbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - L-39ZA Albatros
+  # Roadbase, 2500m & 1700m runways
+  Saigon North Airbase:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-5E Tiger II
+    - primary: SEAD
+      secondary: any
+      aircraft:
+        - F-105G Thunderchief
+    - primary: Transport
+      aircraft:
+        - CH-47D
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AH-1W SuperCobra
+  # Roadbase, 2000m & 1000m runways
+  Saigon South Airbase:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-100 Super Sabre
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-105D Thunderchief
+    - primary: Transport
+      aircraft:
+        - CH-47D
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AH-1W SuperCobra
+  # Roadbase, 3000m runway
+  Pleiku Airbase West:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - P-47D-40 Thunderbolt
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-104C Starfighter
+    - primary: Transport
+      aircraft:
+        - CH-47D
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AH-1W SuperCobra
+  # Roadbase, 2700m runway
+  Pleiku Airbase East:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - P-51D-30-NA Mustang
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-86F Sabre
+    - primary: Transport
+      aircraft:
+        - CH-47D
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AH-1W SuperCobra
+  # Adana Sakirpasa (Saigon, South Vietnam)
+  # 2900m runway
+  2:
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-5E Tiger II
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - AJS-37 Viggen
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-20G Havoc
+    - primary: Refueling
+      aircraft:
+        - KC-130
+  # Gaziantep (South Vietnam)
+  # 3100m runway
+  11:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-5E Tiger II
+  # Hatay (South Vietnam)
+  # 3100m runway
+  15:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - F-100 Super Sabre
+  # Incirlik (Saigon, South Vietnam)
+  # 3300m runway
+  16:
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-5E Tiger II
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-4C Phantom II
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-4E Phantom II
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - AJS-37 Viggen
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - OV-10A Bronco
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-20G Havoc
+    - primary: Transport
+      aircraft:
+        - C-130
+    - primary: Refueling
+      aircraft:
+        - KC-135 Stratotanker
+    - primary: AEW&C
+      aircraft:
+        - E-2C Hawkeye
+  # Gazipasa (Binh Thuy Airbase / Can Tho)
+  # 2500m runway
+  41:
+    - primary: SEAD
+      secondary: any
+      aircraft:
+        - F-4E Phantom II
+  # Sanliurfa (South Vietnam)
+  # 3100m runway
+  58:
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-4C Phantom II
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-4E Phantom II
+
+  Naval-2:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AH-1W SuperCobra
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Ka-50 Hokum
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+  Naval-3:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-4B Phantom II
+    - primary: Refueling
+      aircraft:
+        - S-3B Tanker
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - S-3B Viking
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - A-6A Intruder
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - A-4E Skyhawk
+    - primary: AEW&C
+      aircraft:
+        - E-2C Hawkeye
+  Naval-4:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-4B Phantom II
+    - primary: Refueling
+      aircraft:
+        - S-3B Tanker
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - S-3B Viking
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - A-6A Intruder
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - A-4E Skyhawk
+    - primary: AEW&C
+      aircraft:
+        - E-2C Hawkeye
+        
+carriers:
+  Naval-3:
+    preferred_name: CV-59 Forrestal
+    preferred_type: Forrestal
+  Naval-4:
+    preferred_name: CVN-65 Enterprise
+    preferred_type: Stennis
