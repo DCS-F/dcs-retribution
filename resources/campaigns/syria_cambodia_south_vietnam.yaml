@@ -13,9 +13,12 @@ version: "10.2"
 settings:
   pretense_extra_zone_connections: 0
   pretense_disable_supply_convoys: true
-  pretense_ground_assaults_prefer_roads: false
+  pretense_ground_assaults_prefer_roads: true
   pretense_num_of_cargo_planes: 1
   pretense_do_not_generate_sead_missions: true
+  pretense_do_not_generate_csar_missions: true
+  pretense_controllable_carrier: false
+  pretense_carrier_steams_into_wind: false
   perf_culling: false
   perf_culling_distance: 30
   player_skill: "High"
