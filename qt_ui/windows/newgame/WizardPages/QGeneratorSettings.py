@@ -265,6 +265,8 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.super_etendard.setChecked(s.get("super_etendard", False))
         self.su30_flanker_h.setChecked(s.get("su30_flanker_h", False))
         self.su57_felon.setChecked(s.get("su57_felon", False))
+        self.oh_6.setChecked(s.get("oh_6", False))
+        self.oh_6_vietnamassetpack.setChecked(s.get("oh_6_vietnamassetpack", False))
         self.ov10a_bronco.setChecked(s.get("ov10a_bronco", False))
         self.frenchpack.setChecked(s.get("frenchpack", False))
         self.high_digit_sams.setChecked(s.get("high_digit_sams", False))
