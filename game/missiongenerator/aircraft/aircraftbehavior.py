@@ -1,6 +1,7 @@
 import logging
 from typing import Any, Optional, Type
 
+from dcs.planes import F_117A
 from dcs.task import (
     AWACS,
     AWACSTaskAction,
@@ -35,6 +36,7 @@ from game.ato.flightplans.aewc import AewcFlightPlan
 from game.ato.flightplans.packagerefueling import PackageRefuelingFlightPlan
 from game.ato.flightplans.theaterrefueling import TheaterRefuelingFlightPlan
 from game.ato.flightwaypointtype import FlightWaypointType
+from pydcs_extensions import T_45, OH_6A
 
 
 class AircraftBehavior:
@@ -144,7 +146,12 @@ class AircraftBehavior:
         self.configure_behavior(flight, group, rtb_winchester=ammo_type)
 
     def configure_cas(self, group: FlyingGroup[Any], flight: Flight) -> None:
-        self.configure_task(flight, group, CAS, AFAC)
+        if flight.unit_type.dcs_unit_type in [OH_6A]:
+            # Convert OH-6 waypoints into Reconnaissance waypoints,
+            # because this helicopter is not capable of the CAS or Strike task in DCS
+            self.configure_task(flight, group, Reconnaissance)
+        else:
+            self.configure_task(flight, group, CAS, AFAC)
         self.configure_behavior(
             flight,
             group,
@@ -162,16 +169,21 @@ class AircraftBehavior:
         # Note that the only effect that the DCS task type has is in determining which
         # waypoint actions the group may perform.
 
-        self.configure_task(flight, group, SEAD, CAS)
-        self.configure_behavior(
-            flight,
-            group,
-            react_on_threat=OptReactOnThreat.Values.EvadeFire,
-            roe=OptROE.Values.OpenFire,
-            rtb_winchester=OptRTBOnOutOfAmmo.Values.All,
-            restrict_jettison=True,
-            mission_uses_gun=False,
-        )
+        # Convert F-117 and T-45 CAS waypoints into Strike waypoints,
+        # because these aircraft aren't capable of the CAS task in DCS
+        if flight.unit_type.dcs_unit_type in [F_117A, T_45]:
+            self.configure_strike(group, flight)
+        else:
+            self.configure_task(flight, group, SEAD, CAS)
+            self.configure_behavior(
+                flight,
+                group,
+                react_on_threat=OptReactOnThreat.Values.EvadeFire,
+                roe=OptROE.Values.OpenFire,
+                rtb_winchester=OptRTBOnOutOfAmmo.Values.All,
+                restrict_jettison=True,
+                mission_uses_gun=False,
+            )
 
     def configure_sead(self, group: FlyingGroup[Any], flight: Flight) -> None:
         # CAS is able to perform all the same tasks as SEAD using a superset of the
@@ -192,7 +204,12 @@ class AircraftBehavior:
         )
 
     def configure_strike(self, group: FlyingGroup[Any], flight: Flight) -> None:
-        self.configure_task(flight, group, GroundAttack, PinpointStrike)
+        if flight.unit_type.dcs_unit_type in [OH_6A]:
+            # Convert OH-6 waypoints into Reconnaissance waypoints,
+            # because this helicopter is not capable of the CAS or Strike task in DCS
+            self.configure_task(flight, group, Reconnaissance)
+        else:
+            self.configure_task(flight, group, GroundAttack, PinpointStrike)
         self.configure_behavior(
             flight,
             group,
@@ -225,7 +242,12 @@ class AircraftBehavior:
         )
 
     def configure_oca_strike(self, group: FlyingGroup[Any], flight: Flight) -> None:
-        self.configure_task(flight, group, CAS)
+        if flight.unit_type.dcs_unit_type in [OH_6A]:
+            # Convert OH-6 waypoints into Reconnaissance waypoints,
+            # because this helicopter is not capable of the CAS or Strike task in DCS
+            self.configure_task(flight, group, Reconnaissance)
+        else:
+            self.configure_task(flight, group, CAS)
         self.configure_behavior(
             flight,
             group,
