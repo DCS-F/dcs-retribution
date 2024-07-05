@@ -23,6 +23,7 @@
 	"F-104C Starfighter",
 	"F-105D Thunderchief",
 	"F-105G Thunderchief",
+    "JF-17 Thunder",
 	"OV-10A Bronco",
     "OH-6A Cayuse",
     "UH-1H Iroquois",
@@ -209,8 +210,12 @@
 	"F-105G Thunderchief": [
       "128th TFS Georgia"
     ],
+    "JF-17 Thunder": [
+      "USAF_SEA_camo_AF10",
+	  "USAF_SEA_camo_348"
+    ],
     "OH-6A Cayuse": [
-      "USAF SEA Camo"
+      "US Army SEA Camo"
     ],
 	"OV-10A Bronco": [
       "VAL-4 Black Ponies UM15",
@@ -241,6 +246,9 @@
 	"B-52H Stratofortress": [
       "USAF - 69th BS - camo",
       "USAF - 96th BS - green"
+    ],
+    "CH-47D": [
+      "standard"
     ],
 	"C-130": [
       "1302",
