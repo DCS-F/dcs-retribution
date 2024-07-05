@@ -1301,7 +1301,10 @@ class Airfield(ControlPoint, CTLD):
             return self.stub_runway_data()
 
         assigner = RunwayAssigner(conditions)
-        return assigner.get_preferred_runway(theater, self.airport)
+        try:
+            return assigner.get_preferred_runway(theater, self.airport)
+        except KeyError:
+            return self.stub_runway_data()
 
     @property
     def airdrome_id_for_landing(self) -> Optional[int]:
