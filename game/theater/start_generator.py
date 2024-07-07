@@ -76,6 +76,7 @@ class ModSettings:
     uh_60l: bool = False
     jas39_gripen: bool = False
     mirage_3: bool = False
+    sk_60: bool = False
     t45_goshawk: bool = False
     hawk_t1a: bool = False
     super_etendard: bool = False

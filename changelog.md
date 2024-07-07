@@ -20,6 +20,7 @@
 * **[ATO]** Allow planning as OPFOR
 * **[Campaign Design]** Support for Kola map by Orbx
 * **[UI]** Zoom level retained when switching campaigns
+* **[Modding]** Added support for SK-60 mod (v1.2.1)
 
 ## Fixes
 * **[UI/UX]** A-10A flights can be edited again

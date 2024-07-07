@@ -112,6 +112,7 @@ class NewGameWizard(QtWidgets.QWizard):
             t45_goshawk=self.field("t45_goshawk"),
             hawk_t1a=self.field("hawk_t1a"),
             super_etendard=self.field("super_etendard"),
+            sk_60=self.field("sk_60"),
             su15_flagon=self.field("su15_flagon"),
             su30_flanker_h=self.field("su30_flanker_h"),
             su57_felon=self.field("su57_felon"),

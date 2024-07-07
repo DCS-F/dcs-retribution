@@ -136,6 +136,8 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.registerField("hawk_t1a", self.hawk_t1a)
         self.super_etendard = QtWidgets.QCheckBox()
         self.registerField("super_etendard", self.super_etendard)
+        self.sk_60 = QtWidgets.QCheckBox()
+        self.registerField("sk_60", self.sk_60)
         self.su15_flagon = QtWidgets.QCheckBox()
         self.registerField("su15_flagon", self.su15_flagon)
         self.su30_flanker_h = QtWidgets.QCheckBox()
@@ -196,6 +198,7 @@ class GeneratorOptions(QtWidgets.QWizardPage):
             ("Super Étendard (v2.5.5)", self.super_etendard),
             ("Spanish Naval Assets pack (desdemicabina 3.2.0)", self.spanishnavypack),
             ("Star Wars Modpack 2.54+", self.SWPack),
+            ("Saab 105/SK-60B (v1.2.1)", self.sk_60),
             ("Su-15 Flagon (v1.0)", self.su15_flagon),
             ("Su-30 Flanker-H (V2.7.73b)", self.su30_flanker_h),
             ("Su-57 Felon (build-04)", self.su57_felon),
@@ -260,6 +263,7 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.f106_deltadart.setChecked(s.get("f106_deltadart", False))
         self.jas39_gripen.setChecked(s.get("jas39_gripen", False))
         self.mirage_3.setChecked(s.get("mirage_3", False))
+        self.sk_60.setChecked(s.get("sk_60", False))
         self.t45_goshawk.setChecked(s.get("t45_goshawk", False))
         self.hawk_t1a.setChecked(s.get("hawk_t1a", False))
         self.super_etendard.setChecked(s.get("super_etendard", False))
