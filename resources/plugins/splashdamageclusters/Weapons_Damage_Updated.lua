@@ -487,6 +487,20 @@ function track_wpns()
 end
 
 function onWpnEvent(event)
+  --[[
+    What follows is a work-around for what is presumed to be a DCS-bug:
+    https://forum.dcs.world/topic/353679-possible-bug-in-objectgettypename-during-s_event_kill/
+  ]]--
+  if event.weapon then
+    local status, retval = pcall(event.weapon.getTypeName, event.weapon)
+    if not status then
+      -- gameMsg(tostring(event.id)..'  WTF?\n'..tostring(retval))
+      -- gameMsg(mist.utils.tableShow(event))
+      -- gameMsg(tostring(event.weapon.getTypeName))
+      return
+    end
+  end
+  -- end of work-around
   if event.id == world.event.S_EVENT_SHOT then
     if event.weapon and string.find(event.weapon:getTypeName(), "weapons.shells.") == nil then
       local ordnance = event.weapon
