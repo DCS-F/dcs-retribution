@@ -4982,13 +4982,15 @@ do
                        env.info('ZoneCommand: unit y = ['..unitDesc.y..']')
                        unitDesc.side = self.side
                        unitDesc.country = gp.country
-                       unitDesc.category = "Fortifications"
+                       unitDesc.category = "Unarmed"
                        unitDesc.rate = 100
                        unitDesc.type = unitDesc.typeName
                        if string.find(unit_name, '_fuel') ~= nil then
-                           unitDesc.shapeName = "GSM Rus"
+                           unitDesc.type = "M978 HEMTT Tanker"
+                           unitDesc.shapeName = "M978 HEMTT Tanker"
                        elseif string.find(unit_name, '_ammo') ~= nil then
-                           unitDesc.shapeName = "SetkaKP"
+                           unitDesc.type = "M 818"
+                           unitDesc.shapeName = "M 818"
                        end
 
                        mist.dynAddStatic(unitDesc)
