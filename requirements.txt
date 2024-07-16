@@ -29,10 +29,10 @@ pefile==2023.2.7
 Pillow==10.3.0
 platformdirs==4.2.1
 pluggy==1.5.0
-pre-commit==3.7.0
-pydantic==2.7.1
-pydantic-settings==2.2.1
-pydcs @ git+https://github.com/dcs-retribution/pydcs@805088f20263025eda61398d10383e4d73945dc7
+pre-commit==3.7.1
+pydantic==2.7.4
+pydantic-settings==2.3.3
+pydcs @ git+https://github.com/dcs-retribution/pydcs@800d8fd887a20ecbe811f9c9bde8f1648fea5588
 pyinstaller==5.13.2
 pyinstaller-hooks-contrib==2024.0
 pyparsing==3.1.2
