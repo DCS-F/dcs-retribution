@@ -33,8 +33,8 @@
     "F/A-18C Hornet (Lot 20)",
     "F/A-18D Hornet (A/A)",
     "F/A-18D Hornet (A/G)",
-	"F/A-18E Super Hornet",
-	"F/A-18F Super Hornet",
+    "F/A-18E Super Hornet",
+    "F/A-18F Super Hornet",
 	"EA-18G Growler",
     "S-3B Viking",
     "SH-60B Seahawk",
@@ -54,6 +54,8 @@
     "S-3B Tanker"
   ],
   "frontline_units": [
+    "MBT M1A2C SEP v3 Abrams",
+    "APC MRAP MaxxPro",
     "LAV-25",
     "M1043 HMMWV (M2 HMG)",
     "M1045 HMMWV (BGM-71 TOW)",
