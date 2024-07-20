@@ -4937,6 +4937,9 @@ do
         local z = ZoneCommand.getZoneByName(self.name)
         local u = mist.getUnitsInZones(mist.makeUnitTable({'[all]'}), {self.name})
         local countries = {}
+        local timing = 1 --seconds
+        local unitDesc_index = 0
+        local unitDesc_list = {}
         for i = 1, #u do
             env.info('ZoneCommand: looping unit:  ['..i..'] at ['..self.name..']')
 
@@ -4969,7 +4972,7 @@ do
                     end
                     if self.side==1 or self.side==2 then
                        gp.name = string.sub(unit_name,1,n-1)
-                       unitDesc = u[i]:getDesc()
+                       local unitDesc = u[i]:getDesc()
 
                        unitDesc.x = u[i]:getPoint().x
                        unitDesc.y = u[i]:getPoint().z
@@ -4982,21 +4985,31 @@ do
                        env.info('ZoneCommand: unit y = ['..unitDesc.y..']')
                        unitDesc.side = self.side
                        unitDesc.country = gp.country
-                       unitDesc.category = "Unarmed"
+                       unitDesc.category = "Fortifications"
+                       unitDesc.categoryStatic = "Fortifications"
                        unitDesc.rate = 100
                        unitDesc.type = unitDesc.typeName
                        if string.find(unit_name, '_fuel') ~= nil then
-                           unitDesc.type = "M978 HEMTT Tanker"
-                           unitDesc.shapeName = "M978 HEMTT Tanker"
+                           unitDesc.shapeName = "GSM Rus"
                        elseif string.find(unit_name, '_ammo') ~= nil then
-                           unitDesc.type = "M 818"
-                           unitDesc.shapeName = "M 818"
+                           unitDesc.shapeName = "SetkaKP"
                        end
 
-                       mist.dynAddStatic(unitDesc)
+                       unitDesc_list[unitDesc_index] = mist.utils.deepCopy(unitDesc)
+                       unitDesc_index = unitDesc_index + 1
                     end
                 end
             end
+        end
+
+        for _,unitDesc in ipairs(unitDesc_list) do
+           timer.scheduleFunction(function (unitDesc)
+                   env.info('spawnStaticObject: spawning group ['..unitDesc.type..'] at:')
+                   env.info('spawnStaticObject: unit x = ['..unitDesc.x..']')
+                   env.info('spawnStaticObject: unit y = ['..unitDesc.y..']')
+                   mist.dynAddStatic(unitDesc)
+               end, unitDesc, timer.getTime() + timing)  --spawn the unit after a short delay
+           timing = timing + 1
         end
 	end
 	
