@@ -25,12 +25,12 @@ from game.theater import (
     TheaterGroundObject,
     TheaterUnit,
 )
+from game.theater.theatergroup import TheaterGroup
 from game.theater.interfaces.CTLD import CTLD
 from game.utils import Distance, meters, nautical_miles, feet
 
 if TYPE_CHECKING:
     from game.transfers import MultiGroupTransport
-    from game.theater.theatergroup import TheaterGroup
     from game.ato.flight import Flight
 
 
