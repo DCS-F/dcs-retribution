@@ -301,28 +301,28 @@ class T_45(PlaneType):
             VX_23_Salty_Dogs = "VX-23 Salty Dogs"
 
     class Pylon1:
-        LAU_68_pod___7_x_2_75_Hydra__UnGd_Rkts_M274__Practice_Smk = (
-            1,
-            Weapons.LAU_68_pod___7_x_2_75_Hydra__UnGd_Rkts_M274__Practice_Smk,
-        )
-        LAU_68_pod___7_x_2_75_Hydra__UnGd_Rkts_WTU_1_B__Practice = (
-            1,
-            Weapons.LAU_68_pod___7_x_2_75_Hydra__UnGd_Rkts_WTU_1_B__Practice,
-        )
+        # LAU_68_pod___7_x_2_75_Hydra__UnGd_Rkts_M274__Practice_Smk = (
+        #     1,
+        #     Weapons.LAU_68_pod___7_x_2_75_Hydra__UnGd_Rkts_M274__Practice_Smk,
+        # )
+        # LAU_68_pod___7_x_2_75_Hydra__UnGd_Rkts_WTU_1_B__Practice = (
+        #     1,
+        #     Weapons.LAU_68_pod___7_x_2_75_Hydra__UnGd_Rkts_WTU_1_B__Practice,
+        # )
         PMBR___6_x_BDU_33 = (1, WeaponsT45.PMBR___6_x_BDU_33)
 
     class Pylon2:
         MXU_648_TP = (2, Weapons.MXU_648_TP)
 
     class Pylon3:
-        LAU_68_pod___7_x_2_75_Hydra__UnGd_Rkts_M274__Practice_Smk = (
-            3,
-            Weapons.LAU_68_pod___7_x_2_75_Hydra__UnGd_Rkts_M274__Practice_Smk,
-        )
-        LAU_68_pod___7_x_2_75_Hydra__UnGd_Rkts_WTU_1_B__Practice = (
-            3,
-            Weapons.LAU_68_pod___7_x_2_75_Hydra__UnGd_Rkts_WTU_1_B__Practice,
-        )
+        # LAU_68_pod___7_x_2_75_Hydra__UnGd_Rkts_M274__Practice_Smk = (
+        #     3,
+        #     Weapons.LAU_68_pod___7_x_2_75_Hydra__UnGd_Rkts_M274__Practice_Smk,
+        # )
+        # LAU_68_pod___7_x_2_75_Hydra__UnGd_Rkts_WTU_1_B__Practice = (
+        #     3,
+        #     Weapons.LAU_68_pod___7_x_2_75_Hydra__UnGd_Rkts_WTU_1_B__Practice,
+        # )
         PMBR___6_x_BDU_33 = (3, WeaponsT45.PMBR___6_x_BDU_33)
 
     pylons = {1, 2, 3}
