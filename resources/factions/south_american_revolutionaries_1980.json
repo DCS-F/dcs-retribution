@@ -1,0 +1,176 @@
+{
+  "country": "Cuba",
+  "name": "South American Revolutionaries 1980",
+  "authors": "Ghosti",
+  "description": "<p>Revolutionary communist South American armed forces in the 1980s, backed by the Soviet Union.</p>",
+  "locales": [
+    "es_ES"
+  ],
+  "aircrafts": [
+    "Mi-24V Hind-E",
+    "Mi-24P Hind-F",
+    "Mi-8MTV2 Hip",
+    "MiG-15bis Fagot",
+    "MiG-19P Farmer-B",
+	"MiG-21bis Fishbed-N",
+    "MiG-23MLD Flogger-K",
+    "MiG-25PD Foxbat-E",
+    "MiG-29A Fulcrum-A",
+    "Mirage 2000C",
+    "Tu-16 Badger",
+    "Su-25 Frogfoot",
+    "L-39ZA Albatros",
+    "SA 342L Gazelle",
+	"SA 342M Gazelle"
+  ],
+  "awacs": [
+  ],
+  "tankers": [
+  ],
+  "frontline_units": [
+    "BRDM-2",
+    "BMP-1",
+    "BMD-1",
+    "BTR-D",
+    "BTR-80",
+    "PT-76",
+    "T-54A",
+	"T-55A",
+	"T-62",
+    "MT-LB",
+    "MT-LBu",
+    "SAM SA-8 Osa \"Gecko\" TEL",
+    "Bofors 40 mm Gun",
+    "S-60 57mm",
+    "ZSU-57-2 'Sparka'",
+    "ZU-23 on Ural-375",
+    "Truck Ural-375",
+    "LUV UAZ-469 Jeep"
+  ],
+  "artillery_units": [
+    "2S1 Gvozdika",
+    "2S3 Akatsiya",
+    "2S9 Nona-S",
+    "BM-21 Grad"
+  ],
+  "logistics_units": [
+    "LUV UAZ-469 Jeep",
+    "Truck Ural-375"
+  ],
+  "infantry_units": [
+    "Infantry AK-74 Rus",
+    "Infantry RPG",
+    "Mortar 2B11 120mm"
+  ],
+  "preset_groups": [
+    "KS-19/SON-9",
+    "SA-2/S-75",
+    "SA-2/S-75 V-759/5V23",
+    "SA-3/S-125",
+    "SA-3/S-125 V-601P/5V27"
+  ],
+  "naval_units": [
+    "Corvette 1241.1 Molniya",
+    "Corvette 1124.4 Grisha",
+    "Type 071 Amphibious Transport Dock"
+  ],
+  "air_defense_units": [
+    "SAM P19 \"Flat Face\" SR (SA-2/3)",
+    "SAM SA-8 Osa \"Gecko\" TEL",
+	"S-60 57mm",
+	"AAA KS-19 100mm",
+    "ZSU-57-2 'Sparka'",
+    "AAA ZU-23 Closed Emplacement",
+    "ZU-23 on Ural-375",
+    "ZSU-23-4 Shilka"
+  ],
+  "aircraft_carrier": [
+  ],
+  "helicopter_carrier": [
+    "Type_071"
+  ],
+  "carrier_names": [
+  ],
+  "helicopter_carrier_names": [
+    "BP-390 Rio Damuji",
+    "BP-391 Rio Jatibonico"
+  ],
+  "missiles": [
+    "SSM SS-1C Scud-B"
+  ],
+  "missiles_group_count": 1,
+  "requirements": {
+    "WW2 Asset Pack": "https://www.digitalcombatsimulator.com/en/products/other/wwii_assets_pack/"
+  },
+  "has_jtac": true,
+  "jtac_unit": "Mi-8MTV2 Hip",
+  "doctrine": "coldwar",
+  "liveries_overrides": {
+    "Mi-24V Hind-E": [
+      "Mi-24 Cuba blue",
+      "Mi-24 Cuba green",
+      "Mi-24 Tropico"
+    ],
+    "Mi-24P Hind-F": [
+      "Tropico"
+    ],
+    "Mi-8MTV2 Hip": [
+      "Aerogaviota",
+      "CUBA FAR 3",
+      "Tropico",
+      "Tropico_camo"
+    ],
+    "MiG-15bis Fagot": [
+      "Cuban Air Force IB"
+    ],
+    "MiG-19P Farmer-B": [
+      "Cuba camo",
+      "Tropico",
+      "Tropico_camo"
+    ],
+	"MiG-21bis Fishbed-N": [
+      "Cuba - 1990s",
+      "Cuba - Metal",
+      "Cuba - UM 5010 IS"
+    ],
+    "MiG-23MLD Flogger-K": [
+      "Cuban_1",
+      "Cuban_2",
+      "Cuban_3"
+    ],
+    "MiG-25PD Foxbat-E": [
+      "Tropico Air Force"
+    ],
+    "MiG-29A Fulcrum-A": [
+      "Tropico Camuflaje"
+    ],
+    "Mirage 2000C": [
+      "Tropico"
+    ],
+    "Tu-16 Badger": [
+      "Tropico Air Force"
+    ],
+    "Su-25 Frogfoot": [
+      "field camo scheme #1 (native)",
+      "forest camo scheme #1 (native)"
+    ],
+    "L-39ZA Albatros": [
+      "Cuba-2 clean",
+      "Tropico"
+    ],
+    "SA 342L Gazelle": [
+      "Tropico"
+    ],
+    "SA 342M Gazelle": [
+      "Tropico"
+    ],
+    "SA 342M Gazelle Mistral": [
+      "Tropico"
+    ]
+  },
+  "liveries_overrides_ground_forces": {
+    "BTR-80": [
+      "Green summer"
+    ]
+  }
+}

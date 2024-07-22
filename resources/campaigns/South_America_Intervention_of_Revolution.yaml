@@ -1,0 +1,919 @@
+---
+name: South America - Intervention of Revolution
+theater: Falklands
+authors: Ghosti
+recommended_player_faction: USAFE 1980
+recommended_enemy_faction: South American Revolutionaries 1980
+description: <p>A fictional 1980s campaign, modelled after Operation Urgent Fury and Operation Just Cause. A South American country has deposed their lawfully elected government, which was allied with the US, and established a revolutionary communist government. The US forces have chosen to intervene, and reinstate their allies in power. The Soviet Union and Cuba are, in turn, backing the communist revolutionaries.</p>
+miz: South_America_Intervention_of_Revolution.miz
+performance: 3
+recommended_start_date: 1983-10-25
+version: "10.7"
+
+settings:
+  pretense_extra_zone_connections: 0
+  pretense_disable_ground_assaults: true
+  pretense_disable_supply_convoys: true
+  pretense_ground_assaults_prefer_roads: true
+  pretense_supply_convoys_prefer_roads: true
+  pretense_num_of_cargo_planes: 1
+  pretense_do_not_generate_sead_missions: true
+  pretense_do_not_generate_csar_missions: true
+  pretense_controllable_carrier: false
+  perf_culling: false
+  perf_culling_distance: 50
+  player_skill: "High"
+  enemy_skill: "Average"
+  enemy_vehicle_skill: "Average"
+  night_day_missions: NightMissions.OnlyDay
+  labels: "Dot Only"
+
+  ground_start_ai_planes: true
+  ground_start_scenery_remove_triggers: false
+  ground_start_ground_power_trucks: false
+  ground_start_ground_power_trucks_roadbase: false
+
+  plugins:
+    gamemaster: true
+    skynetiads: false
+    splashdamageclusters: true
+    splashdamageclusters.bdaMessages: true
+    splashdamageclusters.clusterEffects: true
+    splashdamageclusters.shipRadarDamage: true
+ #Mods to be used
+  a7e_corsair2: true
+  oh_6: true
+  oh_6_vietnamassetpack: true
+  uh_60l: true
+
+squadrons:
+  #USA CVN
+  USA-CV-1:
+    - primary: SEAD
+      secondary: air-to-ground
+      aircraft:
+        - A-7E Corsair II
+    - primary: Transport
+      aircraft:
+        - UH-60L
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+  # USA LHA
+  USA-LHA-1:
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - AV-8B Harrier II Night Attack
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AH-64D Apache Longbow
+  # USA LHA
+  USA-LHA-2:
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - AV-8B Harrier II Night Attack
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AH-64D Apache Longbow
+  # South American CV
+  South-American-CV:
+    - primary: BARCAP
+      secondary: any
+    - primary: Strike
+    - primary: Strike
+  # South American LHA
+  South-American-LHA-1:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342M Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
+  # South American LHA
+  South-American-LHA-2:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342M Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
+  # San Julian
+  # Argentina mainland
+  # 1x2700m runway
+  11:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-15C Eagle
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-15E Strike Eagle (Suite 4+)
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-16CM Fighting Falcon (Block 50)
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-5E Tiger II
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-4E-45MC Phantom II
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-4E Phantom II
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-10A Thunderbolt II
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-7E Corsair II
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AH-64A Apache
+    - primary: Transport
+      aircraft:
+        - CH-53E
+  # Puerto Santa Cruz
+  # Argentina mainland
+  # 1x2000m runway
+  15:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-15C Eagle
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-15E Strike Eagle (Suite 4+)
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-16CM Fighting Falcon (Block 50)
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-5E Tiger II
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-4E-45MC Phantom II
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F-4E Phantom II
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-10A Thunderbolt II
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-7E Corsair II
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AH-64A Apache
+    - primary: Transport
+      aircraft:
+        - CH-47D
+  # Rio Gallegos
+  # Argentina mainland
+  # 1x4000m runway
+  5:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Su-25 Frogfoot
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-29A Fulcrum-A
+    - primary: Anti-ship
+      secondary: air-to-ground
+      aircraft:
+        - Tu-16 Badger
+  # Rio Grande
+  # Tierra del Fuego
+  # 1x2600m runway
+  6:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+  # Ushuaia
+  # Tierra del Fuego
+  # 1x3000m runway
+  7:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-23MLD Flogger-K
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-25PD Foxbat-E
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: Anti-ship
+      secondary: air-to-ground
+      aircraft:
+        - Tu-16 Badger
+  # Ushuaia Helo Port
+  # Tierra del Fuego
+  # 1x1700m runway
+  8:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-23MLD Flogger-K
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-25PD Foxbat-E
+    - primary: Anti-ship
+      secondary: air-to-ground
+      aircraft:
+        - Tu-16 Badger
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Punta Arenas
+  # Magallanes, Chile
+  # 1x3400m, 1x2500m, 1x1700m runways
+  9:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-23MLD Flogger-K
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-25PD Foxbat-E
+    - primary: Anti-ship
+      secondary: air-to-ground
+      aircraft:
+        - Tu-16 Badger
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Pampa Guanaco
+  # Tierra del Fuego
+  # 1x900m runway
+  10:
+    - primary: BARCAP
+      secondary: air-to-ground
+      aircraft:
+        - Mirage 2000C
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Puerto Williams
+  # Navarino Island, Chile
+  # 1x1500m runway
+  12:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-23MLD Flogger-K
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+    - primary: BARCAP
+      secondary: air-to-ground
+      aircraft:
+        - Mirage 2000C
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Puerto Natales
+  # Chile mainland
+  # 1x1900m runway
+  13:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: BARCAP
+      secondary: air-to-ground
+      aircraft:
+        - Mirage 2000C
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # El Calafate
+  # Argentina mainland
+  # 1x2600m runway
+  14:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-23MLD Flogger-K
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-25PD Foxbat-E
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-29A Fulcrum-A
+    - primary: Anti-ship
+      secondary: air-to-ground
+      aircraft:
+        - Tu-16 Badger
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Comandante Luis Piedrabuena
+  # Argentina mainland
+  # 1x1770m runway
+  16:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Aerodromo De Tolhuin
+  # Tierra del Fuego
+  # 1x1170m runway
+  17:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-29A Fulcrum-A
+    - primary: Anti-ship
+      secondary: air-to-ground
+      aircraft:
+        - Tu-16 Badger
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Porvenir Airfield
+  # Tierra del Fuego
+  # 1x2500m runway
+  18:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-25PD Foxbat-E
+    - primary: Anti-ship
+      secondary: air-to-ground
+      aircraft:
+        - Tu-16 Badger
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Almirante Schroeders
+  # Isla Dawson
+  # 1x1500m, 1x1200m runways
+  19:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-23MLD Flogger-K
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-25PD Foxbat-E
+    - primary: Anti-ship
+      secondary: air-to-ground
+      aircraft:
+        - Tu-16 Badger
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Rio Turbio
+  # Argentina mainland
+  # 1x2000m runway
+  20:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-23MLD Flogger-K
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-25PD Foxbat-E
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-29A Fulcrum-A
+    - primary: Anti-ship
+      secondary: air-to-ground
+      aircraft:
+        - Tu-16 Badger
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Rio Chico
+  # Argentina mainland
+  # 1x1100m runway
+  21:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Franco Bianco
+  # Argentina mainland
+  # 1x1600m runway
+  23:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Hipico Flying Club
+  # Argentina mainland
+  # 1x800m runway
+  25:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-29A Fulcrum-A
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Aeropuerto de Gobernador Gregores
+  # Argentina mainland
+  # 1x2800m runway
+  26:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-23MLD Flogger-K
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-25PD Foxbat-E
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-29A Fulcrum-A
+    - primary: Anti-ship
+      secondary: air-to-ground
+      aircraft:
+        - Tu-16 Badger
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Los Cerros helicopter base
+  # Tierra del Fuego
+  Los Cerros:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Rio Bellavista airstrip (ground spawn)
+  # Tierra del Fuego
+  # 1x1200m runway
+  Rio Bellavista:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Punta Maria roadbase (ground spawn)
+  # Tierra del Fuego
+  # approx. 4000m runway
+  Punta Maria Highway Strip:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-23MLD Flogger-K
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Rio Chico roadbase (ground spawn)
+  # Tierra del Fuego
+  # approx. 5000m runway
+  Rio Chico Highway Strip:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-23MLD Flogger-K
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Sara helicopter base
+  # Tierra del Fuego
+  Estancia Sara:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Cabo San Sebastian helicopter base
+  # Tierra del Fuego
+  Cabo San Sebastian:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Rio San Martin helicopter base
+  # Tierra del Fuego
+  Rio San Martin:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # San Sebastian Bay helicopter base
+  # Tierra del Fuego
+  San Sebastian Bay:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Estancia Cullen South helicopter base
+  # Tierra del Fuego
+  Estancia Cullen South:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Estancia Cullen North airstrip (ground spawn)
+  # Tierra del Fuego
+  # 1x1270m runway
+  Estancia Cullen North:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Cabo del Espiritu Santo helicopter base
+  # Tierra del Fuego
+  Cabo del Espiritu Santo:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Punta Dungeness helicopter base
+  # Tierra del Fuego
+  Punta Dungeness:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Estancia Monte Dinero helicopter base
+  # Argentina mainland
+  Estancia Monte Dinero:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Estancia El Condor helicopter base
+  # Argentina mainland
+  Estancia El Condor:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Rio Gallegos roadbase (ground spawn)
+  # Argentina mainland
+  # approx. 3700m runway
+  Rio Gallegos Highway Strip:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-23MLD Flogger-K
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-21bis Fishbed-N
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-25PD Foxbat-E
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - MiG-29A Fulcrum-A
+    - primary: Anti-ship
+      secondary: air-to-ground
+      aircraft:
+        - Tu-16 Badger
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Laguna Blanca helicopter base
+  # Argentina mainland
+  Laguna Blanca:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Gente Grande bush strip + roadbase (ground spawn)
+  # Argentina mainland
+  # approx. 800m runway and 5000m road strip
+  Gente Grande:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-25PD Foxbat-E
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip

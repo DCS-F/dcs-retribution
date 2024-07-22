@@ -1,0 +1,217 @@
+{
+  "country": "USA",
+  "name": "USAFE 1980",
+  "authors": "Khopa",
+  "description": "<p>United States Air Forces in Europe in the 80s.</p>",
+  "locales": [
+    "en_US"
+  ],
+  "aircrafts": [
+    "A-10A Thunderbolt II",
+    "A-7E Corsair II",
+    "AH-64A Apache",
+    "AH-64D Apache Longbow",
+    "AV-8B Harrier II Night Attack",
+    "B-1B Lancer",
+    "B-52H Stratofortress",
+    "C-130",
+    "C-130J-30 Super Hercules",
+    "CH-47D",
+    "CH-53E",
+    "F-4E Phantom II",
+    "F-4E-45MC Phantom II",
+    "F-5E Tiger II",
+    "JF-17 Thunder",
+    "F-15C Eagle",
+    "F-15E Strike Eagle (Suite 4+)",
+    "F-16CM Fighting Falcon (Block 50)",
+	"F-16D Fighting Falcon (Block 52+)",
+	"F-16D Fighting Falcon (Block 52)",
+	"F-16D Fighting Falcon (Block 50+)",
+	"F-16D Fighting Falcon (Block 50)",
+    "UH-1H Iroquois",
+    "UH-60A",
+    "UH-60L"
+  ],
+  "awacs": [
+    "E-2C Hawkeye",
+    "E-3A"
+  ],
+  "tankers": [
+    "KC-130",
+    "KC-130J",
+    "KC-135 Stratotanker"
+  ],
+  "frontline_units": [
+    "LAV-25",
+    "M163 Vulcan Air Defense System",
+	"M48 Chaparral",
+    "AAVP-7A1 'Amtrac'",
+    "M1043 HMMWV (M2 HMG)",
+    "M1045 HMMWV (BGM-71 TOW)",
+    "M151A1C MUTT w/ 106mm Recoilless Rifle",
+    "M113",
+    "M60A3 \"Patton\"",
+    "M1A2 Abrams",
+    "M2A2 Bradley"
+  ],
+  "artillery_units": [
+    "M109A6 Paladin",
+    "M270 Multiple Launch Rocket System"
+  ],
+  "logistics_units": [
+    "Truck M818 6x6",
+    "VAP US M35 Truck",
+    "M151 1/4-ton 4x4 utility truck",
+    "M274 1/2-ton 4x4 utility truck"
+  ],
+  "infantry_units": [
+    "Infantry M249",
+    "Infantry M4",
+    "Infantry M4 Georgia",
+    "MANPADS Stinger",
+    "Mortar 2B11 120mm"
+  ],
+  "preset_groups": [
+    "Hawk"
+  ],
+  "naval_units": [
+    "FFG Oliver Hazard Perry",
+    "DDG Arleigh Burke IIa",
+    "CG Ticonderoga",
+    "LHA-1 Tarawa",
+    "CVN-74 John C. Stennis"
+  ],
+  "missiles": [],
+  "air_defense_units": [
+    "SAM Hawk SR (AN/MPQ-50)",
+    "M163 Vulcan Air Defense System",
+    "M48 Chaparral"
+  ],
+  "carriers": {
+    "Forrestal": [
+      "CV-60 Saratoga",
+      "CV-61 Ranger",
+      "CV-62 Independence",
+      "CV-66 America"
+    ],
+    "Stennis": [
+	  "CVN-71 Theodore Roosevelt",
+	  "CVN-72 Abraham Lincoln",
+	  "CVN-73 George Washington",
+	  "CVN-74 John C. Stennis",
+	  "CVN-75 Harry S. Truman"
+    ]
+  },
+  "helicopter_carrier_names": [
+    "LHA-1 Tarawa",
+    "LHA-2 Saipan",
+    "LHA-3 Belleau Wood",
+    "LHA-4 Nassau",
+    "LHA-5 Peleliu"
+  ],
+  "requirements": {
+    "OH-6 Vietnam Asset Pack": "https://github.com/tobi-be/DCS-OH-6A"
+  },
+  "has_jtac": true,
+  "jtac_unit": "MQ-9 Reaper",
+  "liveries_overrides": {
+    "A-10A Thunderbolt II": [
+      "23rd TFW England AFB (EL)"
+    ],
+    "A-7E Corsair II": [
+      "VA-149th FS"
+    ],
+    "AV-8B Harrier II Night Attack": [
+      "VMA-513G"
+    ],
+    "B-1B Lancer": [
+      ""
+    ],
+    "B-52H Stratofortress": [
+      "USAF - 69th BS - camo"
+    ],
+	"C-130": [
+      "1302",
+      "1310",
+      "1315",
+      "KQVN HCF",
+      "KQVN HCL",
+      "USAF DZ63-779",
+      "USAF PR63-820",
+      "USAF SEA",
+      "USAF SG56-471",
+      "USAF YJ56-470"
+    ],
+    "CH-53E": [
+      "USAF",
+	  "marines 2"
+    ],
+    "F-4E Phantom II": [
+      "default"
+    ],
+    "F-4E-45MC Phantom II": [
+      "MY68-328_E1_68FS",
+      "RS68-381_E1_526TFS",
+      "WA66-376_E1_57TTW"
+    ],
+    "F-5E Tiger II": [
+      "USAF Euro Camo"
+    ],
+    "JF-17 Thunder": [
+      "USAF_Euro_one_camo"
+    ],
+    "F-15C Eagle": [
+      "USAF Euro one camo"
+    ],
+    "F-15E Strike Eagle (Suite 4+)": [
+      "USAF 4950th Test Wing"
+    ],
+    "F-16CM Fighting Falcon (Block 50)": [
+      "default",
+	  "13th_Fighter_Squadron",
+	  "14th_Fighter_Squadron",
+	  "22nd_Fighter_Squadron",
+	  "23rd_Fighter_Squadron",
+	  "36th_Fighter_Squadron",
+	  "55th_Fighter_Squadron",
+	  "77th_Fighter_Squadron",
+	  "79th_Fighter_Squadron",
+	  "80th_Fighter_Squadron",
+	  "132nd_Wing _Iowa_ANG",
+	  "152nd_Fighter_Squadron",
+	  "174th_Fighter_Squadron",
+	  "179th_Fighter_Squadron",
+	  "480th_Fighter_Squadron",
+	  "522nd_Fighter_Squadron",
+	  "Dark_Viper"
+    ],
+    "UH-1H Iroquois": [
+      "Army Standard"
+    ],
+    "UH-60A": [
+      "standard"
+    ],
+	"UH-60L": [
+      "default",
+      "US Army MEDEVAC",
+      "US Army SOAR",
+      "US Navy Grey",
+      "USAF Rescue"
+    ]
+  },
+  "liveries_overrides_ground_forces": {
+    "Soldier M249": [
+      "summer"
+    ],
+    "Soldier M4": [
+      "summer"
+    ],
+    "Soldier M4 GRG": [
+      "BDU"
+    ],
+    "Soldier stinger": [
+      "summer"
+    ]
+  }
+}
