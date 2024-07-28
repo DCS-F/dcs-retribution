@@ -813,7 +813,7 @@ class PretenseAircraftGenerator(AircraftGenerator):
                 ] = list()
         return
 
-    def generate_flights(
+    def generate_pretense_flights(
         self,
         country: Country,
         cp: ControlPoint,

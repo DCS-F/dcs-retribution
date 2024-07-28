@@ -253,7 +253,7 @@ class PretenseMissionGenerator(MissionGenerator):
         for cp in self.game.theater.controlpoints:
             for country in (self.p_country, self.e_country):
                 ato = AirTaskingOrder()
-                aircraft_generator.generate_flights(
+                aircraft_generator.generate_pretense_flights(
                     country,
                     cp,
                     ato,
