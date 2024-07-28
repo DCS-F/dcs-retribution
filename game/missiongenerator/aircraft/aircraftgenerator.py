@@ -10,6 +10,7 @@ from dcs.action import AITaskPush
 from dcs.condition import FlagIsTrue, GroupDead, Or, FlagIsFalse
 from dcs.country import Country
 from dcs.mission import Mission
+from dcs.planes import F_15C, A_10A, MiG_29A, Su_25, Su_27, Su_33
 from dcs.terrain.terrain import NoParkingSlotError
 from dcs.triggers import TriggerOnce, Event
 from dcs.unit import Skill
@@ -26,6 +27,7 @@ from game.radio.radios import RadioRegistry
 from game.radio.tacan import TacanRegistry
 from game.runways import RunwayData
 from game.settings import Settings
+from game.squadrons import Squadron
 from game.theater.controlpoint import (
     Airfield,
     ControlPoint,
@@ -36,11 +38,12 @@ from .aircraftpainter import AircraftPainter
 from .flightdata import FlightData
 from .flightgroupconfigurator import FlightGroupConfigurator
 from .flightgroupspawner import FlightGroupSpawner
+from ...campaignloader.squadrondefgenerator import SquadronDefGenerator
 from ...data.weapons import WeaponType
+from ...dcs.aircrafttype import AircraftType
 
 if TYPE_CHECKING:
     from game import Game
-    from game.squadrons import Squadron
 
 
 class AircraftGenerator:
@@ -228,6 +231,93 @@ class AircraftGenerator:
                     group.units[0].skill = Skill.Client
                 AircraftPainter(flight, group).apply_livery()
                 self.unit_map.add_aircraft(group, flight)
+
+    def spawn_flamingcliffs_late_starts(self, country: Country) -> None:
+        location = self.game.theater.controlpoints[0]
+        coalition = self.game.coalition_for(True)
+        for airframe in [F_15C, A_10A, MiG_29A, Su_25, Su_27, Su_33]:
+            if (
+                airframe == F_15C
+                and self.game.settings.mod_aircraft_spawn_late_start_f15c
+            ):
+                flighttype = FlightType.BARCAP
+                name = "F-15C"
+            elif (
+                airframe == A_10A
+                and self.game.settings.mod_aircraft_spawn_late_start_a10a
+            ):
+                flighttype = FlightType.CAS
+                name = "A-10A"
+            elif (
+                airframe == MiG_29A
+                and self.game.settings.mod_aircraft_spawn_late_start_mig29
+            ):
+                flighttype = FlightType.BARCAP
+                name = "MiG-29"
+            elif (
+                airframe == Su_25
+                and self.game.settings.mod_aircraft_spawn_late_start_su25a
+            ):
+                flighttype = FlightType.CAS
+                name = "Su-25"
+            elif (
+                airframe == Su_27
+                and self.game.settings.mod_aircraft_spawn_late_start_su27
+            ):
+                flighttype = FlightType.BARCAP
+                name = "Su-27"
+            elif (
+                airframe == Su_27
+                and self.game.settings.mod_aircraft_spawn_late_start_su33
+            ):
+                flighttype = FlightType.BARCAP
+                name = "Su-33"
+            else:
+                continue
+
+            aircraft = next(AircraftType.for_dcs_type(airframe))
+            squadrondef = SquadronDefGenerator(
+                faction=coalition.faction
+            ).generate_for_aircraft(aircraft)
+            squadron = Squadron.create_from(
+                squadrondef,
+                FlightType.BARCAP,
+                max_size=1,
+                base=location,
+                coalition=coalition,
+                game=self.game,
+            )
+            # Will spawn a late activation Flaming Cliffs player slot in the mission.
+            # Players may use this to load FC avionics DLLs for mod aircraft which
+            # use the Flaming Cliffs avionics, before slotting in the actual mod plane.
+            flight = Flight(
+                Package(location, self.game.db.flights),
+                squadron,
+                1,
+                flighttype,
+                StartType.IN_FLIGHT,
+                divert=None,
+                claim_inv=False,
+                custom_name=f"{name} avionics loader",
+            )
+            flight.state = Completed(flight, self.game.settings)
+
+            group = FlightGroupSpawner(
+                flight,
+                country,
+                self.mission,
+                self.helipads,
+                self.ground_spawns_roadbase,
+                self.ground_spawns,
+                self.mission_data,
+            ).create_idle_aircraft()
+            if group:
+                flight.state = WaitingForStart(
+                    flight, self.game.settings, self.game.conditions.start_time.max
+                )
+                group.uncontrolled = False
+                group.units[0].skill = Skill.Client
+                AircraftPainter(flight, group).apply_livery()
 
     def create_and_configure_flight(
         self, flight: Flight, country: Country, dynamic_runways: Dict[str, RunwayData]

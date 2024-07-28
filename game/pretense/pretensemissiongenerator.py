@@ -263,6 +263,7 @@ class PretenseMissionGenerator(MissionGenerator):
                     ato,
                     tgo_generator.runways,
                 )
+        aircraft_generator.spawn_flamingcliffs_late_starts(self.p_country)
 
         self.mission_data.flights = aircraft_generator.flights
 

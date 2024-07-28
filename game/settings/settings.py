@@ -59,6 +59,7 @@ GAMEPLAY_SECTION = "Gameplay"
 # This section had the header: "Disabling settings below may improve performance, but
 # will impact the overall quality of the experience."
 PERFORMANCE_SECTION = "Performance"
+MOD_AIRCRAFT_SECTION = "Mod aircraft support"
 
 
 @dataclass
@@ -1064,6 +1065,72 @@ class Settings:
         detail=(
             "If enabled, AI flights will de-spawn over their base "
             "if the start-up type was manually changed to 'In-Flight'."
+        ),
+    )
+    mod_aircraft_spawn_late_start_f15c: bool = boolean_option(
+        "Spawn a late activation F-15C player slot",
+        page=MISSION_GENERATOR_PAGE,
+        section=MOD_AIRCRAFT_SECTION,
+        default=False,
+        detail=(
+            "If enabled, will spawn a late activation F-15C player slot in the mission. "
+            "Players may use this to load F-15C avionics DLL for mod aircraft which "
+            "use the F-15C avionics."
+        ),
+    )
+    mod_aircraft_spawn_late_start_a10a: bool = boolean_option(
+        "Spawn a late activation A-10A player slot",
+        page=MISSION_GENERATOR_PAGE,
+        section=MOD_AIRCRAFT_SECTION,
+        default=False,
+        detail=(
+            "If enabled, will spawn a late activation A-10A player slot in the mission. "
+            "Players may use this to load A-10A avionics DLL for mod aircraft which "
+            "use the A-10A avionics."
+        ),
+    )
+    mod_aircraft_spawn_late_start_mig29: bool = boolean_option(
+        "Spawn a late activation MiG-29 player slot",
+        page=MISSION_GENERATOR_PAGE,
+        section=MOD_AIRCRAFT_SECTION,
+        default=False,
+        detail=(
+            "If enabled, will spawn a late activation MiG-29 player slot in the mission. "
+            "Players may use this to load MiG-29 avionics DLL for mod aircraft which "
+            "use the MiG-29 avionics."
+        ),
+    )
+    mod_aircraft_spawn_late_start_su25a: bool = boolean_option(
+        "Spawn a late activation Su-25 player slot",
+        page=MISSION_GENERATOR_PAGE,
+        section=MOD_AIRCRAFT_SECTION,
+        default=False,
+        detail=(
+            "If enabled, will spawn a late activation Su-25 player slot in the mission. "
+            "Players may use this to load Su-25 avionics DLL for mod aircraft which "
+            "use the Su-25 avionics."
+        ),
+    )
+    mod_aircraft_spawn_late_start_su27: bool = boolean_option(
+        "Spawn a late activation Su-27 player slot",
+        page=MISSION_GENERATOR_PAGE,
+        section=MOD_AIRCRAFT_SECTION,
+        default=False,
+        detail=(
+            "If enabled, will spawn a late activation Su-27 player slot in the mission. "
+            "Players may use this to load Su-27 avionics DLL for mod aircraft which "
+            "use the Su-27 avionics."
+        ),
+    )
+    mod_aircraft_spawn_late_start_su33: bool = boolean_option(
+        "Spawn a late activation Su-33 player slot",
+        page=MISSION_GENERATOR_PAGE,
+        section=MOD_AIRCRAFT_SECTION,
+        default=False,
+        detail=(
+            "If enabled, will spawn a late activation Su-33 player slot in the mission. "
+            "Players may use this to load Su-33 avionics DLL for mod aircraft which "
+            "use the Su-33 avionics."
         ),
     )
     pretense_supply_mode_dist_to_front: int = bounded_int_option(
