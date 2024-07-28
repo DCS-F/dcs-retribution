@@ -22,6 +22,7 @@ from game.coalition import Coalition
 from game.data.weapons import WeaponType
 from game.dcs.aircrafttype import AircraftType
 from game.lasercodes.lasercoderegistry import LaserCodeRegistry
+from game.missiongenerator.aircraft.aircraftgenerator import AircraftGenerator
 from game.missiongenerator.aircraft.flightdata import FlightData
 from game.missiongenerator.missiondata import MissionData
 from game.pretense.pretenseflightgroupconfigurator import (
@@ -55,7 +56,7 @@ PRETENSE_AI_TANKERS_PER_FLIGHT = 1
 PRETENSE_PLAYER_AIRCRAFT_PER_FLIGHT = 1
 
 
-class PretenseAircraftGenerator:
+class PretenseAircraftGenerator(AircraftGenerator):
     def __init__(
         self,
         mission: Mission,
