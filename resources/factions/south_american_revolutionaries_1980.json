@@ -19,6 +19,7 @@
     "Mirage 2000C",
     "Tu-16 Badger",
     "Su-25 Frogfoot",
+    "Su-33 Flanker-D",
     "L-39ZA Albatros",
     "SA 342L Gazelle",
 	"SA 342M Gazelle"
@@ -153,6 +154,9 @@
     "Su-25 Frogfoot": [
       "field camo scheme #1 (native)",
       "forest camo scheme #1 (native)"
+    ],
+    "Su-33 Flanker-D": [
+      "Su-33 Tropico"
     ],
     "L-39ZA Albatros": [
       "Cuba-2 clean",

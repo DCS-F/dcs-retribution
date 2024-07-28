@@ -27,6 +27,7 @@ settings:
   enemy_vehicle_skill: "Average"
   night_day_missions: NightMissions.OnlyDay
   labels: "Dot Only"
+  default_start_type_client: StartType.WARM
 
   ground_start_ai_planes: true
   ground_start_scenery_remove_triggers: false
