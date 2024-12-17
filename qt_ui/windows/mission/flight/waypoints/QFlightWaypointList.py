@@ -116,7 +116,13 @@ class QFlightWaypointList(QTableView):
         if time is None:
             prefix = "Depart "
             time = flight.flight_plan.depart_time_for_waypoint(waypoint)
-        if time is None:
+        if time is None and self._last_waypoint is not None:
+            prefix = ""
+            timedelta = flight.flight_plan.travel_time_between_waypoints(
+                self._last_waypoint, waypoint
+            )
+            time = self._last_tot + timedelta
+        elif time is None:
             return ""
         return f"{prefix}{time:%H:%M:%S}"
 
