@@ -56,8 +56,7 @@ class PackagePlanningTask(TheaterCommanderTask, Generic[MissionTargetT]):
         coalition.ato.add_package(self.package)
 
     @abstractmethod
-    def propose_flights(self) -> None:
-        ...
+    def propose_flights(self) -> None: ...
 
     def propose_flight(
         self,
@@ -102,8 +101,14 @@ class PackagePlanningTask(TheaterCommanderTask, Generic[MissionTargetT]):
             state.context.settings,
         )
         with state.context.tracer.trace(f"{color} {self.flights[0].task} planning"):
+            asap = False
+            if (
+                not state.context.coalition.ato.has_awacs_package
+                and FlightType.AEWC in [f.task for f in self.flights]
+            ):
+                asap = True
             self.package = fulfiller.plan_mission(
-                ProposedMission(self.target, self.flights),
+                ProposedMission(self.target, self.flights, asap=asap),
                 self.purchase_multiplier,
                 state.context.now,
                 state.context.tracer,
@@ -121,9 +126,9 @@ class PackagePlanningTask(TheaterCommanderTask, Generic[MissionTargetT]):
         target_ranges: list[
             tuple[Union[IadsGroundObject, NavalGroundObject], Distance]
         ] = []
-        all_iads: Iterator[
-            Union[IadsGroundObject, NavalGroundObject]
-        ] = itertools.chain(state.enemy_air_defenses, state.enemy_ships)
+        all_iads: Iterator[Union[IadsGroundObject, NavalGroundObject]] = (
+            itertools.chain(state.enemy_air_defenses, state.enemy_ships)
+        )
         for target in all_iads:
             distance = meters(target.distance_to(self.target))
             if range_type is RangeType.Detection:

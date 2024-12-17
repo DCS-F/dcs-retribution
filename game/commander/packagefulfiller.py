@@ -81,13 +81,21 @@ class PackageFulfiller:
         builder: PackageBuilder,
         missing_types: Set[FlightType],
         purchase_multiplier: int,
+        ignore_range: bool = False,
     ) -> None:
-        if not builder.plan_flight(flight):
-            pf = builder.package.primary_flight
+        target = mission.location
+        pf = builder.package.primary_flight
+        if (
+            pf
+            and pf.flight_type in [FlightType.AEWC, FlightType.REFUELING]
+            and flight.task is FlightType.ESCORT
+        ):
+            target = pf.departure
+        if not builder.plan_flight(flight, ignore_range):
             heli = pf.is_helo if pf else False
             missing_types.add(flight.task)
             purchase_order = AircraftProcurementRequest(
-                near=mission.location,
+                near=target,
                 task_capability=flight.task,
                 number=flight.num_aircraft * purchase_multiplier,
                 heli=heli,
@@ -132,12 +140,28 @@ class PackageFulfiller:
                 threats[EscortType.Sead] = True
         return threats
 
+    def can_plan_escort(self, type: EscortType) -> bool:
+        if type == EscortType.AirToAir:
+            return self.air_wing_can_plan(FlightType.ESCORT)
+        elif type == EscortType.Sead:
+            for task in [
+                FlightType.SEAD,
+                FlightType.SEAD_ESCORT,
+                FlightType.SEAD_SWEEP,
+            ]:
+                if self.air_wing_can_plan(task):
+                    return True
+        elif type == EscortType.Refuel:
+            return self.air_wing_can_plan(FlightType.REFUELING)
+        return False
+
     def plan_mission(
         self,
         mission: ProposedMission,
         purchase_multiplier: int,
         now: datetime,
         tracer: MultiEventTracer,
+        ignore_range: bool = False,
     ) -> Optional[Package]:
         """Allocates aircraft for a proposed mission and adds it to the ATO."""
         builder = PackageBuilder(
@@ -175,6 +199,7 @@ class PackageFulfiller:
                     builder,
                     missing_types,
                     purchase_multiplier,
+                    ignore_range,
                 )
 
         if missing_types:
@@ -204,7 +229,9 @@ class PackageFulfiller:
             # This list was generated from the not None set, so this should be
             # impossible.
             assert escort.escort_type is not None
-            if needed_escorts[escort.escort_type]:
+            if needed_escorts[escort.escort_type] and self.can_plan_escort(
+                escort.escort_type
+            ):
                 with tracer.trace("Flight planning"):
                     self.plan_flight(
                         mission, escort, builder, missing_types, purchase_multiplier
