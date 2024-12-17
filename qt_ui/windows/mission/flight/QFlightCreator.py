@@ -287,3 +287,42 @@ class QFlightCreator(QDialog):
         for i, st in enumerate([b for b in ["Cold", "Warm", "Runway", "In Flight"]]):
             if start_type.value == st:
                 self.start_type.setCurrentIndex(i)
+
+    def current_loadout(self) -> Loadout:
+        loadout = self.loadout_selector.currentData()
+        if loadout is None:
+            return Loadout.empty_loadout()
+        return loadout
+
+    def _init_loadout_selector(self):
+        self.loadout_selector.clear()
+        ac_type = self.aircraft_selector.currentData()
+        if ac_type is None or not any(list(Loadout.iter_for_aircraft(ac_type))):
+            self.loadout_selector.addItem("No loadouts available", None)
+            self.loadout_selector.setDisabled(True)
+            return
+        else:
+            self.loadout_selector.setDisabled(False)
+        for loadout in Loadout.iter_for_aircraft(ac_type):
+            self.loadout_selector.addItem(loadout.name, loadout)
+        for loadout in Loadout.default_loadout_names_for(
+            self.task_selector.currentData()
+        ):
+            index = self.loadout_selector.findText(loadout)
+            if index != -1:
+                self.loadout_selector.setCurrentIndex(index)
+                break
+
+
+class LoadoutDelegate(QStyledItemDelegate):
+    def helpEvent(self, event, view, option, index):
+        if event.type() == QEvent.ToolTip:
+            loadout = index.data(Qt.UserRole)
+            if loadout:
+                max_pylon = max(loadout.pylons.keys(), default=0)
+                pylons_info = "\n".join(
+                    f"Pylon {pylon}: {loadout.pylons.get(pylon, 'Clean')}"
+                    for pylon in range(1, max_pylon + 1)
+                )
+                QToolTip.showText(event.globalPos(), pylons_info, view)
+                return True
