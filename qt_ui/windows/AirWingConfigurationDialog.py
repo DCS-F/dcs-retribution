@@ -787,6 +787,84 @@ class AirWingConfigurationDialog(QDialog):
         buttons_layout.addWidget(apply_button)
         layout.addLayout(buttons_layout)
 
+    def save_config(self) -> None:
+        awd = airwing_dir()
+        fd = QFileDialog(
+            caption="Save Air Wing", directory=str(awd), filter="*.yaml;*.yml"
+        )
+        fd.setAcceptMode(QFileDialog.AcceptMode.AcceptSave)
+        if fd.exec_():
+            airwing = self._build_air_wing()
+            filename = fd.selectedFiles()[0]
+            with open(filename, "w") as f:
+                f.write(yaml.dump(airwing))
+
+    def _build_air_wing(self) -> dict:
+        w = self.tab_widget.currentWidget()
+        assert isinstance(w, AirWingConfigurationTab)
+        squadrons = {}
+        for ac, sqs in w.coalition.air_wing.squadrons.items():
+            for s in sqs:
+                cp = s.location.at
+                if isinstance(cp, Point):
+                    key = s.location.name
+                else:
+                    key = cp.id
+                name = (
+                    s.name
+                    if s.name
+                    in [x.name for x in w.coalition.air_wing.squadron_defs[ac]]
+                    else s.aircraft.variant_id
+                )
+                entry = {
+                    "primary": s.primary_task.value,
+                    "secondary": [
+                        sec.value
+                        for sec in s.auto_assignable_mission_types
+                        if sec.value != s.primary_task.value
+                    ],
+                    "aircraft": [name],
+                    "size": s.max_size,
+                }
+                if squadrons.get(key):
+                    squadrons[key].append(entry)
+                else:
+                    squadrons[key] = [entry]
+        return squadrons
+
+    def load_config(self) -> None:
+        result = QMessageBox.information(
+            None,
+            "Load Air Wing?",
+            "Revert will not be possible after loading a different Air Wing.<br />"
+            "Are you sure you want to continue?",
+            QMessageBox.StandardButton.Yes,
+            QMessageBox.StandardButton.No,
+        )
+        if result == QMessageBox.StandardButton.No:
+            return
+
+        awd = airwing_dir()
+        fd = QFileDialog(
+            caption="Load Air Wing", directory=str(awd), filter="*.yaml;*.yml"
+        )
+        if fd.exec_():
+            filename = fd.selectedFiles()[0]
+            with open(filename, "r") as f:
+                airwing = yaml.safe_load(f)
+                self._construct_air_wing_tab(airwing)
+
+    def _construct_air_wing_tab(self, airwing: dict[str, Any]) -> None:
+        w = self.tab_widget.currentWidget()
+        assert isinstance(w, AirWingConfigurationTab)
+        c = w.coalition
+        c.air_wing.squadrons = defaultdict(list)
+        config = CampaignAirWingConfig.from_campaign_data(airwing, c.game.theater)
+        c.configure_default_air_wing(config)
+        w.revert()
+        if c.game.turn != 0:
+            c.initialize_turn(False)
+
     def revert(self) -> None:
         for tab in self.tabs:
             tab.revert()

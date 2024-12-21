@@ -504,8 +504,6 @@ class QSettingsWidget(QtWidgets.QWizardPage, SettingsContainer):
 
     def load_settings(self):
         sd = settings_dir()
-        if not sd.exists():
-            sd.mkdir()
         fd = QFileDialog(caption="Load Settings", directory=str(sd), filter="*.zip")
         if fd.exec_():
             zipfilename = fd.selectedFiles()[0]
@@ -520,8 +518,6 @@ class QSettingsWidget(QtWidgets.QWizardPage, SettingsContainer):
 
     def save_settings(self):
         sd = settings_dir()
-        if not sd.exists():
-            sd.mkdir()
         fd = QFileDialog(caption="Save Settings", directory=str(sd), filter="*.zip")
         fd.setAcceptMode(QFileDialog.AcceptSave)
         if fd.exec_():

@@ -22,6 +22,7 @@ https://forums.eagle.ru/showthread.php?t=206360 claims that kneeboard pages can
 only be added per airframe, so PvP missions where each side have the same
 aircraft will be able to see the enemy's kneeboard for the same airframe.
 """
+
 import datetime
 import math
 import textwrap
@@ -32,6 +33,8 @@ from typing import Dict, Iterator, List, Optional, TYPE_CHECKING, Tuple
 
 from PIL import Image, ImageDraw, ImageFont
 from dcs.mission import Mission
+from dcs.planes import F_15ESE
+from suntime import Sun, SunTimeException  # type: ignore
 from tabulate import tabulate
 
 from game.ato.flighttype import FlightType
@@ -48,6 +51,7 @@ from game.weather.weather import Weather
 from .aircraft.flightdata import FlightData
 from .briefinggenerator import CommInfo, JtacInfo, MissionInfoGenerator
 from .missiondata import AwacsInfo, TankerInfo
+from ..persistency import kneeboards_dir
 
 if TYPE_CHECKING:
     from game import Game
@@ -148,7 +152,7 @@ class KneeboardPageWriter:
 
     def write(self, path: Path) -> None:
         self.image.save(path)
-        path.with_suffix(".txt").write_text(self.get_text_string())
+        path.with_suffix(".txt").write_text(self.get_text_string(), "utf8")
 
     @staticmethod
     def wrap_line(inputstr: str, max_length: int) -> str:
@@ -171,14 +175,14 @@ class KneeboardPageWriter:
     def wrap_line_with_font(
         inputstr: str, max_width: int, font: ImageFont.FreeTypeFont
     ) -> str:
-        if font.getsize(inputstr)[0] <= max_width:  # type:ignore[attr-defined]
+        if font.getlength(inputstr) <= max_width:
             return inputstr
         tokens = inputstr.split(" ")
         output = ""
         segments = []
         for token in tokens:
             combo = output + " " + token
-            if font.getsize(combo)[0] > max_width:  # type:ignore[attr-defined]
+            if font.getlength(combo) > max_width:
                 segments.append(output + "\n")
                 output = token
             else:
@@ -365,7 +369,10 @@ class BriefingPage(KneeboardPage):
             headers=["", "Airbase", "ATC", "TCN", "I(C)LS", "RWY"],
         )
 
-        writer.heading("Flight Plan")
+        writer.heading(
+            f"Flight Plan ({self.flight.squadron.aircraft.variant_id} - "
+            f"{self.flight.flight_type.value})"
+        )
 
         units = self.flight.aircraft_type.kneeboard_units
 
@@ -430,6 +437,33 @@ class BriefingPage(KneeboardPage):
         )
 
         fl = self.flight
+
+        start_pos = fl.waypoints[0].position.latlng()
+        sun = Sun(start_pos.lat, start_pos.lng)
+
+        date = fl.squadron.coalition.game.date
+        dt = datetime.datetime(date.year, date.month, date.day)
+        tz = fl.squadron.coalition.game.theater.timezone
+
+        # Get today's sunrise and sunset in UTC
+        try:
+            rise_utc = sun.get_sunrise_time(dt)
+            rise = rise_utc + tz.utcoffset(sun.get_sunrise_time(dt))
+        except SunTimeException:
+            rise_utc = None
+            rise = None
+
+        try:
+            set_utc = sun.get_sunset_time(dt)
+            sunset = set_utc + tz.utcoffset(sun.get_sunset_time(dt))
+        except SunTimeException:
+            set_utc = None
+            sunset = None
+
+        writer.text(
+            f"Sunrise - Sunset: {rise.strftime('%H:%M') if rise else 'N/A'} - {sunset.strftime('%H:%M') if sunset else 'N/A'}"
+            f" ({rise_utc.strftime('%H:%M') if rise_utc else 'N/A'} - {set_utc.strftime('%H:%M') if set_utc else 'N/A'} UTC)"
+        )
 
         if fl.bingo_fuel and fl.joker_fuel:
             writer.table(
@@ -523,7 +557,8 @@ class SupportPage(KneeboardPage):
         self.jtacs = jtacs
         self.start_time = start_time
         self.dark_kneeboard = dark_kneeboard
-        self.comms.append(CommInfo("Flight", self.flight.intra_flight_channel))
+        flight_name = self.flight.custom_name if self.flight.custom_name else "Flight"
+        self.comms.append(CommInfo(flight_name, self.flight.intra_flight_channel))
 
     def write(self, path: Path) -> None:
         writer = KneeboardPageWriter(dark_theme=self.dark_kneeboard)
@@ -553,9 +588,12 @@ class SupportPage(KneeboardPage):
                 ]
             )
         for f in self.package_flights:
+            callsign = f.callsign
+            if f.custom_name:
+                callsign = f"{callsign}\n({f.custom_name})"
             comm_ladder.append(
                 [
-                    f.callsign,
+                    callsign,
                     str(f.flight_type),
                     KneeboardPageWriter.wrap_line(str(f.aircraft_type), 23),
                     str(len(f.units)),
@@ -727,6 +765,15 @@ class StrikeTaskPage(KneeboardPage):
             custom_name_title = ""
         writer.title(f"{self.flight.callsign} Strike Task Info{custom_name_title}")
 
+        if self.flight.units[0].unit_type == F_15ESE:
+            i: int = 0
+            for target in self.targets:
+                if not target.waypoint.pretty_name.__contains__("DTC"):
+                    target.waypoint.pretty_name = (
+                        f"{target.waypoint.pretty_name} (DTC M{(i//8)+1}.{i%9+1})"
+                    )
+                    i = i + 1
+
         writer.table(
             [self.target_info_row(t, writer) for t in self.targets],
             headers=["STPT", "Description", "Location"],
@@ -785,6 +832,12 @@ class KneeboardGenerator(MissionInfoGenerator):
                 page_path = aircraft_dir / f"page{idx:02}.png"
                 page.write(page_path)
                 self.mission.add_aircraft_kneeboard(aircraft.dcs_unit_type, page_path)
+        for type in kneeboards_dir().iterdir():
+            if type.is_dir():
+                for kneeboard in type.iterdir():
+                    self.mission.custom_kneeboards[type.name].append(kneeboard)
+            else:
+                self.mission.custom_kneeboards[""].append(type)
 
     def pages_by_airframe(self) -> Dict[AircraftType, List[KneeboardPage]]:
         """Returns a list of kneeboard pages per airframe in the mission.
