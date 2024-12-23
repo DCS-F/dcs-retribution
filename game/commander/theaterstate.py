@@ -6,7 +6,7 @@ import math
 from collections.abc import Iterator
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING, Union, Dict
 
 from game.commander.battlepositions import BattlePositions
 from game.commander.objectivefinder import ObjectiveFinder
@@ -69,6 +69,8 @@ class TheaterState(WorldState["TheaterState"]):
     enemy_barcaps: list[ControlPoint]
     threat_zones: ThreatZones
     vulnerable_control_points: list[ControlPoint]
+    control_point_priority_queue: list[ControlPoint]
+    priority_cp: Optional[ControlPoint]
 
     def _rebuild_threat_zones(self) -> None:
         """Recreates the theater's threat zones based on the current planned state."""
@@ -144,6 +146,8 @@ class TheaterState(WorldState["TheaterState"]):
             threatening_air_defenses=self.threatening_air_defenses,
             detecting_air_defenses=self.detecting_air_defenses,
             vulnerable_control_points=self.vulnerable_control_points,
+            control_point_priority_queue=self.control_point_priority_queue,
+            priority_cp=self.priority_cp,
         )
 
     @classmethod
@@ -152,7 +156,7 @@ class TheaterState(WorldState["TheaterState"]):
     ) -> TheaterState:
         coalition = game.coalition_for(player)
         finder = ObjectiveFinder(game, player)
-        ordered_capturable_points = finder.prioritized_unisolated_points()
+        ordered_capturable_points = finder.prioritized_points()
 
         context = PersistentContext(
             game.db,
@@ -170,10 +174,22 @@ class TheaterState(WorldState["TheaterState"]):
         barcap_duration = coalition.doctrine.cap_duration.total_seconds()
         barcap_rounds = math.ceil(mission_duration / barcap_duration)
 
+        battle_postitions: Dict[ControlPoint, BattlePositions] = {
+            cp: BattlePositions.for_control_point(cp)
+            for cp in ordered_capturable_points
+        }
+
+        vulnerable_control_points = [
+            cp
+            for cp, bp in battle_postitions.items()
+            if not bp.blocking_capture or cp.is_fleet
+        ]
+
         return TheaterState(
             context=context,
             barcaps_needed={
-                cp: barcap_rounds for cp in finder.vulnerable_control_points()
+                cp: 2 * barcap_rounds if cp.is_fleet else barcap_rounds
+                for cp in finder.vulnerable_control_points()
             },
             active_front_lines=list(finder.front_lines()),
             front_line_stances={f: None for f in finder.front_lines()},
@@ -187,10 +203,7 @@ class TheaterState(WorldState["TheaterState"]):
             enemy_convoys=list(finder.convoys()),
             enemy_shipping=list(finder.cargo_ships()),
             enemy_ships=list(finder.enemy_ships()),
-            enemy_battle_positions={
-                cp: BattlePositions.for_control_point(cp)
-                for cp in ordered_capturable_points
-            },
+            enemy_battle_positions=battle_postitions,
             oca_targets=list(
                 finder.oca_targets(
                     min_aircraft=game.settings.oca_target_autoplanner_min_aircraft_count
@@ -199,5 +212,9 @@ class TheaterState(WorldState["TheaterState"]):
             strike_targets=list(finder.strike_targets()),
             enemy_barcaps=list(game.theater.control_points_for(not player)),
             threat_zones=game.threat_zone_for(not player),
-            vulnerable_control_points=list(finder.vulnerable_enemy_control_points()),
+            vulnerable_control_points=vulnerable_control_points,
+            control_point_priority_queue=ordered_capturable_points,
+            priority_cp=(
+                ordered_capturable_points[0] if ordered_capturable_points else None
+            ),
         )
