@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import Any, TYPE_CHECKING, Type
 
 from game.ato import FlightType
+from game.theater.controlpoint import NavalControlPoint
 from .aewc import AewcFlightPlan
 from .airassault import AirAssaultFlightPlan
 from .airlift import AirliftFlightPlan
@@ -21,6 +22,7 @@ from .planningerror import PlanningError
 from .pretensecargo import PretenseCargoFlightPlan
 from .sead import SeadFlightPlan
 from .seadsweep import SeadSweepFlightPlan
+from .shiprecoverytanker import RecoveryTankerFlightPlan
 from .strike import StrikeFlightPlan
 from .sweep import SweepFlightPlan
 from .tarcap import TarCapFlightPlan
@@ -62,6 +64,7 @@ class FlightPlanBuilderTypes:
             FlightType.FERRY: FerryFlightPlan.builder_type(),
             FlightType.AIR_ASSAULT: AirAssaultFlightPlan.builder_type(),
             FlightType.PRETENSE_CARGO: PretenseCargoFlightPlan.builder_type(),
+            FlightType.RECOVERY: RecoveryTankerFlightPlan.builder_type(),
         }
         try:
             return builder_dict[flight.flight_type]

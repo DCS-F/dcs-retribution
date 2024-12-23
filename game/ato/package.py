@@ -184,6 +184,7 @@ class Package(RadioFrequencyContainer):
             FlightType.BARCAP,
             FlightType.AEWC,
             FlightType.FERRY,
+            FlightType.RECOVERY,
             FlightType.REFUELING,
             FlightType.SWEEP,
             FlightType.SEAD_ESCORT,

@@ -217,6 +217,40 @@ class AircraftType(UnitType[Type[FlyingType]]):
         list
     )
 
+    def __setstate__(self, state: dict[str, Any]) -> None:
+        # Save compat: the `name` field has been renamed `variant_id`.
+        if "name" in state:
+            state["variant_id"] = state.pop("name")
+
+        # Update any existing models with new data on load.
+        updated = AircraftType.named(state["variant_id"])
+        self.__dict__.update(updated.__dict__)
+
+    def __post_init__(self) -> None:
+        enrich = {}
+        if FlightType.SEAD_SWEEP not in self.task_priorities:
+            if (value := self.task_priorities.get(FlightType.SEAD)) or (
+                value := self.task_priorities.get(FlightType.SEAD_ESCORT)
+            ):
+                enrich[FlightType.SEAD_SWEEP] = value
+
+        if FlightType.ARMED_RECON not in self.task_priorities:
+            if (value := self.task_priorities.get(FlightType.CAS)) or (
+                value := self.task_priorities.get(FlightType.BAI)
+            ):
+                enrich[FlightType.ARMED_RECON] = value
+
+        if FlightType.RECOVERY not in self.task_priorities:
+            if (
+                value := self.task_priorities.get(FlightType.REFUELING)
+            ) and self.carrier_capable is True:
+                enrich[FlightType.RECOVERY] = value
+
+        self.task_priorities.update(enrich)
+
+    def __eq__(self, other: object) -> bool:
+        return isinstance(other, AircraftType) and self.variant_id == other.variant_id
+
     @classmethod
     def register(cls, unit_type: AircraftType) -> None:
         cls._by_name[unit_type.variant_id] = unit_type

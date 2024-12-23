@@ -1,12 +1,18 @@
 import logging
 
 from dcs.point import MovingPoint
+from dcs.task import SetUnlimitedFuelCommand
 
 from game.ato.flightplans.patrolling import PatrollingFlightPlan
 from .pydcswaypointbuilder import PydcsWaypointBuilder
 
 
 class RaceTrackEndBuilder(PydcsWaypointBuilder):
+    def add_tasks(self, waypoint: MovingPoint) -> None:
+        # Unlimited fuel option : enable at racetrack end. Must be first option to work.
+        if self.flight.squadron.coalition.game.settings.ai_unlimited_fuel:
+            waypoint.tasks.insert(0, SetUnlimitedFuelCommand(True))
+
     def build(self) -> MovingPoint:
         waypoint = super().build()
 

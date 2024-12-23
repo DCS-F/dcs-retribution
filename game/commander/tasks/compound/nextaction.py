@@ -13,6 +13,7 @@ from game.commander.tasks.compound.interdictreinforcements import (
     InterdictReinforcements,
 )
 from game.commander.tasks.compound.protectairspace import ProtectAirSpace
+from game.commander.tasks.compound.recoverysupport import RecoverySupport
 from game.commander.tasks.compound.theatersupport import TheaterSupport
 from game.commander.theaterstate import TheaterState
 from game.htn import CompoundTask, Method
@@ -32,3 +33,4 @@ class PlanNextAction(CompoundTask[TheaterState]):
         yield [AttackAirInfrastructure(self.aircraft_cold_start)]
         yield [AttackBuildings()]
         yield [DegradeIads()]
+        yield [RecoverySupport()]  # for recovery tankers

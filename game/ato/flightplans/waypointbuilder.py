@@ -74,9 +74,11 @@ class WaypointBuilder:
                 "NAV",
                 FlightWaypointType.NAV,
                 position,
-                feet(self.flight.coalition.game.settings.heli_cruise_alt_agl)
-                if self.is_helo
-                else self.doctrine.rendezvous_altitude,
+                (
+                    feet(self.flight.coalition.game.settings.heli_cruise_alt_agl)
+                    if self.is_helo
+                    else self.doctrine.rendezvous_altitude
+                ),
                 description="Enter theater",
                 pretty_name="Enter theater",
             )
@@ -103,9 +105,11 @@ class WaypointBuilder:
                 "NAV",
                 FlightWaypointType.NAV,
                 position,
-                feet(self.flight.coalition.game.settings.heli_cruise_alt_agl)
-                if self.is_helo
-                else self.doctrine.rendezvous_altitude,
+                (
+                    feet(self.flight.coalition.game.settings.heli_cruise_alt_agl)
+                    if self.is_helo
+                    else self.doctrine.rendezvous_altitude
+                ),
                 description="Exit theater",
                 pretty_name="Exit theater",
             )
@@ -175,9 +179,11 @@ class WaypointBuilder:
             "HOLD",
             FlightWaypointType.LOITER,
             position,
-            feet(self.flight.coalition.game.settings.heli_cruise_alt_agl)
-            if self.is_helo
-            else self.doctrine.ingress_altitude,
+            (
+                feet(self.flight.coalition.game.settings.heli_cruise_alt_agl)
+                if self.is_helo
+                else self.doctrine.ingress_altitude
+            ),
             alt_type,
             description="Wait until push time",
             pretty_name="Hold",
@@ -192,9 +198,11 @@ class WaypointBuilder:
             "JOIN",
             FlightWaypointType.JOIN,
             position,
-            feet(self.flight.coalition.game.settings.heli_cruise_alt_agl)
-            if self.is_helo
-            else self.doctrine.ingress_altitude,
+            (
+                feet(self.flight.coalition.game.settings.heli_cruise_alt_agl)
+                if self.is_helo
+                else self.doctrine.ingress_altitude
+            ),
             alt_type,
             description="Rendezvous with package",
             pretty_name="Join",
@@ -209,9 +217,11 @@ class WaypointBuilder:
             "REFUEL",
             FlightWaypointType.REFUEL,
             position,
-            feet(self.flight.coalition.game.settings.heli_cruise_alt_agl)
-            if self.is_helo
-            else self.doctrine.ingress_altitude,
+            (
+                feet(self.flight.coalition.game.settings.heli_cruise_alt_agl)
+                if self.is_helo
+                else self.doctrine.ingress_altitude
+            ),
             alt_type,
             description="Refuel from tanker",
             pretty_name="Refuel",
@@ -226,9 +236,11 @@ class WaypointBuilder:
             "SPLIT",
             FlightWaypointType.SPLIT,
             position,
-            feet(self.flight.coalition.game.settings.heli_combat_alt_agl)
-            if self.is_helo
-            else self.doctrine.ingress_altitude,
+            (
+                feet(self.flight.coalition.game.settings.heli_combat_alt_agl)
+                if self.is_helo
+                else self.doctrine.ingress_altitude
+            ),
             alt_type,
             description="Depart from package",
             pretty_name="Split",
@@ -270,9 +282,11 @@ class WaypointBuilder:
             "EGRESS",
             FlightWaypointType.EGRESS,
             position,
-            feet(self.flight.coalition.game.settings.heli_combat_alt_agl)
-            if self.is_helo
-            else self.doctrine.ingress_altitude,
+            (
+                feet(self.flight.coalition.game.settings.heli_combat_alt_agl)
+                if self.is_helo
+                else self.doctrine.ingress_altitude
+            ),
             alt_type,
             description=f"EGRESS from {target.name}",
             pretty_name=f"EGRESS from {target.name}",
@@ -295,9 +309,11 @@ class WaypointBuilder:
         return FlightWaypoint(
             target.name,
             FlightWaypointType.TARGET_POINT,
-            target.target.ground_object.position
-            if isinstance(target.target, (TheaterGroup, TheaterUnit))
-            else target.target.position,
+            (
+                target.target.ground_object.position
+                if isinstance(target.target, (TheaterGroup, TheaterUnit))
+                else target.target.position
+            ),
             meters(0),
             "RADIO",
             description=description,
@@ -371,9 +387,11 @@ class WaypointBuilder:
             "CAS",
             FlightWaypointType.CAS,
             position,
-            feet(self.flight.coalition.game.settings.heli_combat_alt_agl)
-            if self.is_helo
-            else meters(1000),
+            (
+                feet(self.flight.coalition.game.settings.heli_combat_alt_agl)
+                if self.is_helo
+                else meters(1000)
+            ),
             "RADIO",
             description="Provide CAS",
             pretty_name="CAS",
@@ -453,9 +471,11 @@ class WaypointBuilder:
             "SEAD Search",
             FlightWaypointType.NAV,
             hold,
-            feet(self.flight.coalition.game.settings.heli_combat_alt_agl)
-            if self.is_helo
-            else self.doctrine.ingress_altitude,
+            (
+                feet(self.flight.coalition.game.settings.heli_combat_alt_agl)
+                if self.is_helo
+                else self.doctrine.ingress_altitude
+            ),
             alt_type="BARO",
             description="Anchor and search from this point",
             pretty_name="SEAD Search",
@@ -468,9 +488,11 @@ class WaypointBuilder:
             "SEAD Sweep",
             FlightWaypointType.NAV,
             hold,
-            feet(self.flight.coalition.game.settings.heli_combat_alt_agl)
-            if self.is_helo
-            else self.doctrine.ingress_altitude,
+            (
+                feet(self.flight.coalition.game.settings.heli_combat_alt_agl)
+                if self.is_helo
+                else self.doctrine.ingress_altitude
+            ),
             alt_type="BARO",
             description="Anchor and search from this point",
             pretty_name="SEAD Sweep",
@@ -592,9 +614,11 @@ class WaypointBuilder:
             "TARGET",
             FlightWaypointType.TARGET_GROUP_LOC,
             target.position,
-            feet(self.flight.coalition.game.settings.heli_combat_alt_agl)
-            if self.is_helo
-            else self.doctrine.ingress_altitude,
+            (
+                feet(self.flight.coalition.game.settings.heli_combat_alt_agl)
+                if self.is_helo
+                else self.doctrine.ingress_altitude
+            ),
             alt_type,
             description="Escort the package",
             pretty_name="Target area",
@@ -733,3 +757,18 @@ class WaypointBuilder:
         x_adj = random.randint(int(-deviation.meters), int(deviation.meters))
         y_adj = random.randint(int(-deviation.meters), int(deviation.meters))
         return point + Vector2(x_adj, y_adj)
+
+    @staticmethod
+    def recovery_tanker(position: Point) -> FlightWaypoint:
+        alt_type: AltitudeReference = "BARO"
+
+        return FlightWaypoint(
+            "RECOVERY",
+            FlightWaypointType.RECOVERY_TANKER,
+            position,
+            feet(6000),
+            alt_type,
+            description="Recovery tanker for aircraft carriers",
+            pretty_name="Recovery",
+            only_for_player=True,  # for visual purposes in Retribution only
+        )

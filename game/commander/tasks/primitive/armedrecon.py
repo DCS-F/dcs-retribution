@@ -3,26 +3,24 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from game.ato.flighttype import FlightType
-from game.commander.missionproposals import EscortType
 from game.commander.tasks.packageplanningtask import PackagePlanningTask
 from game.commander.theaterstate import TheaterState
-from game.theater.theatergroundobject import NavalGroundObject
+from game.theater import ControlPoint
 
 
 @dataclass
-class PlanAntiShip(PackagePlanningTask[NavalGroundObject]):
+class PlanArmedRecon(PackagePlanningTask[ControlPoint]):
     def preconditions_met(self, state: TheaterState) -> bool:
-        if self.target not in state.threatening_air_defenses:
+        if self.target not in state.control_point_priority_queue:
             return False
-        if not self.target_area_preconditions_met(state, ignore_iads=True):
+        if not self.target_area_preconditions_met(state):
             return False
         return super().preconditions_met(state)
 
     def apply_effects(self, state: TheaterState) -> None:
-        state.eliminate_ship(self.target)
+        state.control_point_priority_queue.remove(self.target)
         super().apply_effects(state)
 
     def propose_flights(self) -> None:
-        size = self.get_flight_size()
-        self.propose_flight(FlightType.ANTISHIP, size)
-        self.propose_flight(FlightType.ESCORT, 2, EscortType.AirToAir)
+        self.propose_flight(FlightType.ARMED_RECON, self.get_flight_size())
+        self.propose_common_escorts()
