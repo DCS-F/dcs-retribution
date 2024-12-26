@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-import math
 import random
 from dataclasses import dataclass, field
+from math import ceil, floor
 from typing import Optional
 
-from dcs.cloud_presets import Clouds as PydcsClouds
+from dcs.cloud_presets import CLOUD_PRESETS
 from dcs.weather import Weather as PydcsWeather, CloudPreset
 
 
@@ -19,17 +19,14 @@ class Clouds:
 
     @classmethod
     def random_preset(cls, rain: bool) -> Clouds:
-        clouds = (p.value for p in PydcsClouds)
+        clouds = (p.value for _, p in CLOUD_PRESETS.items())
         if rain:
             presets = [p for p in clouds if "Rain" in p.name]
         else:
             presets = [p for p in clouds if "Rain" not in p.name]
         preset = random.choice(presets)
-        print(f"preset.min_base={preset.min_base}, preset.max_base={preset.max_base}")
         return Clouds(
-            base=random.randint(
-                math.floor(preset.min_base), math.floor(preset.max_base)
-            ),
+            base=random.randint(ceil(preset.min_base), floor(preset.max_base)),
             density=0,
             thickness=0,
             precipitation=PydcsWeather.Preceptions.None_,
