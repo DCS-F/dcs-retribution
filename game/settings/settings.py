@@ -302,6 +302,54 @@ class Settings:
             "setting to avoid the AI flying into the terrain."
         ),
     )
+    atflir_autoswap: bool = boolean_option(
+        "Auto-swap ATFLIR to LITENING",
+        page=CAMPAIGN_DOCTRINE_PAGE,
+        section=GENERAL_SECTION,
+        default=True,
+        detail=(
+            "Automatically swaps ATFLIR to LITENING pod for newly generated land-based F/A-18 flights "
+            "without having to change the payload. <u>Takes effect after current turn!</u>"
+        ),
+    )
+    ai_jettison_empty_tanks: bool = boolean_option(
+        "Enable AI empty fuel tank jettison",
+        page=CAMPAIGN_DOCTRINE_PAGE,
+        section=GENERAL_SECTION,
+        default=False,
+        detail="AI will jettison their fuel tanks as soon as they're empty.",
+    )
+    ai_vertical_takoff_landing: bool = boolean_option(
+        "AI helicopters use vertical takeoff and landing",
+        page=CAMPAIGN_DOCTRINE_PAGE,
+        section=GENERAL_SECTION,
+        default=False,
+        detail="AI will use vertical takeoff and landing instead of combat takeoff and landing.",
+    )
+    max_plane_altitude_offset: int = bounded_int_option(
+        "Maximum randomized altitude offset (x1000 ft) for airplanes.",
+        page=CAMPAIGN_DOCTRINE_PAGE,
+        section=GENERAL_SECTION,
+        min=0,
+        max=5,
+        default=2,
+        detail="Creates a randomized altitude offset for airplanes.",
+    )
+
+    player_startup_time: int = bounded_int_option(
+        "Player startup time",
+        page=CAMPAIGN_DOCTRINE_PAGE,
+        section=GENERAL_SECTION,
+        default=10,
+        min=0,
+        max=100,
+        detail=(
+            "The startup time allocated to player flights (default : 10 minutes, AI is 2 minutes). "
+            "Packages have to be planned again for this to take effect. "
+        ),
+    )
+
+    # Doctrine Distances Section
     airbase_threat_range: int = bounded_int_option(
         "Airbase threat range (nmi)",
         page=CAMPAIGN_DOCTRINE_PAGE,

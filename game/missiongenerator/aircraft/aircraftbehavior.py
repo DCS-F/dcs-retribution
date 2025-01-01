@@ -28,6 +28,7 @@ from dcs.task import (
     PinpointStrike,
     AFAC,
     Reconnaissance,
+    OptVerticalTakeoffLanding,
     Tanker,
     RecoveryTanker,
     ActivateBeaconCommand,
@@ -110,8 +111,40 @@ class AircraftBehavior:
         restrict_jettison: Optional[bool] = None,
         mission_uses_gun: bool = True,
         rtb_on_bingo: bool = True,
+        ai_vertical_takoff_landing: Optional[bool] = None,
     ) -> None:
         group.points[0].tasks.clear()
+        if ai_unlimited_fuel is None:
+            ai_unlimited_fuel = (
+                flight.squadron.coalition.game.settings.ai_unlimited_fuel
+            )
+
+        if ai_vertical_takoff_landing is None:
+            ai_vertical_takoff_landing = (
+                flight.squadron.coalition.game.settings.ai_vertical_takoff_landing
+            )
+
+        # at IP, insert waypoint to orient aircraft in correct direction
+        layout = flight.flight_plan.layout
+        at_ip_or_combat = flight.state.is_at_ip or flight.state.in_combat
+        if at_ip_or_combat and isinstance(layout, FormationAttackLayout):
+            a = group.points[0].position
+            b = layout.targets[0].position
+            pos = a.point_from_heading(
+                a.heading_between_point(b), nautical_miles(1).meters
+            )
+            point = MovingPoint(pos)
+            point.alt = group.points[0].alt
+            point.alt_type = group.points[0].alt_type
+            point.ETA_locked = False
+            point.speed = group.points[0].speed
+            point.name = "Orientation WPT"
+            group.points.insert(1, point)
+
+        # Activate AI unlimited fuel for all flights at startup
+        if ai_unlimited_fuel and not at_ip_or_combat:
+            group.points[0].tasks.append(SetUnlimitedFuelCommand(True))
+
         group.points[0].tasks.append(OptReactOnThreat(react_on_threat))
         if roe is not None:
             group.points[0].tasks.append(OptROE(roe))
@@ -119,6 +152,9 @@ class AircraftBehavior:
             group.points[0].tasks.append(OptRestrictJettison(restrict_jettison))
         if rtb_winchester is not None:
             group.points[0].tasks.append(OptRTBOnOutOfAmmo(rtb_winchester))
+
+        if ai_vertical_takoff_landing and flight.is_helo:
+            group.points[0].tasks.append(OptVerticalTakeoffLanding(True))
 
         # Confiscate the bullets of AI missions that do not rely on the gun. There is no
         # "all but gun" RTB winchester option, so air to ground missions with mixed
