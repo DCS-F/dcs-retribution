@@ -363,7 +363,12 @@ class QLiberationWindow(QMainWindow):
     def migrate_game(self, game, path):
         if game:
             is_liberation = ".liberation" in path
-            Migrator(game, is_liberation)
+            try:
+                Migrator(game, is_liberation)
+                return game
+            except Exception as e:
+                logging.exception(e)
+                self.incompatible_save_popup(path)
         else:
             relative_path = Path(path)
             QMessageBox.critical(
