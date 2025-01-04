@@ -24,6 +24,7 @@ from dcs.ships import (
 from dcs.vehicles import AirDefence
 
 from pydcs_extensions import highdigitsams as hds
+from pydcs_extensions import chinesemilitaryassetspack as cmap
 from pydcs_extensions import swedishmilitaryassetspack as smap
 from pydcs_extensions import vietnamwarvessels as vwv
 
@@ -35,6 +36,8 @@ TELARS = {
     AirDefence.Tor_9A331,
     AirDefence.Roland_ADS,
     hds.SAM_SA_17_Buk_M1_2_LN_9A310M1_2,
+    cmap.PGL_625,
+    cmap.HQ17A,
 }
 
 TRACK_RADARS = {
@@ -54,6 +57,7 @@ TRACK_RADARS = {
     hds.SAM_SA_20_S_300PMU1_TR_30N6E,
     hds.SAM_SA_20B_S_300PMU2_TR_92H6E_truck,
     hds.SAM_SA_23_S_300VM_9S32ME_TR,
+    cmap.CH_HQ22_STR,
     smap.LvS_103_PM103,
     smap.LvS_103_PM103_HX,
     smap.UndE23,
@@ -90,6 +94,7 @@ LAUNCHER_TRACKER_PAIRS = {
     hds.SAM_SA_20B_S_300PMU2_LN_5P85SE2: (hds.SAM_SA_20B_S_300PMU2_TR_92H6E_truck,),
     hds.SAM_SA_23_S_300VM_9A82ME_LN: (hds.SAM_SA_23_S_300VM_9S32ME_TR,),
     hds.SAM_SA_23_S_300VM_9A83ME_LN: (hds.SAM_SA_23_S_300VM_9S32ME_TR,),
+    cmap.CH_HQ22_LN: (cmap.CH_HQ22_STR,),
 }
 
 UNITS_WITH_RADAR = {
@@ -150,6 +155,11 @@ UNITS_WITH_RADAR = {
     Type_054A,
     USS_Arleigh_Burke_IIa,
     VINSON,
+    cmap.CH_Type022,
+    cmap.Type052D,
+    cmap.CH_Type054B,
+    cmap.Type055,
+    cmap.CH_Type056A,
     vwv.Cva_31,
     vwv.USS_Fletcher,
     vwv.USS_Laffey,
