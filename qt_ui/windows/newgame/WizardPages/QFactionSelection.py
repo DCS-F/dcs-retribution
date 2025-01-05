@@ -1,12 +1,11 @@
 from __future__ import unicode_literals
 
 import json
-
 from copy import deepcopy
 from typing import Union, Callable, Set, Optional, List
 
 from PySide6 import QtWidgets, QtGui
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, Signal
 from PySide6.QtWidgets import (
     QScrollArea,
     QWidget,
@@ -37,7 +36,9 @@ from qt_ui.windows.newgame.jinja_env import jinja_env
 
 
 class QFactionUnits(QScrollArea):
-    def __init__(self, faction: Faction, parent=None):
+    preset_groups_changed = Signal(Faction)
+
+    def __init__(self, faction: Faction, parent=None, show_jtac: bool = False):
         super().__init__()
         self.setWidgetResizable(True)
         self.content = QWidget()
@@ -288,6 +289,7 @@ class QFactionUnits(QScrollArea):
             # invalidate the cached property
             del self.faction.__dict__["accessible_units"]
         self.updateFaction(self.faction)
+        self.preset_groups_changed.emit(self.faction)
 
     def updateFaction(self, faction: Faction):
         self.faction = faction
