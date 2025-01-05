@@ -556,7 +556,7 @@ function onWpnEvent(event)
     end
     if event.weapon and ignoredWeaps[event.weapon] then
       -- Do nothing
-    elseif event.target and event.initiator and tracked_shooters[event.initiator:getName()] ~= nil then
+    elseif event.target and event.initiator and event.initiator:getName() ~= nil and tracked_shooters[event.initiator:getName()] ~= nil then
       local player = tracked_shooters[event.initiator:getName()].player
       local weapon = tracked_shooters[event.initiator:getName()].wpn
       local shoot_time = tracked_shooters[event.initiator:getName()].time
