@@ -90,6 +90,7 @@ class ModSettings:
     swedishmilitaryassetspack: bool = False
     coldwarassets: bool = False
     SWPack: bool = False
+    vietnamwarvessels: bool = False
 
 
 class GameGenerator:

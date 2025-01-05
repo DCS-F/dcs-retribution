@@ -160,6 +160,8 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.registerField("spanishnavypack", self.spanishnavypack)
         self.irondome = QtWidgets.QCheckBox()
         self.registerField("irondome", self.irondome)
+        self.vietnamwarvessels = QtWidgets.QCheckBox()
+        self.registerField("vietnamwarvessels", self.vietnamwarvessels)
 
         modHelpText = QtWidgets.QLabel(
             "<p>Select the mods you have installed. If your chosen factions support them, you'll be able to use these mods in your campaign.</p>"
@@ -206,6 +208,7 @@ class GeneratorOptions(QtWidgets.QWizardPage):
             ("OH-6 Cayuse (v1.2)", self.oh_6),
             ("OH-6 Vietnam Asset Pack (v1.0)", self.oh_6_vietnamassetpack),
             ("UH-60L Black Hawk (v1.3.1)", self.uh_60l),
+            ("Vietnam War Vessels (v0.9.0 by TeTeT)", self.vietnamwarvessels),
             ("Star Wars Modpack 2.54+", self.SWPack),
             ("Spanish Naval Assets pack (desdemicabina 3.2.0)", self.spanishnavypack),
             ("IDF Assets Pack (v1.1 by IDF Mods Project)", self.irondome),
@@ -281,3 +284,4 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.swedishmilitaryassetspack.setChecked(
             s.get("swedishmilitaryassetspack", False)
         )
+        self.vietnamwarvessels.setChecked(s.get("vietnamwarvessels", False))
