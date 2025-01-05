@@ -24,6 +24,7 @@ from dcs.ships import (
 from dcs.vehicles import AirDefence
 
 from pydcs_extensions import highdigitsams as hds
+from pydcs_extensions import vietnamwarvessels as vwv
 from pydcs_extensions import chinesemilitaryassetspack as cmap
 from pydcs_extensions import swedishmilitaryassetspack as smap
 from pydcs_extensions import vietnamwarvessels as vwv
@@ -155,6 +156,12 @@ UNITS_WITH_RADAR = {
     Type_054A,
     USS_Arleigh_Burke_IIa,
     VINSON,
+    vwv.Cva_31,
+    vwv.USS_Fletcher,
+    vwv.USS_Laffey,
+    vwv.USS_Maddox,
+    vwv.USS_Sumner,
+    vwv.USS_The_Sullivans,
     cmap.CH_Type022,
     cmap.Type052D,
     cmap.CH_Type054B,
