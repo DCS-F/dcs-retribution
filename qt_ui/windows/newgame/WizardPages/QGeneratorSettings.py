@@ -164,6 +164,8 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.registerField("vietnamwarvessels", self.vietnamwarvessels)
         self.chinesemilitaryassetspack = QtWidgets.QCheckBox()
         self.registerField("chinesemilitaryassetspack", self.chinesemilitaryassetspack)
+        self.russianmilitaryassetspack = QtWidgets.QCheckBox()
+        self.registerField("russianmilitaryassetspack", self.russianmilitaryassetspack)
 
         modHelpText = QtWidgets.QLabel(
             "<p>Select the mods you have installed. If your chosen factions support them, you'll be able to use these mods in your campaign.</p>"
@@ -182,6 +184,10 @@ class GeneratorOptions(QtWidgets.QWizardPage):
             (
                 "CurrentHill Chinese Military Assets pack (1.1.4)",
                 self.chinesemilitaryassetspack,
+            ),
+            (
+                "CurrentHill Russian Military Assets pack (1.2.1)",
+                self.russianmilitaryassetspack,
             ),
             (
                 "CurrentHill Swedish Military Assets pack (1.10)",
@@ -304,4 +310,7 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.vietnamwarvessels.setChecked(s.get("vietnamwarvessels", False))
         self.chinesemilitaryassetspack.setChecked(
             s.get("chinesemilitaryassetspack", False)
+        )
+        self.russianmilitaryassetspack.setChecked(
+            s.get("russianmilitaryassetspack", False)
         )
