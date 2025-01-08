@@ -947,6 +947,14 @@ class GroundSpawnRoadbaseGenerator:
 
         self.ground_spawns_roadbase.append((sg, ground_spawn[1]))
 
+        warehouse = Airport(
+            pad.position,
+            self.m.terrain,
+        ).dict()
+        warehouse["coalition"] = "blue" if self.cp.coalition.player else "red"
+        # configure dynamic spawn + hot start of DS, plus dynamic cargo?
+        self.m.warehouses.warehouses[pad.id] = warehouse
+
         tanker_type, ammo_truck_type, power_truck_type = farp_truck_types_for_country(
             country.id
         )
@@ -1079,6 +1087,14 @@ class GroundSpawnGenerator:
         neutral_country.add_static_group(sg)
 
         self.ground_spawns.append((sg, vtol_pad[1]))
+
+        warehouse = Airport(
+            pad.position,
+            self.m.terrain,
+        ).dict()
+        warehouse["coalition"] = "blue" if self.cp.coalition.player else "red"
+        # configure dynamic spawn + hot start of DS, plus dynamic cargo?
+        self.m.warehouses.warehouses[pad.id] = warehouse
 
         # tanker_type: Type[VehicleType]
         # ammo_truck_type: Type[VehicleType]
