@@ -61,6 +61,7 @@ from game.radio.tacan import TacanBand, TacanChannel, TacanRegistry, TacanUsage
 from game.runways import RunwayData
 from game.theater import (
     ControlPoint,
+    Player,
     TheaterGroundObject,
     TheaterUnit,
     NavalControlPoint,
@@ -400,7 +401,7 @@ class GroundObjectGenerator:
         # Align the trigger zones to the faction color on the DCS briefing/F10 map.
         color = (
             {1: 0.2, 2: 0.7, 3: 1, 4: 0.15}
-            if scenery.ground_object.is_friendly(to_player=True)
+            if scenery.ground_object.is_friendly(to_player=Player.BLUE)
             else {1: 1, 2: 0.2, 3: 0.2, 4: 0.15}
         )
 
@@ -932,6 +933,19 @@ class HelipadGenerator:
         else:
             cull_farp_statics = False
 
+        warehouse = Airport(
+            pad.position,
+            self.m.terrain,
+        ).dict()
+        if self.cp.coalition.player.is_neutral:
+            warehouse["coalition"] = "neutral"
+        elif self.cp.coalition.player.is_blue:
+            warehouse["coalition"] = "blue"
+        else:
+            warehouse["coalition"] = "red"
+        # configure dynamic spawn + hot start of DS, plus dynamic cargo?
+        self.m.warehouses.warehouses[pad.id] = warehouse
+
         if not cull_farp_statics:
             # Generate a FARP Ammo and Fuel stack for each pad
             if helipad_type == "LHD_LHA":
@@ -1085,6 +1099,19 @@ class GroundSpawnRoadbaseGenerator:
         else:
             cull_farp_statics = False
 
+        warehouse = Airport(
+            pad.position,
+            self.m.terrain,
+        ).dict()
+        if self.cp.coalition.player.is_neutral:
+            warehouse["coalition"] = "neutral"
+        elif self.cp.coalition.player.is_blue:
+            warehouse["coalition"] = "blue"
+        else:
+            warehouse["coalition"] = "red"
+        # configure dynamic spawn + hot start of DS, plus dynamic cargo?
+        self.m.warehouses.warehouses[pad.id] = warehouse
+
         if not cull_farp_statics:
             # Generate ammo truck/farp and fuel truck/stack for each pad
             if self.game.settings.ground_start_trucks_roadbase:
@@ -1200,7 +1227,12 @@ class GroundSpawnGenerator:
             pad.position,
             self.m.terrain,
         ).dict()
-        warehouse["coalition"] = "blue" if self.cp.coalition.player else "red"
+        if self.cp.coalition.player.is_neutral:
+            warehouse["coalition"] = "neutral"
+        elif self.cp.coalition.player.is_blue:
+            warehouse["coalition"] = "blue"
+        else:
+            warehouse["coalition"] = "red"
         # configure dynamic spawn + hot start of DS, plus dynamic cargo?
         self.m.warehouses.warehouses[pad.id] = warehouse
 
@@ -1230,6 +1262,19 @@ class GroundSpawnGenerator:
             cull_farp_statics = False
 
         if not cull_farp_statics:
+            warehouse = Airport(
+                pad.position,
+                self.m.terrain,
+            ).dict()
+            if self.cp.coalition.player.is_neutral:
+                warehouse["coalition"] = "neutral"
+            elif self.cp.coalition.player.is_blue:
+                warehouse["coalition"] = "blue"
+            else:
+                warehouse["coalition"] = "red"
+            # configure dynamic spawn + hot start of DS, plus dynamic cargo?
+            self.m.warehouses.warehouses[pad.id] = warehouse
+
             # Generate a FARP Ammo and Fuel stack for each pad
             if self.game.settings.ground_start_trucks:
                 self.m.vehicle_group(

@@ -250,6 +250,11 @@ class ForceGroup:
             return
         # Generate Units
         units = unit_group.generate_units(ground_object, unit_type, unit_count)
+        # If the control point is neutral, the units are dead
+        if ground_object.control_point.captured.is_neutral:
+            for unit in units:
+                if not unit.is_static:
+                    unit.alive = False
         # Get or create the TheaterGroup
         ground_group = ground_object.group_by_name(group_name)
         if ground_group is not None:

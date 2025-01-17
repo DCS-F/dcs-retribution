@@ -9,6 +9,7 @@ from typing import Dict, Iterator, List, Optional, Set, Tuple
 
 from .conflicttheater import ConflictTheater
 from .controlpoint import ControlPoint
+from .player import Player
 
 
 class NoPathError(RuntimeError):
@@ -47,9 +48,9 @@ class TransitConnection(Enum):
 
 class TransitNetwork:
     def __init__(self) -> None:
-        self.nodes: Dict[
-            ControlPoint, Dict[ControlPoint, TransitConnection]
-        ] = defaultdict(dict)
+        self.nodes: Dict[ControlPoint, Dict[ControlPoint, TransitConnection]] = (
+            defaultdict(dict)
+        )
 
     def has_destinations(self, control_point: ControlPoint) -> bool:
         return bool(self.nodes[control_point])
@@ -152,7 +153,7 @@ class TransitNetwork:
 
 
 class TransitNetworkBuilder:
-    def __init__(self, theater: ConflictTheater, for_player: bool) -> None:
+    def __init__(self, theater: ConflictTheater, for_player: Player) -> None:
         self.control_points = list(theater.control_points_for(for_player))
         self.network = TransitNetwork()
         self.airports: Set[ControlPoint] = {

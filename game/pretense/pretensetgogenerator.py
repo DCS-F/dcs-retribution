@@ -49,6 +49,7 @@ from game.theater import (
     TheaterUnit,
     NavalControlPoint,
     PresetLocation,
+    Player,
 )
 from game.theater.theatergroundobject import (
     CarrierGroundObject,
@@ -249,7 +250,7 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
         """
         unit_type = None
         faction = self.coalition.faction
-        is_player = True
+        is_player = Player.BLUE
         side = (
             2
             if self.country == self.game.coalition_for(is_player).faction.country
@@ -459,7 +460,7 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
                     cp_name_trimmed = PretenseNameGenerator.pretense_trimmed_cp_name(
                         control_point.name
                     )
-                    is_player = True
+                    is_player = Player.BLUE
                     side = (
                         2
                         if self.country
@@ -569,7 +570,7 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
         cp_name_trimmed = PretenseNameGenerator.pretense_trimmed_cp_name(
             control_point.name
         )
-        is_player = True
+        is_player = Player.BLUE
         side = (
             2
             if self.country == self.game.coalition_for(is_player).faction.country

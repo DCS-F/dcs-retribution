@@ -34,6 +34,7 @@ from game.radio.tacan import TacanRegistry
 from game.runways import RunwayData
 from game.settings import Settings
 from game.squadrons import AirWing
+from game.theater.player import Player
 from game.theater.controlpoint import (
     ControlPoint,
     OffMapSpawn,
@@ -829,7 +830,7 @@ class PretenseAircraftGenerator(AircraftGenerator):
         """
         self.initialize_pretense_data_structures(cp)
 
-        is_player = True
+        is_player = Player.BLUE
         if country == cp.coalition.faction.country:
             offmap_transport_cp = self.find_pretense_cargo_plane_cp(cp)
 
@@ -864,7 +865,7 @@ class PretenseAircraftGenerator(AircraftGenerator):
             coalition = (
                 self.game.coalition_for(is_player)
                 if country == self.game.coalition_for(is_player).faction.country
-                else self.game.coalition_for(False)
+                else self.game.coalition_for(Player.RED)
             )
             self.generate_pretense_aircraft_for_other_side(cp, coalition, ato)
 

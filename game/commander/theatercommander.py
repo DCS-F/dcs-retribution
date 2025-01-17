@@ -52,6 +52,7 @@ even though it is a primitive task used by many other tasks.
 
 https://en.wikipedia.org/wiki/Hierarchical_task_network
 """
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -66,10 +67,11 @@ from game.profiling import MultiEventTracer
 
 if TYPE_CHECKING:
     from game import Game
+    from game.theater.player import Player
 
 
 class TheaterCommander(Planner[TheaterState, TheaterCommanderTask]):
-    def __init__(self, game: Game, player: bool) -> None:
+    def __init__(self, game: Game, player: Player) -> None:
         super().__init__(
             PlanNextAction(
                 aircraft_cold_start=game.settings.default_start_type is StartType.COLD

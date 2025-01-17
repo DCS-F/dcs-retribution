@@ -27,6 +27,7 @@ from game.missiongenerator.tgogenerator import TgoGenerator
 from game.missiongenerator.visualsgenerator import VisualsGenerator
 from game.naming import namegen
 from game.pretense.pretenseaircraftgenerator import PretenseAircraftGenerator
+from game.theater import Player
 from game.radio.radios import RadioRegistry
 from game.radio.tacan import TacanRegistry
 from game.theater.bullseye import Bullseye
@@ -227,7 +228,7 @@ class PretenseMissionGenerator(MissionGenerator):
                         callsign=callsign,
                         region=frontline,
                         code=str(code),
-                        blue=True,
+                        blue=Player.BLUE,
                         freq=freq,
                     )
                 )

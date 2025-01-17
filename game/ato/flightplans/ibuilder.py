@@ -11,7 +11,7 @@ from ..packagewaypoints import PackageWaypoints
 if TYPE_CHECKING:
     from game.coalition import Coalition
     from game.data.doctrine import Doctrine
-    from game.theater import ConflictTheater
+    from game.theater import ConflictTheater, Player
     from game.threatzones import ThreatZones
     from ..flight import Flight
     from ..package import Package
@@ -59,8 +59,7 @@ class IBuilder(ABC, Generic[FlightPlanT, LayoutT]):
         return self.flight.departure.theater
 
     @abstractmethod
-    def build(self, dump_debug_info: bool = False) -> FlightPlanT:
-        ...
+    def build(self, dump_debug_info: bool = False) -> FlightPlanT: ...
 
     @property
     def package(self) -> Package:
@@ -71,7 +70,7 @@ class IBuilder(ABC, Generic[FlightPlanT, LayoutT]):
         return self.flight.coalition
 
     @property
-    def is_player(self) -> bool:
+    def is_player(self) -> Player:
         return self.coalition.player
 
     @property
