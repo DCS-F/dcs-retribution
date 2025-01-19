@@ -11,6 +11,7 @@ from PySide6.QtWidgets import (
     QHBoxLayout,
     QCheckBox,
     QVBoxLayout,
+    QSizePolicy,
 )
 
 from game import Game
@@ -108,6 +109,9 @@ class PilotControls(QHBoxLayout):
         self.pilots_changed = pilots_changed
 
         self.selector = PilotSelector(squadron, roster, idx)
+        self.selector.setSizePolicy(
+            QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed
+        )
         self.selector.currentIndexChanged.connect(self.on_pilot_changed)
         self.addWidget(self.selector)
 
