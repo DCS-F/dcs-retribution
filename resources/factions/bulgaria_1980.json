@@ -1,0 +1,201 @@
+{
+  "country": "Bulgaria",
+  "name": "Bulgaria 1980",
+  "authors": "Ghosti",
+  "description": "<p>Sovietized Bulgarian armed forces in the turn of the 1980s.</p>",
+  "locales": [
+    "bg_BG"
+  ],
+  "aircrafts": [
+    "An-30M",
+    "Mi-24V Hind-E",
+    "Mi-24P Hind-F",
+    "Mi-8MTV2 Hip",
+    "L-39ZA Albatros",
+    "MiG-15bis Fagot",
+    "MiG-19P Farmer-B",
+    "MiG-21bis Fishbed-N",
+    "MiG-23MLD Flogger-K",
+    "MiG-27K Flogger-J2",
+	"Su-22M4 Fitter-K",
+    "Su-25 Frogfoot",
+	"Tu-16 Badger"
+  ],
+  "awacs": [
+    "A-50"
+  ],
+  "tankers": [
+    "IL-78M"
+  ],
+  "frontline_units": [
+    "BMD-1",
+    "BMP-1",
+    "BRDM-2",
+    "BTR-80",
+    "BTR-D",
+    "PT-76",
+    "SAM SA-8 Osa \"Gecko\" TEL",
+    "T-54A",
+	"T-55A",
+	"T-62",
+    "MT-LB",
+    "MT-LBu",
+	"ZSU-23-4 Shilka",
+    "ZSU-57-2 'Sparka'",
+    "LUV UAZ-469 Jeep",
+	"Truck GAZ-66",
+    "Truck Ural-375"
+  ],
+  "artillery_units": [
+    "2S1 Gvozdika",
+    "2S9 Nona-S",
+    "BM-21 Grad"
+  ],
+  "logistics_units": [
+    "LUV UAZ-469 Jeep",
+    "Truck GAZ-66",
+	"Truck Ural-375"
+  ],
+  "infantry_units": [
+    "Infantry AK-74 Rus",
+	"Infantry AK-74 Rus ver2",
+	"Infantry AK-74 Rus ver3",
+    "Mortar 2B11 120mm",
+    "Paratrooper AKS",
+    "Paratrooper RPG-16"
+  ],
+  "preset_groups": [
+    "KS-19/SON-9",
+    "SA-2/S-75",
+	"SA-3/S-125"
+  ],
+  "naval_units": [
+    "Corvette 1241.1 Molniya",
+    "Corvette 1124.4 Grisha",
+    "Type 071 Amphibious Transport Dock"
+  ],
+  "air_defense_units": [
+    "SAM P19 \"Flat Face\" SR (SA-2/3)",
+	"S-60 57mm",
+	"AAA KS-19 100mm",
+    "SAM SA-8 Osa \"Gecko\" TEL",
+    "ZSU-57-2 'Sparka'",
+    "AAA ZU-23 Closed Emplacement",
+    "ZU-23 on Ural-375",
+    "ZSU-23-4 Shilka"
+  ],
+  "aircraft_carrier": [
+    "KUZNECOW"
+  ],
+  "carrier_names": [
+    "1143 Kiev",
+    "1143 Minsk",
+    "11433 Novorossiysk",
+    "11434 Admiral Gorshkov"
+  ],
+  "helicopter_carrier_names": [
+    "1123 Moskva",
+    "1123 Leningrad"
+  ],
+  "missiles": [],
+  "requirements": {},
+  "has_jtac": false,
+  "doctrine": "coldwar",
+  "liveries_overrides": {
+    "A-50": [
+      "RF Air Force"
+    ],
+	"IL-78M": [
+      "RF Air Force"
+    ],
+    "An-30M": [
+      "BuAF 055"
+    ],
+    "Mi-24V Hind-E": [
+      "Bulgaria"
+    ],
+    "Mi-24P Hind-F": [
+      "Bulgarian Air Force 142 2021"
+    ],
+    "Mi-8MTV2 Hip": [
+      "Bulgaria 419"
+    ],
+    "L-39ZA Albatros": [
+      "Bulgarian AF 30 years of L-39ZA 147",
+      "Bulgarian AF 30 years of L-39ZA 202",
+      "Bulgarian Air Force 205 (after overhaul)"
+    ],
+    "MiG-15bis Fagot": [
+      "BuAF_609"
+    ],
+    "MiG-19P Farmer-B": [
+      "Bulgaria"
+    ],
+    "MiG-21bis Fishbed-N": [
+      "Bulgaria - 1-3 IAE (2)",
+      "Bulgaria - 1-3 IAE (3)"
+    ],
+    "MiG-23MLD Flogger-K": [
+      "af standard",
+      "af standard-1",
+      "af standard-2",
+      "af standard-3 (worn-out)"
+    ],
+	"Su-22M4 Fitter-K": [
+      "af standard"
+    ],
+    "Su-25 Frogfoot": [
+      "Bulgarian Air Force 241"
+    ],
+	"Tu-16 Badger": [
+      "Badger-C Bulgarian"
+    ]
+  },
+  "liveries_overrides_ground_forces": {
+    "SAU Gvozdika": [
+      "summer"
+    ],
+	"SAU Akatsia": [
+      "summer"
+    ],
+    "BRDM-2": [
+      "summer"
+    ],
+    "BTR-80": [
+      "Green summer"
+    ],
+    "ZSU-23-4 Shilka": [
+      "summer"
+    ],
+    "ZSU_57_2": [
+      "summer"
+    ],
+	"Ural-375 ZU-23": [
+      "summer"
+    ],
+    "M4_Sherman": [
+      "3rd Guard Mech Corps - Za Stalina"
+    ],
+	"M2A1_halftrack": [
+      "redstar"
+    ],
+	"S-60_Type59_Artillery": [
+      "summer"
+    ],
+    "Ural-375": [
+      "summer"
+    ],
+	"Ural-4320-31": [
+      "summer"
+    ],
+	"Ural-4320T": [
+      "summer"
+    ],
+	"GAZ-66": [
+      "summer"
+    ],
+	"KAMAZ Truck": [
+      "summer"
+    ]
+  }
+}
