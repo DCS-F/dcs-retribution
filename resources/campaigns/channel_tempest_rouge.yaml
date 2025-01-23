@@ -1,9 +1,9 @@
 name: "The Channel - Tempest Rouge"
 theater: "The Channel"
 authors: "Ghost"
-recommended_player_faction: "Canada 1965"
-recommended_enemy_faction: "Bulgaria 1970"
-recommended_start_date: 1968-09-13
+recommended_player_faction: "United Kingdom 1990"
+recommended_enemy_faction: "Bulgaria 1980"
+recommended_start_date: 1986-08-07
 description: "<p>Militants from Soviet Azerbaijan destroy an oil production refinery in Nizhnevartovsk, threatening to cripple the Soviet Union's economy due to oil shortages. After much deliberation, the Soviet Politburo decides to seize the Persian Gulf by military force in order to recoup the country's oil losses. Knowing that the United States had pledged to defend the oil-producing countries in the Persian Gulf, the Soviets decide that neutralizing NATO is a necessary first step before its military operation can take place. West Germany and parts of Belgium and France have been occupied by Soviet and Warsaw Pact forces. Soviet Bulgarian People's Army has made landfall in Southeastern UK while the Royal Navy has been preoccupied defending the GIUK gap against the Soviet Navy. Canadian Forces Europe (CFE) is poised to push them back.</p>"
 miz: "channel_tempest_rouge.miz"
 performance: 2
@@ -38,7 +38,9 @@ settings:
     splashdamageclusters.clusterEffects: true
     splashdamageclusters.shipRadarDamage: true
  #Mods to be used
-  f104_starfighter: true
+  f4bc_phantom: true
+  hawk_t1a: true
+  t45_goshawk: true
   frenchpack: true
 
 squadrons:
@@ -150,15 +152,15 @@ squadrons:
     - primary: CAS
       secondary: any
       aircraft:
-        - F-5E Tiger II
+        - F-4E Phantom II
     - primary: CAS
       secondary: any
       aircraft:
-        - F-104G Starfighter
+        - F-4C Phantom II
     - primary: CAS
       secondary: any
       aircraft:
-        - Mirage-F1CE
+        - AV-8B Harrier II Night Attack
     - primary: BARCAP
       secondary: any
       aircraft:
@@ -174,7 +176,7 @@ squadrons:
     - primary: CAS
       secondary: any
       aircraft:
-        - Mirage-F1BE
+        - Phantom FGR.2
   # High Halden
   # Inland, UK
   # 2x1300m dirt runways
@@ -198,15 +200,15 @@ squadrons:
     - primary: CAS
       secondary: any
       aircraft:
-        - F-5E Tiger II
+        - F-4E Phantom II
     - primary: CAS
       secondary: any
       aircraft:
-        - F-104G Starfighter
+        - F-4C Phantom II
     - primary: CAS
       secondary: any
       aircraft:
-        - Mirage-F1BE
+        - Phantom FGR.2
     - primary: BARCAP
       secondary: any
       aircraft:
@@ -310,10 +312,10 @@ squadrons:
   # Mainland, Belgium
   # 1x2200m roadbase
   Ardooie roadbase:
-    - primary: Strike
+    - primary: BARCAP
       secondary: any
       aircraft:
-        - MiG-19P Farmer-B
+        - MiG-23MLD Flogger-K
   # Pittem roadbase
   # Mainland, Belgium
   # 1x2000m roadbase
@@ -321,7 +323,7 @@ squadrons:
     - primary: CAS
       secondary: any
       aircraft:
-        - MiG-15bis Fagot
+        - MiG-27K Flogger-J2
   # Alquines
   # Mainland, France
   # Helicopter base
