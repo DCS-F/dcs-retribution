@@ -554,6 +554,29 @@ function onWpnEvent(event)
             end
           end
     end
+    --[[
+    What follows is a work-around for what is presumed to be a DCS-bug:
+    https://forum.dcs.world/topic/353679-possible-bug-in-objectgettypename-during-s_event_kill/
+    ]]--
+    if event.initiator then
+        local status, retval = pcall(event.initiator.getName, event.initiator)
+        if not status then
+          -- gameMsg(tostring(event.id)..'  WTF?\n'..tostring(retval))
+          -- gameMsg(mist.utils.tableShow(event))
+          -- gameMsg(tostring(event.initiator.getName))
+          return
+        end
+    end
+    -- end of work-around
+
+    --[[
+    if event.initiator ~= nil and _G['event.initiator.getName'] ~= nil then
+        event_initiator_name = event.initiator:getName()
+    else
+        event_initiator_name = ""
+    end
+    ]]--
+
     if event.weapon and ignoredWeaps[event.weapon] then
       -- Do nothing
     elseif event.target and event.initiator and event.initiator:getName() ~= nil and tracked_shooters[event.initiator:getName()] ~= nil then
