@@ -24,6 +24,7 @@ from dcs.ships import (
 from dcs.vehicles import AirDefence
 
 from pydcs_extensions import highdigitsams as hds
+from pydcs_extensions import swedishmilitaryassetspack as smap
 
 TELARS = {
     AirDefence.x_2S6_Tunguska,
@@ -51,6 +52,9 @@ TRACK_RADARS = {
     hds.SAM_SA_20_S_300PMU1_TR_30N6E,
     hds.SAM_SA_20B_S_300PMU2_TR_92H6E_truck,
     hds.SAM_SA_23_S_300VM_9S32ME_TR,
+    smap.LvS_103_PM103,
+    smap.LvS_103_PM103_HX,
+    smap.UndE23,
 }
 
 LAUNCHER_TRACKER_PAIRS = {
@@ -119,6 +123,9 @@ UNITS_WITH_RADAR = {
     AirDefence.HQ_7_STR_SP,
     AirDefence.FuMG_401,
     AirDefence.FuSe_65,
+    smap.LvS_103_PM103,
+    smap.LvS_103_PM103_HX,
+    smap.UndE23,
     # Ships
     ALBATROS,
     CVN_71,
