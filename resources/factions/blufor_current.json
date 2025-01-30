@@ -2,7 +2,7 @@
   "country": "Combined Joint Task Forces Blue",
   "name": "Blufor Current",
   "authors": "Starfire",
-  "description": "<p>Combined Blufor in the 2020s intended for use with CurrentHill's USA and Sweden asset packs.</p>",
+  "description": "<p>Combined Blufor in the 2020s intended for use with Currenthill's USA and Sweden asset packs.</p>",
   "aircrafts": [
     "A-10C Thunderbolt II (Suite 7)",
     "A-10C Thunderbolt II (Suite 3)",
@@ -49,7 +49,8 @@
     "KC-130",
     "KC-135 Stratotanker",
     "KC-135 Stratotanker MPRS",
-    "S-3B Tanker"
+    "S-3B Tanker",
+    "F/A-18E Tanker"
   ],
   "frontline_units": [
     "MBT M1A2C SEP v3 Abrams",
@@ -62,7 +63,6 @@
     "M1134 Stryker ATGM (BGM-71 TOW)",
     "M1A2 Abrams",
     "M2A2 Bradley",
-    "M6 Linebacker",
     "Marder 1A3",
     "Merkava Mk IV",
     "VAB Mephisto",
@@ -179,6 +179,7 @@
     "EWR AN/FPS-117 Radar",
     "Flakpanzer Gepard",
     "M163 Vulcan Air Defense System",
+    "M6 Linebacker",
     "HEMTT C-RAM Phalanx",
     "M1097 Heavy HMMWV Avenger",
     "SAM Hawk SR (AN/MPQ-50)",
