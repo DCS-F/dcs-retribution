@@ -24,13 +24,14 @@ settings:
   pretense_do_not_generate_csar_missions: true
   pretense_controllable_carrier: false
   perf_culling: true
-  perf_culling_distance: 50
+  perf_culling_distance: 120
   player_skill: "High"
   enemy_skill: "Average"
   enemy_vehicle_skill: "Average"
   night_day_missions: NightMissions.OnlyDay
   labels: "Dot Only"
   squadron_random_chance: 100
+  default_start_type_client: StartType.WARM
 
   ground_start_ai_planes: true
   ground_start_scenery_remove_triggers: false
@@ -100,7 +101,8 @@ squadrons:
       secondary: any
       aircraft:
         - AJS-37 Viggen
-  Kirkenes EWR site:
+  # Kirkenes
+  14:
     - primary: CAS
       secondary: air-to-ground
       aircraft:
@@ -149,6 +151,18 @@ squadrons:
       secondary: any
       aircraft:
         - AJS-37 Viggen
+  #Kallax
+  15:
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - Mirage-F1EE
+  #Vidsel
+  17:
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
   #Bodø
   7:
     - primary: Refueling
@@ -175,7 +189,8 @@ squadrons:
       secondary: any
       aircraft:
         - F-16D Barak (Block 30)
-  Jokkmokk airbase:
+  #Jokkmokk airbase
+  11:
     - primary: CAS
       secondary: air-to-ground
       aircraft:
@@ -278,6 +293,16 @@ squadrons:
       secondary: any
       aircraft:
         - Su-25T Frogfoot
+  # Ivalo
+  18:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-23MLD Flogger-K
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - MiG-27K Flogger-J2
   Vuojärvi helicopter base:
     - primary: CAS
       secondary: any
@@ -288,6 +313,16 @@ squadrons:
       secondary: any
       aircraft:
         - Mi-24V Hind-E
+  #Kuusamo
+  16:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-95MS Bear-H
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - Su-25T Frogfoot
   Pekkala roadbase:
     - primary: Air Assault
       secondary: any
@@ -353,6 +388,16 @@ squadrons:
       secondary: any
       aircraft:
         - Mi-24V Hind-E
+  # Alakurtti
+  19:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-23MLD Flogger-K
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - MiG-27K Flogger-J2
   Alakurtti roadbase:
     - primary: Air Assault
       secondary: any
