@@ -1234,6 +1234,7 @@ class Airfield(ControlPoint, CTLD):
         if self.is_friendly(for_player):
             yield from [
                 FlightType.AEWC,
+                FlightType.ESCORT,
                 # TODO: FlightType.INTERCEPTION
                 # TODO: FlightType.LOGISTICS
             ]
@@ -1348,6 +1349,7 @@ class NavalControlPoint(
                 FlightType.AEWC,
                 FlightType.RECOVERY,
                 FlightType.REFUELING,
+                FlightType.ESCORT,
                 # TODO: FlightType.INTERCEPTION
                 # TODO: Buddy tanking for the A-4?
                 # TODO: Rescue chopper?
@@ -1630,8 +1632,11 @@ class Fob(ControlPoint, RadioFrequencyContainer, CTLD):
             if self.total_aircraft_parking(ParkingType(True, True, True)):
                 yield FlightType.OCA_AIRCRAFT
         else:
-            yield FlightType.AEWC
-
+            yield from [
+                FlightType.AEWC,
+                FlightType.ESCORT,
+                FlightType.REFUELING,
+            ]
         yield from super().mission_types(for_player)
 
     def total_aircraft_parking(self, parking_type: ParkingType) -> int:
