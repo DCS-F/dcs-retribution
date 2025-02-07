@@ -173,6 +173,7 @@ class GeneratorOptions(QtWidgets.QWizardPage):
             ("A-4E Skyhawk (v2.1.0)", self.a4_skyhawk),
             ("A-6A Intruder (v2.7.5.01)", self.a6a_intruder),
             ("A-7E Corsair II", self.a7e_corsair2),
+            ("Cold War Assets mod (v1.2)", self.coldwarassets),
             ("C-130J-30 Super Hercules", self.hercules),
             ("F-4B/C Phantom II (2.8.7.201)", self.f4bc_phantom),
             ("F-106 Delta Dart (v2.9.4.101)", self.f106_deltadart),
