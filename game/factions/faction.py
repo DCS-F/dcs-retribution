@@ -570,7 +570,21 @@ class Faction:
             self.remove_preset("LvS-103 Rb103B")
             self.remove_preset("LvS-103 Rb103B Mobile")
         if not mod_settings.coldwarassets:
-            self.remove_aircraft("EA_6B")
+            self.remove_aircraft("B_47")
+            self.remove_aircraft("Tu-4K")
+            self.remove_aircraft("Tu-16")
+            self.remove_aircraft("tu_22D")
+            self.remove_aircraft("tu_22KD")
+            self.remove_aircraft("B_47")
+            self.remove_aircraft("B_58")
+            self.remove_aircraft("Tu-4K")
+            self.remove_aircraft("Tu-16")
+            self.remove_aircraft("tu_22D")
+            self.remove_aircraft("tu_22KD")
+            self.remove_aircraft("Tu_95K")
+            self.remove_aircraft("Tu_126")
+            self.remove_aircraft("Tu_128M")
+            self.remove_aircraft("Yak_28")
         # SWPack
         if not mod_settings.SWPack:
             self.remove_aircraft("AWINGA")
