@@ -1492,8 +1492,8 @@ class PretenseLuaGenerator(LuaGenerator):
 
         lua_string_ground_groups += 'TemplateDB.templates["hq7-' + side_str + '"] = {\n'
         lua_string_ground_groups += "    units = {\n"
-        lua_string_ground_groups += '                "HQ-7_LN_EO",\n'
-        lua_string_ground_groups += '                "HQ-7_LN_EO",\n'
+        lua_string_ground_groups += '                "HQ-7_LN_P",\n'
+        lua_string_ground_groups += '                "HQ-7_LN_P",\n'
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.AAA, UnitClass.SHORAD, UnitClass.MANPAD])}",\n'
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.LOGISTICS])}",\n'
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.LOGISTICS])}",\n'
