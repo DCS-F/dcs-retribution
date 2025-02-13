@@ -24,14 +24,15 @@ settings:
   pretense_do_not_generate_csar_missions: true
   pretense_controllable_carrier: false
   perf_culling: false
-  perf_culling_distance: 50
+  perf_culling_distance: 120
   player_skill: "High"
   enemy_skill: "Average"
   enemy_vehicle_skill: "Average"
   night_day_missions: NightMissions.OnlyDay
   labels: "Dot Only"
   squadron_random_chance: 100
-
+  default_start_type_client: StartType.WARM
+  
   ground_start_ai_planes: true
   ground_start_scenery_remove_triggers: false
   ground_start_ground_power_trucks: false
@@ -95,7 +96,20 @@ squadrons:
     - primary: Transport
       aircraft:
         - CH-47D
-  Kirkenes EWR site:
+  # Kirkenes
+  14:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-106A Delta Dart
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-104C Starfighter
     - primary: CAS
       secondary: air-to-ground
       aircraft:
@@ -119,12 +133,24 @@ squadrons:
       secondary: any
       aircraft:
         - F-106A Delta Dart
+  #Kallax
+  15:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-106A Delta Dart
+  #Vidsel
+  17:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-106B Delta Dart
   #Bodø
   7:
     - primary: Strike
       secondary: any
       aircraft:
-        - B-52H Stratofortress
+        - B-58 Hustler
     - primary: TARCAP
       secondary: any
       aircraft:
@@ -140,12 +166,13 @@ squadrons:
     - primary: Strike
       secondary: any
       aircraft:
-        - B-17G Flying Fortress
+        - B-47 Stratojet
     - primary: BARCAP
       secondary: any
       aircraft:
         - F-106B Delta Dart
-  Jokkmokk airbase:
+  #Jokkmokk airbase
+  11:
     - primary: Strike
       secondary: any
       aircraft:
@@ -166,7 +193,7 @@ squadrons:
     - primary: Strike
       secondary: any
       aircraft:
-        - B-17G Flying Fortress
+        - B-47 Stratojet
     - primary: BARCAP
       secondary: air-to-ground
       aircraft:
@@ -186,7 +213,7 @@ squadrons:
     - primary: Strike
       secondary: any
       aircraft:
-        - B-17G Flying Fortress
+        - B-47 Stratojet
     - primary: BARCAP
       secondary: any
       aircraft:
@@ -211,7 +238,7 @@ squadrons:
     - primary: BARCAP
       secondary: any
       aircraft:
-        - MiG-19P Farmer-B
+        - Yak-28 Firebar
     - primary: Strike
       secondary: any
       aircraft:
@@ -235,6 +262,16 @@ squadrons:
       secondary: any
       aircraft:
         - Mi-24V Hind-E
+  # Ivalo
+  18:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-22D Blinder
   Sirniö roadbase:
     - primary: Strike
       secondary: any
@@ -244,6 +281,16 @@ squadrons:
       secondary: any
       aircraft:
         - Mi-24V Hind-E
+  #Kuusamo
+  16:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger-B
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
   Pekkala roadbase:
     - primary: Strike
       secondary: any
@@ -358,6 +405,16 @@ squadrons:
       secondary: any
       aircraft:
         - Mi-24V Hind-E
+  # Alakurtti
+  19:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-22KD Blinder
   Eyna roadbase:
     - primary: DEAD
       secondary: any
@@ -430,7 +487,7 @@ squadrons:
   6:
     - primary: AEW&C
       aircraft:
-        - A-50
+        - Tu-126
     - primary: Refueling
       aircraft:
         - IL-78M
@@ -451,7 +508,7 @@ squadrons:
     - primary: BARCAP
       secondary: any
       aircraft:
-        - MiG-19P Farmer-B
+        - Yak-28 Firebar
     - primary: Strike
       secondary: any
       aircraft:
