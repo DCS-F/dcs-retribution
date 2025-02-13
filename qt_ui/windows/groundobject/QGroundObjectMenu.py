@@ -48,7 +48,7 @@ class SamIndicator(QLabel):
     def __init__(self, parent: QWidget) -> None:
         super().__init__(parent)
         self.setFixedSize(32, 32)
-        self.setPixmap(ICONS["blue-sam"])
+        self.setPixmap(ICONS["Ally SAM Threat Range"])
 
 
 class QGroundObjectMenu(QDialog):
@@ -212,7 +212,7 @@ class QGroundObjectMenu(QDialog):
         self.hiddenBoxLayout.addWidget(SamIndicator(self))
         self.hiddenBoxLayout.addWidget(QLabel("Hidden on MFD:"))
         self.hiddenCheckBox = QCheckBox()
-        self.hiddenCheckBox.setChecked(self.ground_object.hide_on_mfd)
+        # self.hiddenCheckBox.setChecked(self.ground_object.hide_on_mfd)
         self.hiddenCheckBox.stateChanged.connect(self.update_hidden_on_mfd)
         self.hiddenBoxLayout.addWidget(self.hiddenCheckBox)
 

@@ -24,6 +24,7 @@ class Clouds:
         else:
             presets = [p for p in clouds if "Rain" not in p.name]
         preset = random.choice(presets)
+        print(f"preset.min_base={preset.min_base}, preset.max_base={preset.max_base}")
         return Clouds(
             base=random.randint(preset.min_base, preset.max_base),
             density=0,
