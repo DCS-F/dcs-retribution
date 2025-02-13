@@ -5,7 +5,7 @@ local unitPayloads = {
 			["name"] = "STRIKE",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "{TU_16_KSR5}",
+					["CLSID"] = "{Tu16_KS_1}",
 					["num"] = 1,
 				},
 				[2] = {
@@ -13,7 +13,7 @@ local unitPayloads = {
 					["num"] = 3,
 				},
 				[3] = {
-					["CLSID"] = "{TU_16_KSR5}",
+					["CLSID"] = "{Tu16_KS_1}",
 					["num"] = 4,
 				},
 			},
@@ -25,11 +25,11 @@ local unitPayloads = {
 			["name"] = "ANTISHIP",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "{TU_16_KSR5}",
+					["CLSID"] = "{Tu16_KS_1}",
 					["num"] = 1,
 				},
 				[2] = {
-					["CLSID"] = "{TU_16_KSR5}",
+					["CLSID"] = "{Tu16_KS_1}",
 					["num"] = 4,
 				},
 			},
@@ -42,11 +42,11 @@ local unitPayloads = {
 			["name"] = "SEAD",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "{TU_16_KSR5ARM}",
+					["CLSID"] = "{Tu16_KS_1}",
 					["num"] = 1,
 				},
 				[2] = {
-					["CLSID"] = "{TU_16_KSR5ARM}",
+					["CLSID"] = "{Tu16_KS_1}",
 					["num"] = 4,
 				},
 			},
@@ -58,7 +58,7 @@ local unitPayloads = {
 			["name"] = "CAS",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "{TU_16_KSR5}",
+					["CLSID"] = "{Tu16_KS_1}",
 					["num"] = 1,
 				},
 				[2] = {
@@ -66,7 +66,7 @@ local unitPayloads = {
 					["num"] = 3,
 				},
 				[3] = {
-					["CLSID"] = "{TU_16_KSR5}",
+					["CLSID"] = "{Tu16_KS_1}",
 					["num"] = 4,
 				},
 			},

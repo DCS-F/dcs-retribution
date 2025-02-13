@@ -187,7 +187,7 @@ class GeneratorOptions(QtWidgets.QWizardPage):
             ("F-100 Super Sabre (v2.7.18.30765 patch 20.10.22)", self.f100_supersabre),
             ("F-104 Starfighter (v2.7.11.222.01)", self.f104_starfighter),
             ("F-105 Thunderchief (v2.7.12.23x)", self.f105_thunderchief),
-            ("Cold War Assets mod (v1.0)", self.coldwarassets),
+            ("Cold War Assets mod (v1.2)", self.coldwarassets),
             ("Frenchpack (v4.9.1)", self.frenchpack),
             ("High Digit SAMs", self.high_digit_sams),
             ("Swedish Military Assets pack (1.10)", self.swedishmilitaryassetspack),
@@ -277,6 +277,7 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.high_digit_sams.setChecked(s.get("high_digit_sams", False))
         self.spanishnavypack.setChecked(s.get("spanishnavypack", False))
         self.irondome.setChecked(s.get("irondome", False))
+        self.coldwarassets.setChecked(s.get("coldwarassets", False))
         self.swedishmilitaryassetspack.setChecked(
             s.get("swedishmilitaryassetspack", False)
         )
