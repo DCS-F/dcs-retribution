@@ -223,6 +223,7 @@ class GeneratorOptions(QtWidgets.QWizardPage):
             ("High Digit SAMs", self.high_digit_sams),
             ("Swedish Military Assets pack (1.10)", self.swedishmilitaryassetspack),
             ("JAS 39 Gripen (v1.8.5-beta)", self.jas39_gripen),
+            ("Mirage III (v2.5.7.01)", self.mirage_3),
             ("OH-6 Cayuse (v1.2)", self.oh_6),
             ("OH-6 Vietnam Asset Pack (v1.0)", self.oh_6_vietnamassetpack),
             ("Mirage III (v2.5.7.01)", self.mirage_3),
@@ -298,6 +299,7 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.jas39_gripen.setChecked(s.get("jas39_gripen", False))
         self.mirage_3.setChecked(s.get("mirage_3", False))
         self.sk_60.setChecked(s.get("sk_60", False))
+        self.mirage_3.setChecked(s.get("mirage_3", False))
         self.t45_goshawk.setChecked(s.get("t45_goshawk", False))
         self.hawk_t1a.setChecked(s.get("hawk_t1a", False))
         self.super_etendard.setChecked(s.get("super_etendard", False))
