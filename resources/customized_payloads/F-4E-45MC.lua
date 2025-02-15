@@ -488,7 +488,7 @@ local unitPayloads = {
 					["num"] = 14,
 				},
 				[2] = {
-					["CLSID"] = "{AGM_62_I}",
+					["CLSID"] = "{F4_SARGENT_TANK_370_GAL_R}",
 					["num"] = 13,
 				},
 				[3] = {
@@ -536,7 +536,7 @@ local unitPayloads = {
 					},
 				},
 				[8] = {
-					["CLSID"] = "{AGM_62_I}",
+					["CLSID"] = "{F4_SARGENT_TANK_370_GAL}",
 					["num"] = 1,
 				},
 				[9] = {
@@ -556,11 +556,11 @@ local unitPayloads = {
 					["num"] = 7,
 				},
 				[13] = {
-					["CLSID"] = "{AGM_62_I}",
+					["CLSID"] = "{HB_F4EAGM-65D_LAU88_3x_Right}",
 					["num"] = 11,
 				},
 				[14] = {
-					["CLSID"] = "{AGM_62_I}",
+					["CLSID"] = "{HB_F4EAGM-65D_LAU88_3x_Left}",
 					["num"] = 3,
 				},
 			},
