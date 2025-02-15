@@ -224,14 +224,8 @@ local unitPayloads = {
 					["num"] = 14,
 				},
 				[2] = {
-					["CLSID"] = "{LAU_34_AGM_45A}",
+					["CLSID"] = "{F4_SARGENT_TANK_370_GAL_R}",
 					["num"] = 13,
-					["settings"] = {
-						["EAS_bypass_ctrl"] = 1,
-						["NFP_rfgu_type"] = 1,
-						["rf_lower_limit_ctrl_Mk22Mod2"] = 4800000000,
-						["rf_upper_limit_ctrl_Mk22Mod2"] = 5200000000,
-					},
 				},
 				[3] = {
 					["CLSID"] = "<CLEAN>",
@@ -278,14 +272,8 @@ local unitPayloads = {
 					},
 				},
 				[8] = {
-					["CLSID"] = "{LAU_34_AGM_45A}",
+					["CLSID"] = "{F4_SARGENT_TANK_370_GAL}",
 					["num"] = 1,
-					["settings"] = {
-						["EAS_bypass_ctrl"] = 1,
-						["NFP_rfgu_type"] = 1,
-						["rf_lower_limit_ctrl_Mk22Mod2"] = 4800000000,
-						["rf_upper_limit_ctrl_Mk22Mod2"] = 5200000000,
-					},
 				},
 				[9] = {
 					["CLSID"] = "{HB_F4E_AIM-7M}",
@@ -304,24 +292,12 @@ local unitPayloads = {
 					["num"] = 7,
 				},
 				[13] = {
-					["CLSID"] = "{LAU_34_AGM_45A}",
+					["CLSID"] = "{HB_F4EAGM-65B_LAU88_3x_Right}",
 					["num"] = 11,
-					["settings"] = {
-						["EAS_bypass_ctrl"] = 1,
-						["NFP_rfgu_type"] = 1,
-						["rf_lower_limit_ctrl_Mk22Mod2"] = 4800000000,
-						["rf_upper_limit_ctrl_Mk22Mod2"] = 5200000000,
-					},
 				},
 				[14] = {
-					["CLSID"] = "{LAU_34_AGM_45A}",
+					["CLSID"] = "{HB_F4EAGM-65B_LAU88_3x_Left}",
 					["num"] = 3,
-					["settings"] = {
-						["EAS_bypass_ctrl"] = 1,
-						["NFP_rfgu_type"] = 1,
-						["rf_lower_limit_ctrl_Mk22Mod2"] = 4800000000,
-						["rf_upper_limit_ctrl_Mk22Mod2"] = 5200000000,
-					},
 				},
 			},
 			["tasks"] = {
@@ -336,7 +312,7 @@ local unitPayloads = {
 					["num"] = 14,
 				},
 				[2] = {
-					["CLSID"] = "{AGM_12B}",
+					["CLSID"] = "{F4_SARGENT_TANK_370_GAL_R}",
 					["num"] = 13,
 				},
 				[3] = {
@@ -384,7 +360,7 @@ local unitPayloads = {
 					},
 				},
 				[8] = {
-					["CLSID"] = "{AGM_12B}",
+					["CLSID"] = "{F4_SARGENT_TANK_370_GAL}",
 					["num"] = 1,
 				},
 				[9] = {
@@ -404,11 +380,11 @@ local unitPayloads = {
 					["num"] = 7,
 				},
 				[13] = {
-					["CLSID"] = "{AGM_12B}",
+					["CLSID"] = "{HB_F4EAGM-65B_LAU88_3x_Right}",
 					["num"] = 11,
 				},
 				[14] = {
-					["CLSID"] = "{AGM_12B}",
+					["CLSID"] = "{HB_F4EAGM-65B_LAU88_3x_Left}",
 					["num"] = 3,
 				},
 			},
@@ -424,14 +400,8 @@ local unitPayloads = {
 					["num"] = 14,
 				},
 				[2] = {
-					["CLSID"] = "{LAU_34_AGM_45A}",
+					["CLSID"] = "{F4_SARGENT_TANK_370_GAL_R}",
 					["num"] = 13,
-					["settings"] = {
-						["EAS_bypass_ctrl"] = 1,
-						["NFP_rfgu_type"] = 1,
-						["rf_lower_limit_ctrl_Mk22Mod2"] = 4800000000,
-						["rf_upper_limit_ctrl_Mk22Mod2"] = 5200000000,
-					},
 				},
 				[3] = {
 					["CLSID"] = "<CLEAN>",
@@ -478,14 +448,8 @@ local unitPayloads = {
 					},
 				},
 				[8] = {
-					["CLSID"] = "{LAU_34_AGM_45A}",
+					["CLSID"] = "{F4_SARGENT_TANK_370_GAL}",
 					["num"] = 1,
-					["settings"] = {
-						["EAS_bypass_ctrl"] = 1,
-						["NFP_rfgu_type"] = 1,
-						["rf_lower_limit_ctrl_Mk22Mod2"] = 4800000000,
-						["rf_upper_limit_ctrl_Mk22Mod2"] = 5200000000,
-					},
 				},
 				[9] = {
 					["CLSID"] = "{HB_F4E_AIM-7M}",
@@ -504,11 +468,11 @@ local unitPayloads = {
 					["num"] = 7,
 				},
 				[13] = {
-					["CLSID"] = "{AGM_12B}",
+					["CLSID"] = "{HB_F4EAGM-65B_LAU88_3x_Right}",
 					["num"] = 11,
 				},
 				[14] = {
-					["CLSID"] = "{AGM_12B}",
+					["CLSID"] = "{HB_F4EAGM-65B_LAU88_3x_Left}",
 					["num"] = 3,
 				},
 			},
@@ -612,7 +576,7 @@ local unitPayloads = {
 					["num"] = 14,
 				},
 				[2] = {
-					["CLSID"] = "{AGM_62_I}",
+					["CLSID"] = "{F4_SARGENT_TANK_370_GAL_R}",
 					["num"] = 13,
 				},
 				[3] = {
@@ -660,7 +624,7 @@ local unitPayloads = {
 					},
 				},
 				[8] = {
-					["CLSID"] = "{AGM_62_I}",
+					["CLSID"] = "{F4_SARGENT_TANK_370_GAL}",
 					["num"] = 1,
 				},
 				[9] = {
@@ -680,11 +644,11 @@ local unitPayloads = {
 					["num"] = 7,
 				},
 				[13] = {
-					["CLSID"] = "{AGM_62_I}",
+					["CLSID"] = "{HB_F4EAGM-65D_LAU88_3x_Right}",
 					["num"] = 11,
 				},
 				[14] = {
-					["CLSID"] = "{AGM_62_I}",
+					["CLSID"] = "{HB_F4EAGM-65D_LAU88_3x_Left}",
 					["num"] = 3,
 				},
 			},
