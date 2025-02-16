@@ -5497,7 +5497,8 @@ do
 
 					if step > self.resource then step = 1 end
 
-					local progress = step*self.missionBuildSpeedReduction
+                    local missionBuildSpeedReductionRandom = self.missionBuildSpeedReduction + math.random(-0.06,0.06)
+					local progress = step*missionBuildSpeedReductionRandom
 					local reducedCost = math.max(1, math.floor(progress))
 					if reducedCost <= self.resource then
 						self:removeResource(reducedCost)
