@@ -38,8 +38,14 @@ settings:
   ground_start_ground_power_trucks: false
   ground_start_ground_power_trucks_roadbase: false
 
+  mod_aircraft_spawn_late_start_f15c: true
+  mod_aircraft_spawn_late_start_su27: true
+  mod_aircraft_spawn_late_start_su33: true
+
   plugins:
     gamemaster: true
+    skynetiads: false
+    ewrs: true
     splashdamageclusters: true
     splashdamageclusters.bdaMessages: true
     splashdamageclusters.clusterEffects: true
@@ -51,7 +57,7 @@ settings:
   f_16_idf: true
 
 squadrons:
-  #Lakselv
+  #Lakselv / Banak
   1:
     - primary: CAS
       secondary: any
@@ -151,6 +157,29 @@ squadrons:
       secondary: any
       aircraft:
         - AJS-37 Viggen
+  Gallivare:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (Lot 20)
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Mirage 2000C
+  #Jokkmokk airbase
+  11:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AJS-37 Viggen
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - Mirage-F1CE
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (Lot 20)
   #Kallax
   15:
     - primary: TARCAP
@@ -165,12 +194,36 @@ squadrons:
         - Mirage 2000C
   #Bodø
   7:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AJS-37 Viggen
     - primary: Refueling
       aircraft:
         - KC-130
     - primary: AEW&C
       aircraft:
         - E-2C Hawkeye
+  #Andoya
+  20:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AJS-37 Viggen
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (Lot 20)
+  #Bardufoss
+  21:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AJS-37 Viggen
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (Lot 20)
   #Kemi Tornio
   3:
     - primary: DEAD
@@ -189,20 +242,6 @@ squadrons:
       secondary: any
       aircraft:
         - F-16D Barak (Block 30)
-  #Jokkmokk airbase
-  11:
-    - primary: CAS
-      secondary: air-to-ground
-      aircraft:
-        - AJS-37 Viggen
-    - primary: TARCAP
-      secondary: any
-      aircraft:
-        - Mirage-F1CE
-    - primary: BARCAP
-      secondary: any
-      aircraft:
-        - F/A-18C Hornet (Lot 20)
   Ranuan varalaskupaikka:
     - primary: CAS
       secondary: air-to-ground

@@ -40,6 +40,8 @@ settings:
 
   plugins:
     gamemaster: true
+    skynetiads: false
+    ewrs: true
     splashdamageclusters: true
     splashdamageclusters.bdaMessages: true
     splashdamageclusters.clusterEffects: true
@@ -52,7 +54,7 @@ settings:
   f4bc_phantom: true
 
 squadrons:
-  #Lakselv
+  #Lakselv / Banak
   1:
     - primary: BARCAP
       secondary: any
@@ -133,6 +135,33 @@ squadrons:
       secondary: any
       aircraft:
         - F-106A Delta Dart
+  Gallivare:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - B-52H Stratofortress
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-106B Delta Dart
+  #Jokkmokk airbase
+  11:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - B-52H Stratofortress
+    - primary: BARCAP
+      secondary: air-to-ground
+      aircraft:
+        - F-100 Super Sabre
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-4C Phantom II
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-104C Starfighter
   #Kallax
   15:
     - primary: BARCAP
@@ -161,6 +190,26 @@ squadrons:
     - primary: AEW&C
       aircraft:
         - E-2C Hawkeye
+  #Andoya
+  20:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - B-58 Hustler
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-106A Delta Dart
+  #Bardufoss
+  21:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - B-58 Hustler
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - F-106B Delta Dart
   #Kemi Tornio
   3:
     - primary: Strike
@@ -171,24 +220,6 @@ squadrons:
       secondary: any
       aircraft:
         - F-106B Delta Dart
-  #Jokkmokk airbase
-  11:
-    - primary: Strike
-      secondary: any
-      aircraft:
-        - B-52H Stratofortress
-    - primary: BARCAP
-      secondary: air-to-ground
-      aircraft:
-        - F-100 Super Sabre
-    - primary: TARCAP
-      secondary: any
-      aircraft:
-        - F-4C Phantom II
-    - primary: BARCAP
-      secondary: any
-      aircraft:
-        - F-104C Starfighter
   Ranuan varalaskupaikka:
     - primary: Strike
       secondary: any
