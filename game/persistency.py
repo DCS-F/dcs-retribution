@@ -57,6 +57,8 @@ class MigrationUnpickler(pickle.Unpickler):
             return Thunderstorm
         if name == "Hipico":
             return dcs.terrain.falklands.airports.Hipico_Flying_Club
+        if name in ["CaletaTortel", "Caleta_Tortel_Airport"]:
+            return dcs.terrain.Airport  # use base-class if airport was removed
         if name in ["SaveManager", "SaveGameBundle"]:
             return DummyObject
         if module == "dcs.terrain.kola.airports":
@@ -72,6 +74,19 @@ class MigrationUnpickler(pickle.Unpickler):
             elif name == "Olenegorsk":
                 from dcs.terrain.kola.airports import Olenya
                 return Olenya
+        if module == "dcs.terrain.falklands.airports":
+            if name == "Aerodromo_De_Tolhuin":
+                from dcs.terrain.falklands.airports import Tolhuin
+                return Tolhuin
+            elif name == "Porvenir_Airfield":
+                from dcs.terrain.falklands.airports import Porvenir
+                return Porvenir
+            elif name == "Aeropuerto_de_Gobernador_Gregores":
+                from dcs.terrain.falklands.airports import Gobernador_Gregores
+                return Gobernador_Gregores
+            elif name == "Aerodromo_O_Higgins":
+                from dcs.terrain.falklands.airports import O_Higgins
+                return O_Higgins
         if module in ["dcs.vehicles", "dcs.ships"]:
             try:
                 return super().find_class(module, name)
