@@ -1292,6 +1292,20 @@ class Settings:
         section=GENERAL_SECTION,
         default=False,
     )
+    pretense_generate_missile_sites: bool = boolean_option(
+        "Generate Retribution missile sites in Pretense campaigns.",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=True,
+        detail=("Note: will not switch sides as the zones change hands."),
+    )
+    pretense_generate_early_warning_radars: bool = boolean_option(
+        "Generate Retribution EWRs in Pretense campaigns.",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=True,
+        detail=("Note: will not switch sides as the zones change hands."),
+    )
     pretense_num_of_cargo_planes: int = bounded_int_option(
         "Number of cargo planes per side",
         page=PRETENSE_PAGE,

@@ -56,6 +56,7 @@ from game.theater.theatergroundobject import (
     BuildingGroundObject,
     VehicleGroupGroundObject,
     GenericCarrierGroundObject,
+    EwrGroundObject,
 )
 from game.theater.theatergroup import TheaterGroup
 from game.unitmap import UnitMap
@@ -861,7 +862,20 @@ class PretenseTgoGenerator(TgoGenerator):
 
             for ground_object in cp.ground_objects:
                 generator: GroundObjectGenerator
-                if isinstance(ground_object, CarrierGroundObject) and isinstance(
+                if (
+                    self.game.settings.pretense_generate_early_warning_radars
+                    and isinstance(ground_object, EwrGroundObject)
+                ):
+                    generator = GroundObjectGenerator(
+                        ground_object, country, self.game, self.m, self.unit_map
+                    )
+                elif self.game.settings.pretense_generate_missile_sites and isinstance(
+                    ground_object, MissileSiteGroundObject
+                ):
+                    generator = MissileSiteGenerator(
+                        ground_object, country, self.game, self.m, self.unit_map
+                    )
+                elif isinstance(ground_object, CarrierGroundObject) and isinstance(
                     cp, NavalControlPoint
                 ):
                     generator = PretenseCarrierGenerator(
@@ -892,10 +906,6 @@ class PretenseTgoGenerator(TgoGenerator):
                         self.runways,
                         self.unit_map,
                         self.mission_data,
-                    )
-                elif isinstance(ground_object, MissileSiteGroundObject):
-                    generator = MissileSiteGenerator(
-                        ground_object, country, self.game, self.m, self.unit_map
                     )
                 else:
                     generator = PretenseGroundObjectGenerator(
