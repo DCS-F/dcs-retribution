@@ -15,7 +15,9 @@
     "L-39ZA Albatros",
     "MiG-15bis Fagot",
     "MiG-19P Farmer-B",
+    "Yak-28 Firebar",
     "Tu-142 Bear-F",
+    "Tu-95K Bear-C",
     "Tu-95MS Bear-H",
     "Tu-4K Bull",
     "Tu-16 Badger-B",
@@ -24,6 +26,7 @@
     "Tu-16 Badger"
   ],
   "awacs": [
+    "Tu-126",
     "A-50"
   ],
   "tankers": [
