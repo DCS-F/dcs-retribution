@@ -35,6 +35,7 @@ from pydcs_extensions import (
     Vap_m35_truck,
     Vap_mule,
     Vap_vc_zis,
+    RBS_70,
 )
 
 if TYPE_CHECKING:
@@ -277,8 +278,16 @@ class PretenseLuaGenerator(LuaGenerator):
         cp_side_str = "blue" if cp_side == PRETENSE_BLUE_SIDE else "red"
         cp = self.game.theater.controlpoints[0]
         for loop_cp in self.game.theater.controlpoints:
-            if loop_cp.name == cp_name:
+            loop_cp_name = loop_cp.name
+            loop_cp_name = loop_cp_name.replace("Ä", "A")
+            loop_cp_name = loop_cp_name.replace("Ö", "O")
+            loop_cp_name = loop_cp_name.replace("Ø", "O")
+            loop_cp_name = loop_cp_name.replace("ä", "a")
+            loop_cp_name = loop_cp_name.replace("ö", "o")
+            loop_cp_name = loop_cp_name.replace("ø", "o")
+            if loop_cp_name == cp_name:
                 cp = loop_cp
+                break
         sam_presets: dict[str, PretenseSam] = {}
         for sam_name in [
             "sa2",
@@ -294,6 +303,7 @@ class PretenseLuaGenerator(LuaGenerator):
             "rapier",
             "roland",
             "hq7",
+            "rbs70",
             "irondome",
             "davidsling",
         ]:
@@ -396,6 +406,8 @@ class PretenseLuaGenerator(LuaGenerator):
                         sam_presets["roland"].enabled = True
                     if ground_unit.unit_type.dcs_unit_type == AirDefence.HQ_7_STR_SP:
                         sam_presets["hq7"].enabled = True
+                    if ground_unit.unit_type.dcs_unit_type == RBS_70:
+                        sam_presets["rbs70"].enabled = True
                     if ground_unit.unit_type.dcs_unit_type == IRON_DOME_LN:
                         sam_presets["irondome"].enabled = True
                     if ground_unit.unit_type.dcs_unit_type == DAVID_SLING_LN:
@@ -1515,6 +1527,33 @@ class PretenseLuaGenerator(LuaGenerator):
         lua_string_ground_groups += "            dataCategory = TemplateDB.type.group\n"
         lua_string_ground_groups += "}\n"
 
+        lua_string_ground_groups += (
+            'TemplateDB.templates["rbs70-' + side_str + '"] = {\n'
+        )
+        lua_string_ground_groups += "    units = {\n"
+        lua_string_ground_groups += '                "RBS-70",\n'
+        lua_string_ground_groups += '                "RBS-70",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.AAA, UnitClass.SHORAD, UnitClass.MANPAD])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.LOGISTICS])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.LOGISTICS])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.LOGISTICS])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.LOGISTICS])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.LOGISTICS])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.SHORAD, UnitClass.AAA, UnitClass.MANPAD])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.SHORAD, UnitClass.AAA, UnitClass.MANPAD])}",\n'
+        lua_string_ground_groups += '                "RBS-70",\n'
+        lua_string_ground_groups += '                "RBS-70",\n'
+        lua_string_ground_groups += '                "RBS-70",\n'
+        lua_string_ground_groups += '                "RBS-70",\n'
+        lua_string_ground_groups += '                "UndE23",\n'
+        lua_string_ground_groups += '                "UndE23",\n'
+        lua_string_ground_groups += '                "UndE23"\n'
+        lua_string_ground_groups += "            },\n"
+        lua_string_ground_groups += "            maxDist = 300,\n"
+        lua_string_ground_groups += f'            skill = "{skill_str}",\n'
+        lua_string_ground_groups += "            dataCategory = TemplateDB.type.group\n"
+        lua_string_ground_groups += "}\n"
+
         return lua_string_ground_groups
 
     @staticmethod
@@ -1647,12 +1686,12 @@ class PretenseLuaGenerator(LuaGenerator):
             cp_name = "".join(
                 [i for i in cp.name if i.isalnum() or i.isspace() or i == "-"]
             )
-            cp_name.replace("Ä", "A")
-            cp_name.replace("Ö", "O")
-            cp_name.replace("Ø", "O")
-            cp_name.replace("ä", "a")
-            cp_name.replace("ö", "o")
-            cp_name.replace("ø", "o")
+            cp_name = cp_name.replace("Ä", "A")
+            cp_name = cp_name.replace("Ö", "O")
+            cp_name = cp_name.replace("Ø", "O")
+            cp_name = cp_name.replace("ä", "a")
+            cp_name = cp_name.replace("ö", "o")
+            cp_name = cp_name.replace("ø", "o")
             cp_side = 2 if cp.captured else 1
 
             if isinstance(cp, OffMapSpawn):
