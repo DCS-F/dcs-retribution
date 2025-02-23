@@ -330,6 +330,12 @@ presets = {
 				type='defense',
 				template='hq7-red',
 			}),
+			rbs70 = Preset:new({
+				display = 'SAM',
+				cost=3000,
+				type='defense',
+				template='rbs70-red',
+			}),
 			irondome = Preset:new({
 				display = 'SAM',
 				cost=20000,
@@ -439,6 +445,12 @@ presets = {
 				cost=3000,
 				type='defense',
 				template='hq7-blue',
+			}),
+			rbs70 = Preset:new({
+				display = 'SAM',
+				cost=3000,
+				type='defense',
+				template='rbs70-blue',
 			}),
 			irondome = Preset:new({
 				display = 'SAM',
