@@ -8,8 +8,10 @@
   ],
   "aircrafts": [
 	"MiG-15bis Fagot",
+	"MiG-17F Fresco-C",
     "Mi-8MTV2 Hip",
     "MiG-19P Farmer-B",
+    "MiG-21MF Fishbed-J",
     "MiG-21bis Fishbed-N",
 	"Su-22M4 Fitter-K",
 	"L-39ZA Albatros",
@@ -56,7 +58,8 @@
     "ZSU-23-4 Shilka"
   ],
   "requirements": {
-    "OH-6 Vietnam Asset Pack": "https://github.com/tobi-be/DCS-OH-6A"
+    "OH-6 Vietnam Asset Pack": "https://github.com/tobi-be/DCS-OH-6A",
+    "Vietnam War Vessels": "https://github.com/tspindler-cms/tetet-vwv"
   },
   "doctrine": "coldwar",
   "liveries_overrides": {
