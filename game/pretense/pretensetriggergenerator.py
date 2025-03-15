@@ -38,6 +38,7 @@ from game.naming import ALPHA_MILITARY
 from game.pretense.pretenseflightgroupspawner import PretenseNameGenerator
 from game.theater import Airfield
 from game.theater.controlpoint import Fob, TRIGGER_RADIUS_CAPTURE, OffMapSpawn
+from game.theater.theatergroundobject import CoastalSiteGroundObject, NavalGroundObject
 
 if TYPE_CHECKING:
     from game.game import Game
@@ -376,7 +377,11 @@ class PretenseTriggerGenerator:
             cp_name_trimmed = PretenseNameGenerator.pretense_trimmed_cp_name(cp.name)
             tgo_num = 0
             for tgo in cp.ground_objects:
-                if cp.is_fleet or tgo.sea_object:
+                if not cp.is_fleet and tgo.sea_object:
+                    continue
+                if not cp.is_fleet and isinstance(tgo, CoastalSiteGroundObject):
+                    continue
+                if not cp.is_fleet and isinstance(tgo, NavalGroundObject):
                     continue
                 tgo_num += 1
                 zone_color = {1: 1.0, 2: 1.0, 3: 1.0, 4: 0.15}
