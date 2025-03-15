@@ -11,6 +11,7 @@
     "B-17G Flying Fortress",
     "B-47 Stratojet",
     "B-52H Stratofortress",
+	"B-58 Hustler",
     "C-130",
     "CH-47D",
 	"F-4B Phantom II",
@@ -61,6 +62,8 @@
 	"Infantry M1 Garand"
   ],
   "preset_groups": [
+    "Hawk",
+    "Roland",
     "Ally Flak"
   ],
   "naval_units": [

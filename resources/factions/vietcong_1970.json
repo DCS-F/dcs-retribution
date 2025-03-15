@@ -7,14 +7,13 @@
     "vi_Vn"
   ],
   "aircrafts": [
-	"MiG-15bis Fagot",
-	"MiG-17F Fresco-C",
+    "MiG-15bis Fagot",
+    "MiG-17F Fresco-C",
     "Mi-8MTV2 Hip",
     "MiG-19P Farmer-B",
     "MiG-21MF Fishbed-J",
     "MiG-21bis Fishbed-N",
-	"Su-22M4 Fitter-K",
-	"L-39ZA Albatros",
+    "L-39ZA Albatros",
     "An-26B",
     "An-30M"
   ],
@@ -65,7 +64,16 @@
   "liveries_overrides": {
     "MiG-15bis Fagot": [
       "VPAF_502",
+      "VPAF_MiG-17",
 	  "VPAF_Jungle_Camo"
+    ],
+    "MiG-17F Fresco-C": [
+      "NVAF 1905-1",
+      "NVAF 1905-2",
+      "NVAF Gray",
+      "NVAF Green",
+      "NVAF Silver",
+      "NVAF Tan"
     ],
 	"MiG-19P Farmer-B": [
       "CC_NV925th",
@@ -84,8 +92,8 @@
       "VPAF"
     ],
     "Mi-8MTV2 Hip": [
-      "Russia_MVD_Standard",
-	  "China PLAAA Camo"
+      "VPAF Green - 7848",
+	  "VPAF Green - 7850"
     ],
     "An-26B": [
       "China PLAAF"
