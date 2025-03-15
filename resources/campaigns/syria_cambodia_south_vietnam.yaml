@@ -3,15 +3,18 @@ name: Syria - Vietnam/Cambodia - Charlie Don't Surf
 theater: Syria
 authors: Ghosti
 description: <p>This campaign is set during the Tet Offensive in the Vietnam War. North Vietnamese / Viet Cong forces have conducted a surprise attack on South Vietnamese and American forces and have entered the outskirts of Saigon, during the Lunar New Year festival of Tet. Once they have completed regrouping, the American/South Vietnamese begin their counterattack.</p>
-recommended_player_faction: USA 1970 Limited Armor
+recommended_player_faction: USA 1970 Limited Armor w/ faux F-111
 recommended_enemy_faction: Viet Cong 1970
-recommended_start_date: 1968-01-31
+recommended_start_date: 1968-03-01
 miz: syria_cambodia_south_vietnam.miz
 performance: 3
 version: "10.2"
 
 settings:
   pretense_extra_zone_connections: 0
+  pretense_sead_mission_dist_to_front: 3
+  pretense_strike_mission_dist_to_front: 2
+
   pretense_disable_supply_convoys: true
   pretense_ground_assaults_prefer_roads: true
   pretense_num_of_cargo_planes: 1
@@ -26,14 +29,22 @@ settings:
   enemy_vehicle_skill: "Average"
   night_day_missions: NightMissions.OnlyDay
   labels: "Dot Only"
+  squadron_random_chance: 100
+  default_start_type_client: StartType.WARM
 
   ground_start_ai_planes: true
   ground_start_scenery_remove_triggers: false
   ground_start_ground_power_trucks: false
   ground_start_ground_power_trucks_roadbase: false
 
+  mod_aircraft_spawn_late_start_f15c: true
+  mod_aircraft_spawn_late_start_su27: true
+  mod_aircraft_spawn_late_start_su33: true
+
   plugins:
     gamemaster: true
+    skynetiads: false
+    ewrs: true
     splashdamageclusters: true
     splashdamageclusters.bdaMessages: true
     splashdamageclusters.clusterEffects: true
@@ -49,6 +60,7 @@ settings:
   ov10a_bronco: true
   oh_6: true
   oh_6_vietnamassetpack: true
+  vietnamwarvessels: true
 
 squadrons:
   # Roadbase, 9000m runway
@@ -61,24 +73,22 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - L-39ZA Albatros
-    - primary: SEAD
-      secondary: air-to-ground
+    - primary: DEAD
       aircraft:
-        - Su-22M4 Fitter-K
+        - MiG-21bis Fishbed-N
   # Roadbase, 3800m & 2800m runways
   Snuol Airbase, Cambodia:
     - primary: BARCAP
       secondary: any
       aircraft:
-        - MiG-21bis Fishbed-N
+        - MiG-21MF Fishbed-J
     - primary: CAS
       secondary: air-to-ground
       aircraft:
         - L-39ZA Albatros
-    - primary: SEAD
-      secondary: air-to-ground
+    - primary: DEAD
       aircraft:
-        - Su-22M4 Fitter-K
+        - MiG-21bis Fishbed-N
   # Helicopter base, border of Cambodia & South Vietnam
   Prey Veng, Cambodia:
     - primary: CAS
@@ -117,10 +127,6 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - L-39ZA Albatros
-    - primary: SEAD
-      secondary: air-to-ground
-      aircraft:
-        - Su-22M4 Fitter-K
   # Roadbase, 1700m runway
   An Loc Combat Base:
     - primary: BARCAP
@@ -141,10 +147,9 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - L-39ZA Albatros
-    - primary: SEAD
-      secondary: air-to-ground
+    - primary: DEAD
       aircraft:
-        - Su-22M4 Fitter-K
+        - MiG-21bis Fishbed-N
   # Helicopter base, South Vietnam
   Bien Hoa Helicopter Base:
     - primary: CAS
@@ -272,10 +277,10 @@ squadrons:
       secondary: any
       aircraft:
         - F-5E Tiger II
-    - primary: CAS
+    - primary: SEAD
       secondary: any
       aircraft:
-        - AJS-37 Viggen
+        - Su-24M Fencer-D
     - primary: CAS
       secondary: air-to-ground
       aircraft:
@@ -312,10 +317,10 @@ squadrons:
       secondary: any
       aircraft:
         - F-4E Phantom II
-    - primary: CAS
+    - primary: SEAD
       secondary: any
       aircraft:
-        - AJS-37 Viggen
+        - Su-24M Fencer-D
     - primary: CAS
       secondary: any
       aircraft:
