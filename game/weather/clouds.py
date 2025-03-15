@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import math
 import random
 from dataclasses import dataclass, field
 from typing import Optional
@@ -26,7 +27,9 @@ class Clouds:
         preset = random.choice(presets)
         print(f"preset.min_base={preset.min_base}, preset.max_base={preset.max_base}")
         return Clouds(
-            base=random.randint(preset.min_base, preset.max_base),
+            base=random.randint(
+                math.floor(preset.min_base), math.floor(preset.max_base)
+            ),
             density=0,
             thickness=0,
             precipitation=PydcsWeather.Preceptions.None_,
