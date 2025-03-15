@@ -296,6 +296,38 @@ local unitPayloads = {
 				[1] = 11,
 			},
 		},
+		[10] = {
+			["name"] = "Retribution DEAD",
+			["pylons"] = {
+				[1] = {
+					["CLSID"] = "{ASO-2}",
+					["num"] = 6,
+				},
+				[2] = {
+					["CLSID"] = "{PTB_800_MIG21}",
+					["num"] = 3,
+				},
+				[3] = {
+					["CLSID"] = "{Kh-66_Grom}",
+					["num"] = 4,
+				},
+				[4] = {
+					["CLSID"] = "{Kh-66_Grom}",
+					["num"] = 2,
+				},
+				[5] = {
+					["CLSID"] = "{S-24B}",
+					["num"] = 1,
+				},
+				[6] = {
+					["CLSID"] = "{S-24B}",
+					["num"] = 5,
+				},
+			},
+			["tasks"] = {
+				[1] = 11,
+			},
+		},
 	},
 	["tasks"] = {
 	},
