@@ -324,6 +324,12 @@ presets = {
 				type='defense',
 				template='roland-red',
 			}),
+			chaparral = Preset:new({
+				display = 'SAM',
+				cost=3000,
+				type='defense',
+				template='chaparral-red',
+			}),
 			hq7 = Preset:new({
 				display = 'SAM',
 				cost=3000,
@@ -439,6 +445,12 @@ presets = {
 				cost=3000,
 				type='defense',
 				template='roland-blue',
+			}),
+			chaparral = Preset:new({
+				display = 'SAM',
+				cost=3000,
+				type='defense',
+				template='chaparral-blue',
 			}),
 			hq7 = Preset:new({
 				display = 'SAM',
