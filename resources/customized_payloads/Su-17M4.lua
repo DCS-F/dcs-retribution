@@ -46,7 +46,7 @@ local unitPayloads = {
 			["name"] = "Retribution CAS",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "{6DADF342-D4BA-4D8A-B081-BA928C4AF86D}",
+					["CLSID"] = "{292960BB-6518-41AC-BADA-210D65D5073C}",
 					["num"] = 8,
 				},
 				[2] = {
@@ -54,7 +54,7 @@ local unitPayloads = {
 					["num"] = 7,
 				},
 				[3] = {
-					["CLSID"] = "{6DADF342-D4BA-4D8A-B081-BA928C4AF86D}",
+					["CLSID"] = "{292960BB-6518-41AC-BADA-210D65D5073C}",
 					["num"] = 6,
 				},
 				[4] = {
@@ -66,7 +66,7 @@ local unitPayloads = {
 					["num"] = 4,
 				},
 				[6] = {
-					["CLSID"] = "{6DADF342-D4BA-4D8A-B081-BA928C4AF86D}",
+					["CLSID"] = "{292960BB-6518-41AC-BADA-210D65D5073C}",
 					["num"] = 3,
 				},
 				[7] = {
@@ -74,7 +74,7 @@ local unitPayloads = {
 					["num"] = 2,
 				},
 				[8] = {
-					["CLSID"] = "{6DADF342-D4BA-4D8A-B081-BA928C4AF86D}",
+					["CLSID"] = "{292960BB-6518-41AC-BADA-210D65D5073C}",
 					["num"] = 1,
 				},
 			},
@@ -333,7 +333,7 @@ local unitPayloads = {
 			["name"] = "Retribution BAI",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "{6DADF342-D4BA-4D8A-B081-BA928C4AF86D}",
+					["CLSID"] = "{292960BB-6518-41AC-BADA-210D65D5073C}",
 					["num"] = 8,
 				},
 				[2] = {
@@ -341,7 +341,7 @@ local unitPayloads = {
 					["num"] = 7,
 				},
 				[3] = {
-					["CLSID"] = "{6DADF342-D4BA-4D8A-B081-BA928C4AF86D}",
+					["CLSID"] = "{292960BB-6518-41AC-BADA-210D65D5073C}",
 					["num"] = 6,
 				},
 				[4] = {
@@ -353,7 +353,7 @@ local unitPayloads = {
 					["num"] = 4,
 				},
 				[6] = {
-					["CLSID"] = "{6DADF342-D4BA-4D8A-B081-BA928C4AF86D}",
+					["CLSID"] = "{292960BB-6518-41AC-BADA-210D65D5073C}",
 					["num"] = 3,
 				},
 				[7] = {
@@ -361,7 +361,7 @@ local unitPayloads = {
 					["num"] = 2,
 				},
 				[8] = {
-					["CLSID"] = "{6DADF342-D4BA-4D8A-B081-BA928C4AF86D}",
+					["CLSID"] = "{292960BB-6518-41AC-BADA-210D65D5073C}",
 					["num"] = 1,
 				},
 			},

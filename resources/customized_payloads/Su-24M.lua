@@ -109,19 +109,19 @@ local unitPayloads = {
 			["name"] = "CAS",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "{6DADF342-D4BA-4D8A-B081-BA928C4AF86D}",
+					["CLSID"] = "{292960BB-6518-41AC-BADA-210D65D5073C}",
 					["num"] = 8,
 				},
 				[2] = {
-					["CLSID"] = "{6DADF342-D4BA-4D8A-B081-BA928C4AF86D}",
+					["CLSID"] = "{292960BB-6518-41AC-BADA-210D65D5073C}",
 					["num"] = 1,
 				},
 				[3] = {
-					["CLSID"] = "{6DADF342-D4BA-4D8A-B081-BA928C4AF86D}",
+					["CLSID"] = "{292960BB-6518-41AC-BADA-210D65D5073C}",
 					["num"] = 2,
 				},
 				[4] = {
-					["CLSID"] = "{6DADF342-D4BA-4D8A-B081-BA928C4AF86D}",
+					["CLSID"] = "{292960BB-6518-41AC-BADA-210D65D5073C}",
 					["num"] = 7,
 				},
 				[5] = {
