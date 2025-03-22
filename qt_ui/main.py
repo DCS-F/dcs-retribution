@@ -350,7 +350,7 @@ def create_game(
             oh_6_vietnamassetpack=False,
             uh_60l=False,
             jas39_gripen=False,
-            sk60_saab105=False,
+            sk_60=False,
             t45_goshawk=False,
             hawk_t1a=False,
             su15_flagon=False,
