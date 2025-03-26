@@ -92,6 +92,7 @@ class Migrator:
             try_set_attr(cp, "ground_spawns_roadbase", [])
             try_set_attr(cp, "helipads_quad", [])
             try_set_attr(cp, "helipads_invisible", [])
+            try_set_attr(cp, "helipads_lhd", [])
 
     def _update_flight_plan(self, f: Flight) -> None:
         layout = f.flight_plan.layout

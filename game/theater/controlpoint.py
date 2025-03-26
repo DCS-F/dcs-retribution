@@ -390,6 +390,7 @@ class ControlPoint(MissionTarget, SidcDescribable, ABC):
         self.preset_locations = PresetLocations()
         self.helipads: List[PointWithHeading] = []
         self.helipads_quad: List[PointWithHeading] = []
+        self.helipads_lhd: List[PointWithHeading] = []
         self.helipads_invisible: List[PointWithHeading] = []
         self.ground_spawns_roadbase: List[Tuple[PointWithHeading, Point]] = []
         self.ground_spawns: List[Tuple[PointWithHeading, Point]] = []
@@ -586,7 +587,10 @@ class ControlPoint(MissionTarget, SidcDescribable, ABC):
         Returns true if cp has helipads
         """
         return (
-            len(self.helipads) + len(self.helipads_quad) + len(self.helipads_invisible)
+            len(self.helipads)
+            + len(self.helipads_quad)
+            + len(self.helipads_lhd)
+            + len(self.helipads_invisible)
             > 0
         )
 
@@ -1249,6 +1253,7 @@ class Airfield(ControlPoint, CTLD):
             parking_slots += (
                 len(self.helipads)
                 + 4 * len(self.helipads_quad)
+                + 10 * len(self.helipads_lhd)
                 + len(self.helipads_invisible)
             )
         if parking_type.include_fixed_wing_stol:
@@ -1634,6 +1639,7 @@ class Fob(ControlPoint, RadioFrequencyContainer, CTLD):
             parking_slots += (
                 len(self.helipads)
                 + 4 * len(self.helipads_quad)
+                + 10 * len(self.helipads_lhd)
                 + len(self.helipads_invisible)
             )
 

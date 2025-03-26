@@ -51,7 +51,7 @@ class MizCampaignLoader:
     CP_CONVOY_SPAWN_TYPE = Armor.M1043_HMMWV_Armament.id
 
     FOB_UNIT_TYPE = Unarmed.SKP_11.id
-    FARP_HELIPADS_TYPE = ["Invisible FARP", "SINGLE_HELIPAD", "FARP"]
+    FARP_HELIPADS_TYPE = ["Invisible FARP", "SINGLE_HELIPAD", "FARP", "LHD_LHA"]
 
     OFFSHORE_STRIKE_TARGET_UNIT_TYPE = Fortification.Oil_platform.id
     SHIP_UNIT_TYPE = USS_Arleigh_Burke_IIa.id
@@ -527,6 +527,8 @@ class MizCampaignLoader:
                 self._add_helipad(closest.helipads, static)
             elif static.units[0].type == "FARP":
                 self._add_helipad(closest.helipads_quad, static)
+            elif static.units[0].type == "LHD_LHA":
+                self._add_helipad(closest.helipads_lhd, static)
             else:
                 self._add_helipad(closest.helipads_invisible, static)
 
