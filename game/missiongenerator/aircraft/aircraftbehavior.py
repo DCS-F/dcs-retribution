@@ -36,7 +36,7 @@ from game.ato.flightplans.aewc import AewcFlightPlan
 from game.ato.flightplans.packagerefueling import PackageRefuelingFlightPlan
 from game.ato.flightplans.theaterrefueling import TheaterRefuelingFlightPlan
 from game.ato.flightwaypointtype import FlightWaypointType
-from pydcs_extensions import T_45, OH_6A
+from pydcs_extensions import T_45, OH_6A, Tu_4K
 
 
 class AircraftBehavior:
@@ -150,6 +150,10 @@ class AircraftBehavior:
             # Convert OH-6 waypoints into Reconnaissance waypoints,
             # because this helicopter is not capable of the CAS or Strike task in DCS
             self.configure_task(flight, group, Reconnaissance)
+        elif flight.unit_type.dcs_unit_type in [Tu_4K]:
+            # Convert Tu-4K waypoints into Anti-ship waypoints,
+            # because this bomber is not capable of the CAS or Strike task in DCS
+            self.configure_task(flight, group, AntishipStrike)
         else:
             self.configure_task(flight, group, CAS, AFAC)
         self.configure_behavior(
@@ -173,17 +177,21 @@ class AircraftBehavior:
         # because these aircraft aren't capable of the CAS task in DCS
         if flight.unit_type.dcs_unit_type in [F_117A, T_45]:
             self.configure_strike(group, flight)
+        elif flight.unit_type.dcs_unit_type in [Tu_4K]:
+            # Convert Tu-4K waypoints into Anti-ship waypoints,
+            # because this bomber is not capable of the CAS or Strike task in DCS
+            self.configure_task(flight, group, AntishipStrike)
         else:
             self.configure_task(flight, group, SEAD, CAS)
-            self.configure_behavior(
-                flight,
-                group,
-                react_on_threat=OptReactOnThreat.Values.EvadeFire,
-                roe=OptROE.Values.OpenFire,
-                rtb_winchester=OptRTBOnOutOfAmmo.Values.All,
-                restrict_jettison=True,
-                mission_uses_gun=False,
-            )
+        self.configure_behavior(
+            flight,
+            group,
+            react_on_threat=OptReactOnThreat.Values.EvadeFire,
+            roe=OptROE.Values.OpenFire,
+            rtb_winchester=OptRTBOnOutOfAmmo.Values.All,
+            restrict_jettison=True,
+            mission_uses_gun=False,
+        )
 
     def configure_sead(self, group: FlyingGroup[Any], flight: Flight) -> None:
         # CAS is able to perform all the same tasks as SEAD using a superset of the
@@ -401,6 +409,6 @@ class AircraftBehavior:
         else:
             fallback_part = f" nor {fallback_task.name}" if fallback_task else ""
             raise RuntimeError(
-                f"{ac_type} is neither capable of {preferred_task.name}"
+                f"{ac_type} is neither capable of {preferred_task.name} nor"
                 f"{fallback_part}. Can't generate {flight.flight_type} flight."
             )
