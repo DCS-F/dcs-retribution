@@ -80,6 +80,9 @@
   "has_jtac": true,
   "jtac_unit": "Mi-8MTV2 Hip",
   "liveries_overrides": {
+    "MiG-15bis Fagot": [
+      "Finnish Air Force"
+    ],
 	"MiG-19P Farmer-B": [
       "Finland",
       "Finland_green",
