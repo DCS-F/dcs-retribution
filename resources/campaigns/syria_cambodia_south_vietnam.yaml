@@ -11,6 +11,10 @@ performance: 3
 version: "10.2"
 
 settings:
+  automate_runway_repair: true
+  automate_front_line_reinforcements: true
+  automate_aircraft_reinforcements: true
+
   pretense_extra_zone_connections: 0
   pretense_sead_mission_dist_to_front: 3
   pretense_strike_mission_dist_to_front: 2
