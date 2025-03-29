@@ -78,6 +78,31 @@ squadrons:
     - primary: AEW&C
       aircraft:
         - E-2C Hawkeye
+  Porsangmoen:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342M Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Ka-50 Hokum
   Leirpollskogen FARP:
     - primary: CAS
       secondary: air-to-ground
@@ -409,6 +434,11 @@ squadrons:
       aircraft:
         - Mi-24P Hind-F
   Kaamanen roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Karigasniemi roadbase:
     - primary: Air Assault
       secondary: any
       aircraft:

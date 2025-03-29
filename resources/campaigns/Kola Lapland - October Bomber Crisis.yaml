@@ -74,6 +74,14 @@ squadrons:
     - primary: AEW&C
       aircraft:
         - E-2C Hawkeye
+  Porsangmoen:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: Transport
+      aircraft:
+        - CH-47D
   Leirpollskogen FARP:
     - primary: CAS
       secondary: air-to-ground
@@ -400,6 +408,15 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Karigasniemi roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
     - primary: Air Assault
       secondary: any
       aircraft:

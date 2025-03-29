@@ -71,6 +71,14 @@ squadrons:
     - primary: AEW&C
       aircraft:
         - A-50
+  Porsangmoen:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24V Hind-E
+    - primary: Transport
+      aircraft:
+        - Mi-8MTV2 Hip
   Leirpollskogen FARP:
     - primary: CAS
       secondary: air-to-ground
@@ -389,6 +397,14 @@ squadrons:
       secondary: any
       aircraft:
         - Mi-24V Hind-E
+  Karigasniemi roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
   Karasjok EWR site:
     - primary: Air Assault
       secondary: any
