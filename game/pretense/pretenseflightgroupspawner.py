@@ -26,6 +26,7 @@ from game.missiongenerator.aircraft.flightgroupspawner import (
 from game.missiongenerator.missiondata import MissionData
 from game.naming import NameGenerator
 from game.theater import Airfield, ControlPoint, Fob, NavalControlPoint
+from pydcs_extensions import A_4E_C
 
 
 class PretenseNameGenerator(NameGenerator):
@@ -41,6 +42,20 @@ class PretenseNameGenerator(NameGenerator):
     def pretense_trimmed_cp_name(cls, cp_name: str) -> str:
         cp_name_alnum = "".join([i for i in cp_name.lower() if i.isalnum()])
         cp_name_trimmed = cp_name_alnum.lstrip("1 2 3 4 5 6 7 8 9 0")
+        cp_name_trimmed = cp_name_trimmed.replace("ä", "a")
+        cp_name_trimmed = cp_name_trimmed.replace("ö", "o")
+        cp_name_trimmed = cp_name_trimmed.replace("ø", "o")
+        return cp_name_trimmed
+
+    @classmethod
+    def pretense_trimmed_cp_name_uppercase(cls, cp_name: str) -> str:
+        cp_name_alnum = "".join(
+            [i for i in cp_name if i.isalnum() or i.isspace() or i == "-"]
+        )
+        cp_name_trimmed = cp_name_alnum.lstrip("1 2 3 4 5 6 7 8 9 0")
+        cp_name_trimmed = cp_name_trimmed.replace("Ä", "A")
+        cp_name_trimmed = cp_name_trimmed.replace("Ö", "O")
+        cp_name_trimmed = cp_name_trimmed.replace("Ø", "O")
         cp_name_trimmed = cp_name_trimmed.replace("ä", "a")
         cp_name_trimmed = cp_name_trimmed.replace("ö", "o")
         cp_name_trimmed = cp_name_trimmed.replace("ø", "o")
@@ -183,6 +198,13 @@ class PretenseFlightGroupSpawner(FlightGroupSpawner):
                     if self.flight.client_count == 0 and is_vtol:
                         self.insert_into_pretense(name)
                         return self._generate_over_departure(name, cp)
+                # Air-start AI-only flights of A-4E Skyhawks, because they have a tendency of overrunning even
+                # regular length runways on A/G loadouts
+                if self.flight.unit_type.dcs_unit_type in [A_4E_C] and (
+                    self.flight.client_count == 0
+                ):
+                    self.insert_into_pretense(name)
+                    return self._generate_over_departure(name, cp)
                 if (
                     cp.has_ground_spawns
                     and len(self.ground_spawns[cp])

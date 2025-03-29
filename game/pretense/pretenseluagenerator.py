@@ -278,16 +278,13 @@ class PretenseLuaGenerator(LuaGenerator):
         cp_side_str = "blue" if cp_side == PRETENSE_BLUE_SIDE else "red"
         cp = self.game.theater.controlpoints[0]
         for loop_cp in self.game.theater.controlpoints:
-            loop_cp_name = loop_cp.name
-            loop_cp_name = loop_cp_name.replace("Ä", "A")
-            loop_cp_name = loop_cp_name.replace("Ö", "O")
-            loop_cp_name = loop_cp_name.replace("Ø", "O")
-            loop_cp_name = loop_cp_name.replace("ä", "a")
-            loop_cp_name = loop_cp_name.replace("ö", "o")
-            loop_cp_name = loop_cp_name.replace("ø", "o")
+            loop_cp_name = PretenseNameGenerator.pretense_trimmed_cp_name_uppercase(
+                loop_cp.name
+            )
             if loop_cp_name == cp_name:
                 cp = loop_cp
                 break
+
         sam_presets: dict[str, PretenseSam] = {}
         for sam_name in [
             "sa2",
@@ -1606,25 +1603,13 @@ class PretenseLuaGenerator(LuaGenerator):
             other_cp_name not in connected_points[cp_name]
             and cp_name not in connected_points[other_cp_name]
         ):
-            cp_name_conn = "".join(
-                [i for i in cp_name if i.isalnum() or i.isspace() or i == "-"]
+            cp_name_conn = PretenseNameGenerator.pretense_trimmed_cp_name_uppercase(
+                cp_name
             )
-            cp_name_conn_other = "".join(
-                [i for i in other_cp_name if i.isalnum() or i.isspace() or i == "-"]
+            cp_name_conn_other = (
+                PretenseNameGenerator.pretense_trimmed_cp_name_uppercase(other_cp_name)
             )
-            cp_name_conn = cp_name_conn.replace("Ä", "A")
-            cp_name_conn = cp_name_conn.replace("Ö", "O")
-            cp_name_conn = cp_name_conn.replace("Ø", "O")
-            cp_name_conn = cp_name_conn.replace("ä", "a")
-            cp_name_conn = cp_name_conn.replace("ö", "o")
-            cp_name_conn = cp_name_conn.replace("ø", "o")
 
-            cp_name_conn_other = cp_name_conn_other.replace("Ä", "A")
-            cp_name_conn_other = cp_name_conn_other.replace("Ö", "O")
-            cp_name_conn_other = cp_name_conn_other.replace("Ø", "O")
-            cp_name_conn_other = cp_name_conn_other.replace("ä", "a")
-            cp_name_conn_other = cp_name_conn_other.replace("ö", "o")
-            cp_name_conn_other = cp_name_conn_other.replace("ø", "o")
             lua_string_connman = (
                 f"    cm: addConnection('{cp_name_conn}', '{cp_name_conn_other}')\n"
             )
@@ -1713,15 +1698,7 @@ class PretenseLuaGenerator(LuaGenerator):
 
         for cp in self.game.theater.controlpoints:
             cp_name_trimmed = PretenseNameGenerator.pretense_trimmed_cp_name(cp.name)
-            cp_name = "".join(
-                [i for i in cp.name if i.isalnum() or i.isspace() or i == "-"]
-            )
-            cp_name = cp_name.replace("Ä", "A")
-            cp_name = cp_name.replace("Ö", "O")
-            cp_name = cp_name.replace("Ø", "O")
-            cp_name = cp_name.replace("ä", "a")
-            cp_name = cp_name.replace("ö", "o")
-            cp_name = cp_name.replace("ø", "o")
+            cp_name = PretenseNameGenerator.pretense_trimmed_cp_name_uppercase(cp.name)
             cp_side = 2 if cp.captured else 1
 
             if isinstance(cp, OffMapSpawn):
@@ -1746,12 +1723,7 @@ class PretenseLuaGenerator(LuaGenerator):
                     self.game.pretense_ground_supply[side][cp_name_trimmed] = list()
                 if cp_name_trimmed not in self.game.pretense_ground_assault[cp_side]:
                     self.game.pretense_ground_assault[side][cp_name_trimmed] = list()
-            cp_name = cp_name.replace("Ä", "A")
-            cp_name = cp_name.replace("Ö", "O")
-            cp_name = cp_name.replace("Ø", "O")
-            cp_name = cp_name.replace("ä", "a")
-            cp_name = cp_name.replace("ö", "o")
-            cp_name = cp_name.replace("ø", "o")
+
             lua_string_zones += (
                 f"zones.{cp_name_trimmed} = ZoneCommand:new('{cp_name}')\n"
             )

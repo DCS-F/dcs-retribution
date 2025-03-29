@@ -334,9 +334,7 @@ class PretenseTriggerGenerator:
                 trigger_radius = float(TRIGGER_RADIUS_PRETENSE_CARRIER)
             elif isinstance(cp, Fob) and cp.has_helipads:
                 trigger_radius = TRIGGER_RADIUS_PRETENSE_HELI
-                for helipad in list(
-                    cp.helipads + cp.helipads_quad + cp.helipads_invisible
-                ):
+                for helipad in list(cp.helipads + cp.helipads_invisible):
                     if cp.position.distance_to_point(helipad) > trigger_radius:
                         trigger_radius = cp.position.distance_to_point(helipad)
                 for ground_spawn, ground_spawn_wp in list(
@@ -356,15 +354,7 @@ class PretenseTriggerGenerator:
                     trigger_radius = int(TRIGGER_RADIUS_CAPTURE * 1.8)
                 else:
                     trigger_radius = TRIGGER_RADIUS_CAPTURE
-            cp_name = "".join(
-                [i for i in cp.name if i.isalnum() or i.isspace() or i == "-"]
-            )
-            cp_name = cp_name.replace("Ä", "A")
-            cp_name = cp_name.replace("Ö", "O")
-            cp_name = cp_name.replace("Ø", "O")
-            cp_name = cp_name.replace("ä", "a")
-            cp_name = cp_name.replace("ö", "o")
-            cp_name = cp_name.replace("ø", "o")
+            cp_name = PretenseNameGenerator.pretense_trimmed_cp_name_uppercase(cp.name)
             if not isinstance(cp, OffMapSpawn):
                 zone_color = {1: 0.0, 2: 0.0, 3: 0.0, 4: 0.15}
                 self.mission.triggers.add_triggerzone(
@@ -383,6 +373,10 @@ class PretenseTriggerGenerator:
                     continue
                 if not cp.is_fleet and isinstance(tgo, NavalGroundObject):
                     continue
+                if not cp.is_fleet and tgo.category == "oil":
+                    continue
+                if not cp.is_fleet:
+                    print(f"Adding Pretense zone for CP {cp} at {tgo} {tgo.category}")
                 tgo_num += 1
                 zone_color = {1: 1.0, 2: 1.0, 3: 1.0, 4: 0.15}
                 self.mission.triggers.add_triggerzone(
