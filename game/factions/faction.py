@@ -635,6 +635,7 @@ class Faction:
             self.remove_preset("RBS-98")
         if not mod_settings.coldwarassets:
             self.remove_aircraft("B_47")
+            self.remove_aircraft("B_58")
             self.remove_aircraft("Tu-4K")
             self.remove_aircraft("Tu-16")
             self.remove_aircraft("tu_22D")
