@@ -18,6 +18,7 @@ from dcs.mapping import Point, Vector2
 from game.ato.flightplans._common_ctld import generate_random_ctld_point
 from game.ato.flightwaypoint import AltitudeReference, FlightWaypoint
 from game.ato.flightwaypointtype import FlightWaypointType
+from game.data.weapons import WeaponType
 from game.theater import (
     ControlPoint,
     MissionTarget,
@@ -512,8 +513,13 @@ class WaypointBuilder:
             self.flight.coalition.game.settings.sead_threat_buffer_min_distance
         ).meters
         if target.strike_targets:
+            factor = (
+                0.8
+                if self.flight.any_member_has_weapon_of_type(WeaponType.ARM)
+                else 1.1
+            )
             threat_range = (
-                1.1 * max([x.threat_range for x in target.strike_targets]).meters
+                factor * max([x.threat_range for x in target.strike_targets]).meters
             )
         hdg = target.position.heading_between_point(ingress)
         hold = target.position.point_from_heading(
