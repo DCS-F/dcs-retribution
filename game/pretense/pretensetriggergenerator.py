@@ -334,7 +334,12 @@ class PretenseTriggerGenerator:
                 trigger_radius = float(TRIGGER_RADIUS_PRETENSE_CARRIER)
             elif isinstance(cp, Fob) and cp.has_helipads:
                 trigger_radius = TRIGGER_RADIUS_PRETENSE_HELI
-                for helipad in list(cp.helipads + cp.helipads_invisible):
+                for helipad in list(
+                    cp.helipads
+                    + cp.helipads_invisible
+                    + cp.helipads_quad
+                    + cp.helipads_lhd
+                ):
                     if cp.position.distance_to_point(helipad) > trigger_radius:
                         trigger_radius = cp.position.distance_to_point(helipad)
                 for ground_spawn, ground_spawn_wp in list(
