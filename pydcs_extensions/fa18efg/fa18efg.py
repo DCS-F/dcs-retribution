@@ -3560,6 +3560,7 @@ class FA_18E(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 1
     eplrs = True
+    networked_datalink = True
     category = "Interceptor"  # {78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 305
 
@@ -6094,6 +6095,7 @@ class FA_18F(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 1
     eplrs = True
+    networked_datalink = True
     category = "Interceptor"  # {78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 305
 
@@ -8666,6 +8668,7 @@ class EA_18G(PlaneType):
     chaff_charge_size = 1
     flare_charge_size = 1
     eplrs = True
+    networked_datalink = True
     category = "Interceptor"  # {78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}
     radio_frequency = 305
 
