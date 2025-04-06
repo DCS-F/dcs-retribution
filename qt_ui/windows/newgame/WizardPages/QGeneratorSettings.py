@@ -234,6 +234,7 @@ class GeneratorOptions(QtWidgets.QWizardPage):
             ("High Digit SAMs", self.high_digit_sams),
             ("Swedish Military Assets pack (1.10)", self.swedishmilitaryassetspack),
             ("JAS 39 Gripen (v1.8.5-beta)", self.jas39_gripen),
+            ("MiG-31BM (v2.0)", self.mig31bm_foxhound),
             ("Mirage III (v2.5.7.01)", self.mirage_3),
             ("OH-6 Cayuse (v1.2)", self.oh_6),
             ("OH-6 Vietnam Asset Pack (v1.0)", self.oh_6_vietnamassetpack),
@@ -251,7 +252,6 @@ class GeneratorOptions(QtWidgets.QWizardPage):
             ("Super Étendard (v2.5.5)", self.super_etendard),
             ("UH-60L Black Hawk (v1.3.1)", self.uh_60l),
             ("Vietnam War Vessels (v0.9.0 by TeTeT)", self.vietnamwarvessels),
-            ("MiG-31BM (v2.0)", self.mig31bm_foxhound),
             ("Star Wars Modpack 2.54+", self.SWPack),
             ("Spanish Naval Assets pack (desdemicabina 3.2.0)", self.spanishnavypack),
             ("IDF Assets Pack (v1.1 by IDF Mods Project)", self.irondome),
@@ -312,6 +312,7 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.jas39_gripen.setChecked(s.get("jas39_gripen", False))
         self.mirage_3.setChecked(s.get("mirage_3", False))
         self.sk_60.setChecked(s.get("sk_60", False))
+        self.mig31bm_foxhound.setChecked(s.get("mig31bm_foxhound", False))
         self.mirage_3.setChecked(s.get("mirage_3", False))
         self.t45_goshawk.setChecked(s.get("t45_goshawk", False))
         self.hawk_t1a.setChecked(s.get("hawk_t1a", False))
