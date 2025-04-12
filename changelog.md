@@ -57,6 +57,7 @@
 * **[Modding]** Support for Cowboy's E-7A Wedgetail mod (Supports EW Script Offensive Jamming)
 * **[Modding]** Support for szcz's MiG-31BM (v2.0)
 * **[Plugins]** Added initial AI support for EW Script 2.0
+* **[Options]** Ability to configure certain forced-options via a file (WIP: https://github.com/dcs-retribution/dcs-retribution/issues/490).
 
 ## Fixes
 * **[UI/UX]** A-10A flights can be edited again
