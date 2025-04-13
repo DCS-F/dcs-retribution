@@ -58,9 +58,11 @@ class ForcedOptionsGenerator:
 
     @staticmethod
     def load_forced_options() -> dict[str, Any]:
-        with open(forced_options_path(), "r+", encoding="utf-8") as f:
-            content = f.read()
-            result = dcs.lua.loads(content).get("forcedOptions", {})
+        result = {}
+        if forced_options_path().exists():
+            with open(forced_options_path(), "r+", encoding="utf-8") as f:
+                content = f.read()
+                result = dcs.lua.loads(content).get("forcedOptions", {})
         return result
 
     def generate(self) -> None:

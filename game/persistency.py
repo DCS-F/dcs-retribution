@@ -196,7 +196,7 @@ def settings_dir() -> Path:
 
 
 def forced_options_path() -> Path:
-    return _create_dir_if_needed(base_path() / "Retribution" / "forced_options.lua")
+    return _create_dir_if_needed(base_path() / "Retribution") / "forced_options.lua"
 
 
 def airwing_dir() -> Path:
