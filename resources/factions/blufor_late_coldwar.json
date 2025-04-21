@@ -18,6 +18,7 @@
     "C-130J-30 Super Hercules",
     "C-47 Dakota",
     "CH-47D",
+    "CH-47F Block I",
     "CH-53E",
     "F-14A Tomcat (Block 135-GR Late)",
     "F-14B Tomcat",
@@ -28,6 +29,7 @@
     "F-4E Phantom II",
     "F-4E-45MC Phantom II",
     "F-5E Tiger II",
+    "OH-58D(R) Kiowa Warrior",
     "Mi-8MTV2 Hip",
     "MiG-21bis Fishbed-N",
     "Mirage-F1B",
@@ -39,6 +41,7 @@
     "SA 342L Gazelle",
     "SA 342M Gazelle",
     "SH-60B Seahawk",
+    "Tornado IDS",
     "UH-1H Iroquois",
     "UH-60A",
     "UH-60L"
@@ -105,6 +108,7 @@
     "LHA-4 Nassau",
     "LHA-5 Peleliu"
   ],
-  "has_jtac": false,
+  "has_jtac": true,
+  "jtac_unit": "MQ-9 Reaper",
   "doctrine": "coldwar"
 }
