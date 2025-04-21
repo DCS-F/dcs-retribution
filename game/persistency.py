@@ -108,6 +108,9 @@ class MigrationUnpickler(pickle.Unpickler):
             elif name == "Bas_100":
                 from dcs.terrain.kola.airports import Vuojarvi
                 return Vuojarvi
+            elif name == "Alakourtti":
+                from dcs.terrain.kola.airports import Alakurtti
+                return Alakurtti
         if module == "dcs.terrain.syria.airports":
             if name == "Amman":
                 from dcs.terrain.syria.airports import Marka
