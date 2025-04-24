@@ -8,6 +8,20 @@ from typing import List, Optional
 
 import dcs.statics
 from dcs.countries import country_dict
+from dcs.ships import (
+    ara_vdm,
+    CVN_71,
+    CVN_72,
+    CVN_73,
+    CVN_75,
+    CV_1143_5,
+    Forrestal,
+    KUZNECOW,
+    LHA_Tarawa,
+    Stennis,
+    Type_071,
+    hms_invincible,
+)
 
 from game import Game
 from game.factions.faction import Faction
@@ -20,6 +34,7 @@ from game.theater.theatergroundobject import (
 )
 from game.utils import Heading, escape_string_for_lua
 from game.version import VERSION
+from pydcs_extensions import L02, L52, L61, Cva_31
 from . import (
     ConflictTheater,
     ControlPoint,
@@ -250,7 +265,30 @@ class GenericCarrierGroundObjectGenerator(ControlPointGroundObjectGenerator):
         if ccfg := carrier_map.get(self.control_point.name):
             preferred_name = ccfg.preferred_name
             preferred_type = ccfg.preferred_type
-        carrier_unit = self.control_point.ground_objects[0].groups[0].units[0]
+        carrier_unit = self.control_point.find_main_tgo().groups[0].units[0]
+        for group in self.control_point.find_main_tgo().groups:
+            for unit in group.units:
+                if unit.type in [
+                    ara_vdm,
+                    Forrestal,
+                    Stennis,
+                    LHA_Tarawa,
+                    KUZNECOW,
+                    Type_071,
+                    hms_invincible,
+                    L02,
+                    L52,
+                    L61,
+                    CV_1143_5,
+                    Cva_31,  # Vietnam War Vessels Mod
+                    CVN_71,
+                    CVN_72,
+                    CVN_73,
+                    CVN_75,
+                ]:
+                    carrier_unit = unit
+                    break
+
         if preferred_type and preferred_type.dcs_unit_type in [
             v
             for k, v in country_dict[self.faction.country.id].Ship.__dict__.items()  # type: ignore
