@@ -1,0 +1,184 @@
+{
+  "country": "USA",
+  "name": "USN 2025 President's treason",
+  "authors": "Ghosti",
+  "description": "<p>US Navy in 2025. The president of the United States has committed treason and has fled to a US carrier battle group, the commanders of which he has put in power. Also includes traitorous USAF A-10Cs and, curiously, Russian VIP helicopters.</p>",
+  "locales": [
+    "en_US"
+  ],
+  "aircrafts": [
+    "A-10C Thunderbolt II (Suite 3)",
+    "A-10C Thunderbolt II (Suite 7)",
+    "AV-8B Harrier II Night Attack",
+    "F/A-18C Hornet (Lot 20)",
+    "C-130",
+    "S-3B Viking",
+    "SH-60B Seahawk",
+    "UH-1H Iroquois",
+    "Mi-8MTV2 Hip"
+  ],
+  "awacs": [
+    "E-3A"
+  ],
+  "tankers": [
+    "KC-130",
+    "KC-135 Stratotanker",
+    "KC-135 Stratotanker MPRS",
+    "S-3B Tanker"
+  ],
+  "frontline_units": [
+    "MBT M1A2C SEP v3 Abrams",
+    "APC MRAP MaxxPro",
+    "AAVP-7A1 'Amtrac'",
+    "LAV-25",
+    "M1043 HMMWV (M2 HMG)",
+    "M1045 HMMWV (BGM-71 TOW)",
+    "M1097 Heavy HMMWV Avenger",
+    "M1126 Stryker ICV (M2 HMG)",
+    "M1128 Stryker Mobile Gun System",
+    "M1134 Stryker ATGM (BGM-71 TOW)",
+    "M1A2 Abrams",
+    "M2A2 Bradley",
+    "M6 Linebacker",
+    "M163 Vulcan Air Defense System"
+  ],
+  "artillery_units": [
+    "M109A6 Paladin",
+    "M270 Multiple Launch Rocket System"
+  ],
+  "logistics_units": [
+    "Truck M818 6x6"
+  ],
+  "infantry_units": [
+    "Infantry M249",
+    "Infantry M4",
+    "MANPADS Stinger",
+    "Mortar 2B11 120mm"
+  ],
+  "preset_groups": [
+    "Patriot",
+    "NASAMS AIM-120C"
+  ],
+  "naval_units": [
+	"P265 Dumbarton Castle",
+	"F72 Ariadne",
+	"F57 Andromeda",
+	"F12 Achilles",
+    "LHA-1 Tarawa",
+    "CVN-74 John C. Stennis"
+  ],
+  "missiles": [],
+  "air_defense_units": [
+    "EWR AN/FPS-117 Radar",
+    "M1097 Heavy HMMWV Avenger",
+    "M6 Linebacker",
+    "M163 Vulcan Air Defense System"
+  ],
+  "requirements": {},
+  "carrier_names": [
+    "CVN-71 Theodore Roosevelt",
+    "CVN-76 Ronald Reagan",
+    "CVN-77 George H. W. Bush",
+    "CVN-78 Gerald R. Ford",
+    "CVN-79 John F. Kennedy"
+  ],
+  "helicopter_carrier_names": [
+    "LHD-1 Wasp",
+    "LHD-2 Essex",
+    "LHD-3 Kearsarge",
+    "LHD-4 Boxer",
+    "LHA-5 Bataan",
+    "LHD-7 Iwo Jima",
+    "LHD-8 Makin Island"
+  ],
+  "has_jtac": true,
+  "jtac_unit": "MQ-9 Reaper",
+  "liveries_overrides": {
+    "A-10C Thunderbolt II (Suite 3)": [
+      "Recoil's 89th AW"
+    ],
+    "A-10C Thunderbolt II (Suite 7)": [
+      "Recoil's 89th AW"
+    ],
+    "AV-8B Harrier II Night Attack": [
+      "MarineOne"
+    ],
+    "F/A-18C Hornet (Lot 20)": [
+      "AirForceOne",
+	  "MarineOne"
+    ],
+    "C-130": [
+      "Air Force One"
+    ],
+    "KC-130": [
+      "Air Force One"
+    ],
+    "KC-135 Stratotanker": [
+      "Air Force One"
+    ],
+    "KC-135 Stratotanker MPRS": [
+      "Air Force One"
+    ],
+    "E-3A": [
+      "Air Force One"
+    ],
+    "UH-1H Iroquois": [
+      "VH-60N Marine One"
+    ],
+    "Mi-8MTV2 Hip": [
+      "Russ VIP 1",
+	  "Russ Esc"
+    ]
+  },
+  "liveries_overrides_ground_forces": {
+    "Soldier M249": [
+      "summer",
+	  "US-1",
+	  "US-2",
+	  "GOE III SPN m4"
+    ],
+    "Soldier M4": [
+      "summer",
+	  "US-1",
+	  "US-2",
+	  "GOE III SPN m4"
+    ],
+    "Soldier M4 GRG": [
+      "BDU",
+      "US Forest-1",
+      "US Forest-2",
+      "US Forest-3",
+      "US Forest-4"
+    ],
+    "Soldier stinger": [
+      "default"
+    ],
+	"leopard-2A4": [
+      "woodland_Spring",
+      "woodland_Summer",
+      "woodland_Autumn"
+    ],
+	"VAB_Mephisto": [
+      "woodland_Spring",
+      "woodland_Autumn"
+    ],
+	"La_Combattante_II": [
+      "Royal Navy",
+	  "Union Jack",
+	  "Germany",
+	  "GER_S50_Panther",
+	  "GER_S51_Haher",
+	  "GER_S52_Storch",
+	  "GER_S53_Pelikan",
+	  "GER_S54_Elster",
+	  "GER_S55_Alk",
+	  "GER_S56_Dommel",
+	  "GER_S57_Weihe",
+	  "GER_S58_Pinguin",
+	  "GER_S59_Reiher",
+	  "Italian Navy",
+	  "Italy",
+	  "France"
+    ]
+  }
+}

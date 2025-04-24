@@ -1,0 +1,344 @@
+---
+name: Marianas - The Mariana Candidate
+theater: MarianaIslands
+authors: Ghosti
+description: <p>The president of the United States has committed treason and has fled to a US carrier battle group, the commanders of which he has put in power. A force of adversary training squadrons, highly skilled but partially equipped with outdated aircraft types for dissimilar air combat training, stationed on the Marianas is tasked to bring the president to justice.</p>
+recommended_player_faction: USA Adversary 2025
+recommended_enemy_faction: USN 2025 President's treason
+recommended_start_date: 2025-04-20
+miz: marianas_the_mariana_candidate.miz
+performance: 3
+version: "10.7"
+
+settings:
+  pretense_extra_zone_connections: 0
+  pretense_disable_ground_assaults: true
+  pretense_disable_supply_convoys: true
+  pretense_ground_assaults_prefer_roads: true
+  pretense_supply_convoys_prefer_roads: true
+  pretense_num_of_cargo_planes: 1
+  pretense_do_not_generate_sead_missions: true
+  pretense_do_not_generate_csar_missions: true
+  pretense_controllable_carrier: false
+  perf_culling: true
+  perf_culling_distance: 120
+  player_skill: "Excellent"
+  enemy_skill: "Average"
+  enemy_vehicle_skill: "Average"
+  night_day_missions: NightMissions.OnlyDay
+  labels: "Dot Only"
+  squadron_random_chance: 100
+  default_start_type_client: StartType.WARM
+  supercarrier: true
+
+  automate_runway_repair: true
+  automate_front_line_reinforcements: true
+  automate_aircraft_reinforcements: true
+
+  ground_start_ai_planes: true
+  ground_start_scenery_remove_triggers: false
+  ground_start_ground_power_trucks: false
+  ground_start_ground_power_trucks_roadbase: false
+
+  mod_aircraft_spawn_late_start_f15c: true
+  mod_aircraft_spawn_late_start_su27: true
+  mod_aircraft_spawn_late_start_su33: true
+
+  plugins:
+    gamemaster: true
+    skynetiads: false
+    ewrs: true
+    splashdamageclusters: true
+    splashdamageclusters.bdaMessages: true
+    splashdamageclusters.clusterEffects: true
+    splashdamageclusters.shipRadarDamage: true
+ #Mods to be used
+  oh_6_vietnamassetpack: true
+
+squadrons:
+  Blue CV:
+    - primary: BARCAP
+      secondary: air-to-air
+      aircraft:
+        - F-14B Tomcat
+    - primary: Refueling
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (Lot 20)
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - S-3B Viking
+    - primary: AEW&C
+  Blue CV 2:
+    - primary: BARCAP
+      secondary: air-to-air
+      aircraft:
+        - F-14B Tomcat
+    - primary: Refueling
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (Lot 20)
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - S-3B Viking
+    - primary: AEW&C
+  Blue LHA:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - AV-8B Harrier II Night Attack
+  Blue LHA 2:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - AV-8B Harrier II Night Attack
+  Red CV-2:
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (Lot 20)
+    - primary: Transport
+      aircraft:
+        - UH-1H Iroquois
+  Red CV-3:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (Lot 20)
+    - primary: Transport
+      aircraft:
+        - UH-1H Iroquois
+  Red CV-4:
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (Lot 20)
+    - primary: Transport
+      aircraft:
+        - UH-1H Iroquois
+  Red CV-5:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (Lot 20)
+    - primary: Transport
+      aircraft:
+        - UH-1H Iroquois
+  Red LHA:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AV-8B Harrier II Night Attack
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+  Red LHA 2:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AV-8B Harrier II Night Attack
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+
+  # Antonio B. Won Pat Intl
+  4:
+    - primary: BARCAP
+      secondary: air-to-air
+      aircraft:
+        - F-15C Eagle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-10C Thunderbolt II (Suite 3)
+    - primary: Transport
+      aircraft:
+        - C-130
+  # Olf Orote
+  5:
+    - primary: BARCAP
+      secondary: air-to-air
+      aircraft:
+        - F-16CM Fighting Falcon (Block 50)
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-10A Thunderbolt II
+  # Andersen AFB
+  6:
+    - primary: BARCAP
+      secondary: air-to-air
+      aircraft:
+        - F-5E Tiger II
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-10C Thunderbolt II (Suite 7)
+    - primary: Refueling
+    - primary: Transport
+      aircraft:
+        - C-130
+  # North West Field
+  8:
+    - primary: BARCAP
+      secondary: air-to-air
+      aircraft:
+        - F-15E Strike Eagle (Suite 4+)
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-7E Corsair II
+  # Hagatna, Guam
+  Hagatna:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AH-64A Apache
+  # Sabana, Rota
+  Sabana:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+  # Fanlagon, Rota
+  Fanlagon:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Duge, Rota
+  Duge:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+  # Aguijan island
+  Aguijan:
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+  Tinian North Field:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: Transport
+      aircraft:
+        - UH-1H Iroquois
+  # Kagman, Saipan
+  Kagman:
+    - primary: Transport
+      aircraft:
+        - UH-1H Iroquois
+  # Anatahan island
+  Anatahan:
+    - primary: Transport
+      aircraft:
+        - UH-1H Iroquois
+  # Sarigan island
+  Sarigan:
+    - primary: Transport
+      aircraft:
+        - UH-1H Iroquois
+  # Guguan island
+  Guguan:
+    - primary: Transport
+      aircraft:
+        - UH-1H Iroquois
+  # Rota Intl
+  1:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-10C Thunderbolt II (Suite 7)
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Saipan Intl
+  2:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-10C Thunderbolt II (Suite 3)
+    - primary: Transport
+      aircraft:
+        - C-130
+  # Tinian Intl
+  3:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AV-8B Harrier II Night Attack
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+  # Pagan Airstrip
+  7:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - AV-8B Harrier II Night Attack
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+carriers:
+  Blue CV:
+    preferred_name: CVN-73 George Washington
+    preferred_type: CVN_73
+  Blue CV 2:
+    preferred_name: CVN-75 Harry S. Truman
+    preferred_type: CVN_75
+  Blue LHA:
+    preferred_name: LHA-2 Saipan
+    preferred_type: LHA_Tarawa
+  Blue LHA 2:
+    preferred_name: LHA-5 Peleliu
+    preferred_type: LHA_Tarawa
+  Red CV-2:
+    preferred_name: CVN-76 Ronald Reagan
+    preferred_type: Stennis
+  Red CV-3:
+    preferred_name: CVN-77 George H. W. Bush
+    preferred_type: Stennis
+  Red CV-4:
+    preferred_name: CVN-78 Gerald R. Ford
+    preferred_type: Stennis
+  Red CV-5:
+    preferred_name: CVN-79 John F. Kennedy
+    preferred_type: Stennis
+  Red LHA:
+    preferred_name: LHD-3 Kearsarge
+    preferred_type: LHA_Tarawa
+  Red LHA 2:
+    preferred_name: LHD-8 Makin Island
+    preferred_type: LHA_Tarawa

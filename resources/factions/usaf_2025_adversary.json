@@ -1,0 +1,254 @@
+{
+  "country": "USAF Aggressors",
+  "name": "USA Adversary 2025",
+  "authors": "Ghosti",
+  "description": "<p>Adversary training USAF & USN forces in 2025, including older/fictional/decommissioned types used in dissimilar air combat training.</p>",
+  "locales": [
+    "en_US"
+  ],
+  "aircrafts": [
+    "A-10A Thunderbolt II",
+    "A-10C Thunderbolt II (Suite 3)",
+    "A-10C Thunderbolt II (Suite 7)",
+    "A-7E Corsair II",
+    "AH-64A Apache",
+    "AH-64D Apache Longbow",
+    "AV-8B Harrier II Night Attack",
+    "B-1B Lancer",
+    "B-52H Stratofortress",
+    "C-130",
+    "C-130J-30 Super Hercules",
+    "CH-47D",
+    "CH-53E",
+    "F-5E Tiger II",
+    "F-14B Tomcat",
+    "F-15C Eagle",
+    "F-15E Strike Eagle (Suite 4+)",
+    "F-16CM Fighting Falcon (Block 50)",
+    "JF-17 Thunder",
+    "F/A-18C Hornet (Lot 20)",
+    "UH-1H Iroquois",
+    "UH-60A",
+    "UH-60L"
+  ],
+  "awacs": [
+    "E-2C Hawkeye",
+    "E-3A"
+  ],
+  "tankers": [
+    "KC-130",
+    "KC-130J",
+    "KC-135 Stratotanker"
+  ],
+  "frontline_units": [
+    "LAV-25",
+    "M163 Vulcan Air Defense System",
+	"M48 Chaparral",
+    "AAVP-7A1 'Amtrac'",
+    "M1043 HMMWV (M2 HMG)",
+    "M1045 HMMWV (BGM-71 TOW)",
+    "M151A1C MUTT w/ 106mm Recoilless Rifle",
+    "M113",
+    "M60A3 \"Patton\"",
+    "M1A2 Abrams",
+    "M2A2 Bradley"
+  ],
+  "artillery_units": [
+    "M109A6 Paladin",
+    "M270 Multiple Launch Rocket System"
+  ],
+  "logistics_units": [
+    "Truck M818 6x6",
+    "VAP US M35 Truck",
+    "M151 1/4-ton 4x4 utility truck",
+    "M274 1/2-ton 4x4 utility truck"
+  ],
+  "infantry_units": [
+    "Infantry M249",
+    "Infantry M4",
+    "Infantry M4 Georgia",
+    "MANPADS Stinger",
+    "Mortar 2B11 120mm"
+  ],
+  "preset_groups": [
+    "Patriot",
+    "NASAMS AIM-120B",
+    "NASAMS AIM-120C",
+    "Hawk"
+  ],
+  "naval_units": [
+	"P265 Dumbarton Castle",
+	"F72 Ariadne",
+	"F57 Andromeda",
+	"F12 Achilles",
+    "LHA-1 Tarawa",
+    "CVN-74 John C. Stennis"
+  ],
+  "missiles": [],
+  "air_defense_units": [
+    "SAM Hawk SR (AN/MPQ-50)",
+    "M163 Vulcan Air Defense System",
+    "M48 Chaparral"
+  ],
+  "carrier_names": [
+    "CVN-65 Enterprise",
+    "CVN-72 Abraham Lincoln",
+    "CVN-73 George Washington",
+    "CVN-74 John C. Stennis",
+    "CVN-75 Harry S. Truman"
+  ],
+  "helicopter_carrier_names": [
+    "LHA-1 Tarawa",
+    "LHA-2 Saipan",
+    "LHA-3 Belleau Wood",
+    "LHA-4 Nassau",
+    "LHA-5 Peleliu"
+  ],
+  "requirements": {
+    "OH-6 Vietnam Asset Pack": "https://github.com/tobi-be/DCS-OH-6A"
+  },
+  "has_jtac": true,
+  "jtac_unit": "MQ-9 Reaper",
+  "liveries_overrides": {
+    "A-10A Thunderbolt II": [
+      "23rd TFW England AFB (EL)"
+    ],
+    "A-10C Thunderbolt II (Suite 3)": [
+      "23rd TFW England AFB (EL)",
+      "176th TFS ANG CAMO WI Badgers",
+      "176th TFS ANG CAMO536 WI Badgers",
+      "354th TFW Myrtle Beach 275 (SC)",
+      "354th TFW Myrtle Beach 428 (SC)",
+      "354th TFW Myrtle Beach 516 (SC)",
+      "354th TFW Myrtle Beach 529 (SC)",
+      "Green Digital - No Name",
+      "Green Digital - No Name-Teeth"
+    ],
+    "A-10C Thunderbolt II (Suite 7)": [
+      "23rd TFW England AFB (EL)",
+      "23rd TFW, 76th TFS England AFB, Louisiana",
+      "81st FS Euro Camo (SP) 1",
+      "81st FS Euro Camo (SP) 2",
+      "81st TFW, 510th TFS RAF Bentwaters, UK",
+      "91st TFS RAF Woodbridge, England (WR)",
+      "103rd FS - Woodland",
+      "128th TFW (WI ANG) A-10C II",
+      "355th Fighter Wing, ACC A-10 Demo Team 2021 (DM)",
+      "Demo2021"
+    ],
+    "A-7E Corsair II": [
+      "VA-149th FS"
+    ],
+    "AV-8B Harrier II Night Attack": [
+      "VMA-513G"
+    ],
+    "B-52H Stratofortress": [
+      "596th BS, El Lobo II (58-0185), Desert Storm-SIOP"
+    ],
+	"C-130": [
+      "1302",
+      "1310",
+      "1315",
+      "KQVN HCF",
+      "KQVN HCL",
+      "USAF DZ63-779",
+      "USAF PR63-820",
+      "USAF SEA",
+      "USAF SG56-471",
+      "USAF YJ56-470"
+    ],
+    "CH-53E": [
+      "USAF",
+	  "marines 2"
+    ],
+    "F-5E Tiger II": [
+      "USAF Euro Camo"
+    ],
+    "JF-17 Thunder": [
+      "USAF_Euro_one_camo"
+    ],
+    "F-14B Tomcat": [
+      "Adversary Woodland Green Brown Camo 23",
+      "Adversary Woodland Green Brown Camo Red 425",
+      "Adversary Woodland Green Gray Camo 22nd TFS 216",
+      "Adversary Woodland Green Gray Camo 46-80",
+      "Adversary SEA Camo"
+    ],
+    "F-15C Eagle": [
+      "USAF Euro one camo",
+      "USAF Green adversary 72-8090",
+      "USAF Green woodland camo"
+    ],
+    "F-15E Strike Eagle (Suite 4+)": [
+      "USAF 4950th Test Wing"
+    ],
+    "F-16CM Fighting Falcon (Block 50)": [
+      "285th-A16",
+	  "422nd A-16 'Charcoal Lizard'",
+	  "422nd A-16 'Charcoal Lizard' Black Nose",
+      "285th_AF_Camo",
+      "18th AGRS BDU Splinter"
+    ],
+    "F/A-18C Hornet (Lot 20)": [
+      "Death Dealer Winter",
+	  "Death Dealer Wood",
+	  "Death Dealer Wood 2",
+	  "VFA-125 Rough Raiders",
+	  "VFA-125_Green",
+	  "VMFA-314 Retro Flagship",
+	  "USAF HL - Ditch3r",
+	  "Adversary NFWS Green Camo Top Gun",
+	  "Adversary NFWS Asia Minor Top Gun",
+	  "Adversary NFWS Euro One",
+	  "Adversary NFWS Woodland Camo Top Gun",
+	  "Adversary NFWS SEA Camo",
+      "Adversary NFWS SEA Camo 2"
+    ],
+    "UH-1H Iroquois": [
+      "Army Standard"
+    ],
+    "UH-60A": [
+      "standard"
+    ],
+	"UH-60L": [
+      "default",
+      "US Army MEDEVAC",
+      "US Army SOAR",
+      "US Navy Grey",
+      "USAF Rescue"
+    ]
+  },
+  "liveries_overrides_ground_forces": {
+    "Soldier M249": [
+      "summer",
+	  "US-1",
+	  "US-2",
+	  "GOE III SPN m4"
+    ],
+    "Soldier M4": [
+      "summer",
+	  "US-1",
+	  "US-2",
+	  "GOE III SPN m4"
+    ],
+    "Soldier M4 GRG": [
+      "BDU",
+      "US Forest-1",
+      "US Forest-2",
+      "US Forest-3",
+      "US Forest-4"
+    ],
+    "Soldier stinger": [
+      "default"
+    ],
+	"leopard-2A4": [
+      "woodland_Spring",
+      "woodland_Summer",
+      "woodland_Autumn"
+    ],
+	"VAB_Mephisto": [
+      "woodland_Spring",
+      "woodland_Autumn"
+    ]
+  }
+}
