@@ -5,7 +5,6 @@ from dcs.task import (
     SetUnlimitedFuelCommand,
     SwitchWaypoint,
     RunScript,
-    OptReactOnThreat,
 )
 
 from game.ato import FlightType
@@ -58,6 +57,4 @@ class SplitPointBuilder(PydcsWaypointBuilder):
             ai_jammer = settings.plugin_option("ewrj.ai_jammer_enabled")
             if settings.plugins.get("ewrj") and ai_jammer:
                 self.offensive_jamming(waypoint, "stop")
-                if self.defensive_jamming(waypoint, "stop"):
-                    reaction = OptReactOnThreat(OptReactOnThreat.Values.EvadeFire)
-                    waypoint.tasks.append(reaction)
+                self.defensive_jamming(waypoint, "stop")
