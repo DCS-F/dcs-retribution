@@ -4,15 +4,18 @@ from datetime import datetime
 from typing import Any, Iterable, Union
 
 from dcs import Mission
-from dcs.planes import AJS37, F_14A_135_GR, F_14B, JF_17
+from dcs.planes import AJS37, F_14A_135_GR, F_14B, JF_17, F_15ESE
 from dcs.point import MovingPoint, PointAction
+from dcs.task import RunScript
 from dcs.unitgroup import FlyingGroup
 
 from game.ato import Flight, FlightWaypoint
 from game.ato.flightwaypointtype import FlightWaypointType
+from game.ato.starttype import StartType
 from game.ato.traveltime import GroundSpeed
+from game.data.weapons import WeaponType
 from game.missiongenerator.missiondata import MissionData
-from game.theater import MissionTarget, TheaterUnit
+from game.theater import MissionTarget, TheaterUnit, OffMapSpawn
 
 TARGET_WAYPOINTS = (
     FlightWaypointType.TARGET_GROUP_LOC,
@@ -63,6 +66,9 @@ class PydcsWaypointBuilder:
             name=self.dcs_name_for_waypoint(),
         )
 
+        waypoint.alt_type = self.waypoint.alt_type
+        if self.flight.is_helo and self.flight.coalition.game.settings.switch_baro_fix:
+            self.switch_to_baro_if_in_sea(waypoint)
         if self.waypoint.flyover:
             waypoint.action = PointAction.FlyOverPoint
             # It seems we need to leave waypoint.type exactly as it is even
@@ -73,22 +79,48 @@ class PydcsWaypointBuilder:
                 waypoint.alt = 0
                 waypoint.alt_type = "RADIO"
 
-        waypoint.alt_type = self.waypoint.alt_type
         tot = self.flight.flight_plan.tot_for_waypoint(self.waypoint)
         if tot is not None:
             self.set_waypoint_tot(waypoint, tot)
         self.add_tasks(waypoint)
         return waypoint
 
+    def switch_to_baro_if_in_sea(self, waypoint: MovingPoint) -> None:
+        if waypoint.alt_type == "RADIO" and (
+            self.flight.coalition.game.theater.is_in_sea(waypoint.position)
+            or not self.flight.coalition.game.theater.is_on_land(
+                waypoint.position, ignore_exclusion=True
+            )
+        ):
+            waypoint.alt_type = "BARO"
+
+    def ai_despawn(
+        self, waypoint: MovingPoint, ignore_landing_wpt: bool = False
+    ) -> bool:
+        if self.flight.roster.members[0].is_player:
+            return False
+        arrival = self.flight.arrival
+        offmap = isinstance(arrival, OffMapSpawn)
+        ai_despawn = self.flight.coalition.game.settings.perf_ai_despawn_airstarted
+        ai_despawn &= self.flight.start_type == StartType.IN_FLIGHT
+        is_landing_wpt = arrival.position == waypoint.position
+        return (offmap or ai_despawn) and (is_landing_wpt or ignore_landing_wpt)
+
     def add_tasks(self, waypoint: MovingPoint) -> None:
-        pass
+        if self.ai_despawn(waypoint):
+            waypoint.tasks.append(
+                RunScript(
+                    f"local g = Group.getByName('{self.group.name}')\n"
+                    f"Group.destroy(g)"
+                )
+            )
 
     def set_waypoint_tot(self, waypoint: MovingPoint, tot: datetime) -> None:
         self.waypoint.tot = tot
         if not self._viggen_client_tot():
-            waypoint.ETA = int((tot - self.now).total_seconds())
+            waypoint.ETA = max(0, int((tot - self.now).total_seconds()))
             waypoint.ETA_locked = True
-            waypoint.speed_locked = False
+            waypoint.speed_locked = waypoint.ETA == 0
 
     def _viggen_client_tot(self) -> bool:
         """Viggen player aircraft consider any waypoint with a TOT set to be a target ("M") waypoint.
@@ -103,12 +135,60 @@ class PydcsWaypointBuilder:
         else:
             return False
 
-    def register_special_waypoints(
-        self, targets: Iterable[Union[MissionTarget, TheaterUnit]]
+    def register_special_strike_points(
+        self,
+        targets: Iterable[Union[MissionTarget, TheaterUnit]],
+        start: int = 1,
     ) -> None:
-        """Create special target waypoints for various aircraft"""
+        """Create special strike  waypoints for various aircraft"""
         for i, t in enumerate(targets):
             if self.group.units[0].unit_type == JF_17 and i < 4:
                 self.group.add_nav_target_point(t.position, "PP" + str(i + 1))
             if self.group.units[0].unit_type in [F_14B, F_14A_135_GR] and i == 0:
                 self.group.add_nav_target_point(t.position, "ST")
+            # Add F-15E mission target points as mission 1 (for JDAM for instance)
+            if self.group.units[0].unit_type == F_15ESE:
+                self.group.add_nav_target_point(
+                    t.position, f"M{(i//8)+start}.{i%8+1}\nH-1\nA0\nV0"
+                )
+
+    def register_special_ingress_points(self) -> None:
+        # Register Tomcat Initial Point
+        if self.flight.client_count and (
+            self.group.units[0].unit_type in (F_14A_135_GR, F_14B)
+        ):
+            self.group.add_nav_target_point(self.waypoint.position, "IP")
+
+    def defensive_jamming(self, waypoint: MovingPoint, action: str) -> bool:
+        # Explodes incoming missiles within the jamming bubble through the EW-Jamming script
+        settings = self.flight.coalition.game.settings
+        ecm_required = settings.plugin_option("ewrj.ecm_required")
+        has_jammers = False
+        for unit, member in zip(self.group.units, self.flight.iter_members()):
+            has_jammer = member.loadout.has_weapon_of_type(WeaponType.JAMMER)
+            built_in_jammer = self.flight.squadron.aircraft.has_built_in_ecm
+            if ecm_required and not (has_jammer or built_in_jammer):
+                continue
+            if not member.is_player:
+                script_content = f'{action}Djamming("{unit.name}")'
+                jamming_script = RunScript(script_content)
+                waypoint.tasks.append(jamming_script)
+                has_jammers = True
+        return has_jammers
+
+    def offensive_jamming(self, waypoint: MovingPoint, action: str) -> bool:
+        # Silences enemy radars through the EW-Jamming script
+        settings = self.flight.coalition.game.settings
+        ecm_required = settings.plugin_option("ewrj.ecm_required")
+        has_jammers = False
+        for unit, member in zip(self.group.units, self.flight.iter_members()):
+            has_jammer = member.loadout.has_weapon_of_type(WeaponType.JAMMER)
+            built_in_jammer = self.flight.squadron.aircraft.has_built_in_ecm
+            if ecm_required and not (has_jammer or built_in_jammer):
+                continue
+            if not member.is_player:
+                script_content = f'{action}EWjamm("{unit.name}")'
+                stop_jamming_script = RunScript(script_content)
+                waypoint.tasks.append(stop_jamming_script)
+                has_jammers = True
+        return has_jammers
