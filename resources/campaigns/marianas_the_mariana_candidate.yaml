@@ -20,6 +20,7 @@ settings:
   pretense_do_not_generate_sead_missions: true
   pretense_do_not_generate_csar_missions: true
   pretense_controllable_carrier: false
+  pretense_carrier_steams_into_wind: false
   perf_culling: true
   perf_culling_distance: 120
   player_skill: "Excellent"
@@ -282,6 +283,7 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - Mi-8MTV2 Hip
+    - primary: Refueling
   # Saipan Intl
   2:
     - primary: CAS
@@ -291,6 +293,7 @@ squadrons:
     - primary: Transport
       aircraft:
         - C-130
+    - primary: Refueling
   # Tinian Intl
   3:
     - primary: CAS
@@ -301,6 +304,7 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - Mi-8MTV2 Hip
+    - primary: Refueling
   # Pagan Airstrip
   7:
     - primary: CAS
