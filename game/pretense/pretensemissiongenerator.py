@@ -68,6 +68,8 @@ class PretenseMissionGenerator(MissionGenerator):
             ext_view = game.settings.external_views_allowed
             options["miscellaneous"]["f11_free_camera"] = ext_view
             options["difficulty"]["spectatorExternalViews"] = ext_view
+            sc_deck_crew = game.settings.supercarrier_deck_crew
+            options["plugins"]["Supercarrier"]["deck_crew"] = sc_deck_crew
             self.mission.options.load_from_dict(options)
 
     def generate_miz(self, output: Path) -> UnitMap:
@@ -135,6 +137,7 @@ class PretenseMissionGenerator(MissionGenerator):
 
         # TODO: Shouldn't this be first?
         namegen.reset_numbers()
+        self.generate_warehouses()
         self.mission.save(output)
 
         return self.unit_map
@@ -271,3 +274,38 @@ class PretenseMissionGenerator(MissionGenerator):
             if not flight.client_units:
                 continue
             flight.aircraft_type.assign_channels_for_flight(flight, self.mission_data)
+
+        # Generate Pretense JTAC
+        if self.game.blue.faction.has_jtac:
+            freq = self.radio_registry.alloc_uhf()
+            # If the option fc3LaserCode is enabled, force all JTAC
+            # laser codes to 1113 to allow lasing for Su-25 Frogfoots and A-10A Warthogs.
+            # Otherwise use 1688 for the first JTAC, 1687 for the second etc.
+            if self.game.settings.plugins.get("ctld.fc3LaserCode"):
+                code = self.game.laser_code_registry.fc3_code
+            else:
+                code = self.game.laser_code_registry.alloc_laser_code()
+
+            utype = self.game.blue.faction.jtac_unit
+            if utype is None:
+                utype = AircraftType.named("MQ-9 Reaper")
+
+            country = self.mission.country(self.game.blue.faction.country.name)
+            position = self.game.coalition_for(True).bullseye.position
+            jtac = self.mission.flight_group(
+                country=country,
+                name=namegen.next_jtac_name(),
+                aircraft_type=utype.dcs_unit_type,
+                position=position,
+                airport=None,
+                altitude=5000,
+                maintask=AFAC,
+            )
+            # jtac.points[0].tasks.append(
+            #     FAC(
+            #         callsign=len(self.mission_data.jtacs) + 1,
+            #         frequency=int(freq.mhz),
+            #         modulation=freq.modulation,
+            #     )
+            # )
+            self.game.pretense_jtac = jtac.name

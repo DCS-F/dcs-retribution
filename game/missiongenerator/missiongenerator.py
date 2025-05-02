@@ -67,6 +67,8 @@ class MissionGenerator:
             ext_view = game.settings.external_views_allowed
             options["miscellaneous"]["f11_free_camera"] = ext_view
             options["difficulty"]["spectatorExternalViews"] = ext_view
+            sc_deck_crew = game.settings.supercarrier_deck_crew
+            options["plugins"]["Supercarrier"]["deck_crew"] = sc_deck_crew
             self.mission.options.load_from_dict(options)
 
     def generate_miz(self, output: Path) -> UnitMap:
