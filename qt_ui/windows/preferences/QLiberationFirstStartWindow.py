@@ -85,6 +85,5 @@ class QLiberationFirstStartWindow(QDialog):
         self.setLayout(layout)
 
     def apply(self):
-        print("Applying changes")
         if self.preferences.apply():
             self.close()
