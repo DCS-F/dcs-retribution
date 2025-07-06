@@ -38,6 +38,8 @@ from game.radio.channels import (
     ViggenRadioChannelAllocator,
     ViperChannelNamer,
     WarthogChannelNamer,
+    ARC5RadioChannelAllocator,
+    ARC5ChannelNamer,
 )
 from game.utils import (
     Distance,
@@ -92,6 +94,7 @@ class RadioConfig:
             return None
         allocator_type: Type[RadioChannelAllocator] = {
             "SCR-522": SCR522RadioChannelAllocator,
+            "ARC-5": ARC5RadioChannelAllocator,
             "common": CommonRadioChannelAllocator,
             "farmer": FarmerRadioChannelAllocator,
             "noop": NoOpChannelAllocator,
@@ -103,6 +106,7 @@ class RadioConfig:
     def make_namer(cls, config: dict[str, Any]) -> Type[ChannelNamer]:
         return {
             "SCR-522": SCR522ChannelNamer,
+            "ARC-5": ARC5ChannelNamer,
             "default": ChannelNamer,
             "huey": HueyChannelNamer,
             "mirage": MirageChannelNamer,
