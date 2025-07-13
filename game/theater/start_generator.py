@@ -323,6 +323,19 @@ class GenericCarrierGroundObjectGenerator(ControlPointGroundObjectGenerator):
                         self.control_point.name
                     )
 
+    def get_carrier_unit(self) -> TheaterUnit:
+        carrier_go = [
+            go
+            for go in self.control_point.ground_objects
+            if go.category in ["CARRIER", "LHA"]
+        ][0]
+        groups = [
+            g
+            for g in carrier_go.groups
+            if "carrier" in g.name.lower() or "lha" in g.name.lower()
+        ]
+        return groups[0].units[0]
+
 
 class CarrierGroundObjectGenerator(GenericCarrierGroundObjectGenerator):
     def generate(self) -> bool:
