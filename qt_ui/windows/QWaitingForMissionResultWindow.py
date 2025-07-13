@@ -234,7 +234,7 @@ class QWaitingForMissionResultWindow(QDialog):
             self.on_debriefing_update(
                 self.sim_controller.debrief_current_state(Path(file[0]), force_end=True)
             )
-            
+
     def reject(self):
         self.reset_game_state()
         super().reject()
