@@ -1488,6 +1488,11 @@ class Carrier(NavalControlPoint):
         return "cv"
 
 
+class EssexCarrier(Carrier):
+    def can_operate(self, aircraft: AircraftType) -> bool:
+        return aircraft.lha_capable
+
+
 class Lha(NavalControlPoint):
     def __init__(
         self, name: str, at: Point, theater: ConflictTheater, starts_blue: bool
