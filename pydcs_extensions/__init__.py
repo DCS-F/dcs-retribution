@@ -23,6 +23,7 @@ from .hercules import *
 from .highdigitsams import *
 from .irondome import *
 from .jas39 import *
+from .mam import *
 from .mig31bm import *
 from .mirage3 import *
 from .t45 import *
