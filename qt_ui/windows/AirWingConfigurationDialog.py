@@ -837,6 +837,7 @@ class AirWingConfigurationDialog(QDialog):
                         if sec.value != s.primary_task.value
                     ],
                     "aircraft": [name],
+                    "aircraft_type": s.aircraft.display_name,
                     "size": s.max_size,
                 }
                 if squadrons.get(key):
@@ -871,6 +872,9 @@ class AirWingConfigurationDialog(QDialog):
         w = self.tab_widget.currentWidget()
         assert isinstance(w, AirWingConfigurationTab)
         c = w.coalition
+        for s in c.air_wing.squadrons.values():
+            for squadron in s:
+                c.air_wing.unclaim_squadron_def(squadron)
         c.air_wing.squadrons = defaultdict(list)
         config = CampaignAirWingConfig.from_campaign_data(airwing, c.game.theater)
         c.configure_default_air_wing(config)
