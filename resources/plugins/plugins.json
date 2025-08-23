@@ -1,4 +1,4 @@
-[    
+[
     "base",
     "ctld",
     "dismounts",
@@ -7,7 +7,9 @@
     "herculescargo",
     "lotatc",
     "skynetiads",
+    "splashdamage2",
     "gamemaster",
+    "MooseMarkerOps"
     "splashdamage2",
     "splashdamageclusters"
 ]
