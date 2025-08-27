@@ -1050,6 +1050,7 @@ class PretenseAircraftGenerator(AircraftGenerator):
             and (
                 not self.need_ecm
                 or flight.any_member_has_weapon_of_type(WeaponType.JAMMER)
+                or flight.any_member_has_weapon_of_type(WeaponType.OFFENSIVE_JAMMER)
             )
         ):
             self.ewrj_package_dict[id(flight.package)].append(group)
