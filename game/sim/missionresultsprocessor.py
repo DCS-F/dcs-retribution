@@ -314,6 +314,19 @@ class MissionResultsProcessor:
         if len(enemy_connected_cps) == 0:
             return
 
+        ally_connected_cps = [
+            ocp
+            for ocp in cp.transitive_connected_friendly_destinations()
+            if cp.captured == ocp.captured and ocp.base.total_armor
+        ]
+
+        settings = cp.coalition.game.settings
+        factor = (
+            settings.frontline_reserves_factor
+            if cp.captured.is_blue
+            else settings.frontline_reserves_factor_red
+        )
+
         # From each ally cp, send reinforcements
         for ally_cp in ally_connected_cps:
             self.redeploy_between(cp, ally_cp)
