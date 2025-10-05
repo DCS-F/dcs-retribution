@@ -40,6 +40,7 @@ from game.radio.channels import (
     WarthogChannelNamer,
     ARC5RadioChannelAllocator,
     ARC5ChannelNamer,
+    FulcrumChannelNamer,
 )
 from game.utils import (
     Distance,
@@ -118,6 +119,7 @@ class RadioConfig:
             "apache": ApacheChannelNamer,
             "a10c-legacy": LegacyWarthogChannelNamer,
             "a10c-ii": WarthogChannelNamer,
+            "fulcrum": FulcrumChannelNamer,
         }[config.get("namer", "default")]
 
 
