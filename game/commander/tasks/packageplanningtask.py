@@ -44,7 +44,7 @@ class PackagePlanningTask(TheaterCommanderTask, Generic[MissionTargetT]):
 
     def preconditions_met(self, state: TheaterState) -> bool:
         if (
-            state.context.coalition.player
+            state.context.coalition.player.is_blue
             and state.context.settings.auto_ato_behavior is AutoAtoBehavior.Disabled
         ):
             return False
@@ -101,7 +101,7 @@ class PackagePlanningTask(TheaterCommanderTask, Generic[MissionTargetT]):
         return 1
 
     def fulfill_mission(self, state: TheaterState) -> bool:
-        color = "blue" if state.context.coalition.player else "red"
+        color = "blue" if state.context.coalition.player.is_blue else "red"
         self.propose_flights()
         fulfiller = PackageFulfiller(
             state.context.coalition,
@@ -199,6 +199,24 @@ class PackagePlanningTask(TheaterCommanderTask, Generic[MissionTargetT]):
                 if iads_threat not in state.threatening_air_defenses:
                     state.threatening_air_defenses.append(iads_threat)
         return not threatened
+
+    def _get_weighted_threat_range(
+        self,
+        iads_threat: Union[IadsGroundObject | NavalGroundObject],
+        state: TheaterState,
+    ) -> Distance:
+        distance = meters(iads_threat.distance_to(self.target))
+        settings = state.context.coalition.game.settings
+        margin = 100 - (
+            settings.ownfor_autoplanner_aggressiveness
+            if state.context.coalition.player.is_blue
+            else settings.opfor_autoplanner_aggressiveness
+        )
+        threat_range = iads_threat.max_threat_range() * (margin / 100)
+        corrective_factor = self.corrective_factor_for_type(iads_threat)
+        threat_range *= corrective_factor
+        distance_to_threat = distance - threat_range
+        return distance_to_threat
 
     def get_flight_size(self) -> int:
         settings = self.target.coalition.game.settings

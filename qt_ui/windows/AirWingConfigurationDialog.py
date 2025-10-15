@@ -266,14 +266,14 @@ class SquadronConfigurationBox(QGroupBox):
         self.parking_tracker.allocation_changed.connect(self.update_parking_label)
         left_column.addWidget(self.parking_label)
 
-        if not squadron.player and squadron.aircraft.flyable:
+        if not squadron.player.is_blue and squadron.aircraft.flyable:
             player_label = QLabel("Player slots not available for opfor")
         elif not squadron.aircraft.flyable:
             player_label = QLabel("Player slots not available for non-flyable aircraft")
         else:
             msg1 = "Player slots not available for opfor"
             msg2 = "Player slots not available for non-flyable aircraft"
-            text = msg2 if squadron.player else msg1
+            text = msg2 if squadron.player.is_blue else msg1
             player_label = QLabel(text)
         left_column.addWidget(player_label)
 
@@ -281,7 +281,9 @@ class SquadronConfigurationBox(QGroupBox):
             "<br />".join(p.name for p in self.claim_players_from_squadron())
         )
         self.player_list.setAcceptRichText(False)
-        self.player_list.setEnabled(squadron.player and squadron.aircraft.flyable)
+        self.player_list.setEnabled(
+            squadron.player.is_blue and squadron.aircraft.flyable
+        )
         left_column.addWidget(self.player_list)
 
         button_row = QHBoxLayout()
@@ -376,7 +378,7 @@ class SquadronConfigurationBox(QGroupBox):
         return squadron
 
     def claim_players_from_squadron(self) -> list[Pilot]:
-        if not self.squadron.player:
+        if not self.squadron.player.is_blue:
             return []
 
         players = [p for p in self.squadron.pilot_pool if p.player]
@@ -385,7 +387,7 @@ class SquadronConfigurationBox(QGroupBox):
         return players
 
     def return_players_to_squadron(self) -> None:
-        if not self.squadron.player:
+        if not self.squadron.player.is_blue:
             return
 
         player_names = self.player_list.toPlainText().splitlines()
