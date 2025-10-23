@@ -172,7 +172,7 @@ class MissionResultsProcessor:
         self, debriefing: Debriefing, events: GameUpdateEvents
     ) -> None:
         for cp in self.game.theater.player_points():
-            enemy_cps = [e for e in cp.connected_points if not e.captured]
+            enemy_cps = [e for e in cp.connected_points if e.captured.is_red]
             for enemy_cp in enemy_cps:
                 front_line = cp.front_line_with(enemy_cp)
                 front_line.update_position()
@@ -335,16 +335,17 @@ class MissionResultsProcessor:
         total_units_redeployed = 0
         moved_units = {}
 
-        if source.has_active_frontline or not destination.captured:
-            # If there are still active front lines to defend at the
-            # transferring CP we should not transfer all units.
-            #
-            # Opfor also does not transfer all of their units.
-            # TODO: Balance the CPs rather than moving half from everywhere.
-            move_factor = 0.5
-        else:
-            # Otherwise we can move everything.
-            move_factor = 1
+        settings = source.coalition.game.settings
+        reserves = max(
+            1,
+            (
+                settings.reserves_procurement_target
+                if source.captured.is_blue
+                else settings.reserves_procurement_target_red
+            ),
+        )
+        total_units = source.base.total_armor
+        reserves_factor = (reserves - 1) / total_units  # slight underestimation
 
         for frontline_unit, count in source.base.armor.items():
             moved_units[frontline_unit] = int(count * move_factor)
