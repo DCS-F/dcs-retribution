@@ -235,7 +235,7 @@ class GeneratorOptions(QtWidgets.QWizardPage):
             ("F-105 Thunderchief (v2.7.12.23x)", self.f105_thunderchief),
             ("Cold War Assets mod (v1.2)", self.coldwarassets),
             ("Frenchpack (v4.9.1)", self.frenchpack),
-            ("High Digit SAMs", self.high_digit_sams),
+            ("High Digit SAMs (v1.4.0)", self.high_digit_sams),
             ("Swedish Military Assets pack (1.10)", self.swedishmilitaryassetspack),
             ("JAS 39 Gripen (v1.8.5-beta)", self.jas39_gripen),
             ("MiG-31BM (v2.62)", self.mig31bm_foxhound),
