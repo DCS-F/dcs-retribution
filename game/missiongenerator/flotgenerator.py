@@ -749,7 +749,9 @@ class FlotGenerator:
         positioned_groups = []
         assert self.conflict.heading is not None
         spawn_heading = (
-            self.conflict.heading.left if is_player else self.conflict.heading.right
+            self.conflict.heading.left
+            if is_player.is_blue
+            else self.conflict.heading.right
         )
         country = self.game.coalition_for(is_player).faction.country
         country = self.mission.country(country.name)
