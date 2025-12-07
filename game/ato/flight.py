@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 from typing import Any, List, Optional, TYPE_CHECKING
 
 from dcs import Point
-from dcs.planes import C_101CC, C_101EB, Su_33, FA_18C_hornet, AV8BNA
+from dcs.planes import C_101CC, C_101EB, Su_33, FA_18C_hornet, AV8BNA, C_130J_30
 
 from game.dcs.aircrafttype import AircraftType
 from pydcs_extensions.hercules.hercules import Hercules
@@ -194,6 +194,8 @@ class Flight(SidcDescribable, RadioFrequencyContainer, TacanContainer):
 
     @property
     def is_hercules(self) -> bool:
+        if self.unit_type == AircraftType.named("C-130J-30"):
+            return True
         return self.unit_type == AircraftType.named("C-130J-30 Super Hercules")
 
     @property
@@ -241,7 +243,7 @@ class Flight(SidcDescribable, RadioFrequencyContainer, TacanContainer):
                 self.fuel = Su_33.fuel_max * 0.8
         elif unit_type in {C_101EB, C_101CC}:
             self.fuel = unit_type.fuel_max * 0.5
-        elif unit_type == Hercules:
+        elif unit_type in {Hercules, C_130J_30}:
             self.fuel = unit_type.fuel_max * 0.75
         elif self.departure.cptype.name in ["FARP", "FOB"] and unit_type == AV8BNA:
             self.fuel = unit_type.fuel_max * 0.75
