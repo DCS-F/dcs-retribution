@@ -1,0 +1,9 @@
+class: Missile
+description: The M142 HIMARS (M142 High Mobility Artillery Rocket System) is a light multiple rocket launcher developed in the late 1990s for the United States Army and mounted on a standard United States Army Family of Medium Tactical Vehicles (FMTV) truck frame. The HIMARS carries one pod with either six GMLRS rockets or one ATACMS missile. It is based on the United States Army's FMTV five-ton truck, and is capable of launching all rockets specified in the Multiple Launch Rocket System Family of Munitions (MFOM). HIMARS ammunition pods are interchangeable with the M270 MLRS; however, it is limited to a single pod as opposed to the standard two for the M270 and its variants.
+introduced: 2010
+manufacturer: Lockheed Martin Missiles and Fire Control
+origin: USA
+price: 100
+role: Guided Multiple-Launch Rocket System
+variants:
+  M142 HIMARS-GMLRS: null
