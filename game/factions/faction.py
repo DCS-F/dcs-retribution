@@ -178,7 +178,7 @@ class Faction:
         return sorted(air_defenses)
 
     @cached_property
-    def all_aircraft(self) -> list[UnitType[Any]]:
+    def all_aircrafts(self) -> list[UnitType[Any]]:
         # Migrator can't cope with this, so we need to do it here...
         self.aircraft = set(self.aircraft)
         self.awacs = set(self.awacs)
@@ -432,6 +432,8 @@ class Faction:
         if not mod_settings.f4bc_phantom:
             self.remove_aircraft("VSN_F4B")
             self.remove_aircraft("VSN_F4C")
+        if not mod_settings.f9f_panther:
+            self.remove_aircraft("VSN_F9F")
         if not mod_settings.f15d_baz:
             self.remove_aircraft("F-15D")
         if not mod_settings.f_15_idf:
@@ -472,6 +474,8 @@ class Faction:
             self.remove_aircraft("VSN_F106B")
         if not mod_settings.a6a_intruder:
             self.remove_aircraft("VSN_A6A")
+        if not mod_settings.ea6b_prowler:
+            self.remove_aircraft("EA_6B")
         if not mod_settings.jas39_gripen:
             self.remove_aircraft("JAS39Gripen")
             self.remove_aircraft("JAS39Gripen_BVR")
