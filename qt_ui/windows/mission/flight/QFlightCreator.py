@@ -1,6 +1,6 @@
 from typing import Optional, Type
 
-from PySide6.QtCore import Qt, Signal, QEvent
+from PySide6.QtCore import Qt, Signal
 from PySide6.QtWidgets import (
     QComboBox,
     QDialog,
@@ -10,14 +10,12 @@ from PySide6.QtWidgets import (
     QVBoxLayout,
     QLineEdit,
     QHBoxLayout,
-    QStyledItemDelegate,
 )
 from dcs.unittype import FlyingType
 
 from game import Game
 from game.ato.flight import Flight
 from game.ato.flightroster import FlightRoster
-from game.ato.loadouts import Loadout
 from game.ato.package import Package
 from game.ato.starttype import StartType
 from game.squadrons.squadron import Squadron

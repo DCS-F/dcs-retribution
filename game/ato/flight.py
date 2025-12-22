@@ -1,22 +1,20 @@
 from __future__ import annotations
 
-import random
 import uuid
 from collections.abc import Iterator
 from datetime import datetime, timedelta
 from typing import Any, List, Optional, TYPE_CHECKING
 
 from dcs import Point
-from dcs.planes import C_101CC, C_101EB, Su_33, FA_18C_hornet, C_130J_30, AV8BNA
+from dcs.planes import C_101CC, C_101EB, Su_33, FA_18C_hornet, AV8BNA, C_130J_30
 
-from game.theater import ControlPoint, MissionTarget
+from game.dcs.aircrafttype import AircraftType
 from pydcs_extensions.hercules.hercules import Hercules
 from .flightmembers import FlightMembers
 from .flightroster import FlightRoster
 from .flightstate import FlightState, Navigating, Uninitialized
 from .flightstate.killed import Killed
 from .loadouts import Weapon
-from ..radio.CallsignContainer import CallsignContainer
 from ..radio.RadioFrequencyContainer import RadioFrequencyContainer
 from ..radio.TacanContainer import TacanContainer
 from ..radio.radios import RadioFrequency
@@ -34,10 +32,12 @@ if TYPE_CHECKING:
     from game.sim.simulationresults import SimulationResults
     from game.squadrons import Squadron, Pilot
     from game.theater.player import Player
+    from game.theater import ControlPoint
     from game.transfers import TransferOrder
     from game.data.weapons import WeaponType
     from .flightmember import FlightMember
     from .flightplans.flightplan import FlightPlan
+    from .flighttype import FlightType
     from .flightwaypoint import FlightWaypoint
     from .package import Package
     from .starttype import StartType
@@ -45,11 +45,7 @@ if TYPE_CHECKING:
 F18_TGP_PYLON: int = 4
 
 
-class Flight(
-    SidcDescribable, RadioFrequencyContainer, TacanContainer, CallsignContainer
-):
-    from game.dcs.aircrafttype import AircraftType
-
+class Flight(SidcDescribable, RadioFrequencyContainer, TacanContainer):
     def __init__(
         self,
         package: Package,
@@ -63,7 +59,7 @@ class Flight(
         roster: Optional[FlightRoster] = None,
         frequency: Optional[RadioFrequency] = None,
         channel: Optional[TacanChannel] = None,
-        callsign_tcn: Optional[str] = None,
+        callsign: Optional[str] = None,
         claim_inv: bool = True,
     ) -> None:
         self.id = uuid.uuid4()
@@ -86,11 +82,10 @@ class Flight(
         self.frequency = frequency
         if self.unit_type.dcs_unit_type.tacan:
             self.tacan = channel
-            self.tcn_name = callsign_tcn
+            self.tcn_name = callsign
 
         self.initialize_fuel()
         self.use_same_loadout_for_all_members = True
-        self.use_same_livery_for_all_members = True
 
         # Only used by transport missions.
         self.cargo = cargo
@@ -125,27 +120,6 @@ class Flight(
                         ]
                     )
                 )
-
-        # altitude offset for planes
-        offset_factor = self.coalition.game.settings.max_plane_altitude_offset
-        offset_factor = random.randint(0, offset_factor)
-        self.plane_altitude_offset = 1000 * offset_factor * random.choice([-1, 1])
-
-    @property
-    def available_callsigns(self) -> List[str]:
-        callsigns = set()
-        dcs_unit = self.squadron.aircraft.dcs_unit_type
-        category = dcs_unit.category
-        category = "Air" if category == "Interceptor" else category
-        for name in self.squadron.coalition.faction.country.callsign[category]:
-            callsigns.add(name)
-        if hasattr(dcs_unit, "callnames"):
-            country_name = self.squadron.coalition.faction.country.name
-            for c in dcs_unit.callnames:
-                if "Combined Joint Task Forces" in country_name or c == country_name:
-                    for name in dcs_unit.callnames[c]:
-                        callsigns.add(name)
-        return sorted(callsigns)
 
     @property
     def flight_plan(self) -> FlightPlan[Any]:
@@ -228,13 +202,6 @@ class Flight(
     def points(self) -> List[FlightWaypoint]:
         return self.flight_plan.waypoints[1:]
 
-    @property
-    def custom_targets(self) -> List[MissionTarget]:
-        return [
-            MissionTarget(wpt.name, wpt.position)
-            for wpt in self.flight_plan.layout.custom_waypoints
-        ]
-
     def position(self) -> Point:
         return self.state.estimate_position()
 
@@ -290,7 +257,7 @@ class Flight(
         return self.__str__()
 
     def __str__(self) -> str:
-        string = f"[{self.flight_type}] {self.count} x {self.unit_type} - {self.start_type.value}"
+        string = f"[{self.flight_type}] {self.count} x {self.unit_type}"
         if self.custom_name:
             return f"{self.custom_name} - {string}"
         return string
