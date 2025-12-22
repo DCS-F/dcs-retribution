@@ -65,6 +65,7 @@ class TheaterGroundObject(MissionTarget, SidcDescribable, ABC):
         control_point: ControlPoint,
         sea_object: bool,
         task: Optional[GroupTask],
+        hide_on_mfd: bool = False,
     ) -> None:
         super().__init__(name, location)
         self.id = uuid.uuid4()
@@ -76,6 +77,7 @@ class TheaterGroundObject(MissionTarget, SidcDescribable, ABC):
         self.original_name = location.original_name
         self._threat_poly: ThreatPoly | None = None
         self.task = task
+        self.hide_on_mfd = hide_on_mfd
 
     def __getstate__(self) -> dict[str, Any]:
         state = self.__dict__.copy()
@@ -271,8 +273,8 @@ class TheaterGroundObject(MissionTarget, SidcDescribable, ABC):
         self.heading = heading
         # Rotate the whole TGO to match the new heading
         for unit in self.units:
-            unit.position.heading += rotation
-            unit.position.rotate(self.position, rotation)
+            unit.rotate_heading_clockwise(rotation)
+            unit.rotate_position_clockwise(self.position, rotation)
 
     @property
     def should_head_to_conflict(self) -> bool:
@@ -286,6 +288,10 @@ class TheaterGroundObject(MissionTarget, SidcDescribable, ABC):
     @property
     def coalition(self) -> Coalition:
         return self.control_point.coalition
+
+    @property
+    def is_naval_control_point(self) -> bool:
+        return False
 
 
 class BuildingGroundObject(TheaterGroundObject):
@@ -386,6 +392,10 @@ class NavalGroundObject(TheaterGroundObject, ABC):
 class GenericCarrierGroundObject(NavalGroundObject, ABC):
     @property
     def is_control_point(self) -> bool:
+        return True
+
+    @property
+    def is_naval_control_point(self) -> bool:
         return True
 
 

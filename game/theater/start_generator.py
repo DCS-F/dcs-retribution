@@ -8,20 +8,6 @@ from typing import List, Optional
 
 import dcs.statics
 from dcs.countries import country_dict
-from dcs.ships import (
-    ara_vdm,
-    CVN_71,
-    CVN_72,
-    CVN_73,
-    CVN_75,
-    CV_1143_5,
-    Forrestal,
-    KUZNECOW,
-    LHA_Tarawa,
-    Stennis,
-    Type_071,
-    hms_invincible,
-)
 
 from game import Game
 from game.factions.faction import Faction
@@ -39,7 +25,6 @@ from game.theater.theatergroundobject import (
 )
 from game.utils import Heading, escape_string_for_lua
 from game.version import VERSION
-from pydcs_extensions import L02, L52, L61, Cva_31
 from . import (
     ConflictTheater,
     ControlPoint,
@@ -48,7 +33,6 @@ from . import (
     OffMapSpawn,
 )
 from .player import Player
-from .theatergroup import IadsGroundGroup, IadsRole, SceneryUnit, TheaterGroup
 from .theatergroup import (
     IadsGroundGroup,
     IadsRole,
@@ -90,13 +74,16 @@ class ModSettings:
     a4_skyhawk: bool = False
     a6a_intruder: bool = False
     a7e_corsair2: bool = False
+    ea6b_prowler: bool = False
     e7a_wedgetail: bool = False
     f4bc_phantom: bool = False
+    f9f_panther: bool = False
     f15d_baz: bool = False
     f_15_idf: bool = False
     f_16_idf: bool = False
     fa_18d: bool = False
     fa_18efg: bool = False
+    fa18ef_tanker: bool = False
     f22_raptor: bool = False
     f84g_thunderjet: bool = False
     f100_supersabre: bool = False
@@ -292,30 +279,7 @@ class GenericCarrierGroundObjectGenerator(ControlPointGroundObjectGenerator):
         if ccfg := carrier_map.get(self.control_point.name):
             preferred_name = ccfg.preferred_name
             preferred_type = ccfg.preferred_type
-        carrier_unit = self.control_point.find_main_tgo().groups[0].units[0]
-        for group in self.control_point.find_main_tgo().groups:
-            for unit in group.units:
-                if unit.type in [
-                    ara_vdm,
-                    Forrestal,
-                    Stennis,
-                    LHA_Tarawa,
-                    KUZNECOW,
-                    Type_071,
-                    hms_invincible,
-                    L02,
-                    L52,
-                    L61,
-                    CV_1143_5,
-                    Cva_31,  # Vietnam War Vessels Mod
-                    CVN_71,
-                    CVN_72,
-                    CVN_73,
-                    CVN_75,
-                ]:
-                    carrier_unit = unit
-                    break
-
+        carrier_unit = self.get_carrier_unit()
         if preferred_type and preferred_type.dcs_unit_type in [
             v
             for k, v in country_dict[self.faction.country.id].Ship.__dict__.items()  # type: ignore
@@ -487,9 +451,8 @@ class AirbaseGroundObjectGenerator(ControlPointGroundObjectGenerator):
                                 if g.unit_class in ug.unit_classes:
                                     fg.units.append(g)
             unit_group: Optional[ForceGroup] = fg
-            self.armed_forces.add_or_update_force_group(fg)
         else:
-            if fg and not valid_fg:
+            if fg:
                 logging.warning(
                     f"Override in ground_forces failed for {fg} at {position.original_name}"
                 )

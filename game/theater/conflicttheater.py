@@ -124,7 +124,7 @@ class ConflictTheater:
 
         return False
 
-    def is_on_land(self, point: Point) -> bool:
+    def is_on_land(self, point: Point, ignore_exclusion: bool = False) -> bool:
         if not self.landmap:
             return True
 
@@ -135,9 +135,10 @@ class ConflictTheater:
         if not is_point_included:
             return False
 
-        for exclusion_zone in self.landmap.exclusion_zones.geoms:
-            if poly_contains(point.x, point.y, exclusion_zone):
-                return False
+        if not ignore_exclusion:
+            for exclusion_zone in self.landmap.exclusion_zones.geoms:
+                if poly_contains(point.x, point.y, exclusion_zone):
+                    return False
 
         return True
 
@@ -174,7 +175,12 @@ class ConflictTheater:
     ) -> Iterator[ControlPoint]:
         for point in self.controlpoints:
             if point.captured is player:
-                yield point
+                if not state_check:
+                    yield point
+                elif point.is_carrier and point.runway_is_operational():
+                    yield point
+                elif not point.is_carrier:
+                    yield point
 
     def player_points(self, state_check: bool = False) -> List[ControlPoint]:
         return list(
