@@ -47,9 +47,16 @@ samTypesDB = {
 					['NATO'] = 'Big Bird',
 				},
 			},
+			['S-300PS 40B6MD sr_19J6'] = {
+				['name'] = {
+					['NATO'] = 'Tin Shield',
+				},
+			},
 		},
 		['trackingRadar'] = {
 			['S-300PS 40B6M tr'] = {
+			},
+			['S-300PS 5H63C 30H6_tr'] = {
 			},
 		},
 		['launchers'] = {
@@ -396,6 +403,22 @@ samTypesDB = {
 			['NATO'] = 'CSA-4',
 		},
 		['harm_detection_chance'] = 30
+	},
+	['HEMTT_C-RAM_Phalanx'] = {
+		['type'] = 'single',
+		['searchRadar'] = {
+			['HEMTT_C-RAM_Phalanx'] = {
+			},
+		},
+		['launchers'] = {
+			['HEMTT_C-RAM_Phalanx'] = {
+			},
+		},
+		['name'] = {
+			['NATO'] = 'CIWS',
+		},
+		['harm_detection_chance'] = 70,
+		['can_engage_harm'] = true
 	},
 --- Start of EW radars:
 	['1L13 EWR'] = {
@@ -2683,7 +2706,7 @@ function SkynetIADSAbstractRadarElement:goDark()
 		end
 		self.aiState = false
 		self:stopScanningForHARMs()
-		if self.iads:getDebugSettings().radarWentDark then
+		if self.iads:getDebugSettings().samWentDark then
 			self.iads:printOutputToLog("GOING DARK: "..self:getDescription())
 		end
 	end
@@ -2928,29 +2951,29 @@ end
 
 function SkynetIADSAbstractRadarElement:informOfHARM(harmContact)
 	local radars = self:getRadars()
-		for j = 1, #radars do
-			local radar = radars[j]
-			if radar:isExist() then
-				local distanceNM =  mist.utils.metersToNM(self:getDistanceInMetersToContact(radar, harmContact:getPosition().p))
-				local harmToSAMHeading = mist.utils.toDegree(mist.utils.getHeadingPoints(harmContact:getPosition().p, radar:getPosition().p))
-				local harmToSAMAspect = self:calculateAspectInDegrees(harmContact:getMagneticHeading(), harmToSAMHeading)
-				local speedKT = harmContact:getGroundSpeedInKnots(0)
-				local secondsToImpact = self:getSecondsToImpact(distanceNM, speedKT)
-				--TODO: use tti instead of distanceNM?
-				-- when iterating through the radars, store shortest tti and work with that value??
-				if ( harmToSAMAspect < SkynetIADSAbstractRadarElement.HARM_TO_SAM_ASPECT and distanceNM < SkynetIADSAbstractRadarElement.HARM_LOOKAHEAD_NM ) then
-					self:addObjectIdentifiedAsHARM(harmContact)
-					if ( #self:getPointDefences() > 0 and self:pointDefencesGoLive() == true and self.iads:getDebugSettings().harmDefence ) then
-							self.iads:printOutputToLog("POINT DEFENCES GOING LIVE FOR: "..self:getDCSName().." | TTI: "..secondsToImpact)
-					end
-					--self.iads:printOutputToLog("Ignore HARM shutdown: "..tostring(self:shallIgnoreHARMShutdown()))
-					if ( self:getIsAPointDefence() == false and ( self:isDefendingHARM() == false or ( self:getHARMShutdownTime() < secondsToImpact ) ) and self:shallIgnoreHARMShutdown() == false) then
-						self:goSilentToEvadeHARM(secondsToImpact)
-						break
-					end
+	for j = 1, #radars do
+		local radar = radars[j]
+		if radar:isExist() then
+			local distanceNM =  mist.utils.metersToNM(self:getDistanceInMetersToContact(radar, harmContact:getPosition().p))
+			local harmToSAMHeading = mist.utils.toDegree(mist.utils.getHeadingPoints(harmContact:getPosition().p, radar:getPosition().p))
+			local harmToSAMAspect = self:calculateAspectInDegrees(harmContact:getMagneticHeading(), harmToSAMHeading)
+			local speedKT = harmContact:getGroundSpeedInKnots(0)
+			local secondsToImpact = self:getSecondsToImpact(distanceNM, speedKT)
+			--TODO: use tti instead of distanceNM?
+			-- when iterating through the radars, store shortest tti and work with that value??
+			if ( harmToSAMAspect < SkynetIADSAbstractRadarElement.HARM_TO_SAM_ASPECT and distanceNM < SkynetIADSAbstractRadarElement.HARM_LOOKAHEAD_NM ) then
+				self:addObjectIdentifiedAsHARM(harmContact)
+				if ( #self:getPointDefences() > 0 and self:pointDefencesGoLive() == true and self.iads:getDebugSettings().harmDefence ) then
+					self.iads:printOutputToLog("POINT DEFENCES GOING LIVE FOR: "..self:getDCSName().." | TTI: "..secondsToImpact)
+				end
+				--self.iads:printOutputToLog("Ignore HARM shutdown: "..tostring(self:shallIgnoreHARMShutdown()))
+				if ( self:getIsAPointDefence() == false and ( self:isDefendingHARM() == false or ( self:getHARMShutdownTime() < secondsToImpact ) ) and self:shallIgnoreHARMShutdown() == false) then
+					self:goSilentToEvadeHARM(secondsToImpact)
+					break
 				end
 			end
 		end
+	end
 end
 
 function SkynetIADSAbstractElement:addObjectIdentifiedAsHARM(harmContact)
