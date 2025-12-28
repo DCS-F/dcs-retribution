@@ -35,6 +35,7 @@ if TYPE_CHECKING:
 @dataclass
 class Layout(ABC):
     departure: FlightWaypoint
+    custom_waypoints: list[FlightWaypoint]
 
     @property
     def waypoints(self) -> list[FlightWaypoint]:
@@ -71,15 +72,6 @@ class FlightPlan(ABC, Generic[LayoutT]):
     def waypoints(self) -> list[FlightWaypoint]:
         """A list of all waypoints in the flight plan, in order."""
         return list(self.iter_waypoints())
-
-    def get_index_of_wpt_by_type(self, wpt_type: FlightWaypointType) -> int:
-        index = 0
-        for wpt in self.waypoints:
-            if wpt and not wpt.only_for_player:
-                index += 1
-                if wpt.waypoint_type == wpt_type:
-                    return index
-        return -1
 
     def iter_waypoints(self) -> Iterator[FlightWaypoint]:
         """Iterates over all waypoints in the flight plan, in order."""
@@ -190,7 +182,6 @@ class FlightPlan(ABC, Generic[LayoutT]):
 
         for previous_waypoint, waypoint in self.edges(until=destination):
             total += self.total_time_between_waypoints(previous_waypoint, waypoint)
-            total += self.travel_time_between_waypoints(previous_waypoint, waypoint)
 
         # Trim microseconds. Our simulation tick rate is 1 second, so anything that
         # takes 100.1 or 100.9 seconds will take 100 seconds. DCS doesn't handle
@@ -251,17 +242,23 @@ class FlightPlan(ABC, Generic[LayoutT]):
             self._travel_time_to_waypoint(self.tot_waypoint)
             + self.estimate_startup()
             + self.estimate_ground_ops()
+            + self.estimate_takeoff_time()
         )
 
     def startup_time(self) -> datetime:
         return (
-            self.takeoff_time() - self.estimate_startup() - self.estimate_ground_ops()
+            self.takeoff_time()
+            - self.estimate_startup()
+            - self.estimate_ground_ops()
+            - self.estimate_takeoff_time()
         )
 
     def estimate_startup(self) -> timedelta:
         if self.flight.start_type is StartType.COLD:
             if self.flight.client_count:
-                return timedelta(minutes=10)
+                return timedelta(
+                    minutes=self.flight.coalition.game.settings.player_startup_time
+                )
             else:
                 # The AI doesn't seem to have a real startup procedure.
                 return timedelta(minutes=2)
@@ -274,6 +271,11 @@ class FlightPlan(ABC, Generic[LayoutT]):
             return timedelta(minutes=2)
         else:
             return timedelta(minutes=8)
+
+    def estimate_takeoff_time(self) -> timedelta:
+        if self.flight.departure.is_offmap:
+            return timedelta()
+        return timedelta(seconds=30)
 
     @property
     def is_airassault(self) -> bool:

@@ -26,6 +26,7 @@ class InFlight(FlightState, ABC):
         settings: Settings,
         waypoint_index: int,
         has_aborted: bool = False,
+        elapsed_time: timedelta = timedelta(),
     ) -> None:
         super().__init__(flight, settings)
         waypoints = self.flight.flight_plan.waypoints
@@ -35,7 +36,7 @@ class InFlight(FlightState, ABC):
         # TODO: Error checking for flight plans without landing waypoints.
         self.next_waypoint = waypoints[self.waypoint_index + 1]
         self.total_time_to_next_waypoint = self.travel_time_between_waypoints()
-        self.elapsed_time = timedelta()
+        self.elapsed_time = elapsed_time
         self.current_waypoint_elapsed = False
 
     @property
@@ -56,16 +57,13 @@ class InFlight(FlightState, ABC):
         )
 
     @abstractmethod
-    def estimate_position(self) -> Point:
-        ...
+    def estimate_position(self) -> Point: ...
 
     @abstractmethod
-    def estimate_altitude(self) -> tuple[Distance, str]:
-        ...
+    def estimate_altitude(self) -> tuple[Distance, str]: ...
 
     @abstractmethod
-    def estimate_speed(self) -> Speed:
-        ...
+    def estimate_speed(self) -> Speed: ...
 
     def estimate_fuel_at_current_waypoint(self) -> float:
         initial_fuel = super().estimate_fuel()

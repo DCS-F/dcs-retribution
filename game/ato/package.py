@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import logging
 from collections import defaultdict
+from copy import deepcopy
 from datetime import datetime
 from typing import Dict, Optional, TYPE_CHECKING
 
@@ -53,8 +54,7 @@ class Package(RadioFrequencyContainer):
     def has_players(self) -> bool:
         return any(flight.client_count for flight in self.flights)
 
-    @property
-    def formation_speed(self) -> Optional[Speed]:
+    def formation_speed(self, is_helo: bool) -> Optional[Speed]:
         """The speed of the package when in formation.
 
         If none of the flights in the package will join a formation, this
@@ -65,7 +65,10 @@ class Package(RadioFrequencyContainer):
         """
         speeds = []
         for flight in self.flights:
-            if isinstance(flight.flight_plan, FormationFlightPlan):
+            if (
+                isinstance(flight.flight_plan, FormationFlightPlan)
+                and flight.is_helo == is_helo
+            ):
                 speeds.append(flight.flight_plan.best_flight_formation_speed)
         if not speeds:
             return None
@@ -178,6 +181,7 @@ class Package(RadioFrequencyContainer):
             FlightType.DEAD,
             FlightType.TRANSPORT,
             FlightType.AIR_ASSAULT,
+            FlightType.ARMED_RECON,
             FlightType.SEAD,
             FlightType.SEAD_SWEEP,
             FlightType.TARCAP,
@@ -232,8 +236,17 @@ class Package(RadioFrequencyContainer):
     @staticmethod
     def clone_package(package: Package) -> Package:
         clone = Package(package.target, package._db, package.auto_asap)
-        clone.time_over_target = package.time_over_target
+        clone.time_over_target = deepcopy(package.time_over_target)
         for f in package.flights:
             cf = Flight.clone_flight(f)
+            cf.flight_plan.layout = deepcopy(f.flight_plan.layout)
+            cf.package = clone
             clone.add_flight(cf)
         return clone
+
+    def all_flights_waiting_for_start(self) -> bool:
+        """Returns True if all flights in the package are waiting for start."""
+        for flight in self.flights:
+            if not flight.state.is_waiting_for_start:
+                return False
+        return True

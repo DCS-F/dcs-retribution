@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import timedelta, datetime
+from datetime import datetime
 from typing import Type
 
 from .airassault import AirAssaultLayout
@@ -17,18 +17,6 @@ from ...utils import feet
 
 
 class EscortFlightPlan(FormationAttackFlightPlan):
-    @property
-    def push_time(self) -> datetime:
-        hold2join_time = (
-            self.travel_time_between_waypoints(
-                self.layout.hold,
-                self.layout.join,
-            )
-            if self.layout.hold is not None
-            else timedelta(0)
-        )
-        return self.join_time - hold2join_time
-
     @staticmethod
     def builder_type() -> Type[Builder]:
         return Builder
@@ -72,21 +60,19 @@ class Builder(FormationAttackBuilder[EscortFlightPlan, FormationAttackLayout]):
         hold = None
         if not (self.flight.is_helo or non_formation_escort):
             hold = builder.hold(self._hold_point())
-        elif self.package.primary_flight is not None:
-            fp = self.package.primary_flight.flight_plan
-            assert isinstance(fp.layout, AirAssaultLayout)
-            assert fp.layout.pickup is not None
-            hold = builder.hold(fp.layout.pickup.position)
 
-        join = builder.join(self.package.waypoints.join)
-        split = builder.split(self.package.waypoints.split)
+        join_pos = (
+            WaypointBuilder.perturb(self.package.waypoints.ingress, feet(500))
+            if self.flight.is_helo
+            else self.package.waypoints.join
+        )
+        join = builder.join(join_pos)
 
-        ingress_alt = self.doctrine.ingress_altitude
+        split = builder.split(self._get_split())
+
         is_helo = builder.flight.is_helo
-        heli_alt = feet(self.coalition.game.settings.heli_combat_alt_agl)
         initial = builder.escort_hold(
             target.position if is_helo else self.package.waypoints.initial,
-            min(heli_alt, ingress_alt) if is_helo else ingress_alt,
         )
 
         pf = self.package.primary_flight
@@ -96,20 +82,15 @@ class Builder(FormationAttackBuilder[EscortFlightPlan, FormationAttackLayout]):
                 layout, AirliftLayout
             )
             if isinstance(layout, AirliftLayout):
-                join = builder.join(layout.departure.position)
-            else:
-                join = builder.join(layout.ingress.position)
-            if layout.pickup:
-                join = builder.join(layout.pickup.position)
+                ascent = layout.pickup_ascent or layout.drop_off_ascent
+                assert ascent is not None
+                join = builder.join(ascent.position)
+                if layout.pickup and layout.drop_off_ascent:
+                    join = builder.join(layout.drop_off_ascent.position)
             split = builder.split(layout.arrival.position)
             if layout.drop_off:
                 initial = builder.escort_hold(
                     layout.drop_off.position,
-                    (
-                        min(feet(200), ingress_alt)
-                        if builder.flight.is_helo
-                        else ingress_alt
-                    ),
                 )
 
         refuel = self._build_refuel(builder)
@@ -118,13 +99,13 @@ class Builder(FormationAttackBuilder[EscortFlightPlan, FormationAttackLayout]):
         nav_to = builder.nav_path(
             hold.position if hold else departure.position,
             join.position,
-            self.doctrine.ingress_altitude,
+            builder.get_cruise_altitude,
         )
 
         nav_from = builder.nav_path(
             refuel.position if refuel else split.position,
             self.flight.arrival.position,
-            self.doctrine.ingress_altitude,
+            builder.get_cruise_altitude,
         )
 
         return FormationAttackLayout(
@@ -141,6 +122,7 @@ class Builder(FormationAttackBuilder[EscortFlightPlan, FormationAttackLayout]):
             arrival=builder.land(self.flight.arrival),
             divert=builder.divert(self.flight.divert),
             bullseye=builder.bullseye(),
+            custom_waypoints=list(),
         )
 
     def build(self, dump_debug_info: bool = False) -> EscortFlightPlan:

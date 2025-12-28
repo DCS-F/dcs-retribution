@@ -8,6 +8,7 @@ from .aewc import AewcFlightPlan
 from .airassault import AirAssaultFlightPlan
 from .airlift import AirliftFlightPlan
 from .antiship import AntiShipFlightPlan
+from .armedrecon import ArmedReconFlightPlan
 from .bai import BaiFlightPlan
 from .barcap import BarCapFlightPlan
 from .cas import CasFlightPlan
@@ -64,6 +65,7 @@ class FlightPlanBuilderTypes:
             FlightType.FERRY: FerryFlightPlan.builder_type(),
             FlightType.AIR_ASSAULT: AirAssaultFlightPlan.builder_type(),
             FlightType.PRETENSE_CARGO: PretenseCargoFlightPlan.builder_type(),
+            FlightType.ARMED_RECON: ArmedReconFlightPlan.builder_type(),
             FlightType.RECOVERY: RecoveryTankerFlightPlan.builder_type(),
         }
         try:

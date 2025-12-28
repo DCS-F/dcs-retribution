@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 
 @dataclass
 class FormationLayout(LoiterLayout, ABC):
-    join: Optional[FlightWaypoint]
+    join: FlightWaypoint
     split: FlightWaypoint
     refuel: Optional[FlightWaypoint]
 
@@ -33,8 +33,7 @@ class FormationLayout(LoiterLayout, ABC):
 class FormationFlightPlan(LoiterFlightPlan, ABC):
     @property
     @abstractmethod
-    def package_speed_waypoints(self) -> set[FlightWaypoint]:
-        ...
+    def package_speed_waypoints(self) -> set[FlightWaypoint]: ...
 
     @property
     def combat_speed_waypoints(self) -> set[FlightWaypoint]:
@@ -64,8 +63,10 @@ class FormationFlightPlan(LoiterFlightPlan, ABC):
         return min(speeds)
 
     def speed_between_waypoints(self, a: FlightWaypoint, b: FlightWaypoint) -> Speed:
-        if self.package.formation_speed and b in self.package_speed_waypoints:
-            return self.package.formation_speed
+        if (
+            speed := self.package.formation_speed(self.flight.is_helo)
+        ) and b in self.package_speed_waypoints:
+            return speed
         return super().speed_between_waypoints(a, b)
 
     @property
@@ -75,27 +76,30 @@ class FormationFlightPlan(LoiterFlightPlan, ABC):
 
     @property
     @abstractmethod
-    def join_time(self) -> datetime:
-        ...
+    def join_time(self) -> datetime: ...
 
     @property
     @abstractmethod
-    def split_time(self) -> datetime:
-        ...
+    def split_time(self) -> datetime: ...
 
     def tot_for_waypoint(self, waypoint: FlightWaypoint) -> datetime | None:
         if waypoint == self.layout.join:
-            return self.join_time + self.tot_offset
+            return self.join_time
         elif waypoint == self.layout.split:
-            return self.split_time + self.tot_offset
+            return self.split_time
         return None
 
     @property
     def push_time(self) -> datetime:
-        return self.join_time - self.travel_time_between_waypoints(
-            self.layout.hold,
-            self.layout.join,
+        hold2join_time = (
+            self.travel_time_between_waypoints(
+                self.layout.hold,
+                self.layout.join,
+            )
+            if self.layout.hold
+            else timedelta(0)
         )
+        return self.join_time - hold2join_time
 
     @property
     def mission_begin_on_station_time(self) -> datetime | None:

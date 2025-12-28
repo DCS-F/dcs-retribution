@@ -11,7 +11,7 @@ from dcs import Point
 
 from game.flightplan import HoldZoneGeometry
 from game.theater import MissionTarget
-from game.utils import Speed, meters, nautical_miles, feet
+from game.utils import nautical_miles, Speed, feet
 from .flightplan import FlightPlan
 from .formation import FormationFlightPlan, FormationLayout
 from .ibuilder import IBuilder
@@ -39,8 +39,9 @@ class FormationAttackFlightPlan(FormationFlightPlan, ABC):
         if b.waypoint_type == FlightWaypointType.TARGET_GROUP_LOC:
             # Should be impossible, as any package with at least one
             # FormationFlightPlan flight needs a formation speed.
-            assert self.package.formation_speed is not None
-            return self.package.formation_speed
+            speed = self.package.formation_speed(self.flight.is_helo)
+            assert speed is not None
+            return speed
         return super().speed_between_waypoints(a, b)
 
     @property
@@ -53,7 +54,7 @@ class FormationAttackFlightPlan(FormationFlightPlan, ABC):
             "TARGET AREA",
             FlightWaypointType.TARGET_GROUP_LOC,
             self.package.target.position,
-            meters(0),
+            feet(0),
             "RADIO",
         )
 
@@ -142,8 +143,7 @@ class FormationAttackLayout(FormationLayout):
         if self.hold:
             yield self.hold
         yield from self.nav_to
-        if self.join:
-            yield self.join
+        yield self.join
         if self.lineup:
             yield self.lineup
         yield self.ingress
@@ -158,6 +158,7 @@ class FormationAttackLayout(FormationLayout):
         if self.divert is not None:
             yield self.divert
         yield self.bullseye
+        yield from self.custom_waypoints
 
 
 FlightPlanT = TypeVar("FlightPlanT", bound=FlightPlan[FormationAttackLayout])
@@ -187,11 +188,14 @@ class FormationAttackBuilder(IBuilder[FlightPlanT, LayoutT], ABC):
             )
 
         hold = None
-        join = None
-        if self.primary_flight_is_air_assault:
+        if not self.flight.is_helo:
             hold = builder.hold(self._hold_point())
-            join = builder.join(self.package.waypoints.join)
-        split = builder.split(self.package.waypoints.split)
+        join_pos = self.package.waypoints.join
+        if self.flight.is_helo:
+            join_pos = self.package.waypoints.ingress
+            join_pos = WaypointBuilder.perturb(join_pos, feet(500))
+        join = builder.join(join_pos)
+        split = builder.split(self._get_split())
         refuel = self._build_refuel(builder)
 
         ingress = builder.ingress(
@@ -208,14 +212,10 @@ class FormationAttackBuilder(IBuilder[FlightPlanT, LayoutT], ABC):
         if self.flight.flight_type == FlightType.STRIKE:
             hdg = self.package.target.position.heading_between_point(ingress.position)
             pos = ingress.position.point_from_heading(hdg, nautical_miles(10).meters)
-            lineup = builder.nav(pos, self.flight.coalition.doctrine.ingress_altitude)
+            lineup = builder.nav(pos, builder.get_combat_altitude)
 
         is_helo = self.flight.is_helo
-        ingress_egress_altitude = (
-            self.doctrine.ingress_altitude
-            if not is_helo
-            else feet(self.coalition.game.settings.heli_combat_alt_agl)
-        )
+        ingress_egress_altitude = builder.get_combat_altitude
         use_agl_ingress_egress = is_helo
 
         return FormationAttackLayout(
@@ -243,6 +243,7 @@ class FormationAttackBuilder(IBuilder[FlightPlanT, LayoutT], ABC):
             arrival=builder.land(self.flight.arrival),
             divert=builder.divert(self.flight.divert),
             bullseye=builder.bullseye(),
+            custom_waypoints=list(),
         )
 
     def _build_refuel(self, builder: WaypointBuilder) -> Optional[FlightWaypoint]:
@@ -255,13 +256,14 @@ class FormationAttackBuilder(IBuilder[FlightPlanT, LayoutT], ABC):
     @property
     def primary_flight_is_air_assault(self) -> bool:
         if self.flight is self.package.primary_flight:
-            return True
+            # Can't call self.package.primary_flight.flight_plan here
+            # because the flight-plan wasn't created yet.
+            # Calling the fligh_plan property would result in infinite recursion
+            return self.flight.flight_type == FlightType.AIR_ASSAULT
         else:
             assert self.package.primary_flight is not None
             fp = self.package.primary_flight.flight_plan
-            if fp.is_airassault:
-                return True
-        return False
+            return fp.is_airassault
 
     @staticmethod
     def target_waypoint(
@@ -286,6 +288,8 @@ class FormationAttackBuilder(IBuilder[FlightPlanT, LayoutT], ABC):
             return builder.sead_area(location)
         elif flight.flight_type == FlightType.OCA_AIRCRAFT:
             return builder.oca_strike_area(location)
+        elif flight.flight_type == FlightType.ARMED_RECON:
+            return builder.armed_recon_area(location)
         else:
             return builder.strike_area(location)
 
@@ -298,3 +302,13 @@ class FormationAttackBuilder(IBuilder[FlightPlanT, LayoutT], ABC):
         return HoldZoneGeometry(
             target, origin, ip, join, self.coalition, self.theater
         ).find_best_hold_point()
+
+    def _get_split(self) -> Point:
+        assert self.package.waypoints is not None
+        assert self.package.primary_flight is not None
+        split_pos = (
+            self.package.primary_flight.arrival.position
+            if self.package.primary_flight.is_helo
+            else self.package.waypoints.split
+        )
+        return split_pos

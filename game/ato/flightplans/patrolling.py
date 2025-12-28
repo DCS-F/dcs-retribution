@@ -31,6 +31,7 @@ class PatrollingLayout(StandardLayout):
         if self.divert is not None:
             yield self.divert
         yield self.bullseye
+        yield from self.custom_waypoints
 
 
 LayoutT = TypeVar("LayoutT", bound=PatrollingLayout)
@@ -78,6 +79,9 @@ class PatrollingFlightPlan(StandardFlightPlan[LayoutT], UiZoneDisplay, ABC):
         if waypoint == self.layout.patrol_end:
             return self.patrol_end_time
         return None
+
+    def takeoff_time(self) -> datetime:
+        return self.patrol_start_time - self._travel_time_to_waypoint(self.tot_waypoint)
 
     @property
     def package_speed_waypoints(self) -> set[FlightWaypoint]:
