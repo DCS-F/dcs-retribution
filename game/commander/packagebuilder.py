@@ -39,7 +39,7 @@ class PackageBuilder:
         self.laser_code_registry = laser_code_registry
         self.start_type = start_type
 
-    def plan_flight(self, plan: ProposedFlight) -> bool:
+    def plan_flight(self, plan: ProposedFlight, ignore_range: bool) -> bool:
         """Allocates aircraft for the given flight and adds them to the package.
 
         If no suitable aircraft are available, False is returned. If the failed
@@ -88,7 +88,11 @@ class PackageBuilder:
                 )
         # If this is a client flight, set the start_type again to match the configured default
         # https://github.com/dcs-liberation/dcs_liberation/issues/1567
-        if flight.roster is not None and flight.roster.player_count > 0:
+        if (
+            squadron.location.required_aircraft_start_type is None
+            and flight.roster is not None
+            and flight.roster.player_count > 0
+        ):
             flight.start_type = (
                 squadron.coalition.game.settings.default_start_type_client
             )

@@ -143,7 +143,7 @@ class ObjectiveFinder:
     def vulnerable_control_points(self) -> Iterator[ControlPoint]:
         """Iterates over friendly CPs that are vulnerable to enemy CPs.
 
-        Vulnerability is defined as any enemy CP within threat range of of the
+        Vulnerability is defined as any enemy CP within threat range of the
         CP.
         """
         for cp in self.friendly_control_points():
@@ -172,24 +172,6 @@ class ObjectiveFinder:
                 if not airfield.is_friendly(self.is_player):
                     yield cp
                     break
-
-    def vulnerable_enemy_control_points(self) -> Iterator[ControlPoint]:
-        """Iterates over enemy CPs that are vulnerable to Air Assault.
-        Vulnerability is defined as any unit being alive in the CP's "blocking_capture" groups.
-        """
-        for cp in self.enemy_control_points():
-            include = True
-            for tgo in cp.connected_objectives:
-                if tgo.distance_to(cp) > cp.CAPTURE_DISTANCE.meters:
-                    continue
-                for u in tgo.units:
-                    if u.is_vehicle and u.alive:
-                        include = False
-                        break
-                if not include:
-                    break
-            if include:
-                yield cp
 
     def oca_targets(self, min_aircraft: int) -> Iterator[ControlPoint]:
         parking_type = ParkingType()
@@ -281,17 +263,20 @@ class ObjectiveFinder:
             if not c.is_friendly(self.is_player) and c.captured != Player.NEUTRAL
         )
 
-    def prioritized_unisolated_points(self) -> list[ControlPoint]:
+    def prioritized_points(self) -> list[ControlPoint]:
         prioritized = []
         capturable_later = []
+        isolated = []
         for cp in self.game.theater.control_points_for(self.is_player.opponent):
             if cp.is_isolated:
+                isolated.append(cp)
                 continue
             if cp.has_active_frontline:
                 prioritized.append(cp)
             else:
                 capturable_later.append(cp)
         prioritized.extend(self._targets_by_range(capturable_later))
+        prioritized.extend(self._targets_by_range(isolated))
         return prioritized
 
     def air_assault_targets(self) -> list[ControlPoint]:
