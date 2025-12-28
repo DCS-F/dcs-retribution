@@ -60,9 +60,7 @@ class UnitType(ABC, Generic[DcsUnitTypeT]):
 
     @classmethod
     def _each_variant_of(cls, unit: DcsUnitTypeT) -> Iterator[Self]:
-        # Replace slashes with underscores because slashes are not allowed in filenames
-        unit_id = unit.id.replace("/", "_")
-        data_path = cls._data_directory() / f"{unit_id}.yaml"
+        data_path = cls._data_directory() / f"{unit.id}.yaml"
         if not data_path.exists():
             logging.warning(f"No data for {unit.id}; it will not be available")
             return
