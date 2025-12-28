@@ -1,11 +1,13 @@
 from __future__ import annotations
 
+import logging
+import pickle
 from datetime import datetime
 from pathlib import Path
 from typing import TYPE_CHECKING
 
 import dcs.lua
-from dcs import Mission, Point
+from dcs import Point
 from dcs.coalition import Coalition
 from dcs.countries import (
     country_dict,
@@ -14,30 +16,29 @@ from dcs.countries import (
 )
 from dcs.task import AFAC, FAC, SetInvisibleCommand, SetImmortalCommand, OrbitAction
 
-from game.lasercodes.lasercoderegistry import LaserCodeRegistry
 from game.missiongenerator.convoygenerator import ConvoyGenerator
 from game.missiongenerator.environmentgenerator import EnvironmentGenerator
-from game.missiongenerator.flotgenerator import FlotGenerator
 from game.missiongenerator.forcedoptionsgenerator import ForcedOptionsGenerator
 from game.missiongenerator.frontlineconflictdescription import (
     FrontLineConflictDescription,
 )
-from game.missiongenerator.missiondata import MissionData, JtacInfo
+from game.missiongenerator.missiondata import JtacInfo
 from game.missiongenerator.tgogenerator import TgoGenerator
 from game.missiongenerator.visualsgenerator import VisualsGenerator
 from game.naming import namegen
+from game.persistency import pre_pretense_backups_dir
 from game.pretense.pretenseaircraftgenerator import PretenseAircraftGenerator
 from game.theater import Player
-from game.radio.radios import RadioRegistry
-from game.radio.tacan import TacanRegistry
 from game.theater.bullseye import Bullseye
 from game.unitmap import UnitMap
+from qt_ui.windows.GameUpdateSignal import GameUpdateSignal
 from .pretenseluagenerator import PretenseLuaGenerator
 from .pretensetgogenerator import PretenseTgoGenerator
 from .pretensetriggergenerator import PretenseTriggerGenerator
 from ..ato.airtaaskingorder import AirTaskingOrder
 from ..callsigns import callsign_for_support_unit
 from ..dcs.aircrafttype import AircraftType
+from ..lasercodes import LaserCodeRegistry
 from ..missiongenerator import MissionGenerator
 from ..theater import Airfield
 
@@ -48,32 +49,26 @@ if TYPE_CHECKING:
 class PretenseMissionGenerator(MissionGenerator):
     def __init__(self, game: Game, time: datetime) -> None:
         super().__init__(game, time)
-        self.game = game
-        self.time = time
-        self.mission = Mission(game.theater.terrain)
-        self.unit_map = UnitMap()
-
-        self.mission_data = MissionData()
 
         self.laser_code_registry = LaserCodeRegistry()
-        self.radio_registry = RadioRegistry()
-        self.tacan_registry = TacanRegistry()
-
-        self.generation_started = False
-
-        self.p_country = country_dict[self.game.blue.faction.country.id]()
-        self.e_country = country_dict[self.game.red.faction.country.id]()
 
         with open("resources/default_options.lua", "r", encoding="utf-8") as f:
             options = dcs.lua.loads(f.read())["options"]
             ext_view = game.settings.external_views_allowed
             options["miscellaneous"]["f11_free_camera"] = ext_view
             options["difficulty"]["spectatorExternalViews"] = ext_view
-            sc_deck_crew = game.settings.supercarrier_deck_crew
-            options["plugins"]["Supercarrier"]["deck_crew"] = sc_deck_crew
             self.mission.options.load_from_dict(options)
 
     def generate_miz(self, output: Path) -> UnitMap:
+        game_backup_pickle = pickle.dumps(self.game)
+        path = pre_pretense_backups_dir()
+        path /= f".pre-pretense-backup.retribution"
+        try:
+            with open(path, "wb") as f:
+                pickle.dump(self.game, f)
+        except:
+            logging.error(f"Unable to save Pretense pre-generation backup to {path}")
+
         if self.generation_started:
             raise RuntimeError(
                 "Mission has already begun generating. To reset, create a new "
@@ -143,6 +138,15 @@ class PretenseMissionGenerator(MissionGenerator):
         namegen.reset_numbers()
         self.generate_warehouses()
         self.mission.save(output)
+
+        print(
+            f"Loading pre-pretense save, number of BLUFOR squadrons: {len(self.game.blue.air_wing.squadrons)}"
+        )
+        self.game = pickle.loads(game_backup_pickle)
+        print(
+            f"Loaded pre-pretense save, number of BLUFOR squadrons: {len(self.game.blue.air_wing.squadrons)}"
+        )
+        GameUpdateSignal.get_instance().game_loaded.emit(self.game)
 
         return self.unit_map
 
@@ -244,11 +248,13 @@ class PretenseMissionGenerator(MissionGenerator):
             self.time,
             self.radio_registry,
             self.tacan_registry,
+            self.datalink_registry,
             self.laser_code_registry,
             self.unit_map,
             mission_data=self.mission_data,
             helipads=tgo_generator.helipads,
             ground_spawns_roadbase=tgo_generator.ground_spawns_roadbase,
+            ground_spawns_large=tgo_generator.ground_spawns_large,
             ground_spawns=tgo_generator.ground_spawns,
         )
 
@@ -295,7 +301,7 @@ class PretenseMissionGenerator(MissionGenerator):
                 utype = AircraftType.named("MQ-9 Reaper")
 
             country = self.mission.country(self.game.blue.faction.country.name)
-            position = self.game.coalition_for(True).bullseye.position
+            position = self.game.coalition_for(Player.BLUE).bullseye.position
             jtac = self.mission.flight_group(
                 country=country,
                 name=namegen.next_jtac_name(),

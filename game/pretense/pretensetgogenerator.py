@@ -555,7 +555,6 @@ class PretenseGroundObjectGenerator(GroundObjectGenerator):
     ) -> VehicleGroup:
         vehicle_group: Optional[VehicleGroup] = None
 
-        print(f"Generating vehicle group {group_name}")
         control_point = self.ground_object.control_point
         for unit in self.ground_object.units:
             if unit.is_ship:
@@ -909,6 +908,10 @@ class PretenseTgoGenerator(TgoGenerator):
                         self.runways,
                         self.unit_map,
                         self.mission_data,
+                    )
+                elif isinstance(ground_object, MissileSiteGroundObject):
+                    generator = MissileSiteGenerator(
+                        ground_object, country, self.game, self.m, self.unit_map
                     )
                 else:
                     generator = PretenseGroundObjectGenerator(

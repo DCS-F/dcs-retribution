@@ -29,11 +29,13 @@ from game.pretense.pretenseflightgroupconfigurator import (
     PretenseFlightGroupConfigurator,
 )
 from game.pretense.pretenseflightgroupspawner import PretenseNameGenerator
+from game.radio.datalink import DataLinkRegistry
 from game.radio.radios import RadioRegistry
 from game.radio.tacan import TacanRegistry
 from game.runways import RunwayData
 from game.settings import Settings
 from game.squadrons import AirWing
+from game.squadrons import Squadron
 from game.theater.player import Player
 from game.theater.controlpoint import (
     ControlPoint,
@@ -45,7 +47,6 @@ from game.theater.controlpoint import (
 )
 from game.theater.theatergroundobject import EwrGroundObject, SamGroundObject
 from game.unitmap import UnitMap
-from game.squadrons import Squadron
 
 if TYPE_CHECKING:
     from game import Game
@@ -66,11 +67,13 @@ class PretenseAircraftGenerator(AircraftGenerator):
         time: datetime,
         radio_registry: RadioRegistry,
         tacan_registry: TacanRegistry,
+        datalink_registry: DataLinkRegistry,
         laser_code_registry: LaserCodeRegistry,
         unit_map: UnitMap,
         mission_data: MissionData,
         helipads: dict[ControlPoint, list[StaticGroup]],
         ground_spawns_roadbase: dict[ControlPoint, list[Tuple[StaticGroup, Point]]],
+        ground_spawns_large: dict[ControlPoint, list[Tuple[StaticGroup, Point]]],
         ground_spawns: dict[ControlPoint, list[Tuple[StaticGroup, Point]]],
     ) -> None:
         self.mission = mission
@@ -79,12 +82,14 @@ class PretenseAircraftGenerator(AircraftGenerator):
         self.time = time
         self.radio_registry = radio_registry
         self.tacan_registy = tacan_registry
+        self.datalink_registry = datalink_registry
         self.laser_code_registry = laser_code_registry
         self.unit_map = unit_map
         self.flights: List[FlightData] = []
         self.mission_data = mission_data
         self.helipads = helipads
         self.ground_spawns_roadbase = ground_spawns_roadbase
+        self.ground_spawns_large = ground_spawns_large
         self.ground_spawns = ground_spawns
 
         self.ewrj_package_dict: Dict[int, List[FlyingGroup[Any]]] = {}
@@ -193,13 +198,13 @@ class PretenseAircraftGenerator(AircraftGenerator):
         """
 
         squadron_def = coalition.air_wing.squadron_def_generator.generate_for_task(
-            flight_type, cp, self.game.settings.squadron_random_chance
+            flight_type, cp
         )
         for retries in range(num_retries):
             if squadron_def is None or fixed_wing == squadron_def.aircraft.helicopter:
                 squadron_def = (
                     coalition.air_wing.squadron_def_generator.generate_for_task(
-                        flight_type, cp, self.game.settings.squadron_random_chance
+                        flight_type, cp
                     )
                 )
 
@@ -732,11 +737,17 @@ class PretenseAircraftGenerator(AircraftGenerator):
                 continue
 
             for i in range(self.game.settings.pretense_player_flights_per_type):
-                squadron = self.generate_pretense_squadron_for(
-                    aircraft_type,
-                    cp,
-                    coalition,
-                )
+                try:
+                    squadron = self.generate_pretense_squadron_for(
+                        aircraft_type,
+                        cp,
+                        coalition,
+                    )
+                except Exception as e:
+                    print(
+                        f"Was not able to generate a Pretense squadron at {cp} for {aircraft_type}: {e}"
+                    )
+
                 if squadron is not None:
                     squadron.owned_aircraft += PRETENSE_PLAYER_AIRCRAFT_PER_FLIGHT
                     squadron.untasked_aircraft += PRETENSE_PLAYER_AIRCRAFT_PER_FLIGHT
@@ -933,6 +944,7 @@ class PretenseAircraftGenerator(AircraftGenerator):
             self.mission,
             self.helipads,
             self.ground_spawns_roadbase,
+            self.ground_spawns_large,
             self.ground_spawns,
             self.mission_data,
         ).create_flight_group()
@@ -961,6 +973,7 @@ class PretenseAircraftGenerator(AircraftGenerator):
         elif (
             flight.flight_type == FlightType.STRIKE
             or flight.flight_type == FlightType.BAI
+            or flight.flight_type == FlightType.ARMED_RECON
         ):
             for cp in control_points_to_scan:
                 if cp.coalition == flight.coalition or cp == flight.departure:
@@ -1030,6 +1043,7 @@ class PretenseAircraftGenerator(AircraftGenerator):
                 self.time,
                 self.radio_registry,
                 self.tacan_registy,
+                self.datalink_registry,
                 self.mission_data,
                 dynamic_runways,
                 self.use_client,

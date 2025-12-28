@@ -372,8 +372,6 @@ class PretenseTriggerGenerator:
                     continue
                 if not cp.is_fleet and tgo.category == "oil":
                     continue
-                if not cp.is_fleet:
-                    print(f"Adding Pretense zone for CP {cp} at {tgo} {tgo.category}")
                 tgo_num += 1
                 zone_color = {1: 1.0, 2: 1.0, 3: 1.0, 4: 0.15}
                 self.mission.triggers.add_triggerzone(
