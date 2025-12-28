@@ -21,7 +21,7 @@ class BudgetInputs(QtWidgets.QGridLayout):
         minimum = 0
         maximum = 5000
 
-        slider = QtWidgets.QSlider(Qt.Horizontal)
+        slider = QtWidgets.QSlider(Qt.Orientation.Horizontal)
         slider.setMinimum(minimum)
         slider.setMaximum(maximum)
         slider.setValue(value)
@@ -40,7 +40,7 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.setTitle("Generator settings")
         self.setSubTitle("\nOptions affecting the generation of the game.")
         self.setPixmap(
-            QtWidgets.QWizard.LogoPixmap,
+            QtWidgets.QWizard.WizardPixmap.LogoPixmap,
             QtGui.QPixmap("./resources/ui/wizard/logo1.png"),
         )
 
@@ -94,6 +94,8 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.registerField("a6a_intruder", self.a6a_intruder)
         self.a7e_corsair2 = QtWidgets.QCheckBox()
         self.registerField("a7e_corsair2", self.a7e_corsair2)
+        self.ea6b_prowler = QtWidgets.QCheckBox()
+        self.registerField("ea6b_prowler", self.ea6b_prowler)
         self.e7a_wedgetail = QtWidgets.QCheckBox()
         self.registerField("e7a_wedgetail", self.e7a_wedgetail)
         self.hercules = QtWidgets.QCheckBox()
@@ -106,16 +108,18 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.registerField("uh_60l", self.uh_60l)
         self.f4bc_phantom = QtWidgets.QCheckBox()
         self.registerField("f4bc_phantom", self.f4bc_phantom)
+        self.f9f_panther = QtWidgets.QCheckBox()
+        self.registerField("f9f_panther", self.f9f_panther)
         self.f15d_baz = QtWidgets.QCheckBox()
         self.registerField("f15d_baz", self.f15d_baz)
         self.f_15_idf = QtWidgets.QCheckBox()
         self.registerField("f_15_idf", self.f_15_idf)
         self.f_16_idf = QtWidgets.QCheckBox()
         self.registerField("f_16_idf", self.f_16_idf)
-        self.fa_18d = QtWidgets.QCheckBox()
-        self.registerField("fa_18d", self.fa_18d)
         self.fa_18efg = QtWidgets.QCheckBox()
         self.registerField("fa_18efg", self.fa_18efg)
+        self.fa18ef_tanker = QtWidgets.QCheckBox()
+        self.registerField("fa18ef_tanker", self.fa18ef_tanker)
         self.f22_raptor = QtWidgets.QCheckBox()
         self.registerField("f22_raptor", self.f22_raptor)
         self.f84g_thunderjet = QtWidgets.QCheckBox()
@@ -132,10 +136,6 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.registerField("jas39_gripen", self.jas39_gripen)
         self.mirage_3 = QtWidgets.QCheckBox()
         self.registerField("mirage_3", self.mirage_3)
-        self.t45_goshawk = QtWidgets.QCheckBox()
-        self.registerField("t45_goshawk", self.t45_goshawk)
-        self.hawk_t1a = QtWidgets.QCheckBox()
-        self.registerField("hawk_t1a", self.hawk_t1a)
         self.super_etendard = QtWidgets.QCheckBox()
         self.registerField("super_etendard", self.super_etendard)
         self.sk_60 = QtWidgets.QCheckBox()
@@ -182,13 +182,13 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         modHelpText = QtWidgets.QLabel(
             "<p>Select the mods you have installed. If your chosen factions support them, you'll be able to use these mods in your campaign.</p>"
         )
-        modHelpText.setAlignment(Qt.AlignCenter)
+        modHelpText.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         modLayout = QtWidgets.QGridLayout()
         modLayout_row = 1
 
         mod_pairs = [
-            ("A-4E Skyhawk (v2.1.0)", self.a4_skyhawk),
+            ("A-4E Skyhawk (v2.2.0)", self.a4_skyhawk),
             ("A-6A Intruder (v2.7.5.01)", self.a6a_intruder),
             ("A-7E Corsair II", self.a7e_corsair2),
             ("C-130J-30 Super Hercules (v6.8.2)", self.hercules),
@@ -223,32 +223,22 @@ class GeneratorOptions(QtWidgets.QWizardPage):
             ("F-15I Ra'am (v1.0 by IDF Mods Project)", self.f_15_idf),
             ("F-16I Sufa & F-16D (v3.6 by IDF Mods Project)", self.f_16_idf),
             ("F-22A Raptor (v2.0.0 released May 2025)", self.f22_raptor),
-            ("F/A-18D Hornet (version v2.7.12.01)", self.fa_18d),
-            ("F/A-18E/F/G Super Hornet (version 2.1)", self.fa_18efg),
-            ("F-22A Raptor", self.f22_raptor),
+            ("F-4B/C Phantom II (2.8.7.204)", self.f4bc_phantom),
             ("F-84G Thunderjet (v2.5.7.01)", self.f84g_thunderjet),
             ("F9F Panther (v2.8.7.101)", self.f9f_panther),
             ("F/A-18E/F/G Super Hornet (version 2.4.4)", self.fa_18efg),
             ("F/A-18E/F Super Hornet AI Tanker (version 2.4.4)", self.fa18ef_tanker),
-            ("F-100 Super Sabre (v2.7.18.30765 patch 20.10.22)", self.f100_supersabre),
-            ("F-104 Starfighter (v2.7.11.222.01)", self.f104_starfighter),
-            ("F-105 Thunderchief (v2.7.12.23x)", self.f105_thunderchief),
-            ("Cold War Assets mod (v1.2)", self.coldwarassets),
             ("Frenchpack (v4.9.1)", self.frenchpack),
             ("High Digit SAMs (v1.4.0)", self.high_digit_sams),
-            ("Swedish Military Assets pack (1.10)", self.swedishmilitaryassetspack),
+            ("IDF Assets Pack (v1.1 by IDF Mods Project)", self.irondome),
             ("JAS 39 Gripen (v1.8.5-beta)", self.jas39_gripen),
             ("MiG-31BM (v2.62)", self.mig31bm_foxhound),
             ("Military Aircraft Mod (v1.7.2 - AI Only)", self.mam),
             ("Mirage III (v2.5.7.01)", self.mirage_3),
             ("OH-6 Cayuse (v1.2)", self.oh_6),
             ("OH-6 Vietnam Asset Pack (v1.0)", self.oh_6_vietnamassetpack),
-            ("Mirage III (v2.5.7.01)", self.mirage_3),
-            ("T-45 Goshawk (version 1.01)", self.t45_goshawk),
-            ("Hawk T1A", self.hawk_t1a),
             ("OV-10A Bronco", self.ov10a_bronco),
             ("Saab 105/SK-60B (v1.2.1)", self.sk_60),
-            ("Super Étendard (v2.5.5)", self.super_etendard),
             ("Spanish Naval Assets pack (desdemicabina 3.2.0)", self.spanishnavypack),
             ("Star Wars Modpack 2.54+", self.SWPack),
             ("Su-15 Flagon (v1.0)", self.su15_flagon),
@@ -258,9 +248,6 @@ class GeneratorOptions(QtWidgets.QWizardPage):
             ("Tornado F3 ADV (1.0)", self.tornado_adv),
             ("UH-60L Black Hawk (v1.3.1)", self.uh_60l),
             ("Vietnam War Vessels (v0.9.0 by TeTeT)", self.vietnamwarvessels),
-            ("Star Wars Modpack 2.54+", self.SWPack),
-            ("Spanish Naval Assets pack (desdemicabina 3.2.0)", self.spanishnavypack),
-            ("IDF Assets Pack (v1.1 by IDF Mods Project)", self.irondome),
         ]
 
         for i in range(len(mod_pairs)):
@@ -297,9 +284,11 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.no_enemy_navy.setChecked(s.get("no_enemy_navy", False))
         self.squadrons_start_full.setChecked(s.get("squadron_start_full", False))
 
+        self.f9f_panther.setChecked(s.get("f9f_panther", False))
         self.a4_skyhawk.setChecked(s.get("a4_skyhawk", False))
         self.a6a_intruder.setChecked(s.get("a6a_intruder", False))
         self.a7e_corsair2.setChecked(s.get("a7e_corsair2", False))
+        self.ea6b_prowler.setChecked(s.get("ea6b_prowler", False))
         self.e7a_wedgetail.setChecked(s.get("e7a_wedgetail", False))
         self.hercules.setChecked(s.get("hercules", False))
         self.uh_60l.setChecked(s.get("uh_60l", False))
@@ -307,7 +296,6 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.f15d_baz.setChecked(s.get("f15d_baz", False))
         self.f_15_idf.setChecked(s.get("f_15_idf", False))
         self.f_16_idf.setChecked(s.get("f_16_idf", False))
-        self.fa_18d.setChecked(s.get("fa_18d", False))
         self.fa_18efg.setChecked(s.get("fa_18efg", False))
         self.f22_raptor.setChecked(s.get("f22_raptor", False))
         self.f84g_thunderjet.setChecked(s.get("f84g_thunderjet", False))
@@ -316,27 +304,22 @@ class GeneratorOptions(QtWidgets.QWizardPage):
         self.f105_thunderchief.setChecked(s.get("f105_thunderchief", False))
         self.f106_deltadart.setChecked(s.get("f106_deltadart", False))
         self.jas39_gripen.setChecked(s.get("jas39_gripen", False))
-        self.mirage_3.setChecked(s.get("mirage_3", False))
         self.sk_60.setChecked(s.get("sk_60", False))
         self.mig31bm_foxhound.setChecked(s.get("mig31bm_foxhound", False))
         self.mirage_3.setChecked(s.get("mirage_3", False))
-        self.t45_goshawk.setChecked(s.get("t45_goshawk", False))
-        self.hawk_t1a.setChecked(s.get("hawk_t1a", False))
         self.super_etendard.setChecked(s.get("super_etendard", False))
         self.su30_flanker_h.setChecked(s.get("su30_flanker_h", False))
         self.su57_felon.setChecked(s.get("su57_felon", False))
-        self.oh_6.setChecked(s.get("oh_6", False))
-        self.oh_6_vietnamassetpack.setChecked(s.get("oh_6_vietnamassetpack", False))
         self.ov10a_bronco.setChecked(s.get("ov10a_bronco", False))
         self.frenchpack.setChecked(s.get("frenchpack", False))
         self.high_digit_sams.setChecked(s.get("high_digit_sams", False))
         self.spanishnavypack.setChecked(s.get("spanishnavypack", False))
         self.irondome.setChecked(s.get("irondome", False))
-        self.coldwarassets.setChecked(s.get("coldwarassets", False))
         self.swedishmilitaryassetspack.setChecked(
             s.get("swedishmilitaryassetspack", False)
         )
         self.vietnamwarvessels.setChecked(s.get("vietnamwarvessels", False))
+        self.coldwarassets.setChecked(s.get("coldwarassets", False))
         self.chinesemilitaryassetspack.setChecked(
             s.get("chinesemilitaryassetspack", False)
         )

@@ -32,6 +32,7 @@ from game.theater.theatergroundobject import (
     EwrGroundObject,
     SamGroundObject,
     VehicleGroupGroundObject,
+    ShipGroundObject,
     MissileSiteGroundObject,
     CoastalSiteGroundObject,
 )
@@ -92,8 +93,12 @@ class QTgoLayoutGroupRow(QWidget):
 
         self.unit_selector.adjustSize()
         self.unit_selector.setEnabled(self.unit_selector.count() > 1)
-        self.grid_layout.addWidget(self.unit_selector, 0, 0, alignment=Qt.AlignRight)
-        self.grid_layout.addWidget(self.amount_selector, 0, 1, alignment=Qt.AlignRight)
+        self.grid_layout.addWidget(
+            self.unit_selector, 0, 0, alignment=Qt.AlignmentFlag.AlignRight
+        )
+        self.grid_layout.addWidget(
+            self.amount_selector, 0, 1, alignment=Qt.AlignmentFlag.AlignRight
+        )
 
         dcs_unit_type, price = self.unit_selector.itemData(
             self.unit_selector.currentIndex()
@@ -111,7 +116,9 @@ class QTgoLayoutGroupRow(QWidget):
         self.amount_selector.setValue(self.group_layout.amount)
         self.amount_selector.setEnabled(self.group_layout.layout.max_size > 1)
 
-        self.grid_layout.addWidget(self.group_selector, 0, 2, alignment=Qt.AlignRight)
+        self.grid_layout.addWidget(
+            self.group_selector, 0, 2, alignment=Qt.AlignmentFlag.AlignRight
+        )
 
         self.amount_selector.valueChanged.connect(self.on_group_changed)
         self.unit_selector.currentIndexChanged.connect(self.on_group_changed)
@@ -184,7 +191,8 @@ class QGroundObjectTemplateLayout(QGroupBox):
 
     @property
     def affordable(self) -> bool:
-        return self.cost <= self.game.blue.budget
+        coalition = self.ground_object.coalition
+        return self.cost <= coalition.budget or self.game.turn == 0
 
     def add_theater_group(
         self, group_name: str, force_group: ForceGroup, groups: list[TgoLayoutUnitGroup]
@@ -222,7 +230,8 @@ class QGroundObjectTemplateLayout(QGroupBox):
             self.game.theater.heading_to_conflict_from(self.ground_object.position)
             or self.ground_object.heading
         )
-        self.game.blue.budget -= self.cost
+        coalition = self.ground_object.coalition
+        coalition.budget -= self.cost if self.game.turn else 0
         self.ground_object.groups = []
         for group_name, groups in self.layout_model.groups.items():
             for group in groups:
@@ -272,6 +281,9 @@ class QGroundObjectBuyMenu(QDialog):
         elif isinstance(ground_object, EwrGroundObject):
             role = GroupRole.AIR_DEFENSE
             tasks.append(GroupTask.EARLY_WARNING_RADAR)
+        elif isinstance(ground_object, ShipGroundObject):
+            role = GroupRole.NAVAL
+            tasks.append(GroupTask.NAVY)
         elif isinstance(ground_object, MissileSiteGroundObject):
             role = GroupRole.DEFENSES
             tasks.append(GroupTask.MISSILE)
@@ -284,7 +296,8 @@ class QGroundObjectBuyMenu(QDialog):
         if not tasks:
             tasks = role.tasks
 
-        for group in game.blue.armed_forces.groups_for_tasks(tasks):
+        coalition = ground_object.coalition
+        for group in coalition.armed_forces.groups_for_tasks(tasks):
             self.force_group_selector.addItem(group.name, userData=group)
         self.force_group_selector.setEnabled(self.force_group_selector.count() > 1)
         self.force_group_selector.adjustSize()
@@ -307,14 +320,16 @@ class QGroundObjectBuyMenu(QDialog):
 
         template_selector_layout = QGridLayout()
         template_selector_layout.addWidget(
-            QLabel("Armed Forces Group:"), 0, 0, Qt.AlignLeft
+            QLabel("Armed Forces Group:"), 0, 0, Qt.AlignmentFlag.AlignLeft
         )
         template_selector_layout.addWidget(
-            self.force_group_selector, 0, 1, alignment=Qt.AlignRight
+            self.force_group_selector, 0, 1, alignment=Qt.AlignmentFlag.AlignRight
         )
-        template_selector_layout.addWidget(QLabel("Layout:"), 1, 0, Qt.AlignLeft)
         template_selector_layout.addWidget(
-            self.layout_selector, 1, 1, alignment=Qt.AlignRight
+            QLabel("Layout:"), 1, 0, Qt.AlignmentFlag.AlignLeft
+        )
+        template_selector_layout.addWidget(
+            self.layout_selector, 1, 1, alignment=Qt.AlignmentFlag.AlignRight
         )
         self.mainLayout.addLayout(template_selector_layout, 0, 0)
 

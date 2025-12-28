@@ -45,7 +45,8 @@ class QFactionUnits(QScrollArea):
         self.setWidget(self.content)
         self.parent = parent
         self.faction = faction
-        self._create_checkboxes()
+        self._create_checkboxes(show_jtac)
+        self.show_jtac = show_jtac
 
     def _add_checkboxes(
         self,
@@ -67,7 +68,7 @@ class QFactionUnits(QScrollArea):
         counter += 1
         return counter
 
-    def _create_checkboxes(self):
+    def _create_checkboxes(self, show_jtac: bool) -> None:
         counter = 0
         self.checkboxes: dict[str, QCheckBox] = {}
         grid = QGridLayout()
@@ -195,7 +196,25 @@ class QFactionUnits(QScrollArea):
         grid.addWidget(QLabel("<strong>Missile units:</strong>"), counter, 0)
         counter = self._add_checkboxes(self.faction.missiles, counter, grid, hbox)
 
+        if show_jtac:
+            grid.addWidget(QLabel("<strong>JTAC</strong>"), counter, 0)
+            self.create_has_jtac_checkbox(counter, grid)
+
         self.content.setLayout(grid)
+
+    def create_has_jtac_checkbox(self, counter: int, grid: QGridLayout) -> None:
+        counter += 1
+        cb = QCheckBox("Has JTAC")
+        cb.setCheckState(
+            Qt.CheckState.Checked if self.faction.has_jtac else Qt.CheckState.Unchecked
+        )
+        cb.clicked.connect(self._set_jtac)
+        self.checkboxes["Has JTAC"] = cb
+        grid.addWidget(cb, counter, 1)
+        counter += 2
+
+    def _set_jtac(self, state: bool) -> None:
+        self.faction.has_jtac = state
 
     def _aircraft_predicate(self, ac: AircraftType):
         if (
@@ -216,11 +235,6 @@ class QFactionUnits(QScrollArea):
         self, cb: QComboBox, callback: Callable, predicate: Callable
     ):
         for ac_dcs in sorted(AircraftType.each_dcs_type(), key=lambda x: x.id):
-            if (
-                ac_dcs not in self.faction.country.planes
-                and ac_dcs not in self.faction.country.helicopters
-            ):
-                continue
             for ac in AircraftType.for_dcs_type(ac_dcs):
                 if (
                     ac in self.faction.aircraft
@@ -295,7 +309,7 @@ class QFactionUnits(QScrollArea):
         self.faction = faction
         self.content = QWidget()
         self.setWidget(self.content)
-        self._create_checkboxes()
+        self._create_checkboxes(self.show_jtac)
         self.update()
         if self.parent:
             self.parent.update()
@@ -334,7 +348,7 @@ class FactionSelection(QtWidgets.QWizardPage):
             "\nChoose the two opposing factions and select the player side."
         )
         self.setPixmap(
-            QtWidgets.QWizard.LogoPixmap,
+            QtWidgets.QWizard.WizardPixmap.LogoPixmap,
             QtGui.QPixmap("./resources/ui/misc/generator.png"),
         )
 
@@ -358,13 +372,17 @@ class FactionSelection(QtWidgets.QWizardPage):
         self.blueFactionDescription = QTextBrowser()
         self.blueFactionDescription.setReadOnly(True)
         self.blueFactionDescription.setOpenExternalLinks(True)
-        self.blueFactionDescription.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        self.blueFactionDescription.setVerticalScrollBarPolicy(
+            Qt.ScrollBarPolicy.ScrollBarAlwaysOn
+        )
         self.blueFactionDescription.setMaximumHeight(120)
 
         self.redFactionDescription = QTextBrowser()
         self.redFactionDescription.setReadOnly(True)
         self.redFactionDescription.setOpenExternalLinks(True)
-        self.redFactionDescription.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        self.redFactionDescription.setVerticalScrollBarPolicy(
+            Qt.ScrollBarPolicy.ScrollBarAlwaysOn
+        )
         self.redFactionDescription.setMaximumHeight(120)
 
         # Setup default selected factions
@@ -389,10 +407,10 @@ class FactionSelection(QtWidgets.QWizardPage):
 
         # Faction units
         self.blueFactionUnits = QFactionUnits(
-            self.blueFactionSelect.currentData(), self.blueGroupLayout
+            self.blueFactionSelect.currentData(), self.blueGroupLayout, show_jtac=True
         )
         self.redFactionUnits = QFactionUnits(
-            self.redFactionSelect.currentData(), self.redGroupLayout
+            self.redFactionSelect.currentData(), self.redGroupLayout, show_jtac=False
         )
 
         self.blueGroupLayout.addWidget(blueFaction, 0, 0)
@@ -413,7 +431,7 @@ class FactionSelection(QtWidgets.QWizardPage):
         docsText = QtWidgets.QLabel(
             '<a href="https://github.com/dcs-retribution/dcs-retribution/wiki/Custom-Factions"><span style="color:#FFFFFF;">How to create your own faction</span></a>'
         )
-        docsText.setAlignment(Qt.AlignCenter)
+        docsText.setAlignment(Qt.AlignmentFlag.AlignCenter)
         docsText.setOpenExternalLinks(True)
 
         # Link form fields

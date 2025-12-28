@@ -107,11 +107,13 @@ class QFlightWaypointTab(QFrame):
             return
         index: QModelIndex = selected[0]
         self.flight_waypoint_list.setCurrentIndex(index)
-        wpt: FlightWaypoint = self.flight_waypoint_list.model.data(index, Qt.UserRole)
+        wpt: FlightWaypoint = self.flight_waypoint_list.model.data(
+            index, Qt.ItemDataRole.UserRole
+        )
         next_wpt: Optional[FlightWaypoint] = None
         if index.row() + 1 < self.flight_waypoint_list.model.rowCount():
             next_wpt = self.flight_waypoint_list.model.data(
-                index.siblingAtRow(index.row() + 1), Qt.UserRole
+                index.siblingAtRow(index.row() + 1), Qt.ItemDataRole.UserRole
             )
         if not self.flight.flight_plan.layout.add_waypoint(wpt, next_wpt):
             QMessageBox.critical(
@@ -161,17 +163,17 @@ class QFlightWaypointTab(QFrame):
         assert isinstance(self.flight.flight_plan, CustomFlightPlan)
         self.flight.flight_plan.layout.custom_waypoints.remove(waypoint)
 
-    def confirm_degrade(self) -> bool:
+    def confirm_degrade(self, parent: Optional[QWidget] = None) -> bool:
         result = QMessageBox.warning(
-            self,
+            parent if parent else self,
             "Degrade flight-plan?",
             "Deleting the selected waypoint(s) will require degradation to a custom flight-plan. "
             "A custom flight-plan will no longer respect the TOTs of the package.<br><br>"
             "<b>Are you sure you wish to continue?</b>",
-            QMessageBox.Yes,
-            QMessageBox.No,
+            QMessageBox.StandardButton.Yes,
+            QMessageBox.StandardButton.No,
         )
-        return result == QMessageBox.Yes
+        return result == QMessageBox.StandardButton.Yes
 
     def on_fast_waypoint(self):
         self.subwindow = QPredefinedWaypointSelectionWindow(
@@ -183,15 +185,12 @@ class QFlightWaypointTab(QFrame):
     def on_waypoints_added(self, waypoints: Iterable[FlightWaypoint]) -> None:
         if not waypoints:
             return
-        if not self.flight.flight_plan.is_custom:
-            confirmed = self.confirm_degrade()
-            if not confirmed:
-                return
-        self.degrade_to_custom_flight_plan()
-        assert isinstance(self.flight.flight_plan, CustomFlightPlan)
         self.flight.flight_plan.layout.custom_waypoints.extend(waypoints)
+        self.add_rows(len(list(waypoints)))
+
+    def add_rows(self, count: int) -> None:
         rc = self.flight_waypoint_list.model.rowCount()
-        self.flight_waypoint_list.model.insertRows(rc, len(list(waypoints)))
+        self.flight_waypoint_list.model.insertRows(rc, count)
         self.on_change()
 
     def on_rtb_waypoint(self):
@@ -199,7 +198,7 @@ class QFlightWaypointTab(QFrame):
         self.degrade_to_custom_flight_plan()
         assert isinstance(self.flight.flight_plan, CustomFlightPlan)
         self.flight.flight_plan.layout.custom_waypoints.append(rtb)
-        self.on_change()
+        self.add_rows(1)
 
     def degrade_to_custom_flight_plan(self) -> None:
         if not isinstance(self.flight.flight_plan, CustomFlightPlan):
@@ -213,11 +212,11 @@ class QFlightWaypointTab(QFrame):
                 "Changing the flight type will reset its flight plan. Do you want "
                 "to continue?"
             ),
-            QMessageBox.No,
-            QMessageBox.Yes,
+            QMessageBox.StandardButton.No,
+            QMessageBox.StandardButton.Yes,
         )
         original_task = self.flight.flight_type
-        if result == QMessageBox.Yes:
+        if result == QMessageBox.StandardButton.Yes:
             self.flight.set_flight_type(task)
             try:
                 self.flight.recreate_flight_plan(dump_debug_info=True)
@@ -225,7 +224,10 @@ class QFlightWaypointTab(QFrame):
                 self.flight.set_flight_type(original_task)
                 logging.exception("Could not recreate flight")
                 QMessageBox.critical(
-                    self, "Could not recreate flight", str(ex), QMessageBox.Ok
+                    self,
+                    "Could not recreate flight",
+                    str(ex),
+                    QMessageBox.StandardButton.Ok,
                 )
             for member in self.flight.iter_members():
                 if not member.loadout.is_custom:

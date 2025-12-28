@@ -12,7 +12,11 @@ class QFlightTypeComboBox(QComboBox):
     """Combo box for selecting a flight task type."""
 
     def __init__(
-        self, theater: ConflictTheater, target: MissionTarget, settings: Settings
+        self,
+        theater: ConflictTheater,
+        target: MissionTarget,
+        settings: Settings,
+        is_ownfor: bool,
     ) -> None:
         super().__init__()
         self.theater = theater

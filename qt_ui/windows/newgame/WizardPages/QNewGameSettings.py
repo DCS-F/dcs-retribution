@@ -16,7 +16,7 @@ class NewGameSettings(QtWidgets.QWizardPage):
             "\nAll other options unrelated to campaign generation. Defaults can be changed by overwriting Default.zip"
         )
         self.setPixmap(
-            QtWidgets.QWizard.LogoPixmap,
+            QtWidgets.QWizard.WizardPixmap.LogoPixmap,
             QtGui.QPixmap("./resources/ui/wizard/logo1.png"),
         )
 

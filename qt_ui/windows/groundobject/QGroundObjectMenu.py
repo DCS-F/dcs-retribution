@@ -15,7 +15,6 @@ from PySide6.QtWidgets import (
 )
 from dcs import Point
 
-from game import Game
 from game.config import REWARDS
 from game.data.building_data import FORTIFICATION_BUILDINGS
 from game.server import EventStream
@@ -25,6 +24,7 @@ from game.theater.theatergroundobject import (
     BuildingGroundObject,
 )
 from game.utils import Heading
+from qt_ui.models import GameModel
 from qt_ui.uiconstants import EVENT_ICONS, ICONS
 from qt_ui.widgets.QBudgetBox import QBudgetBox
 from qt_ui.windows.GameUpdateSignal import GameUpdateSignal
@@ -48,7 +48,7 @@ class SamIndicator(QLabel):
     def __init__(self, parent: QWidget) -> None:
         super().__init__(parent)
         self.setFixedSize(32, 32)
-        self.setPixmap(ICONS["Ally SAM Threat Range"])
+        self.setPixmap(ICONS["blue-sam"])
 
 
 class QGroundObjectMenu(QDialog):
@@ -57,13 +57,14 @@ class QGroundObjectMenu(QDialog):
         parent,
         ground_object: TheaterGroundObject,
         cp: ControlPoint,
-        game: Game,
+        gm: GameModel,
     ):
         super().__init__(parent)
         self.setMinimumWidth(350)
         self.ground_object = ground_object
         self.cp = cp
-        self.game = game
+        self.game_model = gm
+        self.game = gm.game
         self.setWindowTitle(
             f"Location - {self.ground_object.obj_name} ({self.cp.name})"
         )
@@ -186,7 +187,6 @@ class QGroundObjectMenu(QDialog):
         self.headingLabel = QLabel("Heading:")
         self.orientationBoxLayout.addWidget(self.headingLabel)
         self.headingSelector = QSpinBox()
-        self.headingSelector.setEnabled(self.cp.is_friendly(to_player=True))
         self.headingSelector.setRange(0, 359)
         self.headingSelector.setWrapping(True)
         self.headingSelector.setSingleStep(5)
@@ -217,7 +217,7 @@ class QGroundObjectMenu(QDialog):
         self.hiddenBoxLayout.addWidget(SamIndicator(self))
         self.hiddenBoxLayout.addWidget(QLabel("Hidden on MFD:"))
         self.hiddenCheckBox = QCheckBox()
-        # self.hiddenCheckBox.setChecked(self.ground_object.hide_on_mfd)
+        self.hiddenCheckBox.setChecked(self.ground_object.hide_on_mfd)
         self.hiddenCheckBox.stateChanged.connect(self.update_hidden_on_mfd)
         self.hiddenBoxLayout.addWidget(self.hiddenCheckBox)
 

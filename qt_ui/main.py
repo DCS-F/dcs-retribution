@@ -1,7 +1,6 @@
 import argparse
 import logging
 import ntpath
-import os
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -62,25 +61,12 @@ def inject_custom_payloads(user_path: Path) -> None:
     PayloadDirectories.set_preferred(user_path / "MissionEditor" / "UnitPayloads")
 
 
-def inject_mod_payloads(mod_path: Path) -> None:
-    if mod_path.exists():
-        payloads = mod_path
-    else:
-        raise RuntimeError(
-            f"Could not find mod payloads at {mod_path}."
-            f"Aircraft will have no payloads."
-        )
-    # We configure these as preferred so the mod's loadouts override the stock ones.
-    PayloadDirectories.set_preferred(payloads)
-
-
 def on_game_load(game: Optional[Game]) -> None:
     EventStream.drain()
     EventStream.put_nowait(GameUpdateEvents().game_loaded(game))
 
 
 def run_ui(game: Optional[Game], ui_flags: UiFlags) -> None:
-    os.environ["QT_ENABLE_HIGHDPI_SCALING"] = "1"  # Potential fix for 4K screens
     QApplication.setHighDpiScaleFactorRoundingPolicy(
         Qt.HighDpiScaleFactorRoundingPolicy.PassThrough
     )
@@ -151,7 +137,8 @@ def run_ui(game: Optional[Game], ui_flags: UiFlags) -> None:
     # Replace DCS Mission scripting file to allow DCS Retribution to work
     try:
         liberation_install.replace_mission_scripting_file()
-    except:
+    except Exception as e:
+        logging.error(e)
         error_dialog = QtWidgets.QErrorMessage()
         error_dialog.setWindowTitle("Wrong DCS installation directory.")
         error_dialog.showMessage(
@@ -337,10 +324,12 @@ def create_game(
             a4_skyhawk=False,
             a6a_intruder=False,
             a7e_corsair2=False,
-            fa_18d=False,
+            ea6b_prowler=False,
             e7a_wedgetail=False,
             fa_18efg=False,
+            fa18ef_tanker=False,
             f4bc_phantom=False,
+            f9f_panther=False,
             f22_raptor=False,
             f84g_thunderjet=False,
             f100_supersabre=False,
@@ -352,8 +341,6 @@ def create_game(
             uh_60l=False,
             jas39_gripen=False,
             sk_60=False,
-            t45_goshawk=False,
-            hawk_t1a=False,
             su15_flagon=False,
             su30_flanker_h=False,
             su57_felon=False,
@@ -466,7 +453,8 @@ def main():
         dump_task_priorities()
         return
 
-    with Server().run_in_thread():
+    liberation_install.init()
+    with Server(liberation_install.server_port()).run_in_thread():
         run_ui(game, UiFlags(args.dev, args.show_sim_speed_controls))
 
 

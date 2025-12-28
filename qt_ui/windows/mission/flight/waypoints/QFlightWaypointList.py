@@ -1,3 +1,5 @@
+from typing import Optional
+
 from PySide6.QtCore import QItemSelectionModel, QPoint, QModelIndex
 from PySide6.QtGui import QStandardItem, QStandardItemModel
 from PySide6.QtWidgets import (
@@ -32,6 +34,7 @@ class AltitudeEditorDelegate(QStyledItemDelegate):
 class QFlightWaypointList(QTableView):
     def __init__(self, package: Package, flight: Flight):
         super().__init__()
+        self._last_waypoint: Optional[FlightWaypoint] = None
         self.package = package
         self.flight = flight
 
@@ -41,11 +44,11 @@ class QFlightWaypointList(QTableView):
         self.model.setHorizontalHeaderLabels(HEADER_LABELS)
 
         header = self.horizontalHeader()
-        header.setSectionResizeMode(0, QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
         self.update_list()
 
         self.selectionModel().setCurrentIndex(
-            self.indexAt(QPoint(1, 1)), QItemSelectionModel.Select
+            self.indexAt(QPoint(1, 1)), QItemSelectionModel.SelectionFlag.Select
         )
 
         self.altitude_editor_delegate = AltitudeEditorDelegate(self)
@@ -66,8 +69,12 @@ class QFlightWaypointList(QTableView):
             for row, waypoint in enumerate(waypoints):
                 self._add_waypoint_row(row, self.flight, waypoint)
             self.selectionModel().setCurrentIndex(
-                self.model.index(current_index, 0), QItemSelectionModel.Select
+                self.model.index(current_index, 0),
+                QItemSelectionModel.SelectionFlag.Select,
             )
+            self.model.setVerticalHeaderLabels([str(n) for n in range(len(waypoints))])
+            self.verticalHeader().setMaximumWidth(25)
+
             self.resizeColumnsToContents()
             total_column_width = self.verticalHeader().width() + self.lineWidth()
             for i in range(0, self.model.columnCount()):
@@ -79,13 +86,16 @@ class QFlightWaypointList(QTableView):
             self.update(self.currentIndex())
 
     def _add_waypoint_row(
-        self, row: int, flight: Flight, waypoint: FlightWaypoint
+        self,
+        row: int,
+        flight: Flight,
+        waypoint: FlightWaypoint,
     ) -> None:
         self.model.insertRow(self.model.rowCount())
 
         self.model.setItem(row, 0, QWaypointItem(waypoint, row))
 
-        altitude = int(waypoint.alt.feet)
+        altitude = round(waypoint.alt.feet)
         altitude_item = QStandardItem(f"{altitude}")
         altitude_item.setEditable(True)
         self.model.setItem(row, 1, altitude_item)
@@ -108,8 +118,14 @@ class QFlightWaypointList(QTableView):
             name = self.model.item(i, 0).text()
             self.flight.flight_plan.waypoints[i].pretty_name = name
 
-    def tot_text(self, flight: Flight, waypoint: FlightWaypoint) -> str:
+    def tot_text(
+        self,
+        flight: Flight,
+        waypoint: FlightWaypoint,
+    ) -> str:
         if waypoint.waypoint_type == FlightWaypointType.TAKEOFF:
+            self.update_last_tot(flight.flight_plan.takeoff_time())
+            self._last_waypoint = waypoint
             return self.takeoff_text(flight)
         prefix = ""
         time = flight.flight_plan.tot_for_waypoint(waypoint)
@@ -124,8 +140,14 @@ class QFlightWaypointList(QTableView):
             time = self._last_tot + timedelta
         elif time is None:
             return ""
+        self.update_last_tot(time)
+        self._last_waypoint = waypoint
         return f"{prefix}{time:%H:%M:%S}"
 
     @staticmethod
     def takeoff_text(flight: Flight) -> str:
         return f"{flight.flight_plan.takeoff_time():%H:%M:%S}"
+
+    def update_last_tot(self, time) -> None:
+        if time is not None:
+            self._last_tot = time

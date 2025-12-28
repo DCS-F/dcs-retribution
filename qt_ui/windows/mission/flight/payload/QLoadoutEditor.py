@@ -42,7 +42,9 @@ class QLoadoutEditor(QGroupBox):
 
         for i, pylon in enumerate(Pylon.iter_pylons(self.flight.unit_type)):
             label = QLabel(f"<b>{pylon.number}</b>")
-            label.setSizePolicy(QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed))
+            label.setSizePolicy(
+                QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+            )
             layout.addWidget(label, i, 0)
             layout.addWidget(QPylonEditor(game, flight, flight_member, pylon), i, 1)
 
@@ -114,8 +116,8 @@ class QLoadoutEditor(QGroupBox):
                 for p in pdict:
                     if pdict[p]["name"] == payload_name:
                         next_key = p
-                pdict[next_key] = DcsPayload.from_flight(
-                    self.flight, payload_name
+                pdict[next_key] = DcsPayload.from_flight_member(
+                    self.flight_member, payload_name
                 ).to_dict()
                 with payload_file.open("w", encoding="utf-8") as f:
                     f.write("local unitPayloads = ")
@@ -126,7 +128,9 @@ class QLoadoutEditor(QGroupBox):
                 payloads = {
                     "name": f"{self.flight.unit_type.dcs_unit_type.id}",
                     "payloads": {
-                        1: DcsPayload.from_flight(self.flight, payload_name).to_dict(),
+                        1: DcsPayload.from_flight_member(
+                            self.flight_member, payload_name
+                        ).to_dict(),
                     },
                     "unitType": f"{self.flight.unit_type.dcs_unit_type.id}",
                 }
@@ -170,10 +174,10 @@ class DcsPayload:
     tasks: Dict[int, int]
 
     @classmethod
-    def from_flight(cls, flight: Flight, payload_name: str):
+    def from_flight_member(cls, member: FlightMember, payload_name: str):
         pylons = {}
-        for i, nr in enumerate(flight.loadout.pylons, 1):
-            wpn = flight.loadout.pylons[nr]
+        for i, nr in enumerate(member.loadout.pylons, 1):
+            wpn = member.loadout.pylons[nr]
             clsid = wpn.clsid if wpn else "<CLEAN>"
             pylons[i] = {
                 "CLSID": clsid,

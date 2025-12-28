@@ -107,7 +107,7 @@ class FlightPlanPropertiesGroup(QGroupBox):
             # is an invalid state for calling anything in TotEstimator.
             return
         self.departure_time.setText(
-            f"At {self.flight.flight_plan.startup_time():%H:%M%S}"
+            f"At {self.flight.flight_plan.startup_time():%H:%M:%S}"
         )
         self.flight_wpt_list.update_list()
 
@@ -124,7 +124,10 @@ class FlightPlanPropertiesGroup(QGroupBox):
             self.flight.divert = old_divert
             logging.exception("Could not change divert airfield")
             QMessageBox.critical(
-                self, "Could not update flight plan", str(ex), QMessageBox.Ok
+                self,
+                "Could not update flight plan",
+                str(ex),
+                QMessageBox.StandardButton.Ok,
             )
 
     def set_tot_offset(self, offset: QTime) -> None:

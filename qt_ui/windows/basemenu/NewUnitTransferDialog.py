@@ -75,8 +75,8 @@ class UnitTransferList(QFrame):
 
         scroll_content.setLayout(task_box_layout)
         scroll = QScrollArea()
-        scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        scroll.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        scroll.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
         scroll.setWidgetResizable(True)
         scroll.setWidget(scroll_content)
         main_layout.addWidget(scroll)
@@ -131,13 +131,15 @@ class TransferControls(QGroupBox):
         decrease.setDisabled(disabled)
         decrease.setMinimumSize(16, 16)
         decrease.setMaximumSize(16, 16)
-        decrease.setSizePolicy(QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed))
+        decrease.setSizePolicy(
+            QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        )
         decrease.clicked.connect(lambda: on_decrease(self))
         layout.addWidget(decrease)
 
         self.count_label = QLabel()
         self.count_label.setSizePolicy(
-            QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+            QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         )
         self.set_quantity(initial_amount)
         layout.addWidget(self.count_label)
@@ -148,7 +150,9 @@ class TransferControls(QGroupBox):
         increase.setMinimumSize(16, 16)
         increase.setMaximumSize(16, 16)
         increase.clicked.connect(lambda: on_increase(self))
-        increase.setSizePolicy(QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed))
+        increase.setSizePolicy(
+            QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        )
         layout.addWidget(increase)
 
     def set_quantity(self, quantity: int) -> None:
@@ -185,8 +189,8 @@ class ScrollingUnitTransferGrid(QFrame):
 
         scroll_content.setLayout(task_box_layout)
         scroll = QScrollArea()
-        scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        scroll.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        scroll.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
         scroll.setWidgetResizable(True)
         scroll.setWidget(scroll_content)
         main_layout.addWidget(scroll)
@@ -209,12 +213,12 @@ class ScrollingUnitTransferGrid(QFrame):
 
         unit_name = QLabel(f"<b>{unit_type.display_name}</b>")
         unit_name.setSizePolicy(
-            QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+            QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         )
 
         origin_inventory_label = QLabel(str(origin_inventory))
         origin_inventory_label.setSizePolicy(
-            QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+            QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         )
 
         def increase(controls: TransferControls):
@@ -224,9 +228,9 @@ class ScrollingUnitTransferGrid(QFrame):
                 return
 
             modifiers = QApplication.keyboardModifiers()
-            if modifiers == Qt.ShiftModifier:
+            if modifiers == Qt.KeyboardModifier.ShiftModifier:
                 amount = 10
-            elif modifiers == Qt.ControlModifier:
+            elif modifiers == Qt.KeyboardModifier.ControlModifier:
                 amount = 5
             else:
                 amount = 1
@@ -244,15 +248,15 @@ class ScrollingUnitTransferGrid(QFrame):
                 return
 
             modifiers = QApplication.keyboardModifiers()
-            if modifiers == Qt.ShiftModifier:
+            if modifiers == Qt.KeyboardModifier.ShiftModifier:
                 amount = 10
-            elif modifiers == Qt.ControlModifier:
+            elif modifiers == Qt.KeyboardModifier.ControlModifier:
                 amount = 5
             else:
                 amount = 1
 
-            self.transfers[unit_type] -= min(self.transfers[unit_type], amount)
             origin_inventory += min(self.transfers[unit_type], amount)
+            self.transfers[unit_type] -= min(self.transfers[unit_type], amount)
             controls.set_quantity(self.transfers[unit_type])
             origin_inventory_label.setText(str(origin_inventory))
             self.transfer_quantity_changed.emit()
@@ -261,11 +265,11 @@ class ScrollingUnitTransferGrid(QFrame):
 
         origin_inventory_layout.addWidget(unit_name)
         origin_inventory_layout.addItem(
-            QSpacerItem(20, 0, QSizePolicy.Minimum, QSizePolicy.Minimum)
+            QSpacerItem(20, 0, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         )
         origin_inventory_layout.addWidget(origin_inventory_label)
         origin_inventory_layout.addItem(
-            QSpacerItem(20, 0, QSizePolicy.Minimum, QSizePolicy.Minimum)
+            QSpacerItem(20, 0, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         )
 
         layout.addWidget(exist, row, 1)

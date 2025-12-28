@@ -1,4 +1,5 @@
 """A layout containing a widget with an associated label."""
+
 from typing import Optional
 
 from PySide6.QtCore import Qt
@@ -19,7 +20,7 @@ class QLabeledWidget(QHBoxLayout):
         label = QLabel(text)
         self.addWidget(label)
         self.addStretch()
-        self.addWidget(widget, alignment=Qt.AlignRight)
+        self.addWidget(widget, alignment=Qt.AlignmentFlag.AlignRight)
         if tooltip is not None:
             label.setToolTip(tooltip)
             widget.setToolTip(tooltip)

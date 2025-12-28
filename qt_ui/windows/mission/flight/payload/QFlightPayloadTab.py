@@ -17,6 +17,7 @@ from game.ato.flight import Flight
 from game.ato.flightmember import FlightMember
 from game.ato.loadouts import Loadout
 from qt_ui.widgets.QLabeledWidget import QLabeledWidget
+from qt_ui.widgets.combos.QSquadronLiverySelector import SquadronLiverySelector
 from .QLoadoutEditor import QLoadoutEditor
 from .ownlasercodeinfo import OwnLaserCodeInfo
 from .propertyeditor import PropertyEditor
@@ -40,12 +41,12 @@ class FlightMemberSelector(QSpinBox):
     def __init__(self, flight: Flight, parent: QWidget | None = None) -> None:
         super().__init__(parent)
         self.flight = flight
-        self.setMinimum(0)
-        self.setMaximum(flight.count - 1)
+        self.setMinimum(1)
+        self.setMaximum(flight.count)
 
     @property
     def selected_member(self) -> FlightMember:
-        return self.flight.roster.members[self.value()]
+        return self.flight.roster.members[self.value() - 1]
 
 
 class DcsFuelSelector(QHBoxLayout):
@@ -60,7 +61,7 @@ class DcsFuelSelector(QHBoxLayout):
         self.addWidget(self.label)
 
         self.max_fuel = int(flight.unit_type.dcs_unit_type.fuel_max)
-        self.fuel = QSlider(Qt.Horizontal)
+        self.fuel = QSlider(Qt.Orientation.Horizontal)
         self.fuel.setRange(0, self.max_fuel)
         self.fuel.setValue(min(round(self.flight.fuel), self.max_fuel))
         self.fuel.valueChanged.connect(self.on_fuel_change)
@@ -141,6 +142,22 @@ class QFlightPayloadTab(QFrame):
             )
         )
 
+        hbox = QHBoxLayout()
+        self.same_livery_for_all_checkbox = QCheckBox(
+            "Use same livery for all flight members"
+        )
+        self.same_livery_for_all_checkbox.setChecked(
+            self.flight.use_same_livery_for_all_members
+        )
+        self.same_livery_for_all_checkbox.toggled.connect(self.on_same_livery_toggled)
+        hbox.addWidget(self.same_livery_for_all_checkbox)
+        self.livery_selector = SquadronLiverySelector(
+            self.flight.squadron, update_squadron=False
+        )
+        self.livery_selector.currentIndexChanged.connect(self.on_livery_change)
+        hbox.addWidget(self.livery_selector)
+        layout.addLayout(hbox)
+
         scroll_content = QWidget()
         scrolling_layout = QVBoxLayout()
         scroll_content.setLayout(scrolling_layout)
@@ -148,7 +165,7 @@ class QFlightPayloadTab(QFrame):
         scroll = QScrollArea()
         scroll.setWidgetResizable(True)
         scroll.setWidget(scroll_content)
-        scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         layout.addWidget(scroll, stretch=1)
 
         self.own_laser_code_info = OwnLaserCodeInfo(
@@ -183,7 +200,7 @@ class QFlightPayloadTab(QFrame):
         docsText = QLabel(
             '<a href="https://github.com/dcs-retribution/dcs-retribution/wiki/Custom-Loadouts"><span style="color:#FFFFFF;">How to create your own default loadout</span></a>'
         )
-        docsText.setAlignment(Qt.AlignCenter)
+        docsText.setAlignment(Qt.AlignmentFlag.AlignCenter)
         docsText.setOpenExternalLinks(True)
 
         self.fuel_selector = DcsFuelSelector(flight)
@@ -212,19 +229,26 @@ class QFlightPayloadTab(QFrame):
         self.property_editor.set_flight_member(member)
         self.loadout_selector.setCurrentText(member.loadout.name)
         self.loadout_selector.setDisabled(member.loadout.is_custom)
+        self.livery_selector.setCurrentIndex(
+            self.livery_selector.findData(member.livery)
+        )
         self.payload_editor.set_flight_member(member)
         self.weapon_laser_code_selector.set_flight_member(member)
         self.own_laser_code_info.set_flight_member(member)
-        if self.member_selector.value() != 0:
+        if self.member_selector.value() != 1:
             self.loadout_selector.setDisabled(
                 self.flight.use_same_loadout_for_all_members
             )
             self.payload_editor.setDisabled(
                 self.flight.use_same_loadout_for_all_members
             )
+            self.livery_selector.setDisabled(
+                self.flight.use_same_livery_for_all_members
+            )
         else:
             self.loadout_selector.setEnabled(True)
             self.payload_editor.setEnabled(True)
+            self.livery_selector.setEnabled(True)
 
     def loadout_at(self, index: int) -> Loadout:
         loadout = self.loadout_selector.itemData(index)
@@ -273,3 +297,23 @@ class QFlightPayloadTab(QFrame):
                 self.rebind_to_selected_member()
         else:
             self.flight.roster.use_distinct_loadouts_for_each_member()
+
+    def on_same_livery_toggled(self, checked: bool) -> None:
+        self.flight.use_same_livery_for_all_members = checked
+        if self.member_selector.value():
+            self.livery_selector.setDisabled(checked)
+        if checked:
+            self.flight.roster.use_same_livery_for_all_members()
+            if self.member_selector.value():
+                self.rebind_to_selected_member()
+
+    def on_livery_change(self) -> None:
+        livery = self.livery_selector.currentData()
+        use_livery_set = self.livery_selector.using_livery_set
+        if self.flight.use_same_livery_for_all_members:
+            for m in self.flight.roster.members:
+                m.livery = livery
+                m.use_livery_set = use_livery_set
+        else:
+            self.member_selector.selected_member.livery = livery
+            self.member_selector.selected_member.use_livery_set = use_livery_set

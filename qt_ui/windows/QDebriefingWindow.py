@@ -90,7 +90,6 @@ class QDebriefingWindow(QDialog):
         pixmap = QPixmap("./resources/ui/debriefing.png")
         header.setPixmap(pixmap)
         layout.addWidget(header)
-        layout.addStretch()
 
         title = QLabel("<b>Casualty report</b>")
         layout.addWidget(title)
@@ -103,7 +102,7 @@ class QDebriefingWindow(QDialog):
         enemy_lost_units = ScrollingCasualtyReportContainer(
             debriefing, player=Player.RED
         )
-        layout.addWidget(enemy_lost_units)
+        layout.addWidget(enemy_lost_units, 1)
 
         okay = QPushButton("Okay")
         okay.clicked.connect(self.close)
