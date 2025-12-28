@@ -21,11 +21,13 @@ class SquadronDefGenerator:
         self.used_nicknames: set[str] = set()
 
     def generate_for_task(
-        self, task: FlightType, control_point: ControlPoint, squadron_random_chance: int
+        self, task: FlightType, control_point: ControlPoint
     ) -> Optional[SquadronDef]:
+        settings = control_point.coalition.game.settings
+        squadron_random_chance = settings.squadron_random_chance
         aircraft_choice: Optional[AircraftType] = None
         for aircraft in AircraftType.priority_list_for_task(task):
-            if aircraft not in self.faction.all_aircraft:
+            if aircraft not in self.faction.all_aircrafts:
                 continue
             if not control_point.can_operate(aircraft):
                 continue
@@ -47,6 +49,7 @@ class SquadronDefGenerator:
             role="Flying Squadron",
             aircraft=aircraft,
             livery=None,
+            livery_set=[],
             auto_assignable_mission_types=set(aircraft.iter_task_capabilities()),
             radio_presets={},
             operating_bases=OperatingBases.default_for_aircraft(aircraft),
