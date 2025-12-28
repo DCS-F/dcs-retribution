@@ -19,7 +19,7 @@ from game.theater.player import Player
 from .pilot import Pilot, PilotStatus
 from ..db.database import Database
 from ..radio.radios import RadioFrequency
-from ..utils import meters
+from ..utils import meters, nautical_miles
 
 if TYPE_CHECKING:
     from game import Game
@@ -41,6 +41,7 @@ class Squadron:
     aircraft: AircraftType
     max_size: int
     livery: Optional[str]
+    livery_set: list[str]  # will override livery if not empty
     primary_task: FlightType
     auto_assignable_mission_types: set[FlightType]
     radio_presets: dict[Union[str, int], list[RadioFrequency]]
@@ -70,6 +71,8 @@ class Squadron:
     untasked_aircraft: int = field(init=False, hash=False, compare=False, default=0)
     pending_deliveries: int = field(init=False, hash=False, compare=False, default=0)
 
+    use_livery_set: bool = False  # if livery-set should be used when present
+
     def __setstate__(self, state: dict[str, Any]) -> None:
         if "id" not in state:
             state["id"] = uuid4()
@@ -90,6 +93,9 @@ class Squadron:
             return False
         return self.id == other.id
 
+    def __post_init__(self) -> None:
+        self._livery_pool: list[str] = []
+
     @property
     def player(self) -> Player:
         return self.coalition.player
@@ -101,6 +107,15 @@ class Squadron:
     @property
     def pilot_limits_enabled(self) -> bool:
         return self.settings.enable_squadron_pilot_limits
+
+    def random_round_robin_livery_from_set(self) -> str:
+        livery = random.choice(self.livery_set)
+        self._livery_pool.append(livery)
+        self.livery_set.remove(livery)
+        if not self.livery_set:
+            self.livery_set = self._livery_pool
+            self._livery_pool = []
+        return livery
 
     def set_auto_assignable_mission_types(
         self, mission_types: Iterable[FlightType]
@@ -284,6 +299,7 @@ class Squadron:
         size: int,
         heli: bool,
         this_turn: bool,
+        ignore_range: bool = False,
     ) -> bool:
         if (
             self.location.cptype.name in ["FOB", "FARP"]
@@ -307,8 +323,23 @@ class Squadron:
         if heli and task == FlightType.REFUELING:
             return False
 
+        if ignore_range:
+            return True
+
         distance_to_target = meters(location.distance_to(self.location))
-        return distance_to_target <= self.aircraft.max_mission_range
+        max_plane_dist = nautical_miles(
+            self.coalition.game.settings.max_mission_range_planes
+        )
+        max_heli_dist = nautical_miles(
+            self.coalition.game.settings.max_mission_range_helicopters
+        )
+        if self.aircraft.helicopter:
+            return distance_to_target <= max(
+                self.aircraft.max_mission_range, max_heli_dist
+            )
+        return distance_to_target <= max(
+            self.aircraft.max_mission_range, max_plane_dist
+        )
 
     def operates_from(self, control_point: ControlPoint) -> bool:
         if not control_point.can_operate(self.aircraft):
@@ -490,6 +521,7 @@ class Squadron:
             squadron_def.aircraft,
             max_size,
             squadron_def.livery,
+            squadron_def.livery_set,
             primary_task,
             squadron_def.auto_assignable_mission_types,
             squadron_def.radio_presets,
