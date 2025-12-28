@@ -99,7 +99,6 @@ class ModSettings:
     mirage_3: bool = False
     sk_60: bool = False
     mam: bool = False
-    mirage_3: bool = False
     t45_goshawk: bool = False
     hawk_t1a: bool = False
     super_etendard: bool = False
