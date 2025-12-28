@@ -338,6 +338,13 @@ class AirliftPlanner:
         if self.package.flights:
             self.package.set_tot_asap(now)
             self.game.ato_for(self.for_player).add_package(self.package)
+            from game.server import EventStream
+            from game.sim import GameUpdateEvents
+
+            events = GameUpdateEvents()
+            for f in self.package.flights:
+                events = events.new_flight(f)
+            EventStream.put_nowait(events)
 
     def create_airlift_flight(self, squadron: Squadron) -> int:
         available_aircraft = squadron.untasked_aircraft
@@ -637,6 +644,8 @@ class PendingTransfers:
                 == TransitConnection.Shipping
             ):
                 return self.cargo_ships.add(transfer, next_stop)
+        else:
+            next_stop = transfer.destination
         AirliftPlanner(self.game, transfer, next_stop).create_package_for_airlift(now)
 
     def new_transfer(self, transfer: TransferOrder, now: datetime) -> None:
@@ -683,10 +692,16 @@ class PendingTransfers:
     def _cancel_transport_air(
         self, transport: Airlift, _transfer: TransferOrder
     ) -> None:
+        from game.sim import GameUpdateEvents
+        from game.server import EventStream
+
         flight = transport.flight
         flight.package.remove_flight(flight)
+        events = GameUpdateEvents().delete_flight(flight)
         if not flight.package.flights:
             self.game.ato_for(self.player).remove_package(flight.package)
+            events = events.delete_flights_in_package(flight.package)
+        EventStream().put_nowait(events)
 
     @cancel_transport.register
     def _cancel_transport_convoy(

@@ -61,7 +61,7 @@ class ProcurementAi:
             return 0
 
         # faction has no planes or no squadrons
-        if len(self.faction.all_aircraft) == 0 or len(self.air_wing.squadrons) == 0:
+        if len(self.faction.all_aircrafts) == 0 or len(self.air_wing.squadrons) == 0:
             return 1
 
         parking_type = ParkingType(
@@ -116,11 +116,11 @@ class ProcurementAi:
                 budget -= RUNWAY_REPAIR_COST
                 if self.is_player.is_blue:
                     self.game.message(
-                        "OPFOR has begun repairing the runway at " f"{control_point}"
+                        "We have begun repairing the runway at " f"{control_point}"
                     )
                 else:
                     self.game.message(
-                        "We have begun repairing the runway at " f"{control_point}"
+                        "OPFOR has begun repairing the runway at " f"{control_point}"
                     )
         return budget
 
