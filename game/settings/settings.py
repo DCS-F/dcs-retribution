@@ -159,6 +159,7 @@ class Settings:
         MISSION_RESTRICTIONS_SECTION,
         default=True,
     )
+
     easy_communication: Optional[bool] = choices_option(
         "Easy Communication",
         page=DIFFICULTY_PAGE,
@@ -262,6 +263,19 @@ class Settings:
             "the auto-planner to plan an OCA strike against it."
         ),
     )
+    ownfor_autoplanner_aggressiveness: int = bounded_int_option(
+        "OWNFOR auto-planner aggressiveness (%)",
+        page=CAMPAIGN_DOCTRINE_PAGE,
+        section=GENERAL_SECTION,
+        default=20,
+        min=0,
+        max=100,
+        detail=(
+            "Ratio of the threat-radius that will be ignored by the OWNFOR "
+            "AI-autoplanner. 0% means the entire threat-radius is considered, "
+            "while 100% would have the autoplanner completely ignore OPFOR air defences."
+        ),
+    )
     opfor_autoplanner_aggressiveness: int = bounded_int_option(
         "OPFOR auto-planner aggressiveness (%)",
         page=CAMPAIGN_DOCTRINE_PAGE,
@@ -270,9 +284,9 @@ class Settings:
         min=0,
         max=100,
         detail=(
-            "Chance (larger number -> higher chance) that the OPFOR AI "
-            "auto-planner will take risks and plan flights against targets "
-            "within threatened airspace."
+            "Ratio of the threat-radius that will be ignored by the OPFOR "
+            "AI-autoplanner. 0% means the entire threat-radius is considered, "
+            "while 100% would have the autoplanner completely ignore OWNFOR air defences."
         ),
     )
     heli_combat_alt_agl: int = bounded_int_option(
@@ -358,7 +372,7 @@ class Settings:
         min=0,
         max=300,
         detail=(
-            "Will impact both defensive (BARCAP) and offensive flights. Also has a performance impact,"
+            "Will impact both defensive (BARCAP) and offensive flights. Also has a performance impact, "
             "lower threat range generally means less BARCAPs are planned."
         ),
     )
@@ -381,6 +395,14 @@ class Settings:
         default=10,
         min=0,
         max=100,
+    )
+    armed_recon_engagement_range_distance: int = bounded_int_option(
+        "Armed Recon engagement range (NM)",
+        page=CAMPAIGN_DOCTRINE_PAGE,
+        section=DOCTRINE_DISTANCES_SECTION,
+        default=5,
+        min=0,
+        max=25,
     )
     sead_sweep_engagement_range_distance: int = bounded_int_option(
         "SEAD Sweep engagement range (nmi)",
@@ -418,7 +440,7 @@ class Settings:
         min=0,
         max=300,
         detail=(
-            "How far, at minimum, will AEW&C racetracks be planned"
+            "How far, at minimum, will AEW&C racetracks be planned "
             "to known threat zones."
         ),
     )
@@ -630,7 +652,7 @@ class Settings:
         default=True,
     )
     auto_procurement_balance: int = bounded_int_option(
-        "AI ground unit procurement budget ratio (%) for BLUE",
+        "AI ground unit procurement budget ratio (%) for OWNFOR",
         CAMPAIGN_MANAGEMENT_PAGE,
         HQ_AUTOMATION_SECTION,
         min=0,
@@ -643,7 +665,7 @@ class Settings:
         ),
     )
     frontline_reserves_factor: int = bounded_int_option(
-        "AI ground unit front-line reserves factor (%) for BLUE",
+        "AI ground unit front-line reserves factor (%) for OWNFOR",
         CAMPAIGN_MANAGEMENT_PAGE,
         HQ_AUTOMATION_SECTION,
         min=0,
@@ -655,18 +677,18 @@ class Settings:
         ),
     )
     reserves_procurement_target: int = bounded_int_option(
-        "AI ground unit reserves procurement target for BLUE",
+        "AI ground unit reserves procurement target for OWNFOR",
         CAMPAIGN_MANAGEMENT_PAGE,
         HQ_AUTOMATION_SECTION,
         min=0,
         max=1000,
         default=10,
         detail=(
-            "The number of units that will be bought as reserves for applicable control points"
+            "The number of units that will be bought as reserves for applicable control points."
         ),
     )
     auto_procurement_balance_red: int = bounded_int_option(
-        "AI ground unit procurement budget ratio (%) for RED",
+        "AI ground unit procurement budget ratio (%) for OPFOR",
         CAMPAIGN_MANAGEMENT_PAGE,
         HQ_AUTOMATION_SECTION,
         min=0,
@@ -679,7 +701,7 @@ class Settings:
         ),
     )
     frontline_reserves_factor_red: int = bounded_int_option(
-        "AI ground unit front-line reserves factor (%) for RED",
+        "AI ground unit front-line reserves factor (%) for OPFOR",
         CAMPAIGN_MANAGEMENT_PAGE,
         HQ_AUTOMATION_SECTION,
         min=0,
@@ -691,7 +713,7 @@ class Settings:
         ),
     )
     reserves_procurement_target_red: int = bounded_int_option(
-        "AI ground unit reserves procurement target for RED",
+        "AI ground unit reserves procurement target for OPFOR",
         CAMPAIGN_MANAGEMENT_PAGE,
         HQ_AUTOMATION_SECTION,
         min=0,
@@ -877,17 +899,48 @@ class Settings:
         section=GAMEPLAY_SECTION,
         choices={v.value: v for v in StartType},
         default=StartType.COLD,
-        detail=("Default start type for flights containing Player/Client slots."),
+        detail="Default start type for flights containing Player/Client slots.",
     )
     nevatim_parking_fix: bool = boolean_option(
         "Force air-starts for aircraft at Nevatim and Ramon Airbase inoperable parking slots",
         page=MISSION_GENERATOR_PAGE,
         section=GAMEPLAY_SECTION,
-        default=True,  # TODO: set to False or remove this when DCS is fixed
+        default=False,  # TODO: set to False or remove this when DCS is fixed
         detail=(
             "Air-starts forced for all aircraft at Nevatim and Ramon Airbase except parking slots "
             "which are known to work as of DCS World 2.9.4.53990."
         ),
+    )
+    switch_baro_fix: bool = boolean_option(
+        "Switch altitude type of waypoints to AMSL above seas for helicopters",
+        page=MISSION_GENERATOR_PAGE,
+        section=GAMEPLAY_SECTION,
+        default=True,  # TODO: set to False or remove this when DCS is fixed?
+        detail=(
+            "AGL seems to reference the bottom of the sea which causes issues for helicopters"
+            " trying to fly at altitudes lower than the sea-bottom."
+        ),
+    )
+    limit_ai_radios: bool = boolean_option(
+        "Limit AI radio callouts",
+        page=MISSION_GENERATOR_PAGE,
+        section=GAMEPLAY_SECTION,
+        default=True,
+        detail="Avoids the target-detection callouts over the radio by AI. (except for AWACS flights)",
+    )
+    silence_ai_radios: bool = boolean_option(
+        "Suppress AI radio callouts",
+        page=MISSION_GENERATOR_PAGE,
+        section=GAMEPLAY_SECTION,
+        default=False,
+        detail="Keeps the AI silent at all times for flights with human pilots. (except for AWACS flights)",
+    )
+    use_ai_combat_landing: bool = boolean_option(
+        "Use AI combat landing waypoint task",
+        page=MISSION_GENERATOR_PAGE,
+        section=GAMEPLAY_SECTION,
+        default=False,
+        detail="Turns the combat landing flag on in the landing waypoint task.",
     )
     # Mission specific
     desired_player_mission_duration: timedelta = minutes_option(
@@ -1050,6 +1103,12 @@ class Settings:
         default=True,
         detail=("Enables dynamic cargo for airfields, ships, FARPs & warehouses."),
     )
+    player_flights_sixpack: bool = boolean_option(
+        "Player flights can spawn on the sixpack",
+        MISSION_GENERATOR_PAGE,
+        GAMEPLAY_SECTION,
+        default=True,
+    )
     use_auto_fog: bool = boolean_option(
         "Use DCS' automatic fog setting",
         MISSION_GENERATOR_PAGE,
@@ -1125,7 +1184,7 @@ class Settings:
         default=False,
     )
     perf_frontline_units_max_supply: int = bounded_int_option(
-        "Maximum frontline unit supply per control point",
+        "Maximum ground units deployed per frontline by faction",
         page=MISSION_GENERATOR_PAGE,
         section=PERFORMANCE_SECTION,
         default=60,
@@ -1146,7 +1205,7 @@ class Settings:
         default=True,
     )
     perf_disable_untasked_blufor_aircraft: bool = boolean_option(
-        "Disable untasked BLUFOR aircraft at airfields",
+        "Disable untasked OWNFOR aircraft at airfields",
         page=MISSION_GENERATOR_PAGE,
         section=PERFORMANCE_SECTION,
         default=False,
@@ -1510,7 +1569,6 @@ class Settings:
 
     # Cheating. Not using auto settings because the same page also has buttons which do
     # not alter settings.
-    show_red_ato: bool = False
     enable_frontline_cheats: bool = False
     enable_base_capture_cheat: bool = False
     enable_transfer_cheat: bool = False
