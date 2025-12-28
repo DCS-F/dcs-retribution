@@ -12,7 +12,7 @@ from dcs.task import StartCommand
 from dcs.triggers import Event, TriggerOnce, TriggerRule
 from dcs.unitgroup import FlyingGroup
 
-from game.ato import Flight, FlightWaypoint
+from game.ato import Flight, FlightWaypoint, FlightType
 from game.ato.flightstate import InFlight, WaitingForStart
 from game.ato.flightwaypointtype import FlightWaypointType
 from game.ato.starttype import StartType
@@ -22,6 +22,7 @@ from game.settings import Settings
 from game.utils import pairwise
 from .airassaultingress import AirAssaultIngressBuilder
 from .antishipingress import AntiShipIngressBuilder
+from .armedreconingress import ArmedReconIngressBuilder
 from .baiingress import BaiIngressBuilder
 from .casingress import CasIngressBuilder
 from .deadingress import DeadIngressBuilder
@@ -73,6 +74,18 @@ class WaypointGenerator:
             if point.only_for_player and not self.flight.client_count:
                 continue
             if isinstance(self.flight.state, InFlight):
+                if self.flight.flight_type in [
+                    FlightType.ESCORT,
+                    FlightType.SEAD_ESCORT,
+                ]:
+                    is_join = point.waypoint_type == FlightWaypointType.JOIN
+                    join_passed = self.flight.state.has_passed_waypoint(point)
+                    if (
+                        is_join
+                        and join_passed
+                        and point != self.flight.state.current_waypoint
+                    ):
+                        self.builder_for_waypoint(point).add_tasks(self.group.points[0])
                 if point == self.flight.state.current_waypoint:
                     # We don't need to build this waypoint because pydcs did that for
                     # us, but we do need to configure the tasks for it so that mid-
@@ -124,6 +137,7 @@ class WaypointGenerator:
             FlightWaypointType.DROPOFF_ZONE: LandingZoneBuilder,
             FlightWaypointType.INGRESS_AIR_ASSAULT: AirAssaultIngressBuilder,
             FlightWaypointType.INGRESS_ANTI_SHIP: AntiShipIngressBuilder,
+            FlightWaypointType.INGRESS_ARMED_RECON: ArmedReconIngressBuilder,
             FlightWaypointType.INGRESS_BAI: BaiIngressBuilder,
             FlightWaypointType.INGRESS_CAS: CasIngressBuilder,
             FlightWaypointType.INGRESS_DEAD: DeadIngressBuilder,
@@ -191,7 +205,10 @@ class WaypointGenerator:
             not self.flight.state.in_flight
             and self.flight.state.spawn_type is not StartType.RUNWAY
             and self.flight.departure.is_fleet
-            and not self.flight.client_count
+            and not (
+                self.flight.client_count
+                and self.flight.coalition.game.settings.player_flights_sixpack
+            )
         ):
             # https://github.com/dcs-liberation/dcs_liberation/issues/1309
             # Without a delay, AI aircraft will be spawned on the sixpack, which other

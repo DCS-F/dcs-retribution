@@ -10,7 +10,7 @@ from game.utils import nautical_miles
 from .pydcswaypointbuilder import PydcsWaypointBuilder
 
 
-class SeadSweepIngressBuilder(PydcsWaypointBuilder):
+class ArmedReconIngressBuilder(PydcsWaypointBuilder):
     def add_tasks(self, waypoint: MovingPoint) -> None:
         self.register_special_ingress_points()
         # Preemptively use ECM to better avoid getting swatted.
@@ -23,10 +23,13 @@ class SeadSweepIngressBuilder(PydcsWaypointBuilder):
                     position=self.flight.flight_plan.tot_waypoint.position,
                     radius=int(
                         nautical_miles(
-                            self.flight.coalition.game.settings.sead_sweep_engagement_range_distance
+                            self.flight.coalition.game.settings.armed_recon_engagement_range_distance
                         ).meters
                     ),
-                    targets=[Targets.All.GroundUnits.AirDefence],
+                    targets=[
+                        Targets.All.GroundUnits,
+                        Targets.All.Air.Helicopters,
+                    ],
                 )
             )
         )

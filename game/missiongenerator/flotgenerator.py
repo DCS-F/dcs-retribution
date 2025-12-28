@@ -22,6 +22,7 @@ from dcs.task import (
     OrbitAction,
     SetImmortalCommand,
     SetInvisibleCommand,
+    OptAlarmState,
 )
 from dcs.triggers import Event, TriggerOnce
 from dcs.unit import Skill, Vehicle
@@ -44,7 +45,7 @@ from game.unitmap import UnitMap
 from game.utils import Heading
 from .frontlineconflictdescription import FrontLineConflictDescription
 from .groundforcepainter import GroundForcePainter
-from .missiondata import JtacInfo, MissionData
+from .missiondata import JtacInfo, MissionData, FrontlineUnitGroupsInfo
 from ..ato import FlightType
 
 if TYPE_CHECKING:
@@ -164,9 +165,13 @@ class FlotGenerator:
                 altitude=5000,
                 maintask=AFAC,
             )
+            cs = jtac.units[0].callsign_dict
+            assert type(cs[1]) == int
+            assert type(cs[2]) == int
             jtac.points[0].tasks.append(
                 FAC(
-                    callsign=len(self.mission_data.jtacs) + 1,
+                    callsign=cs[1],
+                    number=cs[2],
                     frequency=int(freq.mhz),
                     modulation=freq.modulation,
                 )
@@ -192,6 +197,20 @@ class FlotGenerator:
                     freq=freq,
                 )
             )
+
+            for vehicle_group, combat_group in player_groups:
+                self.mission_data.player_frontline_groups.append(
+                    FrontlineUnitGroupsInfo(
+                        group_name=vehicle_group.name, unit_type=combat_group.unit_type
+                    )
+                )
+
+            for vehicle_group, combat_group in enemy_groups:
+                self.mission_data.enemy_frontline_groups.append(
+                    FrontlineUnitGroupsInfo(
+                        group_name=vehicle_group.name, unit_type=combat_group.unit_type
+                    )
+                )
 
     def gen_infantry_group_for_group(
         self,
@@ -282,7 +301,7 @@ class FlotGenerator:
             if x.primary_task == FlightType.CAS
         ]
         return (
-            timedelta(seconds=random.randint(300, 1800))
+            timedelta(seconds=random.randint(150, 900))
             if len(tots) == 0
             else min(
                 [
@@ -393,7 +412,7 @@ class FlotGenerator:
         Returns True if tasking was added, returns False if the stance was not a combat stance.
         """
         duration = timedelta()
-        if stance != CombatStance.RETREAT:
+        if stance in [CombatStance.DEFENSIVE, CombatStance.AGGRESSIVE]:
             duration = self._earliest_tot_on_flot(to_cp.coalition.player.opponent)
         self._set_reform_waypoint(dcs_group, forward_heading, duration)
         if stance == CombatStance.AGGRESSIVE:
@@ -483,7 +502,7 @@ class FlotGenerator:
         Returns True if tasking was added, returns False if the stance was not a combat stance.
         """
         duration = timedelta()
-        if stance != CombatStance.RETREAT:
+        if stance in [CombatStance.DEFENSIVE, CombatStance.AGGRESSIVE]:
             duration = self._earliest_tot_on_flot(to_cp.coalition.player.opponent)
         self._set_reform_waypoint(dcs_group, forward_heading, duration)
         if stance in [
@@ -815,6 +834,10 @@ class FlotGenerator:
             heading=heading.degrees,
         )
         group.hidden_on_mfd = True
+        if self.game.settings.perf_red_alert_state:
+            group.points[0].tasks.append(OptAlarmState(2))
+        else:
+            group.points[0].tasks.append(OptAlarmState(1))
 
         self.unit_map.add_front_line_units(group, cp, unit_type)
 
