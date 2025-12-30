@@ -176,7 +176,7 @@ squadrons:
         - A-10C Thunderbolt II (Suite 3)
     - primary: Transport
       aircraft:
-        - C-130
+        - C-130J-30
   # Olf Orote
   5:
     - primary: BARCAP
@@ -200,7 +200,7 @@ squadrons:
     - primary: Refueling
     - primary: Transport
       aircraft:
-        - C-130
+        - C-130J-30
   # North West Field
   8:
     - primary: BARCAP
