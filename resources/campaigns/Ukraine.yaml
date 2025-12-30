@@ -1,0 +1,62 @@
+---
+name: Caucasus - Ukraine
+theater: Caucasus
+authors: Castor
+description:
+  <p>A medium sized theater with operational area in the northern caucasus.</p>
+recommended_player_faction: Ukraine 2020
+recommended_enemy_faction: Russia 2020
+recommended_start_date: 2014-01-07
+miz: Ukraine.miz
+performance: 2
+version: "10.0"
+
+squadrons:
+  # Anapa-Vityazevo
+  12:
+    - primary: BARCAP
+      secondary: TARCAP
+      aircraft:
+        - Su-27 Flanker-B
+      size: 4
+    - primary: Fighter sweep
+      secondary: Intercept
+      aircraft:
+        - MiG-29S Fulcrum-C
+      size: 4
+    - primary: SEAD
+      secondary: Air-to-ground
+      aircraft:
+        - F-16CM Fighting Falcon (Block 50)
+      size: 4
+    - primary: AEW&C
+      aircraft:
+        - A-50
+      size: 2
+    - primary: Refueling
+      aircraft:
+        - IL-78M
+      size: 2
+    - primary: Transport
+      aircraft:
+        - IL-78MD
+      size: 4
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Su-25 Frogfoot
+      size: 4
+  # Novorossiysk
+  14:
+    - primary: Transport
+      secondary: Air Assault
+      aircraft:
+        - Mi-8MTV2 Hip
+      size: 4
+  # Gelendzhik
+  17:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+      size: 4
