@@ -20,6 +20,7 @@ beacons = {
 }
 
 """
+
 import argparse
 import dataclasses
 import gettext
@@ -77,6 +78,14 @@ def beacons_from_terrain(dcs_path: Path, path: Path) -> Iterable[tuple[str, Beac
             end
             
         """
+            )
+        )
+
+        lua.execute(
+            textwrap.dedent(
+                """
+                function math.pow(x,y) return x^y end
+                """
             )
         )
 
