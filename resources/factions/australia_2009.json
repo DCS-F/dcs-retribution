@@ -1,12 +1,14 @@
 {
   "country": "Australia",
-  "name": "Australia 2005",
+  "name": "Australia 2009",
   "authors": "Khopa, SpaceEnthusiast",
-  "description": "<p>The Australian army in 2005.</p><p>Some units might not be accurate, but were picked to represent at best this army.</p>",
+  "description": "<p>The Australian army in 2009.</p><p>Some units might not be accurate, but were picked to represent at best this army.</p>",
   "aircrafts": [
     "AH-1W SuperCobra",
     "C-130J-30 Super Hercules",
     "F/A-18C Hornet (Lot 20)",
+    "EA-18G Growler",
+    "F/A-18F Super Hornet",
     "SH-60B Seahawk",
     "UH-1H Iroquois"
   ],

@@ -1,19 +1,16 @@
 {
-  "country": "Combined Joint Task Forces Blue",
-  "name": "Israel 2011 for ODS",
-  "authors": "Headiii Modified by Chimiste",
-  "description": "<p>A more modern Israeli faction with fictional Imports for Operation Desert Sabre.</p>",
+  "country": "Israel",
+  "name": "Israel 2017",
+  "authors": "Ghosti",
+  "description": "<p>Israel Defence Forces after the introduction of the David's Sling.</p>",
   "locales": [
     "he_IL"
   ],
   "aircrafts": [
-    "A-10C Thunderbolt II (Suite 3)",
-    "A-10C Thunderbolt II (Suite 7)",
     "AH-64D Apache Longbow",
     "AH-64D Apache Longbow (AI)",
     "C-130",
     "C-130J-30 Super Hercules",
-    "F-14B Tomcat",
     "F-15C Eagle",
     "F-15D Baz",
     "F-15E Strike Eagle (AI)",
@@ -22,32 +19,22 @@
     "F-16D Barak (Block 30)",
     "F-16D Barak (Block 40)",
     "F-16I Sufa",
-    "F/A-18C Hornet (Lot 20)",
-    "Mirage 2000C",
     "UH-1H Iroquois",
     "UH-60L"
   ],
   "awacs": [
-    "E-2C Hawkeye",
-    "E-3A"
+    "E-2C Hawkeye"
   ],
   "tankers": [
     "KC-130",
-    "KC-135 Stratotanker",
-    "S-3B Tanker"
+    "KC-135 Stratotanker"
   ],
   "frontline_units": [
     "M1043 HMMWV (M2 HMG)",
     "M1045 HMMWV (BGM-71 TOW)",
     "M113",
     "M163 Vulcan Air Defense System",
-    "Merkava Mk IV",
-    "LAV-25",
-    "M1097 Heavy HMMWV Avenger",
-    "M1126 Stryker ICV (M2 HMG)",
-    "M1128 Stryker Mobile Gun System",
-    "M1134 Stryker ATGM (BGM-71 TOW)",
-    "M1A2 Abrams"
+    "Merkava Mk IV"
   ],
   "artillery_units": [
     "M109A6 Paladin",
@@ -59,43 +46,33 @@
   "infantry_units": [
     "Infantry M249",
     "Infantry M4",
-    "MANPADS Stinger",
-    "Mortar 2B11 120mm"
+    "MANPADS Stinger"
   ],
   "preset_groups": [
     "Hawk",
     "Iron Dome",
-    "Patriot",
-    "NASAMS AIM-120C"
+    "Iron Dome (Semicircle)",
+    "David's Sling",
+    "David's Sling (Semicircle)",
+    "Patriot"
   ],
   "naval_units": [
-    "DDG Arleigh Burke IIa",
-    "FFG Oliver Hazard Perry",
-    "CG Ticonderoga",
-    "CVN-74 John C. Stennis"
+    "DDG Arleigh Burke IIa"
   ],
   "missiles": [],
   "air_defense_units": [
+    "ELM-2084MMR AD Rotating Mode",
     "SAM Hawk SR (AN/MPQ-50)",
     "M163 Vulcan Air Defense System",
-    "M48 Chaparral",
-    "EWR AN/FPS-117 Radar"
+    "HEMTT C-RAM Phalanx",
+    "M48 Chaparral"
   ],
   "requirements": {},
-  "carrier_names": [
-    "CVN-71 Theodore Roosevelt",
-    "CVN-72 Abraham Lincoln",
-    "CVN-73 George Washington",
-    "CVN-74 John C. Stennis",
-    "CVN-75 Harry S. Truman"
-  ],
+  "carrier_names": [],
   "helicopter_carrier_names": [],
   "has_jtac": true,
   "jtac_unit": "MQ-9 Reaper",
   "liveries_overrides": {
-    "A-10C Thunderbolt II (Suite 3)": [
-      "Fictional Israel 115 Sqn Flying Dragon"
-    ],
     "F-15C Eagle": [
       "390th Fighter SQN"
     ],
@@ -113,9 +90,6 @@
     ],
     "AH-64D Apache Longbow": [
       "ah-64_d_isr"
-    ],
-    "F/A-18C Hornet (Lot 20)": [
-      "Fictional Israel Air Force"
     ],
     "Mirage 2000C": [
       "UAE Air Force"

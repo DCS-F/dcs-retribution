@@ -1,28 +1,19 @@
 {
   "country": "Insurgents",
-  "name": "Insurgents",
-  "authors": "Khopa",
-  "description": "<p>Insurgents faction.</p>",
+  "name": "Toyota Al Gaib 2001",
+  "authors": "Starfire",
+  "description": "<p>Total Terror Through Toyota Technicals.</p>",
   "aircrafts": [],
   "frontline_units": [
-    "DIM' KAMIKAZE",
-    "DIM' TOYOTA BLUE",
-    "DIM' TOYOTA DESERT",
-    "DIM' TOYOTA GREEN",
-    "SPAAA LC with ZU-23",
     "Scout LC with DSHK 12.7mm",
     "Scout LC with KORD 12.7mm",
     "Scout HL with DSHK 12.7mm",
     "Scout HL with KORD 12.7mm",
-    "SPAAA HL with ZU-23",
-    "BRDM-2",
-    "Cobra",
-    "MT-LB",
-    "PT-76",
-    "ZU-23 on Ural-375"
+    "SPAAA LC with ZU-23",
+    "SPAAA HL with ZU-23"
   ],
   "artillery_units": [
-    "2S1 Gvozdika",
+    "BM-21 Grad",
     "MLRS LC with B8M1 80mm",
     "MLRS HL with B8M1 80mm"
   ],
@@ -38,10 +29,8 @@
   ],
   "missiles": [],
   "air_defense_units": [
-    "SA-9 Strela",
     "SPAAA LC with ZU-23",
     "SPAAA HL with ZU-23",
-    "AAA ZU-23 Insurgent Closed Emplacement",
     "ZU-23 on Ural-375 Insurgent"
   ],
   "preset_groups": [],

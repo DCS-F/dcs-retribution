@@ -20,16 +20,16 @@
     "F-15E Strike Eagle (Suite 4+)",
     "F-16A MLU",
     "F-16CM Fighting Falcon (Block 50)",
-	"F-16D Fighting Falcon (Block 52+)",
-	"F-16D Fighting Falcon (Block 52)",
-	"F-16D Fighting Falcon (Block 50+)",
-	"F-16D Fighting Falcon (Block 50)",
+    "F-16D Fighting Falcon (Block 52+)",
+    "F-16D Fighting Falcon (Block 52)",
+    "F-16D Fighting Falcon (Block 50+)",
+    "F-16D Fighting Falcon (Block 50)",
     "F-4E Phantom II",
     "F-4E-45MC Phantom II",
     "F/A-18C Hornet (Lot 20)",
-    "F/A-18C Hornet (AI)",
     "Mirage 2000C",
     "OH-58D Kiowa Warrior",
+    "OH-58D(R) Kiowa Warrior",
     "S-3B Viking",
     "SA 342L Gazelle",
     "SA 342M Gazelle",
@@ -44,6 +44,7 @@
   "tankers": [
     "KC-130",
     "KC-135 Stratotanker",
+    "KC-135 Stratotanker MPRS",
     "S-3B Tanker"
   ],
   "frontline_units": [
@@ -88,7 +89,7 @@
   ],
   "missiles": [],
   "air_defense_units": [
-    "SAM Patriot STR",
+    "EWR AN/FPS-117 Radar",
     "M163 Vulcan Air Defense System",
     "M1097 Heavy HMMWV Avenger",
     "M48 Chaparral"
