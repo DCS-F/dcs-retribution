@@ -19,7 +19,6 @@ tasks:
   BARCAP: 250
   CAS: 140
   DEAD: 140
-  SEAD: 140
   Escort: 150
   Fighter sweep: 200
   Intercept: 300
