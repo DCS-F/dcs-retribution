@@ -1,0 +1,608 @@
+---
+name: Kola Peninsula / Lapland - Night Frost Crisis
+theater: Kola
+authors: Ghosti
+recommended_player_faction: Finland 1960 (TF-51D/P-51D)
+recommended_enemy_faction: Soviet Union 1960
+recommended_start_date: 1958-08-29
+description:
+  <p>The Soviet Union has invaded Finland in 1958, following the Soviet leadership's displeasure at the newly elected Karl-August Fagerholm government of Finland.</p>
+  <p>The northern part of Finland is occupied by the Soviet forces, but the Finnish Defence Forces have successfully pushed the invading Red Army back in the south.</p>
+  <p>Finnish aircraft has been relocated and/or reactivated in Sweden and Norway. Both Sweden and Norway have decided to remain neutral in the conflict, but have granted </p>
+  <p>the Finns access to their airbases as the offensive to retake northern Finland is about to commence. Norway has recently joined NATO, and has been accused by the </p>
+  <p>Soviet Union as being established, by NATO, as strategic base of operations against the Soviet Union.</p>
+miz: Kola Lapland - Shaddock in the Lake.miz
+performance: 3
+version: "10.7"
+
+settings:
+  automate_runway_repair: true
+  automate_front_line_reinforcements: true
+  automate_aircraft_reinforcements: true
+
+  pretense_extra_zone_connections: 0
+  pretense_disable_ground_assaults: true
+  pretense_disable_supply_convoys: true
+  pretense_ground_assaults_prefer_roads: true
+  pretense_supply_convoys_prefer_roads: true
+  pretense_num_of_cargo_planes: 1
+  pretense_do_not_generate_sead_missions: true
+  pretense_do_not_generate_csar_missions: true
+  pretense_controllable_carrier: false
+  perf_culling: true
+  perf_culling_distance: 120
+  player_skill: "High"
+  enemy_skill: "Average"
+  enemy_vehicle_skill: "Average"
+  night_day_missions: NightMissions.OnlyDay
+  labels: "Dot Only"
+  squadron_random_chance: 100
+  default_start_type_client: StartType.WARM
+
+  ground_start_ai_planes: true
+  ground_start_scenery_remove_triggers: false
+  ground_start_ground_power_trucks: false
+  ground_start_ground_power_trucks_roadbase: false
+
+  mod_aircraft_spawn_late_start_f15c: true
+  mod_aircraft_spawn_late_start_su27: true
+  mod_aircraft_spawn_late_start_su33: true
+
+  plugins:
+    gamemaster: true
+    skynetiads: false
+    ewrs: true
+    splashdamageclusters: true
+    splashdamageclusters.bdaMessages: true
+    splashdamageclusters.clusterEffects: true
+    splashdamageclusters.shipRadarDamage: true
+ #Mods to be used
+  a4_skyhawk: true
+  t45_goshawk: true
+  hawk_t1a: true
+  coldwarassets: true
+
+squadrons:
+  #Lakselv / Banak
+  1:
+    - primary: BARCAP
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - A-4E Skyhawk
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: Transport
+      aircraft:
+        - C-130
+    - primary: AEW&C
+      aircraft:
+        - E-2C Hawkeye
+  Porsangmoen:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342M Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+  Leirpollskogen FARP:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342M Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+  Leirpollskogen roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Hawk Mk.60
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - Hawk T1A
+  # Kirkenes
+  14:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342M Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+  #Kiruna
+  5:
+    - primary: BARCAP
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - MiG-15bis Fagot
+  #Kalixfors
+  13:
+    - primary: BARCAP
+      aircraft:
+        - MiG-19P Farmer-B
+  Gallivare:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - A-4E Skyhawk
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+  #Jokkmokk airbase
+  11:
+    - primary: BARCAP
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - C-101CC Aviojet
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+  #Kallax
+  15:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Hawk Mk.60
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - Hawk T1A
+  #Vidsel
+  17:
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - A-4E Skyhawk
+  #Bodø
+  7:
+    - primary: BARCAP
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: Transport
+      aircraft:
+        - C-130
+    - primary: AEW&C
+      aircraft:
+        - E-2C Hawkeye
+  #Andoya
+  20:
+    - primary: BARCAP
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+  #Bardufoss
+  21:
+    - primary: BARCAP
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+  #Kemi Tornio
+  3:
+    - primary: BARCAP
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: TARCAP
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+  Ranuan varalaskupaikka:
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-4E Skyhawk
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342M Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+  Pudasjärven varalaskupaikka:
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - A-4E Skyhawk
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342L Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - SA 342M Gazelle
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-8MTV2 Hip
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Mi-24P Hind-F
+  #Rovaniemi
+  2:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Yak-28 Firebar
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+  #Vuojärvi highway strip
+  4:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+  # Ivalo
+  18:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Yak-28 Firebar
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
+  Vuojärvi helicopter base:
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Sirniö roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Yak-28 Firebar
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
+  #Kuusamo
+  16:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+  Pekkala roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Yak-28 Firebar
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
+  Kallaanvaara helicopter base:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Kallaanvaara roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Yak-28 Firebar
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+  Rajala helicopter base:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Rajala roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Yak-28 Firebar
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+  Ylläksen varalaskupaikka:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Yak-28 Firebar
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+  Lokka roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Yak-28 Firebar
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+  Ivalo roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Yak-28 Firebar
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+  Inari roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Yak-28 Firebar
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+  Kaamanen roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Yak-28 Firebar
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+  Karigasniemi roadbase:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Yak-28 Firebar
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+  Karasjok EWR site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Eyna roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
+  Kovdor roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
+  Kuolajärvi roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
+  # Alakurtti
+  19:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Yak-28 Firebar
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+  Alakurtti roadbase:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-24V Hind-E
+  Polarnie Zori roadbase:
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
+  Kandalaksha aluminum plant:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Polyarny SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Gadzhiyevo SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Petchenga SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Poselok SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Vajda-Guba EWR site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Kharlovka SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  Ostrovnoy SAM site:
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - Mi-8MTV2 Hip
+  #Severomorsk1
+  8:
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: DEAD
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
+  #Severomorsk3
+  6:
+    - primary: AEW&C
+      aircraft:
+        - Tu-126
+    - primary: Transport
+      secondary: any
+      aircraft:
+        - IL-76MD
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: TARCAP
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
+  #Olenegorsk
+  9:
+    - primary: BARCAP
+      aircraft:
+        - MiG-19P Farmer-B
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
+    - primary: CAS
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+  #Monchegorsk
+  10:
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-16 Badger
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - L-39ZA Albatros
+  #Murmansk International
+  12:
+    - primary: BARCAP
+      aircraft:
+        - MiG-15bis Fagot
+    - primary: Strike
+      secondary: any
+      aircraft:
+        - Tu-4K Bull
+    - primary: Transport
+      secondary: any
+      aircraft:
+        - IL-76MD
