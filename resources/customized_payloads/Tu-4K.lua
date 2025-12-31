@@ -49,54 +49,6 @@ local unitPayloads = {
 				[1] = 33,
 			},
 		},
-		[4] = {
-			["name"] = "Retribution CAS",
-			["pylons"] = {
-				[1] = {
-					["CLSID"] = "{Tu4_KS_1}",
-					["num"] = 1,
-				},
-				[2] = {
-					["CLSID"] = "{Tu4_KS_1}",
-					["num"] = 2,
-				},
-			},
-			["tasks"] = {
-				[1] = 32,
-			},
-		},
-		[5] = {
-			["name"] = "Retribution BAI",
-			["pylons"] = {
-				[1] = {
-					["CLSID"] = "{Tu4_KS_1}",
-					["num"] = 1,
-				},
-				[2] = {
-					["CLSID"] = "{Tu4_KS_1}",
-					["num"] = 2,
-				},
-			},
-			["tasks"] = {
-				[1] = 32,
-			},
-		},
-		[6] = {
-			["name"] = "Retribution DEAD",
-			["pylons"] = {
-				[1] = {
-					["CLSID"] = "{Tu4_KS_1}",
-					["num"] = 1,
-				},
-				[2] = {
-					["CLSID"] = "{Tu4_KS_1}",
-					["num"] = 2,
-				},
-			},
-			["tasks"] = {
-				[1] = 32,
-			},
-		},
 	},
 	["tasks"] = {
 	},

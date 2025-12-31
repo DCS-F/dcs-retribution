@@ -6,35 +6,31 @@ local unitPayloads = {
 			["name"] = "Retribution DEAD",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "DIS_H6_250_2_N24",
-					["num"] = 8,
-				},
-				[2] = {
 					["CLSID"] = "DIS_AKG_DLPOD",
 					["num"] = 7,
 				},
-				[3] = {
-					["CLSID"] = "DIS_MER6_250_3_N6",
+				[2] = {
+					["CLSID"] = "DIS_DF4A_KD20",
 					["num"] = 6,
 				},
-				[4] = {
-					["CLSID"] = "DIS_MER6_250_3_N6",
+				[3] = {
+					["CLSID"] = "DIS_DF4A_KD20",
 					["num"] = 5,
 				},
-				[5] = {
-					["CLSID"] = "DIS_MER6_250_3_N6",
+				[4] = {
+					["CLSID"] = "DIS_DF4A_KD20",
 					["num"] = 4,
 				},
-				[6] = {
-					["CLSID"] = "DIS_MER6_250_3_N6",
+				[5] = {
+					["CLSID"] = "DIS_DF4A_KD20",
 					["num"] = 3,
 				},
-				[7] = {
-					["CLSID"] = "DIS_MER6_250_3_N6",
+				[6] = {
+					["CLSID"] = "DIS_DF4A_KD20",
 					["num"] = 2,
 				},
-				[8] = {
-					["CLSID"] = "DIS_MER6_250_3_N6",
+				[7] = {
+					["CLSID"] = "DIS_DF4A_KD20",
 					["num"] = 1,
 				},
 			},
@@ -87,35 +83,31 @@ local unitPayloads = {
 			["name"] = "Retribution Strike",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "DIS_H6_250_2_N24",
-					["num"] = 8,
-				},
-				[2] = {
 					["CLSID"] = "DIS_AKG_DLPOD",
 					["num"] = 7,
 				},
-				[3] = {
-					["CLSID"] = "DIS_MER6_250_3_N6",
+				[2] = {
+					["CLSID"] = "DIS_DF4A_KD20",
 					["num"] = 6,
 				},
-				[4] = {
-					["CLSID"] = "DIS_MER6_250_3_N6",
+				[3] = {
+					["CLSID"] = "DIS_DF4A_KD20",
 					["num"] = 5,
 				},
-				[5] = {
-					["CLSID"] = "DIS_MER6_250_3_N6",
+				[4] = {
+					["CLSID"] = "DIS_DF4A_KD20",
 					["num"] = 4,
 				},
-				[6] = {
-					["CLSID"] = "DIS_MER6_250_3_N6",
+				[5] = {
+					["CLSID"] = "DIS_DF4A_KD20",
 					["num"] = 3,
 				},
-				[7] = {
-					["CLSID"] = "DIS_MER6_250_3_N6",
+				[6] = {
+					["CLSID"] = "DIS_DF4A_KD20",
 					["num"] = 2,
 				},
-				[8] = {
-					["CLSID"] = "DIS_MER6_250_3_N6",
+				[7] = {
+					["CLSID"] = "DIS_DF4A_KD20",
 					["num"] = 1,
 				},
 			},
@@ -127,35 +119,31 @@ local unitPayloads = {
 			["name"] = "Retribution BAI",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "DIS_H6_250_2_N24",
-					["num"] = 8,
-				},
-				[2] = {
 					["CLSID"] = "DIS_AKG_DLPOD",
 					["num"] = 7,
 				},
-				[3] = {
-					["CLSID"] = "DIS_MER6_250_3_N6",
+				[2] = {
+					["CLSID"] = "DIS_DF4A_KD20",
 					["num"] = 6,
 				},
-				[4] = {
-					["CLSID"] = "DIS_MER6_250_3_N6",
+				[3] = {
+					["CLSID"] = "DIS_DF4A_KD20",
 					["num"] = 5,
 				},
-				[5] = {
-					["CLSID"] = "DIS_MER6_250_3_N6",
+				[4] = {
+					["CLSID"] = "DIS_DF4A_KD20",
 					["num"] = 4,
 				},
-				[6] = {
-					["CLSID"] = "DIS_MER6_250_3_N6",
+				[5] = {
+					["CLSID"] = "DIS_DF4A_KD20",
 					["num"] = 3,
 				},
-				[7] = {
-					["CLSID"] = "DIS_MER6_250_3_N6",
+				[6] = {
+					["CLSID"] = "DIS_DF4A_KD20",
 					["num"] = 2,
 				},
-				[8] = {
-					["CLSID"] = "DIS_MER6_250_3_N6",
+				[7] = {
+					["CLSID"] = "DIS_DF4A_KD20",
 					["num"] = 1,
 				},
 			},

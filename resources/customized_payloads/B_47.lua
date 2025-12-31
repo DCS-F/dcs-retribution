@@ -4,9 +4,9 @@ local unitPayloads = {
 		[1] = {
 			["name"] = "STRIKE",
 			["pylons"] = {
-				[2] = {
-					["CLSID"] = "{D3ABF208-FA56-4D56-BB31-E0D931D57AE3}",
-					["num"] = 2,
+				[1] = {
+					["CLSID"] = "{B_29_RASCALARM}",
+					["num"] = 1,
 				},
 			},
 			["tasks"] = {
@@ -16,9 +16,9 @@ local unitPayloads = {
 		[2] = {
 			["name"] = "ANTISHIP",
 			["pylons"] = {
-				[2] = {
-					["CLSID"] = "{D3ABF208-FA56-4D56-BB31-E0D931D57AE3}",
-					["num"] = 2,
+				[1] = {
+					["CLSID"] = "{B_29_RASCALARM}",
+					["num"] = 1,
 				},
 			},
 			["tasks"] = {
@@ -28,9 +28,9 @@ local unitPayloads = {
 		[3] = {
 			["name"] = "Retribution OCA/Runway",
 			["pylons"] = {
-				[2] = {
-					["CLSID"] = "{D3ABF208-FA56-4D56-BB31-E0D931D57AE3}",
-					["num"] = 2,
+				[1] = {
+					["CLSID"] = "{B_29_RASCALARM}",
+					["num"] = 1,
 				},
 			},
 			["tasks"] = {

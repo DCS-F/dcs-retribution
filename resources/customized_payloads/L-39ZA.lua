@@ -5,19 +5,19 @@ local unitPayloads = {
 			["name"] = "CAP",
 			["pylons"] = {
 				[1] = {
-					["CLSID"] = "{PK-3}",
+					["CLSID"] = "{APU-60-1_R_60M}",
 					["num"] = 5,
 				},
 				[2] = {
-					["CLSID"] = "{PK-3}",
+					["CLSID"] = "{APU-60-1_R_60M}",
 					["num"] = 1,
 				},
 				[3] = {
-					["CLSID"] = "{PTB_350L_L39}",
+					["CLSID"] = "{PK-3}",
 					["num"] = 4,
 				},
 				[4] = {
-					["CLSID"] = "{PTB_350L_L39}",
+					["CLSID"] = "{PK-3}",
 					["num"] = 2,
 				},
 			},
