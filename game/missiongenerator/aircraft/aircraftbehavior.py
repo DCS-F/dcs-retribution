@@ -1,6 +1,7 @@
 import logging
 from typing import Any, Optional, Type, List
 
+from dcs.planes import F_117A
 from dcs.point import MovingPoint
 from dcs.task import (
     AWACS,
@@ -35,6 +36,7 @@ from dcs.task import (
     RecoveryTanker,
     ActivateBeaconCommand,
     ControlledTask,
+    Reconnaissance,
 )
 from dcs.unitgroup import FlyingGroup, ShipGroup
 
@@ -46,6 +48,7 @@ from game.ato.flightplans.shiprecoverytanker import RecoveryTankerFlightPlan
 from game.ato.flightplans.theaterrefueling import TheaterRefuelingFlightPlan
 from game.missiongenerator.missiondata import MissionData
 from game.utils import nautical_miles, knots, feet
+from pydcs_extensions import OH_6A, T_45, Tu_4K
 
 
 class AircraftBehavior:
@@ -224,7 +227,7 @@ class AircraftBehavior:
             # because this bomber is not capable of the CAS or Strike task in DCS
             self.configure_task(flight, group, AntishipStrike)
         else:
-            self.configure_task(flight, group, CAS, AFAC)
+            self.configure_task(flight, group, CAS, [AFAC, AntishipStrike])
         self.configure_behavior(
             flight,
             group,
@@ -257,12 +260,8 @@ class AircraftBehavior:
         # because these aircraft aren't capable of the CAS task in DCS
         if flight.unit_type.dcs_unit_type in [F_117A, T_45]:
             self.configure_strike(group, flight)
-        elif flight.unit_type.dcs_unit_type in [Tu_4K]:
-            # Convert Tu-4K waypoints into Anti-ship waypoints,
-            # because this bomber is not capable of the CAS or Strike task in DCS
-            self.configure_task(flight, group, AntishipStrike)
         else:
-            self.configure_task(flight, group, SEAD, CAS)
+            self.configure_task(flight, group, SEAD, [CAS, AntishipStrike])
         self.configure_behavior(
             flight,
             group,
