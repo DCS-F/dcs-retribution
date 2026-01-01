@@ -628,6 +628,7 @@ do
 	PlayerLogistics.allowedTypes['SA342Minigun'] = { supplies = false, personCapacity = 2}
 	PlayerLogistics.allowedTypes['AH-64D_BLK_II'] = { supplies = false }
 	PlayerLogistics.allowedTypes['TF-51D'] = { supplies = true, personCapacity = 2}
+	PlayerLogistics.allowedTypes['C-130J-30'] = { supplies = true, personCapacity = 92 }
 
 	PlayerLogistics.infantryTypes = {
 		capture = 'capture',
@@ -771,7 +772,7 @@ do
 							missionCommands.addCommandForGroup(groupid, 'Cargo status', cargomenu, Utils.log(context.cargoStatus), context, groupname)
 							missionCommands.addCommandForGroup(groupid, 'Unload Everything', cargomenu, Utils.log(context.unloadAll), context, groupname)
 							
-							if unitType == 'Hercules' then
+							if unitType == 'Hercules' or unitType == 'C-130J-30' then
 								local loadmasterMenu = missionCommands.addSubMenuForGroup(groupid, 'Loadmaster', cargomenu)
 
 								for _,sqType in ipairs(sqs) do
@@ -1732,7 +1733,7 @@ do
 					
 					msg = msg..'\n('..self:getCarriedPersonWeight(groupName)..' kg)'
 
-					if un:getDesc().typeName == 'Hercules' then
+					if un:getDesc().typeName == 'Hercules' or un:getDesc().typeName == 'C-130J-30' then
 						local preped = self.hercPreparedDrops[gr:getID()]
 						if preped then
 							if preped == 'supplies' then
@@ -1779,6 +1780,11 @@ do
 			elseif tp == "SA342Minigun" then
 				if unit:getDrawArgumentValue(34) == 1 then return true end
 				if unit:getDrawArgumentValue(38) == 1 then return true end
+            elseif tp == "C-130J-30" then
+                if unit:getDrawArgumentValue(38) == 1 then return true end -- Front crew door will probably comment out
+                if unit:getDrawArgumentValue(86) == 1 then return true end -- Loading Ramp
+                if unit:getDrawArgumentValue(87) == 1 then return true end -- Right rear parachute door will probably comment out
+                if unit:getDrawArgumentValue(88) == 1 then return true end -- Left rear parachute door will probably comment out
 			else
 				return true
 			end
@@ -1847,7 +1853,7 @@ do
 				local onboard = self.carriedCargo[gr:getID()]
 				local weight = self.getWeight(onboard)
 
-				if un:getDesc().typeName == "Hercules" then
+				if un:getDesc().typeName == "Hercules" or un:getDesc().typeName == 'C-130J-30' then
 					local loadedInCrates = 0
 					local ammo = un:getAmmo()
 					if ammo then 
@@ -1929,7 +1935,7 @@ do
 				local onboard = self.carriedCargo[gr:getID()]
 				local weight = self.getWeight(onboard)
 			
-				if un:getDesc().typeName == "Hercules" then
+				if un:getDesc().typeName == "Hercules" or un:getDesc().typeName == 'C-130J-30' then
 					local loadedInCrates = 0
 					local ammo = un:getAmmo()
 					for _,load in ipairs(ammo) do
@@ -8376,7 +8382,8 @@ do
         ['SA342M'] =        { recon_speed = 10, minDist = 15, maxDeviation = 120 },
         ['SA342Minigun'] =  { recon_speed = 2,  minDist = 5,  maxDeviation = 45  },
         ['UH-1H'] =         { recon_speed = 1,  minDist = 5,  maxDeviation = 30  },
-        ['UH-60L'] =        { recon_speed = 1,  minDist = 5,  maxDeviation = 30  }
+        ['UH-60L'] =        { recon_speed = 1,  minDist = 5,  maxDeviation = 30  },
+        ['C-130J-30'] =      { recon_speed = 1,  minDist = 5,  }
     }
 end
 
@@ -12995,7 +13002,7 @@ do
     function CAP_Easy.canCreate()
         local zoneNum = 0
         for _,zone in pairs(ZoneCommand.getAllZones()) do
-            if zone.side == 2 and zone.distToFront == 0 then 
+            if zone.side == 2 and zone.distToFront and zone.distToFront == 0 then
                 zoneNum = zoneNum + 1
             end
 
@@ -13016,7 +13023,7 @@ do
         local description = ''
         local viableZones = {}
         for _,zone in pairs(ZoneCommand.getAllZones()) do
-            if zone.side == 2 and zone.distToFront == 0 then
+            if zone.side == 2 and zone.distToFront and zone.distToFront == 0 then
                 table.insert(viableZones, zone)
             end
         end
@@ -13062,7 +13069,7 @@ do
     function CAP_Medium.canCreate()
         local zoneNum = 0
         for _,zone in pairs(ZoneCommand.getAllZones()) do
-            if zone.side == 2 and zone.distToFront == 0 then 
+            if zone.side == 2 and zone.distToFront and zone.distToFront == 0 then
                 zoneNum = zoneNum + 1
             end
 
@@ -13083,7 +13090,7 @@ do
         local description = ''
         local viableZones = {}
         for _,zone in pairs(ZoneCommand.getAllZones()) do
-            if zone.side == 2 and zone.distToFront == 0 then
+            if zone.side == 2 and zone.distToFront and zone.distToFront == 0 then
                 table.insert(viableZones, zone)
             end
         end
@@ -13231,7 +13238,7 @@ do
         local description = ''
         local viableZones = {}
         for _,zone in pairs(ZoneCommand.getAllZones()) do
-            if zone.side == 1 and zone.distToFront == 0 and zone:hasUnitWithAttributeOnSide({"Ground Units"}, 1, 6) then
+            if zone.side == 1 and zone.distToFront and zone.distToFront == 0 and zone:hasUnitWithAttributeOnSide({"Ground Units"}, 1, 6) then
                 if not MissionTargetRegistry.isZoneTargeted(zone.name) then
                     table.insert(viableZones, zone)
                 end
@@ -13240,7 +13247,7 @@ do
 
         if #viableZones == 0 then
             for _,zone in pairs(ZoneCommand.getAllZones()) do
-                if zone.side == 1 and zone.distToFront == 1 and zone:hasUnitWithAttributeOnSide({"Ground Units"}, 1, 6) then
+                if zone.side == 1 and zone.distToFront and zone.distToFront == 1 and zone:hasUnitWithAttributeOnSide({"Ground Units"}, 1, 6) then
                     if not MissionTargetRegistry.isZoneTargeted(zone.name) then
                         table.insert(viableZones, zone)
                     end
@@ -13304,7 +13311,7 @@ do
         local description = ''
         local viableZones = {}
         for _,zone in pairs(ZoneCommand.getAllZones()) do
-            if zone.side == 1 and zone.distToFront == 0 and zone:hasSAMRadarOnSide(1) then
+            if zone.side == 1 and zone.distToFront and zone.distToFront == 0 and zone:hasSAMRadarOnSide(1) then
                 if not MissionTargetRegistry.isZoneTargeted(zone.name) then
                     table.insert(viableZones, zone)
                 end
@@ -13313,7 +13320,7 @@ do
 
         if #viableZones == 0 then
             for _,zone in pairs(ZoneCommand.getAllZones()) do
-                if zone.side == 1 and zone.distToFront == 1 and zone:hasSAMRadarOnSide(1) then
+                if zone.side == 1 and zone.distToFront and zone.distToFront == 1 and zone:hasSAMRadarOnSide(1) then
                     if not MissionTargetRegistry.isZoneTargeted(zone.name) then
                         table.insert(viableZones, zone)
                     end
@@ -13370,7 +13377,7 @@ do
         local description = ''
         local viableZones = {}
         for _,zone in pairs(ZoneCommand.getAllZones()) do
-            if zone.side == 1 and zone.distToFront <=1 and zone:hasUnitWithAttributeOnSide({"Air Defence"}, 1, 4) then
+            if zone.side == 1 and zone.distToFront and zone.distToFront <=1 and zone:hasUnitWithAttributeOnSide({"Air Defence"}, 1, 4) then
                 if not MissionTargetRegistry.isZoneTargeted(zone.name) then
                     table.insert(viableZones, zone)
                 end
@@ -13507,14 +13514,14 @@ do
 
         local viableZones = {}
         for _,zone in pairs(ZoneCommand.getAllZones()) do
-            if zone.side == 2 and zone.distToFront == 0 and zone:criticalOnSupplies() then
+            if zone.side == 2 and zone.distToFront and zone.distToFront == 0 and zone:criticalOnSupplies() then
                 table.insert(viableZones, zone)
             end
         end
 
         if #viableZones == 0 then
             for _,zone in pairs(ZoneCommand.getAllZones()) do
-                if zone.side == 2 and zone.distToFront == 1 and zone:criticalOnSupplies() then
+                if zone.side == 2 and zone.distToFront and zone.distToFront == 1 and zone:criticalOnSupplies() then
                     table.insert(viableZones, zone)
                 end
             end
@@ -13602,7 +13609,7 @@ do
         local description = ''
         local viableZones = {}
         for _,zone in pairs(ZoneCommand.getAllZones()) do
-            if zone.side == 1 and zone.distToFront == 0 and zone:hasUnitWithAttributeOnSide({'Buildings'}, 1) then
+            if zone.side == 1 and zone.distToFront and zone.distToFront == 0 and zone:hasUnitWithAttributeOnSide({'Buildings'}, 1) then
                 if not MissionTargetRegistry.isZoneTargeted(zone.name) then
                     table.insert(viableZones, zone)
                 end
@@ -13611,7 +13618,7 @@ do
 
         if #viableZones == 0 then
             for _,zone in pairs(ZoneCommand.getAllZones()) do
-                if zone.side == 1 and zone.distToFront == 1 and zone:hasUnitWithAttributeOnSide({'Buildings'}, 1) then
+                if zone.side == 1 and zone.distToFront and zone.distToFront == 1 and zone:hasUnitWithAttributeOnSide({'Buildings'}, 1) then
                     if not MissionTargetRegistry.isZoneTargeted(zone.name) then
                         table.insert(viableZones, zone)
                     end
@@ -13713,7 +13720,7 @@ do
         local description = ''
         local viableZones = {}
         for _,zone in pairs(ZoneCommand.getAllZones()) do
-            if zone.side == 1 and zone.distToFront == 0 and zone:hasUnitWithAttributeOnSide({"Buildings"}, 1, 3) then
+            if zone.side == 1 and zone.distToFront and zone.distToFront == 0 and zone:hasUnitWithAttributeOnSide({"Buildings"}, 1, 3) then
                 if not MissionTargetRegistry.isZoneTargeted(zone.name) then
                     table.insert(viableZones, zone)
                 end
@@ -13722,7 +13729,7 @@ do
 
         if #viableZones == 0 then
             for _,zone in pairs(ZoneCommand.getAllZones()) do
-                if zone.side == 1 and zone.distToFront == 1 and zone:hasUnitWithAttributeOnSide({"Buildings"}, 1, 3) then
+                if zone.side == 1 and zone.distToFront and zone.distToFront == 1 and zone:hasUnitWithAttributeOnSide({"Buildings"}, 1, 3) then
                     if not MissionTargetRegistry.isZoneTargeted(zone.name) then
                         table.insert(viableZones, zone)
                     end
@@ -13984,7 +13991,7 @@ do
     function Recon.canCreate()
         local zoneNum = 0
         for _,zone in pairs(ZoneCommand.getAllZones()) do
-            if zone.side == 1 and zone.distToFront == 0 and zone.revealTime == 0 then 
+            if zone.side == 1 and zone.distToFront and zone.distToFront == 0 and zone.revealTime == 0 then
                 return true
             end
         end
@@ -14008,7 +14015,7 @@ do
         local viableZones = {}
         local secondaryViableZones = {}
         for _,zone in pairs(ZoneCommand.getAllZones()) do
-            if zone.side == 1 and zone.distToFront == 0 and zone.revealTime == 0 then
+            if zone.side == 1 and zone.distToFront and zone.distToFront == 0 and zone.revealTime == 0 then
                 table.insert(viableZones, zone)
             end
         end
@@ -14100,7 +14107,7 @@ Anti_Runway = Mission:new()
 do
     function Anti_Runway.canCreate()
         for _,zone in pairs(ZoneCommand.getAllZones()) do
-            if zone.side == 1 and zone.distToFront <=2 and zone:hasRunway() then
+            if zone.side == 1 and zone.distToFront and zone.distToFront <=2 and zone:hasRunway() then
                     return true
             end
         end
@@ -14117,7 +14124,7 @@ do
        
         local tgts = {}
         for _,zone in pairs(ZoneCommand.getAllZones()) do
-            if zone.side == 1 and zone.distToFront <=2 and zone:hasRunway() then
+            if zone.side == 1 and zone.distToFront and zone.distToFront <=2 and zone:hasRunway() then
                 if not MissionTargetRegistry.isZoneTargeted(zone.name) then
                     table.insert(tgts, zone)
                 end
@@ -14292,7 +14299,7 @@ DeploySquad = Mission:new()
 do
     function DeploySquad.canCreate()
         for _,zone in pairs(ZoneCommand.getAllZones()) do
-            if zone.distToFront and zone.distToFront == 0 then
+            if zone.distToFront and zone.distToFront and zone.distToFront == 0 then
                 if not MissionTargetRegistry.isZoneTargeted(zone.name) then
                     return true
                 end
@@ -14332,7 +14339,7 @@ do
 
         local viableZones = {}
         for _,zone in pairs(ZoneCommand.getAllZones()) do
-            if zone.distToFront and zone.distToFront == 0 then
+            if zone.distToFront and zone.distToFront and zone.distToFront == 0 then
                 if not MissionTargetRegistry.isZoneTargeted(zone.name) then
                     table.insert(viableZones, zone)
                 end
