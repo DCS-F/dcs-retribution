@@ -45,6 +45,7 @@ from ...campaignloader.squadrondefgenerator import SquadronDefGenerator
 from ...data.weapons import WeaponType
 from ...dcs.aircrafttype import AircraftType
 from ...radio.datalink import DataLinkRegistry
+from ...squadrons import Squadron
 from ...theater import Player
 
 if TYPE_CHECKING:

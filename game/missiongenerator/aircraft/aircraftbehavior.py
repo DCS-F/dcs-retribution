@@ -296,7 +296,7 @@ class AircraftBehavior:
             # because this helicopter is not capable of the CAS or Strike task in DCS
             self.configure_task(flight, group, Reconnaissance)
         else:
-            self.configure_task(flight, group, GroundAttack, PinpointStrike)
+            self.configure_task(flight, group, GroundAttack, [PinpointStrike])
         self.configure_behavior(
             flight,
             group,

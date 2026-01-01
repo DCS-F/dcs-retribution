@@ -871,16 +871,6 @@ class Settings:
             "targets available for OCA/Aircraft missions."
         ),
     )
-    atflir_autoswap: bool = boolean_option(
-        "Auto-swap ATFLIR to LITENING",
-        MISSION_GENERATOR_PAGE,
-        GAMEPLAY_SECTION,
-        default=True,
-        detail=(
-            "Automatically swaps ATFLIR to LITENING pod for newly generated land-based F-18 flights "
-            "without having to change the payload. <u>Takes effect after current turn!</u>"
-        ),
-    )
     default_start_type: StartType = choices_option(
         "Default start type for AI aircraft",
         page=MISSION_GENERATOR_PAGE,

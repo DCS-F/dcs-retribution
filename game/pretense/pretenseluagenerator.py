@@ -1513,11 +1513,11 @@ class PretenseLuaGenerator(LuaGenerator):
 
         lua_string_config = "Config = Config or {}\n"
 
-        lua_string_config += (
-            f"Config.maxDistFromFront = "
-            + str(self.game.settings.pretense_maxdistfromfront_distance * 1000)
-            + "\n"
-        )
+        # lua_string_config += (
+        #     f"Config.maxDistFromFront = "
+        #     + str(self.game.settings.pretense_maxdistfromfront_distance * 1000)
+        #     + "\n"
+        # )
         lua_string_config += "Config.missionBuildSpeedReduction = 0.36\n"
         if self.game.settings.pretense_disable_ground_assaults:
             lua_string_config += "Config.disableGroundAssaults = true\n"
@@ -1807,13 +1807,6 @@ class PretenseLuaGenerator(LuaGenerator):
     def inject_plugin_script(
         self, plugin_mnemonic: str, script: str, script_mnemonic: str
     ) -> None:
-        # Hard block MOOSE injection for Pretense missions
-        if script_mnemonic.lower() == "moose" or "moose" in script.lower():
-            logging.info(
-                "PretenseLuaGenerator: Skipping hard-blocked Moose.lua injection"
-            )
-            return
-
         if script_mnemonic in self.plugin_scripts:
             logging.debug(f"Skipping already loaded {script} for {plugin_mnemonic}")
             return
