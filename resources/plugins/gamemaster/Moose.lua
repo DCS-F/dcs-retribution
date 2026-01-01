@@ -469,6 +469,7 @@ ENUMS.ReportingName =
     -- Fighters
     Dragon = "JF-17", -- China, correctly Fierce Dragon, Thunder for PAC
     Fagot = "MiG-15",
+    Fresco = "vwv_mig17f",
     Farmer = "MiG-19", -- Shenyang J-6 and Mikoyan-Gurevich MiG-19
     Felon = "Su-57",
     Fencer = "Su-24",
@@ -518,6 +519,8 @@ ENUMS.ReportingName =
     -- Transport / Bomber / Others
     Atlas = "A400",
     Lancer = "B1-B",
+    Hustler = "B_58",
+    Stratojet = "B_47",
     Stratofortress = "B-52H",
     Hercules = "C-130", 
     Super_Hercules = "Hercules",
@@ -532,10 +535,15 @@ ENUMS.ReportingName =
     Viking = "S-3B",
     Osprey = "V-22",
     -- Bomber Rus
-    Badger = "H6-J",
+    Bull = "Tu-4K",
+    Badger_B = "Tu-16",
+    Badger_C = "H6-J",
+    Bear_G = "Tu_95K",
     Bear_J = "Tu-142", -- also Tu-95
-    Bear = "Tu-95", -- also Tu-142
-    Blinder = "Tu-22",
+    Bear_H = "Tu-95", -- also Tu-142
+    Blinder = "tu_22D",
+    Blinder_B = "tu_22KD",
+    Backfire = "Tu-22M3",
     Blackjack = "Tu-160",
     -- AIC / Transport / Other
     Clank = "An-30",
@@ -5285,7 +5293,7 @@ function UTILS.GetReportingName(Typename)
     end
   end
   
-  return "Bogey"  
+  return "Bogey"
 end
 
 --- Get the callsign name from its enumerator value
