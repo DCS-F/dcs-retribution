@@ -1,3 +1,4 @@
-price: 1
+class: Logistics
+price: 2
 variants:
   Truck Ural-4320T: null
