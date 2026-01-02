@@ -7716,7 +7716,7 @@ do
                         self.groupTgtMenus[gr:getID()] = MenuRegistry.showTargetZoneMenu(gr:getID(), "JTAC target", function(params) 
 
                             CommandFunctions.spawnJtac(params.zone)
-                            trigger.action.outTextForGroup(params.groupid, "Reaper orbiting "..params.zone.name,5)
+                            trigger.action.outTextForGroup(params.groupid, "JTAC orbiting "..params.zone.name,5)
 
                         end, 1, 1)
 
