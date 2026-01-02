@@ -1,0 +1,12 @@
+class: Logistics
+description: The R-11 Refueler replaced the R-9 Refueler as the primary mobile refueling vehicle for The United States
+  Air Force. Deliveries of the second generation R-11 began in 1994. The contract for the second generation model was
+  awarded to the Kovatch Corporation, and the pumping and dispensing systems are mounted on a Volvo chassis.
+  These models are commonly referred to as the Volvo R-11.
+introduced: 1994
+manufacturer: Volvo / Kovatch
+origin: United States / Sweden
+price: 2
+role: Refueler
+variants:
+  "Volvo R11 Refueler": {}

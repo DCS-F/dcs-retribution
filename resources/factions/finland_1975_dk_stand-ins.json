@@ -42,6 +42,7 @@
     "MT-LB",
     "MT-LBu",
     "BV 410",
+    "TPz Fuchs",
     "LUV UAZ-469 Jeep",
     "LUV Land Rover 109"
   ],
@@ -50,7 +51,10 @@
     "BM-21 Grad"
   ],
   "logistics_units": [
-    "Truck KAMAZ 43101"
+    "Truck KAMAZ 43101",
+    "Truck Ural-4320T",
+    "ATZ-10 Refueler",
+    "Volvo R11 Refueler"
   ],
   "infantry_units": [
     "Infantry AK-74 Rus",
@@ -186,14 +190,25 @@
 	"Ural-4320-31": [
       "summer"
     ],
-	"Ural-4320T": [
-      "summer"
-    ],
 	"GAZ-66": [
       "summer"
     ],
+    "TPZ": [
+      "Sisu XA-180 camo Ps 677-721",
+      "Sisu XA-180 Ps 677-975"
+    ],
+    "Ural-4320T": [
+      "Finnish Defence Force"
+    ],
+    "ATZ-10": [
+      "finnish"
+    ],
+    "r11_volvo_drivable": [
+      "finnish"
+    ],
 	"KAMAZ Truck": [
-      "summer"
+      "finnish",
+      "Finnish Defence Force"
     ]
   }
 }
