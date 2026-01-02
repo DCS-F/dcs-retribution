@@ -691,7 +691,8 @@ class PretenseGenericCarrierGenerator(GenericCarrierGenerator):
                 # time as the recovery window.
                 brc = self.steam_into_wind(ship_group)
             else:
-                brc = Heading(0)
+                wind = self.game.conditions.weather.wind.at_0m
+                brc = Heading.from_degrees(wind.direction).opposite
 
             # Set Carrier Specific Options
             if g_id == 0 and self.control_point.runway_is_operational():
