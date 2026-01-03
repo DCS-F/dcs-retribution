@@ -24,7 +24,7 @@ from game.missiongenerator.missiondata import MissionData
 from game.plugins import LuaPluginManager
 from game.pretense.pretenseflightgroupspawner import PretenseNameGenerator
 from game.pretense.pretensetgogenerator import PretenseGroundObjectGenerator
-from game.theater import Airfield, OffMapSpawn
+from game.theater import Airfield, OffMapSpawn, Player
 from game.utils import escape_string_for_lua
 from pydcs_extensions import (
     IRON_DOME_LN,
@@ -1473,6 +1473,24 @@ class PretenseLuaGenerator(LuaGenerator):
 
         return lua_string_ground_groups
 
+    def generate_pretense_ground_livery_overrides(self) -> str:
+        lua_livery_overrides = ""
+
+        for coalition in self.game.coalitions:
+            side = "1" if coalition.player == Player.RED else "2"
+            lua_livery_overrides += f'LiveryDB.livery_overrides["{side}"' + "] = {\n"
+            for (
+                vehicle_type,
+                livery,
+            ) in coalition.faction.liveries_overrides_ground_forces.items():
+                lua_livery_overrides += f'    ["{vehicle_type}"] ' + "= {\n"
+                for s in livery:
+                    lua_livery_overrides += f'            "{s}",\n'
+                lua_livery_overrides += "    },\n"
+            lua_livery_overrides += "}\n"
+
+        return lua_livery_overrides
+
     @staticmethod
     def generate_pretense_zone_connection(
         connected_points: dict[str, list[str]],
@@ -1575,6 +1593,7 @@ class PretenseLuaGenerator(LuaGenerator):
         lua_string_ground_groups_red = self.generate_pretense_ground_groups(
             PRETENSE_RED_SIDE
         )
+        lua_string_livery_overrides = self.generate_pretense_ground_livery_overrides()
 
         lua_string_zones = ""
         lua_string_carriers = ""
@@ -1778,6 +1797,7 @@ class PretenseLuaGenerator(LuaGenerator):
             + init_header
             + lua_string_ground_groups_blue
             + lua_string_ground_groups_red
+            + lua_string_livery_overrides
             + init_body_1
             + lua_string_zones
             + lua_string_connman

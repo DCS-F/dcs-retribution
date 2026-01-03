@@ -9372,10 +9372,12 @@ end
 -----------------[[ Spawner.lua ]]-----------------
 
 Spawner = {}
+LiveryDB = {}
+LiveryDB.livery_overrides = {}
 
 do
     function Spawner.createPilot(name, pos)
-        local groupData = Spawner.getData("pilot-replacement", name, pos, nil, 5, {
+        local groupData = Spawner.getData("pilot-replacement", name, pos, 2, nil, 5, {
             [land.SurfaceType.LAND] = true, 
             [land.SurfaceType.ROAD] = true,
             [land.SurfaceType.RUNWAY] = true,
@@ -9389,7 +9391,7 @@ do
             zone = CustomZone:getByName(zone) -- expand zone name to CustomZone object
         end
 
-        local data = Spawner.getData(objType, name, pos, minDist, maxDist, surfaceTypes, zone)
+        local data = Spawner.getData(objType, name, pos, side, minDist, maxDist, surfaceTypes, zone)
 
         if not data then return end
 
@@ -9435,7 +9437,7 @@ do
         }
     end
 
-    function Spawner.getData(objtype, name, pos, minDist, maxDist, surfaceTypes, zone)
+    function Spawner.getData(objtype, name, pos, side, minDist, maxDist, surfaceTypes, zone)
         if not maxDist then maxDist = 150 end
         if not surfaceTypes then surfaceTypes = { [land.SurfaceType.LAND]=true } end
 
@@ -9505,7 +9507,28 @@ do
             end
             
             for i,v in ipairs(data.units) do
-                table.insert(spawnData.units, Spawner.getUnit(v, name.."-"..i, pos, data.skill, minDist, maxDist, surfaceTypes, zone))
+                unitData = Spawner.getUnit(v, name.."-"..i, pos, data.skill, minDist, maxDist, surfaceTypes, zone)
+
+                local liverytable_side = LiveryDB.livery_overrides[tostring(side)]
+                if liverytable_side ~= nil then
+                    env.info("Spawner - Found livery overrides for side "..tostring(side))
+                    env.info("Spawner - Object type key is: "..tostring(v))
+                    local liverytable_object = liverytable_side[tostring(v)]
+                    if liverytable_object ~= nil then
+                        env.info("Spawner - Found livery override for object "..tostring(v))
+                        local livery_override = liverytable_object[math.random(#liverytable_object)]
+                        if livery_override ~= nil then
+                            env.info("Spawner - Applying livery override "..tostring(livery_override))
+                            unitData["livery_id"] = livery_override
+                        end
+                    else
+                        env.info("Spawner - WARNING: Could not find livery overrides for object "..tostring(v))
+                    end
+                else
+                    env.info("Spawner - WARNING: Could not find livery overrides for side "..tostring(side))
+                end
+
+                table.insert(spawnData.units, unitData)
             end
         end
 
