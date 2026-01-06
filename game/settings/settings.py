@@ -1375,6 +1375,18 @@ class Settings:
             "are eligible targets for AI Strike flights."
         ),
     )
+    pretense_ai_max_mission_dist_to_front: int = bounded_int_option(
+        "AI max mission distance to front",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=4,
+        min=1,
+        max=100,
+        detail=(
+            "Zones that are closer than this setting to the frontline "
+            "are eligible origins for Pretense AI flights."
+        ),
+    )
     pretense_controllable_carrier: bool = boolean_option(
         "Controllable carrier",
         page=PRETENSE_PAGE,

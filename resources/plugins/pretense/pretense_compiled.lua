@@ -82,6 +82,7 @@ Config.exportDistFromFront = Config.exportDistFromFront or 4 -- Zones that are m
 Config.capMissionDistToFront = Config.capMissionDistToFront or 4
 Config.seadMissionDistToFront = Config.seadMissionDistToFront or 2
 Config.strikeMissionDistToFront = Config.strikeMissionDistToFront or 2
+Config.aiMissionDistFromFront = Config.aiMissionDistFromFront or 4
 
 
 if Config.restrictMissionAcceptance == nil then Config.restrictMissionAcceptance = true end -- if set to true, missions can only be accepted while landed inside friendly zones
@@ -5601,7 +5602,8 @@ do
 				end
 			end
 		elseif product.missionType == ZoneCommand.missionTypes.cas then
-			if self.mode ~= ZoneCommand.modes.normal and not self.keepActive then return false end
+			if product.side == 1 and self.mode ~= ZoneCommand.modes.normal and not self.keepActive then return false end
+			if not self.distToFront or self.distToFront > Config.aiMissionDistFromFront then return false end
 
 			for _,tgt in pairs(ZoneCommand.getAllZones()) do
 				if self:isCasMissionValid(product, tgt) then 
@@ -5609,7 +5611,8 @@ do
 				end
 			end
 		elseif product.missionType == ZoneCommand.missionTypes.cas_helo then
-			if self.mode ~= ZoneCommand.modes.normal and not self.keepActive then return false end
+			if product.side == 1 and self.mode ~= ZoneCommand.modes.normal and not self.keepActive then return false end
+			if not self.distToFront or self.distToFront > Config.aiMissionDistFromFront then return false end
 
 			for _,tgt in pairs(self.neighbours) do
 				if self:isCasMissionValid(product, tgt) then 
@@ -5617,7 +5620,8 @@ do
 				end
 			end
 		elseif product.missionType == ZoneCommand.missionTypes.strike then
-			if self.mode ~= ZoneCommand.modes.normal and not self.keepActive then return false end
+			if product.side == 1 and self.mode ~= ZoneCommand.modes.normal and not self.keepActive then return false end
+			if not self.distToFront or self.distToFront > Config.aiMissionDistFromFront then return false end
 
 			for _,tgt in pairs(ZoneCommand.getAllZones()) do
 				if self:isStrikeMissionValid(product, tgt) then 
@@ -5625,7 +5629,8 @@ do
 				end
 			end
 		elseif product.missionType == ZoneCommand.missionTypes.sead then
-			if self.mode ~= ZoneCommand.modes.normal and not self.keepActive then return false end
+			if product.side == 1 and self.mode ~= ZoneCommand.modes.normal and not self.keepActive then return false end
+			if not self.distToFront or self.distToFront > Config.aiMissionDistFromFront then return false end
 
 			for _,tgt in pairs(ZoneCommand.getAllZones()) do
 				if self:isSeadMissionValid(product, tgt) then 
@@ -5633,7 +5638,8 @@ do
 				end
 			end
 		elseif product.missionType == ZoneCommand.missionTypes.patrol then
-			if self.mode ~= ZoneCommand.modes.normal and not self.keepActive then return false end
+			if product.side == 1 and self.mode ~= ZoneCommand.modes.normal and not self.keepActive then return false end
+			if not self.distToFront or self.distToFront > Config.aiMissionDistFromFront then return false end
 
 			for _,tgt in pairs(ZoneCommand.getAllZones()) do
 				if self:isPatrolMissionValid(product, tgt) then 
@@ -5641,7 +5647,8 @@ do
 				end
 			end
 		elseif product.missionType == ZoneCommand.missionTypes.bai then
-			if self.mode ~= ZoneCommand.modes.normal and not self.keepActive then return false end
+			if product.side == 1 and self.mode ~= ZoneCommand.modes.normal and not self.keepActive then return false end
+			if not self.distToFront or self.distToFront > Config.aiMissionDistFromFront then return false end
 
 			for _,tgt in pairs(DependencyManager.get("GroupMonitor").groups) do
 				if self:isBaiMissionValid(product, tgt) then 
@@ -5649,14 +5656,18 @@ do
 				end	
 			end
 		elseif product.missionType == ZoneCommand.missionTypes.awacs then
-			if self.mode ~= ZoneCommand.modes.normal and not self.keepActive then return false end
+			if product.side == 1 and self.mode ~= ZoneCommand.modes.normal and not self.keepActive then return false end
+			if not self.distToFront or self.distToFront > Config.aiMissionDistFromFront then return false end
+
 			for _,tgt in pairs(ZoneCommand.getAllZones()) do
 				if self:isAwacsMissionValid(product, tgt) then 
 					return true
 				end	
 			end
 		elseif product.missionType == ZoneCommand.missionTypes.tanker then
-			if self.mode ~= ZoneCommand.modes.normal and not self.keepActive then return false end
+			if product.side == 1 and self.mode ~= ZoneCommand.modes.normal and not self.keepActive then return false end
+			if not self.distToFront or self.distToFront > Config.aiMissionDistFromFront then return false end
+
 			if not self.distToFront or self.distToFront == 0 then return false end
 			for _,tgt in pairs(ZoneCommand.getAllZones()) do
 				if self:isTankerMissionValid(product, tgt) then 
@@ -6427,7 +6438,7 @@ do
 		if not target.distToFront or target.distToFront > Config.capMissionDistToFront then return false end
 		if target.side ~= product.side and target.side ~= 0 then return false end
 		local dist = mist.utils.get2DDist(self.zone.point, target.zone.point)
-		if dist > 150000 then return false end
+		if dist > 500000 then return false end
 		
 		return true
 	end
@@ -7092,7 +7103,7 @@ do
 		timer.scheduleFunction(function(param, time)
 			local x = math.random(-50,50) -- the lower limit benefits blue, higher limit benefits red, adjust to increase limit of random boost variance, default (-50,50)
 			local boostIntensity = Config.randomBoost -- adjusts the intensity of the random boost variance, default value = 0.0004
-			local factor = (x*x*x*boostIntensity)/100  -- the farther x is the higher the factor, negative beneifts blue, pozitive benefits red
+			local factor = (x*x*x*boostIntensity)/100  -- the farther x is the higher the factor, negative benefits blue, positive benefits red
 			param.context.boostScale[1] = 1.0+factor
 			param.context.boostScale[2] = 1.0-factor
 

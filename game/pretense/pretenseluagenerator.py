@@ -979,6 +979,10 @@ class PretenseLuaGenerator(LuaGenerator):
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.IFV, UnitClass.APC, UnitClass.RECON])}",\n'
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.TANK, UnitClass.ATGM, UnitClass.IFV, UnitClass.APC, UnitClass.RECON])}",\n'
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.TANK, UnitClass.ATGM, UnitClass.IFV, UnitClass.APC, UnitClass.RECON])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.ATGM, UnitClass.IFV, UnitClass.APC, UnitClass.RECON])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.IFV, UnitClass.APC, UnitClass.RECON])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.APC, UnitClass.RECON])}",\n'
+        lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.RECON])}",\n'
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.INFANTRY])}",\n'
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.INFANTRY])}",\n'
         lua_string_ground_groups += f'                "{self.get_ground_unit(coalition, side, [UnitClass.INFANTRY])}",\n'
@@ -1567,6 +1571,8 @@ class PretenseLuaGenerator(LuaGenerator):
         lua_string_config += f"Config.capMissionDistToFront = {self.game.settings.pretense_cap_mission_dist_to_front}\n"
         lua_string_config += f"Config.seadMissionDistToFront = {self.game.settings.pretense_sead_mission_dist_to_front}\n"
         lua_string_config += f"Config.strikeMissionDistToFront = {self.game.settings.pretense_strike_mission_dist_to_front}\n"
+
+        lua_string_config += f"Config.aiMissionDistFromFront = {self.game.settings.pretense_ai_max_mission_dist_to_front}\n"
 
         trigger = TriggerStart(comment="Pretense config")
         trigger.add_action(DoScript(String(lua_string_config)))
