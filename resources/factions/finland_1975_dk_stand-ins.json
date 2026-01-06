@@ -163,6 +163,9 @@
     ]
   },
   "liveries_overrides_ground_forces": {
+    "Soldier M4 GRG": [
+      "m4 Soldier Fin m05"
+    ],
     "SAU Gvozdika": [
       "summer"
     ],
