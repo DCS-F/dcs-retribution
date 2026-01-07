@@ -3,6 +3,7 @@ from __future__ import annotations
 import itertools
 import logging
 import math
+from collections import defaultdict
 from collections.abc import Iterator
 from copy import deepcopy
 from datetime import date, datetime, time, timedelta
@@ -14,6 +15,7 @@ from dcs.countries import Switzerland, USAFAggressors, UnitedNationsPeacekeepers
 from dcs.country import Country
 from dcs.mapping import Point
 from dcs.task import CAP, CAS, PinpointStrike
+from dcs.unitgroup import VehicleGroup
 from dcs.vehicles import AirDefence
 from faker import Faker
 
@@ -163,6 +165,9 @@ class Game:
         self.pretense_air_groups: dict[str, Flight] = {}
         self.pretense_carrier_zones: List[str] = []
         self.pretense_jtac: str
+        self.pretense_support_trucks: dict[str, VehicleGroup] = defaultdict(
+            VehicleGroup
+        )
 
         self.on_load(game_still_initializing=True)
 

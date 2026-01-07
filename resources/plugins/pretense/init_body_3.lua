@@ -19,18 +19,6 @@ timer.scheduleFunction(function(param, time)
 	return time+60
 end, zones, timer.getTime()+60)
 
-
---make sure support units are present where needed
-ensureSpawn = {
-	['golf-farp-suport'] = zones.golf,
-	['november-farp-suport'] = zones.november,
-	['tango-farp-suport'] = zones.tango,
-	['sierra-farp-suport'] = zones.sierra,
-	['cherkessk-farp-suport'] = zones.cherkessk,
-	['unal-farp-suport'] = zones.unal,
-	['tyrnyauz-farp-suport'] = zones.tyrnyauz
-}
-
 for grname, zn in pairs(ensureSpawn) do
 	local g = Group.getByName(grname)
 	if g then g:destroy() end

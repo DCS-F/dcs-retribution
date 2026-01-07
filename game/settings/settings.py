@@ -1496,6 +1496,14 @@ class Settings:
         default=True,
         detail=("Note: will not switch sides as the zones change hands."),
     )
+    pretense_num_of_support_trucks_of_type: int = bounded_int_option(
+        "Number of each support truck type at FARPs",
+        page=PRETENSE_PAGE,
+        section=GENERAL_SECTION,
+        default=1,
+        min=1,
+        max=100,
+    )
     pretense_num_of_cargo_planes: int = bounded_int_option(
         "Number of cargo planes per side",
         page=PRETENSE_PAGE,

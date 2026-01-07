@@ -37,6 +37,7 @@ from game.missiongenerator.tgogenerator import (
     LhaGenerator,
     MissileSiteGenerator,
     GenericCarrierGenerator,
+    farp_truck_types_for_country,
 )
 from game.point_with_heading import PointWithHeading
 from game.pretense.pretenseflightgroupspawner import PretenseNameGenerator
@@ -783,6 +784,73 @@ class PretenseLhaGenerator(PretenseGenericCarrierGenerator):
         )
 
 
+class PretenseSupportTruckGenerator:
+    """
+    Generates STOL aircraft starting positions for given control point
+    """
+
+    def __init__(
+        self,
+        mission: Mission,
+        cp: ControlPoint,
+        game: Game,
+    ):
+        self.m = mission
+        self.cp = cp
+        self.game = game
+        self.support_trucks: Optional[VehicleGroup] = None
+
+    def generate(self) -> None:
+        country = self.m.country(
+            self.game.coalition_for(Player.BLUE).faction.country.name
+        )
+        faction = self.game.coalition_for(Player.BLUE).faction
+        cp_name_trimmed = PretenseNameGenerator.pretense_trimmed_cp_name(self.cp.name)
+
+        group_name = f"{cp_name_trimmed}-support-trucks"
+        logging.info("Generating support trucks : " + group_name)
+
+        for trucks_num in range(
+            self.game.settings.pretense_num_of_support_trucks_of_type
+        ):
+            tanker_type, ammo_truck_type, power_truck_type = (
+                farp_truck_types_for_country(country.id)
+            )
+
+            unit_list = [tanker_type, ammo_truck_type, power_truck_type]
+
+            for unit_type in unit_list:
+                unit_name = (
+                    f"{cp_name_trimmed}-support-truck-"
+                    + str(unit_type.name)
+                    + "-"
+                    + str(trucks_num)
+                )
+                random_position = self.cp.position.random_point_within(200, 30)
+                random_heading = random.randint(0, 359)
+
+                if self.support_trucks is None:
+                    self.support_trucks = self.m.vehicle_group(
+                        country,
+                        group_name,
+                        unit_type,
+                        position=random_position,
+                        heading=random_heading,
+                    )
+                    self.support_trucks.units[0].player_can_drive = True
+                    self.support_trucks.units[0].name = unit_name
+                    GroundForcePainter(
+                        faction, self.support_trucks.units[0]
+                    ).apply_livery()
+                else:
+                    vehicle_unit = self.m.vehicle(unit_name, unit_type)
+                    vehicle_unit.player_can_drive = True
+                    vehicle_unit.position = random_position
+                    vehicle_unit.heading = random_heading
+                    GroundForcePainter(faction, vehicle_unit).apply_livery()
+                    self.support_trucks.add_unit(vehicle_unit)
+
+
 class PretenseTgoGenerator(TgoGenerator):
     """Creates DCS groups and statics for the theater during mission generation.
 
@@ -862,6 +930,16 @@ class PretenseTgoGenerator(TgoGenerator):
             ground_spawn_gen.generate()
             self.ground_spawns[cp] = ground_spawn_gen.ground_spawns
             random.shuffle(self.ground_spawns[cp])
+
+            # Generate support trucks for Pretense FARPs
+            support_truck_gen = PretenseSupportTruckGenerator(self.m, cp, self.game)
+            support_truck_gen.generate()
+            self.game.pretense_support_trucks[cp_name_trimmed] = (
+                support_truck_gen.support_trucks
+            )
+            print(
+                f"Generated support trucks for {cp_name_trimmed}, group name: {self.game.pretense_support_trucks[cp_name_trimmed].name}"
+            )
 
             for ground_object in cp.ground_objects:
                 generator: GroundObjectGenerator

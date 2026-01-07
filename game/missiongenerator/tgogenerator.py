@@ -115,7 +115,10 @@ def farp_truck_types_for_country(
 
     axis_trucks: List[Type[VehicleType]] = [Unarmed.Blitz_36_6700A]
 
-    us_tankers: List[Type[VehicleType]] = [Unarmed.M978_HEMTT_Tanker]
+    us_tankers: List[Type[VehicleType]] = [
+        Unarmed.M978_HEMTT_Tanker,
+        Unarmed.r11_volvo_drivable,
+    ]
     us_trucks: List[Type[VehicleType]] = [Unarmed.M_818]
     uk_trucks: List[Type[VehicleType]] = [Unarmed.Bedford_MWD]
 
@@ -138,7 +141,6 @@ def farp_truck_types_for_country(
         CzechRepublic.id,
         Egypt.id,
         Ethiopia.id,
-        Finland.id,
         GDR.id,
         Georgia.id,
         Ghana.id,
@@ -237,6 +239,12 @@ def farp_truck_types_for_country(
     elif country_id in [UnitedNationsPeacekeepers.id]:
         tanker_types = soviet_tankers + us_tankers
         truck_types = soviet_trucks + us_trucks + uk_trucks
+
+        tanker_type = random.choice(tanker_types)
+        ammo_truck_type = random.choice(truck_types)
+    elif country_id in [Finland.id]:
+        tanker_types = [Unarmed.r11_volvo_drivable, Unarmed.ATZ_10]
+        truck_types = [Unarmed.KAMAZ_Truck, Unarmed.Ural_4320T]
 
         tanker_type = random.choice(tanker_types)
         ammo_truck_type = random.choice(truck_types)
