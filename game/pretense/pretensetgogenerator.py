@@ -13,10 +13,13 @@ import logging
 from collections import defaultdict
 from typing import Dict, Optional, TYPE_CHECKING, Tuple, Type, Iterator
 
-from dcs import Mission, Point
+from dcs import Mission, Point, unitgroup
 from dcs.countries import *
 from dcs.country import Country
+from dcs.point import StaticPoint
 from dcs.ships import Stennis, CVN_71, CVN_72, CVN_73, CVN_75, Forrestal, LHA_Tarawa
+from dcs.terrain import Airport
+from dcs.unit import BaseFARP, SingleHeliPad, FARP, InvisibleFARP
 from dcs.unitgroup import StaticGroup, VehicleGroup
 from dcs.unittype import VehicleType
 
@@ -41,6 +44,7 @@ from game.missiongenerator.tgogenerator import (
 )
 from game.point_with_heading import PointWithHeading
 from game.pretense.pretenseflightgroupspawner import PretenseNameGenerator
+from game.radio.RadioFrequencyContainer import RadioFrequencyContainer
 from game.radio.radios import RadioRegistry
 from game.radio.tacan import TacanRegistry, TacanBand, TacanUsage
 from game.runways import RunwayData
@@ -750,6 +754,326 @@ class PretenseGenericCarrierGenerator(GenericCarrierGenerator):
                 )
 
 
+class HelipadGenerator:
+    """
+    Generates helipads for given control point
+    """
+
+    def __init__(
+        self,
+        mission: Mission,
+        cp: ControlPoint,
+        game: Game,
+        radio_registry: RadioRegistry,
+        tacan_registry: TacanRegistry,
+    ):
+        self.m = mission
+        self.cp = cp
+        self.game = game
+        self.radio_registry = radio_registry
+        self.tacan_registry = tacan_registry
+        self.helipads: list[StaticGroup] = []
+
+    def create_helipad(
+        self, i: int, helipad: PointWithHeading, helipad_type: str
+    ) -> None:
+        # Note: Helipad are generated as neutral object in order not to interfere with
+        # capture triggers
+        pad: BaseFARP
+        neutral_country = self.m.country(self.game.neutral_country.name)
+        if self.cp.captured is Player.NEUTRAL:
+            country = neutral_country
+        else:
+            country = self.m.country(
+                self.game.coalition_for(self.cp.captured).faction.country.name
+            )
+
+        name = f"{self.cp.name} {helipad_type} {i}"
+        logging.info("Generating helipad static : " + name)
+        terrain = self.m.terrain
+        if helipad_type == "SINGLE_HELIPAD":
+            pad = SingleHeliPad(
+                unit_id=self.m.next_unit_id(), name=name, terrain=terrain
+            )
+            number_of_pads = 1
+        elif helipad_type == "FARP":
+            pad = FARP(unit_id=self.m.next_unit_id(), name=name, terrain=terrain)
+            number_of_pads = 4
+        else:
+            pad = InvisibleFARP(
+                unit_id=self.m.next_unit_id(), name=name, terrain=terrain
+            )
+            number_of_pads = 1
+        pad.position = Point(helipad.x, helipad.y, terrain=terrain)
+        pad.heading = helipad.heading.degrees
+
+        # Set FREQ
+        if isinstance(self.cp, RadioFrequencyContainer) and self.cp.frequency:
+            if isinstance(pad, BaseFARP):
+                pad.heliport_frequency = self.cp.frequency.mhz
+
+        sg = unitgroup.StaticGroup(self.m.next_group_id(), name)
+        sg.add_unit(pad)
+        sp = StaticPoint(pad.position)
+        sg.add_point(sp)
+        neutral_country.add_static_group(sg)
+
+        if number_of_pads > 1:
+            self.append_helipad(pad, name, helipad.heading.degrees, 60, 0, 0)
+            self.append_helipad(pad, name, helipad.heading.degrees + 180, 20, 0, 0)
+            self.append_helipad(
+                pad, name, helipad.heading.degrees + 90, 60, helipad.heading.degrees, 20
+            )
+            self.append_helipad(
+                pad,
+                name,
+                helipad.heading.degrees + 90,
+                60,
+                helipad.heading.degrees + 180,
+                60,
+            )
+        else:
+            self.helipads.append(sg)
+
+        warehouse = Airport(
+            pad.position,
+            self.m.terrain,
+        ).dict()
+        if self.cp.coalition.player.is_neutral:
+            warehouse["coalition"] = "neutral"
+        elif self.cp.coalition.player.is_blue:
+            warehouse["coalition"] = "blue"
+        else:
+            warehouse["coalition"] = "red"
+        # configure dynamic spawn + hot start of DS, plus dynamic cargo?
+        self.m.warehouses.warehouses[pad.id] = warehouse
+
+    def append_helipad(
+        self,
+        pad: BaseFARP,
+        name: str,
+        heading_1: int,
+        distance_1: int,
+        heading_2: int,
+        distance_2: int,
+    ) -> None:
+        new_pad = InvisibleFARP(pad._terrain)
+        new_pad.position = pad.position.point_from_heading(heading_1, distance_1)
+        new_pad.position = new_pad.position.point_from_heading(heading_2, distance_2)
+        sg = unitgroup.StaticGroup(self.m.next_group_id(), name)
+        sg.add_unit(new_pad)
+        self.helipads.append(sg)
+
+    def generate(self) -> None:
+        for i, helipad in enumerate(self.cp.helipads):
+            self.create_helipad(i, helipad, "SINGLE_HELIPAD")
+        for i, helipad in enumerate(self.cp.helipads_quad):
+            self.create_helipad(i, helipad, "FARP")
+        for i, helipad in enumerate(self.cp.helipads_invisible):
+            self.create_helipad(i, helipad, "Invisible FARP")
+
+
+class GroundSpawnRoadbaseGenerator:
+    """
+    Generates Highway strip starting positions for given control point
+    """
+
+    def __init__(
+        self,
+        mission: Mission,
+        cp: ControlPoint,
+        game: Game,
+        radio_registry: RadioRegistry,
+        tacan_registry: TacanRegistry,
+    ):
+        self.m = mission
+        self.cp = cp
+        self.game = game
+        self.radio_registry = radio_registry
+        self.tacan_registry = tacan_registry
+        self.ground_spawns_roadbase: list[Tuple[StaticGroup, Point]] = []
+
+    def create_ground_spawn_roadbase(
+        self, i: int, ground_spawn: Tuple[PointWithHeading, Point]
+    ) -> None:
+        # Note: FARPs are generated as neutral object in order not to interfere with
+        # capture triggers
+        neutral_country = self.m.country(self.game.neutral_country.name)
+        country = self.m.country(
+            self.game.coalition_for(self.cp.captured).faction.country.name
+        )
+        terrain = self.cp.coalition.game.theater.terrain
+
+        name = f"{self.cp.name} roadbase spawn {i}"
+        logging.info("Generating Roadbase Spawn static : " + name)
+
+        pad = InvisibleFARP(unit_id=self.m.next_unit_id(), name=name, terrain=terrain)
+
+        pad.position = Point(ground_spawn[0].x, ground_spawn[0].y, terrain=terrain)
+        pad.heading = ground_spawn[0].heading.degrees
+        sg = unitgroup.StaticGroup(self.m.next_group_id(), name)
+        sg.add_unit(pad)
+        sp = StaticPoint(pad.position)
+        sg.add_point(sp)
+        neutral_country.add_static_group(sg)
+
+        self.ground_spawns_roadbase.append((sg, ground_spawn[1]))
+
+        warehouse = Airport(
+            pad.position,
+            self.m.terrain,
+        ).dict()
+        if self.cp.coalition.player.is_neutral:
+            warehouse["coalition"] = "neutral"
+        elif self.cp.coalition.player.is_blue:
+            warehouse["coalition"] = "blue"
+        else:
+            warehouse["coalition"] = "red"
+        # configure dynamic spawn + hot start of DS, plus dynamic cargo?
+        self.m.warehouses.warehouses[pad.id] = warehouse
+
+    def generate(self) -> None:
+        try:
+            for i, ground_spawn in enumerate(self.cp.ground_spawns_roadbase):
+                self.create_ground_spawn_roadbase(i, ground_spawn)
+        except AttributeError:
+            self.ground_spawns_roadbase = []
+
+
+class GroundSpawnLargeGenerator:
+    """
+    Generates STOL aircraft starting positions for given control point
+    """
+
+    def __init__(
+        self,
+        mission: Mission,
+        cp: ControlPoint,
+        game: Game,
+        radio_registry: RadioRegistry,
+        tacan_registry: TacanRegistry,
+    ):
+        self.m = mission
+        self.cp = cp
+        self.game = game
+        self.radio_registry = radio_registry
+        self.tacan_registry = tacan_registry
+        self.ground_spawns_large: list[Tuple[StaticGroup, Point]] = []
+
+    def create_ground_spawn_large(
+        self, i: int, vtol_pad: Tuple[PointWithHeading, Point]
+    ) -> None:
+        # Note: FARPs are generated as neutral object in order not to interfere with
+        # capture triggers
+        neutral_country = self.m.country(self.game.neutral_country.name)
+        country = self.m.country(
+            self.game.coalition_for(self.cp.captured).faction.country.name
+        )
+        terrain = self.cp.coalition.game.theater.terrain
+
+        name = f"{self.cp.name} large ground spawn {i}"
+        logging.info("Generating Large Ground Spawn static : " + name)
+
+        pad = InvisibleFARP(unit_id=self.m.next_unit_id(), name=name, terrain=terrain)
+
+        pad.position = Point(vtol_pad[0].x, vtol_pad[0].y, terrain=terrain)
+        pad.heading = vtol_pad[0].heading.degrees
+        sg = unitgroup.StaticGroup(self.m.next_group_id(), name)
+        sg.add_unit(pad)
+        sp = StaticPoint(pad.position)
+        sg.add_point(sp)
+        neutral_country.add_static_group(sg)
+
+        self.ground_spawns_large.append((sg, vtol_pad[1]))
+
+        warehouse = Airport(
+            pad.position,
+            self.m.terrain,
+        ).dict()
+        if self.cp.coalition.player.is_neutral:
+            warehouse["coalition"] = "neutral"
+        elif self.cp.coalition.player.is_blue:
+            warehouse["coalition"] = "blue"
+        else:
+            warehouse["coalition"] = "red"
+        # configure dynamic spawn + hot start of DS, plus dynamic cargo?
+        self.m.warehouses.warehouses[pad.id] = warehouse
+
+    def generate(self) -> None:
+        try:
+            for i, vtol_pad in enumerate(self.cp.ground_spawns_large):
+                self.create_ground_spawn_large(i, vtol_pad)
+        except AttributeError:
+            self.ground_spawns_large = []
+
+
+class GroundSpawnGenerator:
+    """
+    Generates STOL aircraft starting positions for given control point
+    """
+
+    def __init__(
+        self,
+        mission: Mission,
+        cp: ControlPoint,
+        game: Game,
+        radio_registry: RadioRegistry,
+        tacan_registry: TacanRegistry,
+    ):
+        self.m = mission
+        self.cp = cp
+        self.game = game
+        self.radio_registry = radio_registry
+        self.tacan_registry = tacan_registry
+        self.ground_spawns: list[Tuple[StaticGroup, Point]] = []
+
+    def create_ground_spawn(
+        self, i: int, vtol_pad: Tuple[PointWithHeading, Point]
+    ) -> None:
+        # Note: FARPs are generated as neutral object in order not to interfere with
+        # capture triggers
+        neutral_country = self.m.country(self.game.neutral_country.name)
+        country = self.m.country(
+            self.game.coalition_for(self.cp.captured).faction.country.name
+        )
+        terrain = self.cp.coalition.game.theater.terrain
+
+        name = f"{self.cp.name} ground spawn {i}"
+        logging.info("Generating Ground Spawn static : " + name)
+
+        pad = InvisibleFARP(unit_id=self.m.next_unit_id(), name=name, terrain=terrain)
+
+        pad.position = Point(vtol_pad[0].x, vtol_pad[0].y, terrain=terrain)
+        pad.heading = vtol_pad[0].heading.degrees
+        sg = unitgroup.StaticGroup(self.m.next_group_id(), name)
+        sg.add_unit(pad)
+        sp = StaticPoint(pad.position)
+        sg.add_point(sp)
+        neutral_country.add_static_group(sg)
+
+        self.ground_spawns.append((sg, vtol_pad[1]))
+
+        warehouse = Airport(
+            pad.position,
+            self.m.terrain,
+        ).dict()
+        if self.cp.coalition.player.is_neutral:
+            warehouse["coalition"] = "neutral"
+        elif self.cp.coalition.player.is_blue:
+            warehouse["coalition"] = "blue"
+        else:
+            warehouse["coalition"] = "red"
+        # configure dynamic spawn + hot start of DS, plus dynamic cargo?
+        self.m.warehouses.warehouses[pad.id] = warehouse
+
+    def generate(self) -> None:
+        try:
+            for i, vtol_pad in enumerate(self.cp.ground_spawns):
+                self.create_ground_spawn(i, vtol_pad)
+        except AttributeError:
+            self.ground_spawns = []
+
+
 class PretenseCarrierGenerator(PretenseGenericCarrierGenerator):
     def tacan_callsign(self) -> str:
         # TODO: Assign these properly.
@@ -826,8 +1150,8 @@ class PretenseSupportTruckGenerator:
                     + "-"
                     + str(trucks_num)
                 )
-                random_position = self.cp.position.random_point_within(200, 30)
-                random_heading = random.randint(0, 359)
+                random_position = self.cp.position.random_point_within(500, 30)
+                random_heading = random.randint(1, 360)
 
                 if self.support_trucks is None:
                     self.support_trucks = self.m.vehicle_group(
