@@ -17,12 +17,10 @@ settings:
   pretense_do_not_generate_sead_missions: true
   pretense_do_not_generate_csar_missions: true
   pretense_controllable_carrier: false
-  pretense_ownfor_cap_mission_dist_to_front: 10
-  pretense_ownfor_sead_mission_dist_to_front: 10
-  pretense_ownfor_strike_mission_dist_to_front: 10
-  pretense_opfor_cap_mission_dist_to_front: 4
-  pretense_opfor_sead_mission_dist_to_front: 4
-  pretense_opfor_strike_mission_dist_to_front: 4
+  pretense_cap_mission_dist_to_front: 4
+  pretense_sead_mission_dist_to_front: 4
+  pretense_strike_mission_dist_to_front: 4
+  pretense_ai_max_mission_dist_to_front: 12
   perf_culling: false
   perf_culling_distance: 110
   player_skill: "High"
@@ -39,6 +37,7 @@ settings:
 
   plugins:
     gamemaster: true
+    skynetiads: false
     ewrs: true
     splashdamageclusters: true
     splashdamageclusters.bdaMessages: true
