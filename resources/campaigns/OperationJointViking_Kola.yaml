@@ -1,0 +1,251 @@
+---
+name: Operation Joint Viking
+theater: Kola
+authors: Schneeflocke
+recommended_player_faction: Bluefor Modern
+recommended_enemy_faction: Russia 2010
+description:
+  <p><strong>Situation:</strong></p>
+  <p>A peer adversary has launched a limited war against NATO. Using civilian transport vessels as cover, OPFOR forces conducted a surprise landing at Evenes Airfield and successfully captured it. 
+  Simultaneously, coordinated cruise‑missile strikes rendered Bardufoss and Andøya temporarily inoperable.</p>
+  <p>With Evenes secured, OPFOR began rapid airlifts to reinforce their foothold, enabling them to seize Bjerkvik. Their ground forces are now advancing toward Bardufoss Airfield. Meanwhile, OPFOR’s Northern Fleet has deployed to block NATO naval intervention along the Norwegian coast.</p>
+  <p>At the same time, OPFOR has opened a second front by launching a ground offensive in the northern Kola Peninsula.</p>
+  
+  <p><strong>NATO Commander:</strong></p>
+  <p>You command the Southern Norwegian forces. Your mission is to halt the OPFOR advance toward Bardufoss Airfield, retake Evenes, and neutralize the enemy carrier group. You win the campaign if you recapture Evenes, and sink the enemy carrier.
+  You lose if OPFOR captures Bardufoss Airfield or sinks your carrier.</p>
+  <p>Your starting force represents the surviving elements of the Royal Norwegian Air Force and the task force assigned to your sector, while the bulk of NATO forces are committed to the northern front.</p>
+  <p></p>
+  <p><strong>OPFOR Commander:</strong></p>
+  <p>You command the invasion forces operating from the Evenes bridgehead. Your mission is to capture Bardufoss Airfield, destroy the NATO carrier, and neutralize Bodø Air Base.
+  <p>You win the campaign if you seize Bardufoss, destroy the NATO carrier, and take Bodø out of action. You lose if NATO successfully defends Bardufoss or your carrier is sunk.</p>
+  <p></p>
+  <p><strong>Designer notes:</strong></p>
+  <p>Do not attack the Murmansk FOB or the surrounding industrial facilities. These represent heavily defended OPFOR strategic assets and are outside your area of responsibility. You are, however, encouraged to intercept supply ships en route to Evenes. 
+  As NATO, your only viable reinforcement route to Bardufoss is via airlift from Kallax.
+  Kallax Air Base hosts several NATO squadrons, but most of them are not immediately combat‑ready. Preparing aircraft, crews, and logistics for forward deployment takes time. To simulate this, you may only use the F‑15C squadron, The E-3 and the C‑130s at the start of the campaign. 
+  Each day (not turn!), you may transfer one additional squadron from Kallax to Bodø; once transferred, that squadron becomes available for operations. Disable the auto planner for that!</p>
+  <p>As OPFOR, you must not attack Kallax Airfield or its associated assets. These represent European rear‑area infrastructure and are not part of your operational mandate. If the AI conducts airlifts, you are encouraged to intercept them.</p>
+  <p>For the best experience, play with limited resources and give the AI increased starting funds and turn income. Consider imposing a time limit on your operations — political leaders, fearing nuclear escalation, may force a ceasefire before you achieve your objectives.
+  I also recommend very little pilot reinforcements, since the initial plane count is balanced. Dont forget to tweak the settings so the AI mostly buys ground units.</p>
+  <p>This is the arctic! The real world exercise happens in February - March, when the conditions and the environment are at their most challenging. Change the starting date to summer if you dislike missions in the dark.</p>
+miz: OperationJointViking_Kola.miz
+performance: 2
+recommended_start_date: 1999-02-15
+recommended_player_money: 400
+recommended_player_income_multiplier: 0.5
+recommended_enemy_money: 1200
+recommended_enemy_income_multiplier: 0.5
+advanced_iads: false
+version: "10.8"
+settings:
+  squadron_start_full: true
+  max_frontline_width: 15
+
+#overwrite Air Defense generation if possible - Russian VDV and Naval regiments bring the best they have to the bridgehead
+ground_forces:
+  Evenes-SAM-1 : SA-11 #SA-11 SA-15 Tor SA-19 Grison (2K22 Tunguska)
+  Evenes-SAM-7 : SA-11
+  Evenes-SAM-8 : SA-19 Grison
+  Evenes-SAM-6 : SA-19 Grison
+  Evenes-SAM-5 : SA-15 Tor
+
+  Evenes-SAM-13 : SA-15 Tor
+  Evenes-SAM-3 : SA-19 Grison
+  Evenes-SAM-2 : SA-11
+
+squadrons:
+  #OPFOR - 60 Fighter, 32 Bomber 12 Helicopter
+  #NATO - 64 Fighter, 16 Bomber , 10 Helicopter
+
+  #NATO
+  # Kallax - Reinforcements from Europe, and E-2 / C-130 for Transport
+  15:
+    - primary: Escort
+      secondary: air-to-air
+      aircraft:
+        - F-15C Eagle
+      size: 6
+    - primary: Transport
+      aircraft:
+        - C-130J-30
+      size: 12
+    - primary: AEW&C
+      aircraft:
+        - E-3A
+      size: 2
+
+      #Reserves, where its allowed to activate 1 new squadron each day.
+      #Germany
+    - primary: BAI
+      secondary: any
+      aircraft:
+        - F-4E-45MC Phantom II
+      size: 12
+
+      #UK
+    - primary: Strike
+      secondary: air-to-ground
+      aircraft:
+        - Tornado IDS
+      size: 8
+
+      #French
+    - primary: Intercept
+      secondary: air-to-air
+      aircraft:
+        - Mirage 2000-5
+      size: 8
+
+      #USA
+    - primary: SEAD
+      secondary: any
+      aircraft:
+        - F-16CM Fighting Falcon (Block 50)
+      size: 8
+
+  CVN George Washington:
+    - primary: Refueling
+      aircraft:
+        - S-3B Tanker
+      size: 4
+    - primary: AEW&C
+      aircraft:
+        - E-2C Hawkeye
+      size: 2
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (Lot 20)
+      size: 6
+    - primary: SEAD
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (Lot 20)
+      size: 6
+    - primary: Anti-ship
+      secondary: any
+      aircraft:
+        - F/A-18C Hornet (Lot 20)
+      size: 6
+    - primary: Air Assault
+      secondary: Transport
+      aircraft:
+        - SH-60B Seahawk
+      size: 6
+
+  #Bodo - Rest of Norwegian Air Force
+  7:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - F-16CM Fighting Falcon (Block 50)
+      size: 6
+    - primary: Air Assault
+      secondary: any
+      aircraft:
+        - UH-1D Iroquois
+      size: 8
+
+  #Bardufoss - empty after cruise missile strike
+  21:
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - OH-58D Kiowa Warrior
+      size: 4
+
+  USA:
+    - primary: Strike
+      secondary: air-to-ground
+      aircraft:
+        - B-2 Spirit
+        - B-1B Lancer
+        - B-52H Stratofortress
+      size: 4
+    - primary: Strike
+      secondary: air-to-ground
+      aircraft:
+        - B-1B Lancer
+        - B-52H Stratofortress
+      size: 4
+    - primary: Escort
+      secondary: air-to-air
+      aircraft:
+        - F-15C Eagle
+      size: 6
+  
+  #OPFOR
+  #Evenes
+  25:
+    - primary: BARCAP
+      secondary: air-to-air
+      aircraft:
+        - Su-27 Flanker-B
+        - MiG-29S Fulcrum-C
+      size: 12
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Su-25 Frogfoot
+      size: 8
+
+  Bjerkvik:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - Ka-50 Hokum III
+        - Mi-24P Hind-F
+      size: 4
+
+  CVN Admiral Kuznetzov:
+    - primary: BARCAP
+      secondary: any
+      aircraft:
+        - Su-33 Flanker-D
+        - J-15 Flanker X-2
+      size: 24
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - Ka-50 Hokum III
+        - Mi-24P Hind-F
+      size: 8
+
+  Russia:
+    - primary: AEW&C
+      aircraft:
+        - A-50
+      size: 2
+    - primary: Anti-ship
+      secondary: 
+        - OCA/Runway
+        - Strike
+      aircraft:
+        - Tu-22M3 Backfire-C
+        - H-6J Badger
+        - Tu-16 Badger
+      size: 12
+    - primary: BAI
+      secondary: air-to-ground
+      aircraft:
+        - Su-24M Fencer-D
+        - Tu-16 Badger
+      size: 12
+    - primary: Escort
+      secondary: air-to-air
+      aircraft:
+        - MiG-31 Foxhound
+        - MiG-31BM Foxhound
+        - MiG-25PD Foxbat-E
+        - Su-30 Flanker-C
+        - Su-27 Flanker-B
+        - MiG-29S Fulcrum-C
+      size: 12
+    - primary: Escort
+      secondary: air-to-air
+      aircraft:
+        - MiG-31 Foxhound
+        - MiG-25PD Foxbat-E
+        - Su-30 Flanker-C
+      size: 12
