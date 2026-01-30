@@ -40,6 +40,7 @@ from ..callsigns import callsign_for_support_unit
 from ..dcs.aircrafttype import AircraftType
 from ..lasercodes import LaserCodeRegistry
 from ..missiongenerator import MissionGenerator
+from ..missiongenerator.aircraft.aircraftpainter import AircraftPainterJtac
 from ..theater import Airfield
 
 if TYPE_CHECKING:
@@ -210,6 +211,7 @@ class PretenseMissionGenerator(MissionGenerator):
                     altitude=5000,
                     maintask=AFAC,
                 )
+                AircraftPainterJtac(self.game.blue.faction, utype, jtac).apply_livery()
                 jtac.points[0].tasks.append(
                     FAC(
                         callsign=len(self.mission_data.jtacs) + 1,
@@ -311,6 +313,7 @@ class PretenseMissionGenerator(MissionGenerator):
                 altitude=5000,
                 maintask=AFAC,
             )
+            AircraftPainterJtac(self.game.blue.faction, utype, jtac).apply_livery()
             # jtac.points[0].tasks.append(
             #     FAC(
             #         callsign=len(self.mission_data.jtacs) + 1,
