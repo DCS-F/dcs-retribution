@@ -5284,7 +5284,7 @@ do
 				env.info('ZoneCommand:verifyBuildValid - stopping mission build, zone is neutral')
 			end
 
-			if (self.mode == 'export' and not self.keepActive) or self.mode == 'supply' then 
+			if (self.side == 1 and self.mode == 'export' and not self.keepActive) or self.mode == 'supply' then
 				env.info('ZoneCommand:verifyBuildValid - stopping mission build, mode is '..self.mode..'')
 				self.currentMissionBuild = nil
 			end
