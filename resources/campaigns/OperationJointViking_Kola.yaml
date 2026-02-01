@@ -1,5 +1,5 @@
 ---
-name: Operation Joint Viking
+name: Kola - Operation Joint Viking
 theater: Kola
 authors: Schneeflocke
 recommended_player_faction: Bluefor Modern
@@ -41,18 +41,6 @@ version: "10.8"
 settings:
   squadron_start_full: true
   max_frontline_width: 15
-
-#overwrite Air Defense generation if possible - Russian VDV and Naval regiments bring the best they have to the bridgehead
-ground_forces:
-  Evenes-SAM-1 : SA-11 #SA-11 SA-15 Tor SA-19 Grison (2K22 Tunguska)
-  Evenes-SAM-7 : SA-11
-  Evenes-SAM-8 : SA-19 Grison
-  Evenes-SAM-6 : SA-19 Grison
-  Evenes-SAM-5 : SA-15 Tor
-
-  Evenes-SAM-13 : SA-15 Tor
-  Evenes-SAM-3 : SA-19 Grison
-  Evenes-SAM-2 : SA-11
 
 squadrons:
   #OPFOR - 60 Fighter, 32 Bomber 12 Helicopter
@@ -129,7 +117,6 @@ squadrons:
         - F/A-18C Hornet (Lot 20)
       size: 6
     - primary: Air Assault
-      secondary: Transport
       aircraft:
         - SH-60B Seahawk
       size: 6
