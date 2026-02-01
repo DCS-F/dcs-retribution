@@ -10,5 +10,17 @@ origin: France
 price: 14
 role: Multirole Fighter
 max_range: 200
+gunfighter: true
 variants:
   Mirage-F1CG: {}
+tasks:
+  BAI: 320
+  BARCAP: 310
+  CAS: 320
+  Escort: 310
+  Fighter sweep: 310
+  Intercept: 310
+  OCA/Aircraft: 320
+  OCA/Runway: 290
+  Strike: 290
+  TARCAP: 310
