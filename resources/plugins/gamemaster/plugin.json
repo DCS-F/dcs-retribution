@@ -4,10 +4,6 @@
     "specificOptions": [],
     "scriptsWorkOrders": [
         {
-            "file": "Moose.lua",
-            "mnemonic": "Moose"
-        },
-        {
             "file": "Gamemaster_Functions.lua",
             "mnemonic": "Gamemaster_Functions"
         },
