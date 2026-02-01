@@ -94,13 +94,13 @@
     "LHA_Tarawa"
   ],
   "carriers": {
-    "Forrestal": [
+    "CV-59 Forrestal": [
       "CV-59 Forrestal",
       "CV-60 Saratoga",
       "CV-61 Ranger",
       "CV-62 Independence"
     ],
-    "Stennis": [
+    "CVN-74 John C. Stennis": [
       "CVN-65 Enterprise"
     ]
   },

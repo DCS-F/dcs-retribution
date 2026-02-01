@@ -12,7 +12,7 @@
 	"A-6A Intruder",
     "AJS-37 Viggen",
     "B-52H Stratofortress",
-    "C-130",
+    "C-130J-30",
     "CH-47D",
 	"F-4B Phantom II",
     "F-4C Phantom II",
@@ -29,6 +29,7 @@
     "JF-17 Thunder",
 	"OV-10A Bronco",
     "OH-6A Cayuse",
+    "OH-58D(R) Kiowa Warrior",
     "UH-1H Iroquois",
 	"AH-1W SuperCobra",
 	"Ka-50 Hokum",
@@ -96,13 +97,13 @@
     "LHA_Tarawa"
   ],
   "carriers": {
-    "Forrestal": [
+    "CV-59 Forrestal": [
       "CV-59 Forrestal",
       "CV-60 Saratoga",
       "CV-61 Ranger",
       "CV-62 Independence"
     ],
-    "Stennis": [
+    "CVN-74 John C. Stennis": [
       "CVN-65 Enterprise"
     ]
   },
@@ -226,6 +227,9 @@
     "OH-6A Cayuse": [
       "US Army SEA Camo"
     ],
+    "OH-58D(R) Kiowa Warrior": [
+      "2-17 B Trp. 95-008 Vietnam"
+    ],
 	"OV-10A Bronco": [
       "VAL-4 Black Ponies UM15",
 	  "VAL-4 Black Ponies UM17",
@@ -258,17 +262,15 @@
     "CH-47D": [
       "standard"
     ],
-	"C-130": [
-      "1302",
-      "1310",
-      "1315",
-      "KQVN HCF",
-      "KQVN HCL",
+	"KC-130": [
       "USAF DZ63-779",
       "USAF PR63-820",
       "USAF SEA",
       "USAF SG56-471",
       "USAF YJ56-470"
+    ],
+	"C-130J-30": [
+      "U.S.A.F. SEA - MAC 70s -Clean"
     ],
 	"A-20G Havoc": [
       "USAF SEA Camo"

@@ -14,7 +14,7 @@
     "F-104S Starfighter",
     "F-104S Starfighter A/G",
 	"F-5E Tiger II",
-    "F-16C Fighting Falcon (IDF mod)",
+    "F-16CM Fighting Falcon (Block 50)",
 	"F-16D Fighting Falcon (Block 50)",
 	"F-16D Fighting Falcon (Block 50+)",
     "F-4E Phantom II",
@@ -96,7 +96,7 @@
       "3rd Main Jet Base Group Command, Turkey",
       "5th fs Merzifon air base, Turkey"
     ],
-    "F-16C Fighting Falcon (IDF mod)": [
+    "F-16CM Fighting Falcon (Block 50)": [
       "THK_191_Filo"
     ],
 	"F-16D Fighting Falcon (Block 50)": [
