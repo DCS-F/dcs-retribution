@@ -13,6 +13,8 @@ from .f106 import *
 from .f15d import *
 from .f15i_idf import *
 from .f16i_idf import *
+from .f16a_mlu_f16c_bl52d import *
+from .f16cm_bl50 import *
 from .f22a import *
 from .f4 import *
 from .f84g import *
