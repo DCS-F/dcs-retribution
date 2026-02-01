@@ -19,15 +19,10 @@
     "SA 342M Gazelle Mistral",
     "C-130",
     "C-130J-30 Super Hercules",
-    "F-16A Fighting Falcon (A/G)",
-	"F-16C Fighting Falcon (Block 50, A/A)",
-    "F-16C Fighting Falcon (Block 50, AI)",
-    "F-16CJ Fighting Falcon (Block 52D, AI)",
-	"F-16CJ Fighting Falcon (Block 52D)",
-	"F-16CM Fighting Falcon (Block 50, A/A)",
-	"F-16CM Fighting Falcon (Block 50, A/G)",
 	"F-16D Fighting Falcon (Block 52)",
 	"F-16D Fighting Falcon (Block 52+)",
+    "F-16C Fighting Falcon (Block 50, AI)",
+    "F-16CJ Fighting Falcon (Block 52D, AI)",
     "F-4E Phantom II",
     "Mirage 2000-5",
     "Mirage 2000C",
@@ -46,7 +41,7 @@
     "BMP-3",
     "Leopard 1A3",
     "Leopard 2A4",
-    "AMX-30B2",
+    "AMX.30B2",
     "M1043 HMMWV (M2 HMG)",
     "M1045 HMMWV (BGM-71 TOW)",
     "M113",
@@ -143,12 +138,6 @@
     "C-130": [
       "HAF gray"
     ],
-    "F-16A Fighting Falcon (A/G)": [
-      "HAF_337_Ghost"
-    ],
-	"F-16C Fighting Falcon (Block 50, A/A)": [
-      "HAF_337_Ghost"
-    ],
     "F-16C Fighting Falcon (Block 50, AI)": [
       "HAF - 330sqn",
 	  "HAF - 341sqn",
@@ -159,31 +148,6 @@
       "HAF - 340sqn",
 	  "HAF - 343sqn",
 	  "HAF - Aegean Ghost"
-    ],
-	"F-16CJ Fighting Falcon (Block 52D)": [
-      "HAF_337_Ghost"
-    ],
-	"F-16CM Fighting Falcon (Block 50, A/A)": [
-      "HAF_ 330_Thunder",
-      "HAF_335_Tiger",
-      "HAF_336_Olympus",
-      "HAF_337_Ghost",
-      "HAF_340_Fox",
-      "HAF_341_Arrow",
-      "HAF_343_Star",
-      "HAF_346_Jason",
-      "HAF_347_Perseus"
-    ],
-	"F-16CM Fighting Falcon (Block 50, A/G)": [
-      "HAF_ 330_Thunder",
-      "HAF_335_Tiger",
-      "HAF_336_Olympus",
-      "HAF_337_Ghost",
-      "HAF_340_Fox",
-      "HAF_341_Arrow",
-      "HAF_343_Star",
-      "HAF_346_Jason",
-      "HAF_347_Perseus"
     ],
 	"F-16D Fighting Falcon (Block 52)": [
       "",
