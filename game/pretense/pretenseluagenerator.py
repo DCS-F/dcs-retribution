@@ -1800,7 +1800,8 @@ class PretenseLuaGenerator(LuaGenerator):
             print(f"Generating support group lua for {cp.name}")
             cp_name_trimmed = PretenseNameGenerator.pretense_trimmed_cp_name(cp.name)
 
-            lua_string_support += f"   ['{self.game.pretense_support_trucks[cp_name_trimmed].name}'] = zones.{cp_name_trimmed},\n"
+            if cp.has_helipads:
+                lua_string_support += f"   ['{self.game.pretense_support_trucks[cp_name_trimmed].name}'] = zones.{cp_name_trimmed},\n"
         lua_string_support += "}\n"
 
         init_footer_file = open("./resources/plugins/pretense/init_footer.lua", "r")
