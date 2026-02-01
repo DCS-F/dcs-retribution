@@ -1256,14 +1256,16 @@ class PretenseTgoGenerator(TgoGenerator):
             random.shuffle(self.ground_spawns[cp])
 
             # Generate support trucks for Pretense FARPs
-            support_truck_gen = PretenseSupportTruckGenerator(self.m, cp, self.game)
-            support_truck_gen.generate()
-            self.game.pretense_support_trucks[cp_name_trimmed] = (
-                support_truck_gen.support_trucks
-            )
-            print(
-                f"Generated support trucks for {cp_name_trimmed}, group name: {self.game.pretense_support_trucks[cp_name_trimmed].name}"
-            )
+            # Only generate Pretense support trucks at CPs containing helipads.
+            if cp.has_helipads:
+                support_truck_gen = PretenseSupportTruckGenerator(self.m, cp, self.game)
+                support_truck_gen.generate()
+                self.game.pretense_support_trucks[cp_name_trimmed] = (
+                    support_truck_gen.support_trucks
+                )
+                print(
+                    f"Generated support trucks for {cp_name_trimmed}, group name: {self.game.pretense_support_trucks[cp_name_trimmed].name}"
+                )
 
             for ground_object in cp.ground_objects:
                 generator: GroundObjectGenerator
