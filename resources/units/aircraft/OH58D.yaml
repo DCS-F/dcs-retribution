@@ -31,7 +31,7 @@ default_overrides:
   #Remove_doors: true,
   #PDU: true,
   #Rifles: true,
-  #MMS_removal: false,
+  MMS_removal: true,
   #Rapid_Deployment_Gear: false,
   #ALQ144: false,
   #importDrawings: true,
