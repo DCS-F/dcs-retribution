@@ -18,6 +18,7 @@ from dcs.countries import *
 from dcs.country import Country
 from dcs.point import StaticPoint
 from dcs.ships import Stennis, CVN_71, CVN_72, CVN_73, CVN_75, Forrestal, LHA_Tarawa
+from dcs.statics import Fortification
 from dcs.terrain import Airport
 from dcs.unit import BaseFARP, SingleHeliPad, FARP, InvisibleFARP
 from dcs.unitgroup import StaticGroup, VehicleGroup
@@ -807,6 +808,16 @@ class HelipadGenerator:
         pad.position = Point(helipad.x, helipad.y, terrain=terrain)
         pad.heading = helipad.heading.degrees
 
+        if helipad_type == "LHD_LHA":
+            self.m.static_group(
+                country=country,
+                name=(name + "_lhd"),
+                _type=Fortification.LHD_LHA,
+                position=pad.position,
+                heading=pad.heading,
+            )
+            number_of_pads = 10
+
         # Set FREQ
         if isinstance(self.cp, RadioFrequencyContainer) and self.cp.frequency:
             if isinstance(pad, BaseFARP):
@@ -818,7 +829,66 @@ class HelipadGenerator:
         sg.add_point(sp)
         neutral_country.add_static_group(sg)
 
-        if number_of_pads > 1:
+        if number_of_pads == 10:
+            self.append_helipad(pad, name, helipad.heading.degrees + 90, 110, 0, 0)
+            self.append_helipad(
+                pad,
+                name,
+                helipad.heading.degrees + 90,
+                84,
+                helipad.heading.degrees + 180,
+                20,
+            )
+            self.append_helipad(
+                pad,
+                name,
+                helipad.heading.degrees + 90,
+                55,
+                helipad.heading.degrees + 180,
+                20,
+            )
+            self.append_helipad(
+                pad,
+                name,
+                helipad.heading.degrees + 90,
+                -90,
+                helipad.heading.degrees + 180,
+                20,
+            )
+            self.append_helipad(
+                pad, name, helipad.heading.degrees + 90, 84, helipad.heading.degrees, 15
+            )
+            self.append_helipad(
+                pad, name, helipad.heading.degrees + 90, 55, helipad.heading.degrees, 15
+            )
+            self.append_helipad(
+                pad, name, helipad.heading.degrees + 90, 20, helipad.heading.degrees, 15
+            )
+            self.append_helipad(
+                pad,
+                name,
+                helipad.heading.degrees + 90,
+                -12,
+                helipad.heading.degrees,
+                15,
+            )
+            self.append_helipad(
+                pad,
+                name,
+                helipad.heading.degrees + 90,
+                -45,
+                helipad.heading.degrees,
+                15,
+            )
+            self.append_helipad(
+                pad,
+                name,
+                helipad.heading.degrees + 90,
+                -90,
+                helipad.heading.degrees,
+                15,
+            )
+        elif number_of_pads > 1:
             self.append_helipad(pad, name, helipad.heading.degrees, 60, 0, 0)
             self.append_helipad(pad, name, helipad.heading.degrees + 180, 20, 0, 0)
             self.append_helipad(
@@ -869,6 +939,8 @@ class HelipadGenerator:
             self.create_helipad(i, helipad, "SINGLE_HELIPAD")
         for i, helipad in enumerate(self.cp.helipads_quad):
             self.create_helipad(i, helipad, "FARP")
+        for i, helipad in enumerate(self.cp.helipads_lhd):
+            self.create_helipad(i, helipad, "LHD_LHA")
         for i, helipad in enumerate(self.cp.helipads_invisible):
             self.create_helipad(i, helipad, "Invisible FARP")
 

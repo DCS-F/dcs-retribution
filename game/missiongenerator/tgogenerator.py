@@ -844,6 +844,16 @@ class HelipadGenerator:
         pad.position = Point(helipad.x, helipad.y, terrain=terrain)
         pad.heading = helipad.heading.degrees
 
+        if helipad_type == "LHD_LHA":
+            self.m.static_group(
+                country=country,
+                name=(name + "_lhd"),
+                _type=Fortification.LHD_LHA,
+                position=pad.position,
+                heading=pad.heading,
+            )
+            number_of_pads = 10
+
         # Set FREQ
         if isinstance(self.cp, RadioFrequencyContainer) and self.cp.frequency:
             if isinstance(pad, BaseFARP):
@@ -855,7 +865,66 @@ class HelipadGenerator:
         sg.add_point(sp)
         neutral_country.add_static_group(sg)
 
-        if number_of_pads > 1:
+        if number_of_pads == 10:
+            self.append_helipad(pad, name, helipad.heading.degrees + 90, 110, 0, 0)
+            self.append_helipad(
+                pad,
+                name,
+                helipad.heading.degrees + 90,
+                84,
+                helipad.heading.degrees + 180,
+                20,
+            )
+            self.append_helipad(
+                pad,
+                name,
+                helipad.heading.degrees + 90,
+                55,
+                helipad.heading.degrees + 180,
+                20,
+            )
+            self.append_helipad(
+                pad,
+                name,
+                helipad.heading.degrees + 90,
+                -90,
+                helipad.heading.degrees + 180,
+                20,
+            )
+            self.append_helipad(
+                pad, name, helipad.heading.degrees + 90, 84, helipad.heading.degrees, 15
+            )
+            self.append_helipad(
+                pad, name, helipad.heading.degrees + 90, 55, helipad.heading.degrees, 15
+            )
+            self.append_helipad(
+                pad, name, helipad.heading.degrees + 90, 20, helipad.heading.degrees, 15
+            )
+            self.append_helipad(
+                pad,
+                name,
+                helipad.heading.degrees + 90,
+                -12,
+                helipad.heading.degrees,
+                15,
+            )
+            self.append_helipad(
+                pad,
+                name,
+                helipad.heading.degrees + 90,
+                -45,
+                helipad.heading.degrees,
+                15,
+            )
+            self.append_helipad(
+                pad,
+                name,
+                helipad.heading.degrees + 90,
+                -90,
+                helipad.heading.degrees,
+                15,
+            )
+        elif number_of_pads > 1:
             self.append_helipad(pad, name, helipad.heading.degrees, 60, 0, 0)
             self.append_helipad(pad, name, helipad.heading.degrees + 180, 20, 0, 0)
             self.append_helipad(
@@ -874,7 +943,7 @@ class HelipadGenerator:
 
         if self.game.position_culled(helipad):
             cull_farp_statics = True
-            if self.cp.coalition.player.is_blue:
+            if self.cp.coalition.player:
                 for package in self.cp.coalition.ato.packages:
                     for flight in package.flights:
                         if flight.squadron.location == self.cp:
@@ -901,29 +970,53 @@ class HelipadGenerator:
 
         if not cull_farp_statics:
             # Generate a FARP Ammo and Fuel stack for each pad
-            self.m.static_group(
-                country=country,
-                name=(name + "_fuel"),
-                _type=Fortification.FARP_Fuel_Depot,
-                position=pad.position.point_from_heading(helipad.heading.degrees, 35),
-                heading=pad.heading + 180,
-            )
-            self.m.static_group(
-                country=country,
-                name=(name + "_ammo"),
-                _type=Fortification.FARP_Ammo_Dump_Coating,
-                position=pad.position.point_from_heading(
-                    helipad.heading.degrees, 35
-                ).point_from_heading(helipad.heading.degrees + 90, 10),
-                heading=pad.heading + 90,
-            )
-            self.m.static_group(
-                country=country,
-                name=(name + "_ws"),
-                _type=Fortification.Windsock,
-                position=helipad.point_from_heading(helipad.heading.degrees + 45, 35),
-                heading=pad.heading,
-            )
+            if helipad_type == "LHD_LHA":
+                self.m.static_group(
+                    country=country,
+                    name=(name + "_fuel"),
+                    _type=Fortification.FARP_Fuel_Depot,
+                    position=pad.position.point_from_heading(
+                        helipad.heading.degrees + 180, 12
+                    ),
+                    heading=pad.heading,
+                )
+                self.m.static_group(
+                    country=country,
+                    name=(name + "_ammo"),
+                    _type=Fortification.FARP_Ammo_Dump_Coating,
+                    position=pad.position.point_from_heading(
+                        helipad.heading.degrees + 180, 13
+                    ).point_from_heading(helipad.heading.degrees + 270, 10),
+                    heading=pad.heading + 270,
+                )
+            else:
+                self.m.static_group(
+                    country=country,
+                    name=(name + "_fuel"),
+                    _type=Fortification.FARP_Fuel_Depot,
+                    position=pad.position.point_from_heading(
+                        helipad.heading.degrees, 35
+                    ),
+                    heading=pad.heading + 180,
+                )
+                self.m.static_group(
+                    country=country,
+                    name=(name + "_ammo"),
+                    _type=Fortification.FARP_Ammo_Dump_Coating,
+                    position=pad.position.point_from_heading(
+                        helipad.heading.degrees, 35
+                    ).point_from_heading(helipad.heading.degrees + 90, 10),
+                    heading=pad.heading + 90,
+                )
+                self.m.static_group(
+                    country=country,
+                    name=(name + "_ws"),
+                    _type=Fortification.Windsock,
+                    position=helipad.point_from_heading(
+                        helipad.heading.degrees + 45, 35
+                    ),
+                    heading=pad.heading,
+                )
 
     def append_helipad(
         self,
@@ -946,6 +1039,8 @@ class HelipadGenerator:
             self.create_helipad(i, helipad, "SINGLE_HELIPAD")
         for i, helipad in enumerate(self.cp.helipads_quad):
             self.create_helipad(i, helipad, "FARP")
+        for i, helipad in enumerate(self.cp.helipads_lhd):
+            self.create_helipad(i, helipad, "LHD_LHA")
         for i, helipad in enumerate(self.cp.helipads_invisible):
             self.create_helipad(i, helipad, "Invisible FARP")
 
