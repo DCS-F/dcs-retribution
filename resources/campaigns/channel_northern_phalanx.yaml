@@ -10,6 +10,8 @@ performance: 2
 version: "10.4"
 settings:
   pretense_extra_zone_connections: 0
+  pretense_supply_mode_dist_to_front: 2
+  pretense_export_mode_dist_to_front: 3
   pretense_disable_ground_assaults: true
   pretense_disable_supply_convoys: true
   pretense_ground_assaults_prefer_roads: false
@@ -47,7 +49,7 @@ settings:
   a4_skyhawk: true
   coldwarassets: true
   # f84g_thunderjet: true
-  # f100_supersabre: true
+  f100_supersabre: true
   # f104_starfighter: true
   swedishmilitaryassetspack: true
   uh_60l: true
@@ -73,13 +75,18 @@ squadrons:
         - Mirage 2000C
     - primary: Transport
       aircraft:
-        - C-130
+        - C-130J-30
     - primary: Refueling
       aircraft:
         - KC-130
     - primary: AEW&C
       aircraft:
         - E-2C Hawkeye
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Merville Calonne
   # Easternmost airfield, France
   # 2x1600m runways, 1x1700m runway
@@ -98,10 +105,15 @@ squadrons:
         - MiG-29A Fulcrum-A
     - primary: Transport
       aircraft:
-        - C-130
+        - C-130J-30
     - primary: Refueling
       aircraft:
         - IL-78M
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Maisoncelle
   # Mainland, France
   # Helicopter base
@@ -109,6 +121,7 @@ squadrons:
     - primary: Transport
       secondary: air-to-ground
       aircraft:
+        - UH-60L
         - Mi-8MTV2 Hip
   # Lille roodbase
   # Mainland, France, on the Belgian border
@@ -122,6 +135,11 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Marcq-en-Baroeul roadbase
   # Mainland, France, on the Belgian border
   # 1x3200m roadbase, narrow 5 meter paver runway
@@ -134,6 +152,11 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Roubaix-Bondues
   # Mainland, France, on the Belgian border
   # 1x3200m roadbase, narrow 5 meter paver runway
@@ -146,6 +169,11 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Neuville-en-Ferrain roadbase
   # Mainland, France, on the Belgian border
   # 1x1500m roadbase, narrow 5 meter paver runway
@@ -158,6 +186,11 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - AJS-37 Viggen
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # St. Pol Ligny-St-Flochel roadbase
   # Mainland, France
   # 1x4000m roadbase
@@ -170,6 +203,11 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Savy-Berlette roadbase
   # Mainland, France
   # 1x3500m roadbase
@@ -182,6 +220,11 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Arras Dainville roadbase
   # Mainland, France
   # 1x7500m roadbase
@@ -194,6 +237,11 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Arras Achicourt roadbase
   # Mainland, France
   # 1x900m roadbase
@@ -206,6 +254,11 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - AJS-37 Viggen
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Frevent roadbase
   # Mainland, France
   # 1x1000m roadbase
@@ -218,6 +271,11 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - AJS-37 Viggen
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Amiens Saleux roadbase
   # Mainland, France
   # 1x2000m roadbase
@@ -230,6 +288,11 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Amiens Clairy-Saulchoix roadbase
   # Mainland, France
   # 1x2500m roadbase
@@ -242,6 +305,11 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Amiens Revelles roadbase
   # Mainland, France
   # 1x2500m roadbase
@@ -258,6 +326,11 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Namps-au-Mont roadbase
   # Mainland, France
   # 1x1000m roadbase
@@ -270,6 +343,11 @@ squadrons:
       secondary: air-to-ground
       aircraft:
         - AJS-37 Viggen
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Lignieres-Chatelain roadbase
   # Mainland, France
   # 1x3000m roadbase
@@ -282,6 +360,11 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Villers-sous-Ailly roadbase
   # Mainland, France
   # 1x1600m roadbase
@@ -294,6 +377,11 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Vauchelles-les-Domart roadbase
   # Mainland, France
   # 1x1600m roadbase
@@ -306,6 +394,11 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Bettencourt-Saint-Ouen roadbase
   # Mainland, France
   # 1x3000m roadbase
@@ -318,6 +411,11 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Belloy-sur-Somme roadbase
   # Mainland, France
   # 1x2700m roadbase
@@ -334,6 +432,11 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Flixecourt roadbase
   # Mainland, France
   # 1x1900m roadbase
@@ -346,6 +449,11 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Vacqueriette-Erquieres
   # Mainland, France
   # Helicopter base
@@ -353,7 +461,12 @@ squadrons:
     - primary: CAS
       secondary: any
       aircraft:
-        - Mi-24P Hind-F
+        - OH-58D(R) Kiowa Warrior
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Esclavelles roadbase
   # Mainland, France
   # 2x1000m roadbase
@@ -366,6 +479,11 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
 
   # Aumale roadbase
   # Mainland, France
@@ -379,6 +497,11 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # St. Germain roadbase
   # Mainland, France
   # 1x1400m roadbase
@@ -395,6 +518,11 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
 
   # Neufchatel roadbase
   # Mainland, France
@@ -408,6 +536,11 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
 
   # Quievrcourt roadbase
   # Mainland, France
@@ -421,6 +554,11 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Calleville roadbase
   # Mainland, France
   # 1x1400m roadbase
@@ -433,6 +571,11 @@ squadrons:
       secondary: any
       aircraft:
         - Tu-16 Badger-B
+    - primary: Transport
+      secondary: air-to-ground
+      aircraft:
+        - UH-60L
+        - Mi-8MTV2 Hip
   # Dieppe
   # Mainland, France
   # Helicopter base
@@ -440,6 +583,7 @@ squadrons:
     - primary: CAS
       secondary: air-to-ground
       aircraft:
+        - OH-58D(R) Kiowa Warrior
         - Mi-24P Hind-F
   # Treport
   # Mainland, France
@@ -448,6 +592,7 @@ squadrons:
     - primary: CAS
       secondary: air-to-ground
       aircraft:
+        - OH-58D(R) Kiowa Warrior
         - SA 342L Gazelle
 
 
