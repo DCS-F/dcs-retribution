@@ -7,7 +7,7 @@
     "fi_FI"
   ],
   "aircrafts": [
-    "C-130",
+    "C-130J-30",
     "MiG-15bis Fagot",
 	"MiG-19P Farmer-B",
     "MiG-21bis Fishbed-N",
@@ -131,6 +131,13 @@
     "C-101CC Aviojet": [
       "Finnish Two Tone Camo"
     ],
+    "UH-60L": [
+      "UH-60L Fictional Fin Army BH-09",
+      "UH-60L Fictional Fin Army BH-10"
+    ],
+    "OH-58D(R) Kiowa Warrior": [
+      "OH-58D_Fin_Army_Fictional"
+    ],
     "Mi-8MTV2 Hip": [
       "ILMAVOIMAT2",
       "Ilmavoimat HS-11",
@@ -146,8 +153,8 @@
     "SA 342L Gazelle": [
       "FIAF"
     ],
-    "C-130": [
-      "FIAF C-130"
+    "C-130J-30": [
+      "Fin Air Force"
     ],
     "KC-130": [
       "FIAF KC-130"
