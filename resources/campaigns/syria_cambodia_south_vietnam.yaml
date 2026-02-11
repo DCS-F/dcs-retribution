@@ -15,9 +15,13 @@ settings:
   automate_front_line_reinforcements: true
   automate_aircraft_reinforcements: true
 
+  pretense_supply_mode_dist_to_front: 4
+  pretense_export_mode_dist_to_front: 5
+
   pretense_extra_zone_connections: 0
   pretense_sead_mission_dist_to_front: 3
   pretense_strike_mission_dist_to_front: 2
+  pretense_ai_max_mission_dist_to_front: 6
 
   pretense_disable_supply_convoys: true
   pretense_ground_assaults_prefer_roads: true
@@ -231,7 +235,7 @@ squadrons:
     - primary: CAS
       secondary: air-to-ground
       aircraft:
-        - AH-1W SuperCobra
+        - OH-58D(R) Kiowa Warrior
   # Roadbase, 3000m runway
   Pleiku Airbase West:
     - primary: CAS
@@ -252,7 +256,7 @@ squadrons:
     - primary: CAS
       secondary: air-to-ground
       aircraft:
-        - AH-1W SuperCobra
+        - OH-58D(R) Kiowa Warrior
   # Roadbase, 2700m runway
   Pleiku Airbase East:
     - primary: CAS
@@ -335,7 +339,7 @@ squadrons:
         - A-20G Havoc
     - primary: Transport
       aircraft:
-        - C-130
+        - C-130J-30
     - primary: Refueling
       aircraft:
         - KC-135 Stratotanker
@@ -361,6 +365,15 @@ squadrons:
       aircraft:
         - F-4E Phantom II
 
+  Naval-1:
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - F4U-1D Corsair
+    - primary: CAS
+      secondary: air-to-ground
+      aircraft:
+        - UH-1H Iroquois
   Naval-2:
     - primary: CAS
       secondary: air-to-ground
@@ -426,9 +439,15 @@ squadrons:
         - E-2C Hawkeye
         
 carriers:
+  Naval-1:
+    preferred_name: CV-37 Princeton
+    preferred_type: USS Bennington (CV-20)
+  Naval-2:
+    preferred_name: LPH‑10 Tripoli
+    preferred_type: LHA_Tarawa
   Naval-3:
     preferred_name: CV-59 Forrestal
-    preferred_type: Forrestal
+    preferred_type: CV-59 Forrestal
   Naval-4:
     preferred_name: CVN-65 Enterprise
-    preferred_type: Stennis
+    preferred_type: CVN-74 John C. Stennis
